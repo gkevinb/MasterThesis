@@ -101,6 +101,7 @@ or1 = Gate('OR', parent=intEvent1)
 and2 = Gate('AND', parent=intEvent2)
 basicEvent1 = Event('Basic Event 1', 0.23, parent=or1)
 basicEvent2 = Event('Basic Event 2', 0.69, parent=or1)
+basicEvent2_5 = Event('Basic Event 2.5', 0.87, parent=or1)
 
 basicEvent3 = Event('Basic Event 3', 0.85, parent=and2)
 basicEvent4 = Event('Basic Event 4', 0.98, parent=and2)
