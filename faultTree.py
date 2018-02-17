@@ -70,22 +70,21 @@ class FaultTree:
     def __init__(self, root):
         self.root = root
 
-    def calculate_reliability(self):
+    def get_gates_reversed(self):
         gates = []
         for node in LevelOrderIter(self.root):
             if type(node) is Gate:
                 gates.append(node)
-        gates_reversed = gates[::-1]
-        for gate in gates_reversed:
+        return gates[::-1]
+
+    def calculate_reliability(self):
+        gates = self.get_gates_reversed()
+        for gate in gates:
             gate.evaluate_rel()
 
     def calculate_probability(self):
-        gates = []
-        for node in LevelOrderIter(self.root):
-            if type(node) is Gate:
-                gates.append(node)
-        gates_reversed = gates[::-1]
-        for gate in gates_reversed:
+        gates = self.get_gates_reversed()
+        for gate in gates:
             gate.evaluate_prob()
 
     def print_tree(self):
@@ -101,7 +100,6 @@ or1 = Gate('OR', parent=intEvent1)
 and2 = Gate('AND', parent=intEvent2)
 basicEvent1 = Event('Basic Event 1', 0.23, parent=or1)
 basicEvent2 = Event('Basic Event 2', 0.69, parent=or1)
-basicEvent2_5 = Event('Basic Event 2.5', 0.87, parent=or1)
 
 basicEvent3 = Event('Basic Event 3', 0.85, parent=and2)
 basicEvent4 = Event('Basic Event 4', 0.98, parent=and2)
