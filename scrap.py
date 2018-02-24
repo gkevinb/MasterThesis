@@ -49,3 +49,5 @@ for key, value in sorted_stream.items():
         y_list[counter] = edge[2]
 
 '''
+
+print(generate_time_series('EXP', 5, 'EXP', 2, 100))

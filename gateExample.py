@@ -4,14 +4,22 @@ import logicgate
 -------------------------Start Here-----------------------
 '''
 
-x = [3, 5, 7, 9]
-y = [2, 4, 8]
-z = [1, 6, 10]
-data_streams = [x, y, z]
+x = [8, 18]
+y = [9, 16]
+data_streams = [x, y]
 print(x)
 print(y)
-print(z)
+res = logicgate.evaluate('AND', data_streams)
+print('Result:')
+print(res)
 
-res = logicgate.evaluate('OR', data_streams)
+print('--------------------')
+
+x = [8.618904143724958, 18.760026889953128]
+y = [9.754214745654227, 16.54121097802728]
+data_streams = [x, y]
+print(x)
+print(y)
+res = logicgate.evaluate('AND', data_streams)
 print('Result:')
 print(res)

@@ -91,7 +91,6 @@ class FaultTree:
         print(RenderTree(self.root))
 
 
-# Works Best for Binary Tree, each gate only has two branches
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intEvent1 = Event('Intermediate Event 1', parent=and1)

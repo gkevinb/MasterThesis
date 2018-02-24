@@ -1,5 +1,5 @@
 from numbers import Number
-
+import collections
 
 '''
 Get a three element list, showing if the transition of the time is from up to down or down to up.
@@ -42,7 +42,8 @@ def create_data_stream_dict(a_data_streams):
         stream = a_data_streams[i]
         for j in range(length):
             data_dict[stream[j]] = i
-    return data_dict
+    ordered_dict = collections.OrderedDict(sorted(data_dict.items()))
+    return ordered_dict
 
 
 '''

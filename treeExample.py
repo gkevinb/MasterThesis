@@ -31,7 +31,7 @@ for pre, _, node in RenderTree(n1):
     treestr = u"%s%s" % (pre, node.name)
     print(treestr.ljust(7), node.num)
 '''
-
+print(udo.descendants)
 print(RenderTree(n1))
 print(n2.children)
 print(n2.path)
@@ -40,3 +40,5 @@ L = [10, 20, 30, 40, 50]
 print(L)
 revL = L[::-1]
 print(revL)
+print(jill.is_leaf)
+print(udo.descendants)
