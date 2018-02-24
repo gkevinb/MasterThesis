@@ -4,63 +4,25 @@ from numbers import Number
 x = [3, 5, 7, 9]
 y = [2, 4, 8]
 z = [1, 6, 10]
-
+data_streams = [x, y, z]
 print(x)
 print(y)
+print(z)
+
 
 
 '''
-DataStream class not needed
+Get a three element list, showing if the transition of the time is from up to down or down to up.
+The first element is the edge before the time transition, the second element is the time transition,
+the third element is the edge after the time transition. Function finds index of of the time, and if
+it's in an even index its U then D, if odd index its D then U
+Ex: ['U', 1.5, 'D']
 '''
-class DataStream:
-    def __init__(self, stream, name):
-        self.stream = stream
-        self.name = name
-        self.place = 0
-        self.top = True
-        self.length = len(stream)
-
-    def step(self):
-        self.place += 1
-        if self.top:
-            self.top = False
-        else:
-            self.top = True
-
-    def get_edge(self):
-        return self.top
-
-    def current(self):
-        return self.stream[self.place]
-
-    def __repr__(self):
-        return str(self.stream[self.place]) + ' : ' + str(self.top)
-
-
-# Not needed
-
-x1 = DataStream(x, 'x')
-y1 = DataStream(y, 'y')
-
-
-# Not needed
-def append_edges(data_stream):
-    data = ['U']
-    for i in range(data_stream.length):
-        data.append(data_stream.current())
-        data_stream.step()
-        if data_stream.get_edge():
-            data.append('U')
-        else:
-            data.append('D')
-    return data
-
-
 def get_subsequent_edge_type(data_stream, time):
     edges = []
-    for j in range(len(data_stream)):
-        if data_stream[j] == time:
-            index = j
+    for i in range(len(data_stream)):
+        if data_stream[i] == time:
+            index = i
             break
     if index % 2 == 0:
         edges.append('U')
@@ -70,131 +32,195 @@ def get_subsequent_edge_type(data_stream, time):
         edges.append('D')
         edges.append(time)
         edges.append('U')
-
     return edges
 
 
-# Not needed
-d_1 = append_edges(x1)
-d_2 = append_edges(y1)
-
-
-data_streams = [x, y, z]
-print(d_1)
-print(d_2)
-
-
-def create_data_dict(data):
+'''
+Create a sorted dictionary of all the transition times in all the data streams. The keys are the 
+transition times because these will be unique, the values are the index of which data stream it
+belongs to.
+'''
+def create_datastream_dict(a_data_streams):
     data_dict = {}
-    for _i in range(len(data)):
-        for k in range((len(data[_i]))):
-            stream = data[_i]
-            data_dict[stream[k]] = _i
+    for i in range(len(a_data_streams)):
+        length = len(a_data_streams[i])
+        stream = a_data_streams[i]
+        for j in range(length):
+            data_dict[stream[j]] = i
     return data_dict
 
 
-sorted_stream = create_data_dict(data_streams)
+sorted_stream = create_datastream_dict(data_streams)
 print(sorted_stream)
 
-coded_list = []
-for i in range(len(data_streams)):
-    i_list = [None] * (len(sorted_stream) * 2 + 1)
-    i_list[0] = 'U'
-    coded_list.append(i_list)
+
 
 '''
-x_list = [None] * (len(sorted_stream) * 2 + 1)
-y_list = [None] * (len(sorted_stream) * 2 + 1)
-and_list = [None] * (len(sorted_stream) * 2 + 1)
-x_list[0] = 'U'
-y_list[0] = 'U'
-print(x_list)
-print(y_list)
+Create empty data_streams which hold enough space for all the transition times plus the
+corresponding edge transitions.
 '''
-and_list = [None] * (len(sorted_stream) * 2 + 1)
-print(coded_list)
+def initialize_coded_data_streams(size, num_of_streams):
+    coded_data_streams = []
+    for i in range(num_of_streams):
+        i_coded_data_stream = [None] * (size * 2 + 1)
+        i_coded_data_stream[0] = 'U'
+        coded_data_streams.append(i_coded_data_stream)
+    return coded_data_streams
 
 
+edge_transition_coded_data_streams = initialize_coded_data_streams(len(sorted_stream), len(data_streams))
+
+'''
+Initialize empty data stream to save result
+'''
+def initialize_result_data_stream(size):
+    empty_list = [None] * (size * 2 + 1)
+    return empty_list
+
+
+
+print(edge_transition_coded_data_streams)
+
+'''
+Fill out edge_transition_coded_data_streams according to the transition times in
+increasing order. While keeping space between entries if another stream has entries
+in those spots.
+'''
 counter = 0
 for key, value in sorted_stream.items():
     edge = get_subsequent_edge_type(data_streams[value], key)
-    j_list = coded_list[value]
-    j_list[counter] = edge[0]
+    i_coded_data_stream = edge_transition_coded_data_streams[value]
+    i_coded_data_stream[counter] = edge[0]
     counter += 1
-    j_list[counter] = edge[1]
+    i_coded_data_stream[counter] = edge[1]
     counter += 1
-    j_list[counter] = edge[2]
+    i_coded_data_stream[counter] = edge[2]
 
-for i in range(len(coded_list)):
-    j_list = coded_list[i]
-    for j in range(len(j_list)):
-        if j_list[j] is None:
-            j_list[j] = j_list[j - 1]
 
-print(coded_list)
 '''
-for i in range(len(x_list)):
-    if x_list[i] is None:
-        x_list[i] = x_list[i - 1]
-    if y_list[i] is None:
-        y_list[i] = y_list[i - 1]
-print(x_list)
-print(y_list)
+Fill out missing entries in edge_transition_coded_data_streams by looking at previous element.
 '''
+def fill_out_missing_entries(coded_data_streams):
+    for i in range(len(coded_data_streams)):
+        i_coded_data_stream = coded_data_streams[i]
+        length = len(i_coded_data_stream)
+        for j in range(length):
+            if i_coded_data_stream[j] is None:
+                i_coded_data_stream[j] = i_coded_data_stream[j - 1]
 
 
-def is_all_up(_slice):
+fill_out_missing_entries(edge_transition_coded_data_streams)
+
+print(edge_transition_coded_data_streams)
+
+
+'''
+Function to check if all elements in the slice are UP
+'''
+def is_all_up(slice):
     decision = False
-    _counter = 0
-    for sl in _slice:
-        if sl == 'U':
-            _counter += 1
-    if _counter == len(_slice):
+    i = 0
+    for element in slice:
+        if element == 'U':
+            i += 1
+    if i == len(slice):
         decision = True
     return decision
 
 
-def is_number_in_it(_slice):
+'''
+Function to check if all elements in the slice are UP
+'''
+def is_all_down(slice):
     decision = False
-    for sl in _slice:
-        if isinstance(sl, Number):
+    i = 0
+    for element in slice:
+        if element == 'D':
+            i += 1
+    if i == len(slice):
+        decision = True
+    return decision
+
+
+'''
+Function to check if at least one element is a number, meaning there is a transition there
+'''
+def is_number_in_slice(slice):
+    decision = False
+    for element in slice:
+        if isinstance(element, Number):
             decision = True
             break
     return decision
 
-
-def get_number_in_it(_slice):
-    num = 0
-    for sl in _slice:
-        if isinstance(sl, Number):
-            num = sl
+'''
+Function to get number, the transition time, in that slice.
+'''
+def get_number_in_slice(slice):
+    number = 0
+    for element in slice:
+        if isinstance(element, Number):
+            number = element
             break
-    return num
+    return number
 
 
-def evaluate_slice(_slice):
-    if is_all_up(_slice):
-        _s = 'U'
-    elif is_number_in_it(_slice):
-        _s = get_number_in_it(_slice)
+'''
+Evaluate slice according to AND gate
+'''
+def and_evaluate_slice(slice):
+    if is_all_up(slice):
+        element = 'U'
+    elif is_number_in_slice(slice):
+        element = get_number_in_slice(slice)
     else:
-        _s = 'D'
-    return _s
+        element = 'D'
+    return element
+
+'''
+Evaluate slice according to AND gate
+'''
+def or_evaluate_slice(slice):
+    if is_all_down(slice):
+        element = 'D'
+    elif is_number_in_slice(slice):
+        element = get_number_in_slice(slice)
+    else:
+        element = 'U'
+    return element
 
 
-for i in range(len(coded_list[0])):
-    sli = []
-    for j in range(len(coded_list)):
-        sli.append(coded_list[j][i])
-    and_list[i] = evaluate_slice(sli)
+'''
+Evaluate edge_transition_coded_data_streams by taking each index at a time and creating a 'slice'
+from the streams that happen at the same instant. 
+i is the index of the stream, j is the index of the slice
+'''
+def evaluate(coded_data_streams, gate):
+    result_list = initialize_result_data_stream(len(sorted_stream))
+    for i in range(len(coded_data_streams[0])):
+        slice = []
+        for j in range(len(coded_data_streams)):
+            slice.append(coded_data_streams[j][i])
+            if gate == 'AND':
+                result_list[i] = and_evaluate_slice(slice)
+            if gate == 'OR':
+                result_list[i] = or_evaluate_slice(slice)
+    return result_list
 
-print(and_list)
 
-and_result = []
+result = evaluate(edge_transition_coded_data_streams, 'AND')
 
-for i in range(len(and_list)):
-    if isinstance(and_list[i], Number):
-        if and_list[i - 1] != and_list[i + 1]:
-            and_result.append(and_list[i])
 
+'''
+Filter out the UP and DOWN elements from data stream just to get transition times
+'''
+def filter_stream(stream):
+    result_list = []
+    for i in range(len(stream)):
+        if isinstance(stream[i], Number):
+            if stream[i - 1] != stream[i + 1]:
+                result_list.append(stream[i])
+    return result_list
+
+and_result = filter_stream(result)
 print(and_result)
