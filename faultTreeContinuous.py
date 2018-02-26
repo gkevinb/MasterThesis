@@ -3,6 +3,7 @@ import timeseries
 import logicgate
 
 
+# Smarter way to handle distributions as arguments
 class Event(NodeMixin):
     def __init__(self, name, reliability_distribution=None, mean_time_to_failure=None,
                  maintainability_distribution=None, mean_time_to_repair=None, parent=None):
@@ -52,6 +53,7 @@ class FaultTree:
                 gates.append(node)
         return gates[::-1]
 
+    # Make a better way to generate time series for Basic events, probably use inheritance
     def generate_basic_event_time_series(self, size):
         for node in self.root.descendants:
             if node.is_leaf:
@@ -66,11 +68,18 @@ class FaultTree:
         print(RenderTree(self.root))
 
 
+# Find way to only allow events to connect with gates and vice versa,
+# Event | Gate | Event | Gate | Event layers.
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
-basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=and1)
-basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=and1)
-
+intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
+intermediateEvent2 = Event('Intermediate Event 2', parent=and1)
+and2 = Gate('AND', parent=intermediateEvent1)
+basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=and2)
+basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=and2)
+or1 = Gate('OR', parent=intermediateEvent2)
+basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
+basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
 
 fault_tree = FaultTree(topEvent)
 fault_tree.generate_basic_event_time_series(100)
