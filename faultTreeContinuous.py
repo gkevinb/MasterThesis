@@ -53,11 +53,17 @@ class FaultTree:
                 gates.append(node)
         return gates[::-1]
 
-    # Make a better way to generate time series for Basic events, probably use inheritance
-    def generate_basic_event_time_series(self, size):
+    def get_basic_events(self):
+        basic_events = []
         for node in self.root.descendants:
             if node.is_leaf:
-                node.generate(size)
+                basic_events.append(node)
+        return basic_events
+
+    # Maybe make a better way to generate time series for Basic events, probably use inheritance
+    def generate_basic_event_time_series(self, size):
+        for basic_event in self.get_basic_events():
+            basic_event.generate(size)
 
     def calculate_time_series(self):
         gates = self.get_gates_reversed()
@@ -66,6 +72,19 @@ class FaultTree:
 
     def print_tree(self):
         print(RenderTree(self.root))
+
+    def export_time_series(self):
+        file = open('time_series.txt', 'w')
+        root = self.root
+        for times in root.time_series:
+            file.write('%s ' % times)
+        file.write('\n')
+        for basic_event in self.get_basic_events():
+            for times in basic_event.time_series:
+                file.write('%s ' % times)
+            file.write('\n')
+
+        file.close()
 
 
 # Find way to only allow events to connect with gates and vice versa,
@@ -82,6 +101,8 @@ basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
 basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
 
 fault_tree = FaultTree(topEvent)
-fault_tree.generate_basic_event_time_series(100)
+# 10000 generation size takes a good minute
+fault_tree.generate_basic_event_time_series(1000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
+fault_tree.export_time_series()
