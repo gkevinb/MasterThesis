@@ -36,7 +36,14 @@ class Gate(NodeMixin):
         data_streams = []
         for child in self.children:
             data_streams.append(child.time_series)
-        self.parent.time_series = logicgate.evaluate(self.name, data_streams)
+
+        # Fault tree gate logic is opposite, since it checks for failures not successes
+        fault_logic = None
+        if self.name == 'AND':
+            fault_logic = 'OR'
+        if self.name == 'OR':
+            fault_logic = 'AND'
+        self.parent.time_series = logicgate.evaluate(fault_logic, data_streams)
 
     def __repr__(self):
         return self.name
@@ -73,8 +80,9 @@ class FaultTree:
     def print_tree(self):
         print(RenderTree(self.root))
 
-    def export_time_series(self):
-        file = open('time_series.txt', 'w')
+    def export_time_series(self, file_name):
+        file_ext = file_name + '.txt'
+        file = open(file_ext, 'w')
         root = self.root
         for times in root.time_series:
             file.write('%s ' % times)
@@ -102,7 +110,7 @@ basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
 
 fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-fault_tree.generate_basic_event_time_series(1000)
+fault_tree.generate_basic_event_time_series(100)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series()
+fault_tree.export_time_series('testdata2')
