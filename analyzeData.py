@@ -1,4 +1,5 @@
 import collections
+import cutsets
 
 
 is_EVEN = lambda i: i % 2 == 0
@@ -14,6 +15,7 @@ class TimeSeries:
         self.basic_event_start_index = 1
         self.number_of_basic_events = self.read_time_series_from_file()
         self.cut_sets = []
+        self.minimal_cut_sets = []
 
     '''
     Reads time series from the file given in the __init__ function.
@@ -42,6 +44,12 @@ class TimeSeries:
     # Returns the index of the basic events in list, used for for loops
     def basic_events_indexing(self):
         return range(self.basic_event_start_index, len(self.time_series))
+
+    def get_basic_events(self):
+        basic_events = []
+        for i in self.basic_events_indexing():
+            basic_events.append(self.time_series[i])
+        return basic_events
 
     def display_event_time_series(self):
         print('Top Event : ' + str(self.time_series[self.top_event_index]))
@@ -77,81 +85,25 @@ class TimeSeries:
         mean_time_to_failure = sum(time_to_repair)/len(time_to_repair)
         return mean_time_to_failure
 
-    def get_index_of_number_before(self, event, number):
-        event_time_series = self.time_series[event]
-        # For Testing: #event_time_series = [2, 4, 6]
-        index = -1
-        # First checks if number is smaller then the first number in series
-        if number < event_time_series[0]:
-            #print('FIRST')
-            index = -1
-        # Second checks if number is greater then the last number in series
-        elif number > event_time_series[-1]:
-            #print('LAST')
-            index = len(event_time_series) - 1
-        # Then checks the rest of the numbers
-        else:
-            #print('MIDDLE')
-            for i in range(len(event_time_series)):
-                if number < event_time_series[i]:
-                    index = i - 1
-                    break
-        return index
-
-    def get_state_of_event(self, event, time):
-        index = self.get_index_of_number_before(event, time)
-        if is_ODD(index):
-            return 'UP'
-        else:
-            return 'DOWN'
-
-    def get_state_of_basic_events(self, time):
-        status_of_events = []
-        for i in self.basic_events_indexing():
-            status_of_events.append(self.get_state_of_event(i, time))
-        #print(status_of_events)
-        return status_of_events
-
-    def get_all_cut_sets(self):
+    def calculate_cut_sets(self):
         top_event = self.time_series[self.top_event_index]
-        all_cut_sets = {}
-        for i in range(len(top_event)):
-            if is_EVEN(i):
-                failure = top_event[i]
-                all_cut_sets[failure] = self.get_state_of_basic_events(failure)
-        all_cut_sets = collections.OrderedDict(sorted(all_cut_sets.items()))
-        print(all_cut_sets)
-        return all_cut_sets
+        basic_events = self.get_basic_events()
+        self.cut_sets = cutsets.convert_cut_sets(top_event, basic_events)
+        print(self.cut_sets)
 
-    def calculate_unique_cut_sets(self):
-        all_cut_sets = self.get_all_cut_sets()
-        unique_cut_sets = []
-        for time, cut_set in all_cut_sets.items():
-            if cut_set not in unique_cut_sets:
-                unique_cut_sets.append(cut_set)
-        return unique_cut_sets
-
-    def convert_cut_set(self, symbol_cut_set):
-        cut_set = []
-        for i in range(len(symbol_cut_set)):
-            if symbol_cut_set[i] == 'DOWN':
-                cut_set.append(i + 1)
-        return cut_set
-
-    def convert_cut_sets(self):
-        symbol_cut_sets = self.calculate_unique_cut_sets()
-        for symbol_cut_set in symbol_cut_sets:
-            self.cut_sets.append(self.convert_cut_set(symbol_cut_set))
-        print('Cut sets: ' + str(self.cut_sets))
-        return self.cut_sets
+    def calculate_minimal_cut_sets(self):
+        self.minimal_cut_sets = cutsets.calculate_minimal_cut_sets(self.cut_sets)
+        print(self.minimal_cut_sets)
 
 
 time_series = TimeSeries('testdata2.txt')
 # time_series = TimeSeries('testfile.txt')
 time_series.display_event_time_series()
-# print('Number of basic event: ' + str(time_series.number_of_basic_events))
-EVENT = time_series.top_event_index
-#print('Mean time to failure: ' + str(time_series.get_mean_time_to_failure(EVENT)))
-#print('Mean time to repair: ' + str(time_series.get_mean_time_to_repair(EVENT)))
-
-time_series.convert_cut_sets()
+print('Number of basic event: ' + str(time_series.number_of_basic_events))
+TOP_EVENT = time_series.top_event_index
+print('Mean time to failure: ' + str(time_series.get_mean_time_to_failure(TOP_EVENT)))
+print('Mean time to repair: ' + str(time_series.get_mean_time_to_repair(TOP_EVENT)))
+print('Cut sets')
+time_series.calculate_cut_sets()
+print('Minimal cut sets')
+time_series.calculate_minimal_cut_sets()

@@ -31,10 +31,6 @@ x1 = DataStream(x)
 y1 = DataStream(y)
 
 
-
-
-
-
 for i in range(2):
     if x1.top and y1.top:
         low = min(x1.current(), y1.current())
@@ -57,6 +53,5 @@ for i in range(2):
         if not y1.top:
             z.append(y1.current())
             y1.step()
-
 
 print(z)
