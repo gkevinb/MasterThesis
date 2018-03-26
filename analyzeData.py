@@ -17,13 +17,13 @@ class TimeSeries:
         self.cut_sets = []
         self.minimal_cut_sets = []
 
-    '''
-    Reads time series from the file given in the __init__ function.
-    Places the times series of the top event as the first element in 
-    the dictionary and then all the basic events follow. The function
-    returns the number of basic events found in the file.
-    '''
     def read_time_series_from_file(self):
+        """
+        Reads time series from the file given in the __init__ function.
+        Places the times series of the top event as the first element in
+        the dictionary and then all the basic events follow. The function
+        returns the number of basic events found in the file.
+        """
         file = open(self.file_name, 'r')
         dict_time_series = {}
         index = 0
@@ -71,7 +71,7 @@ class TimeSeries:
         for i in range(len(times)):
             if is_EVEN(i):
                 time_to_failures.append(times[i])
-        print(time_to_failures)
+        #print(time_to_failures)
         mean_time_to_failure = sum(time_to_failures)/len(time_to_failures)
         return mean_time_to_failure
 
@@ -81,7 +81,7 @@ class TimeSeries:
         for i in range(len(times)):
             if is_ODD(i):
                 time_to_repair.append(times[i])
-        print(time_to_repair)
+        #print(time_to_repair)
         mean_time_to_failure = sum(time_to_repair)/len(time_to_repair)
         return mean_time_to_failure
 

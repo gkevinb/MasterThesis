@@ -108,12 +108,10 @@ def convert_cut_sets(top_event, basic_events):
     return cut_sets
 
 
-'''
-cut_set_ut (cut set under test)
-'''
-
-
 def is_reducible_cut_set(cut_set, cut_set_ut):
+    """
+    cut_set_ut (cut set under test)
+    """
     counter = 0
     for component in cut_set:
         if component in cut_set_ut:
@@ -124,12 +122,12 @@ def is_reducible_cut_set(cut_set, cut_set_ut):
         return False
 
 
-'''
-cut_set_op (cut set operator)
-'''
-
-
 def calculate_minimal_cut_sets(cut_sets):
+    """
+    cut_set_op (cut set operator)
+    :param cut_sets:
+    :return:
+    """
     cut_sets_for_removal = []
     # Get cut_set from cut_sets
     for cut_set in cut_sets:
