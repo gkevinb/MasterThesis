@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Thesis.iml" afterPath="$PROJECT_DIR$/.idea/Thesis.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/testdata2.txt" afterPath="$PROJECT_DIR$/testdata2.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +16,7 @@
       <file leaf-file-name="analyzeData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyzeData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
+            <state relative-caret-position="1309">
               <caret line="78" column="48" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -30,7 +28,7 @@
       <file leaf-file-name="treeExample.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/treeExample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="170">
               <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
               <folding />
             </state>
@@ -41,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -95,10 +93,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="807" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="61" />
+    <option name="y" value="-6" />
+    <option name="width" value="1305" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -116,6 +115,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,8 +128,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -147,7 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.analyzeData">
+  <component name="RunManager" selected="Python.faultTreeContinuous">
     <configuration name="analyzeData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -247,8 +246,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.analyzeData" />
-        <item index="1" class="java.lang.String" itemvalue="Python.faultTreeContinuous" />
+        <item index="0" class="java.lang.String" itemvalue="Python.faultTreeContinuous" />
+        <item index="1" class="java.lang.String" itemvalue="Python.analyzeData" />
         <item index="2" class="java.lang.String" itemvalue="Python.treeExample" />
         <item index="3" class="java.lang.String" itemvalue="Python.cutsets" />
         <item index="4" class="java.lang.String" itemvalue="Python.faultTree" />
@@ -272,10 +271,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="807" extended-state="6" />
-    <editor active="true" />
+    <frame x="61" y="-6" width="1305" height="774" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22569445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2229885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2777778" sideWeight="0.2133538" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35735735" sideWeight="0.7866462" order="2" side_tool="false" content_ui="tabs" />
@@ -566,7 +564,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/treeExample.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="170">
           <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
           <folding />
         </state>
@@ -644,7 +642,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyzeData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
+        <state relative-caret-position="1309">
           <caret line="78" column="48" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -655,7 +653,7 @@
     <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
