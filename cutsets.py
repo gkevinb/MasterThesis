@@ -1,6 +1,9 @@
 import collections
 
 
+HIGH = 'HIGH'
+LOW = 'LOW'
+
 is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
 
@@ -51,9 +54,9 @@ index is even then the state is DOWN.
 def get_state_of_event(queue, time):
     index = get_index_of_number_before(queue, time)
     if is_ODD(index):
-        return 'UP'
+        return HIGH
     else:
-        return 'DOWN'
+        return LOW
 
 
 '''
@@ -93,7 +96,7 @@ def calculate_unique_cut_sets(all_cut_sets):
 def convert_cut_set(symbol_cut_set):
     cut_set = []
     for i in range(len(symbol_cut_set)):
-        if symbol_cut_set[i] == 'DOWN':
+        if symbol_cut_set[i] == LOW:
             cut_set.append(i + 1)
     return cut_set
 
