@@ -146,6 +146,8 @@ class FaultTree:
 
 # Find way to only allow events to connect with gates and vice versa,
 # Event | Gate | Event | Gate | Event layers.
+
+'''
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
@@ -156,9 +158,9 @@ basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=and2)
 or1 = Gate('OR', parent=intermediateEvent2)
 basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
 basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
-
-
 '''
+
+
 # k/N Voting Example
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
@@ -172,11 +174,10 @@ basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
 basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
 basicEvent5 = Event('Basic Event 5', 'EXP', 10, 'EXP', 4, parent=or1)
 
-'''
 
 fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-#fault_tree.generate_basic_event_time_series(1000)
-#fault_tree.calculate_time_series()
+fault_tree.generate_basic_event_time_series(500)
+fault_tree.calculate_time_series()
 fault_tree.print_tree()
-#fault_tree.export_time_series('testdata2')
+fault_tree.export_time_series('testdata2')

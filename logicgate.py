@@ -231,12 +231,12 @@ def _evaluate_transitions(gate, coded_data_streams, length):
         slice_ = []
         for j in range(len(coded_data_streams)):
             slice_.append(coded_data_streams[j][i])
-            if gate == 'AND':
-                result_list[i] = _and_evaluate_slice(slice_)
-            if gate == 'OR':
-                result_list[i] = _or_evaluate_slice(slice_)
-            if isinstance(gate, Number):
-                result_list[i] = _k_voting_evaluate_slice(slice_, gate)
+        if gate == 'AND':
+            result_list[i] = _and_evaluate_slice(slice_)
+        if gate == 'OR':
+            result_list[i] = _or_evaluate_slice(slice_)
+        if isinstance(gate, Number):
+            result_list[i] = _k_voting_evaluate_slice(slice_, gate)
 
     return result_list
 
