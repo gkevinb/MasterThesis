@@ -9,7 +9,7 @@ is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
 
 
-def get_subsequent_edge_type(data_stream, time):
+def _get_subsequent_edge_type(data_stream, time):
     """
     Get a three element list, showing if the transition of the time is from up to down or down to up.
     The first element is the edge before the time transition, the second element is the time transition,
@@ -37,7 +37,7 @@ def get_subsequent_edge_type(data_stream, time):
     return edges
 
 
-def create_data_stream_dict(a_data_streams):
+def _create_data_stream_dict(a_data_streams):
     """
     Create a sorted dictionary of all the transition times in all the data streams.
     :param a_data_streams: List of data streams, one data stream is a list of time transitions.
@@ -54,7 +54,7 @@ def create_data_stream_dict(a_data_streams):
     return ordered_dict
 
 
-def initialize_coded_data_streams(size, num_of_streams):
+def _initialize_coded_data_streams(size, num_of_streams):
     """
     Create empty data_streams which hold enough space for all the transition times plus the
     corresponding edge transitions. The first element in each stream is initialized to 'U',
@@ -73,7 +73,7 @@ def initialize_coded_data_streams(size, num_of_streams):
     return coded_data_streams
 
 
-def initialize_result_data_stream(size):
+def _initialize_result_data_stream(size):
     """
     Initialize empty data stream to save result
     :param size: Size of data stream dictionary, which holds all the time transitions from
@@ -84,7 +84,7 @@ def initialize_result_data_stream(size):
     return empty_list
 
 
-def fill_out_missing_entries(coded_data_streams):
+def _fill_out_missing_entries(coded_data_streams):
     """
     Fill out missing entries in edge_transition_coded_data_streams by looking at previous element.
     :param coded_data_streams:
@@ -98,7 +98,7 @@ def fill_out_missing_entries(coded_data_streams):
                 coded_data_stream_i[j] = coded_data_stream_i[j - 1]
 
 
-def is_all_up(slice_):
+def _is_all_up(slice_):
     """
     Check if all elements in the slice are UP, in the high state
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
@@ -114,7 +114,7 @@ def is_all_up(slice_):
     return decision
 
 
-def is_all_down(slice_):
+def _is_all_down(slice_):
     """
     Check if all elements in the slice are DOWN, in the low state.
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
@@ -130,7 +130,7 @@ def is_all_down(slice_):
     return decision
 
 
-def is_number_in_slice(slice_):
+def _is_number_in_slice(slice_):
     """
     Function to check if at least one element is a number, meaning there is a transition there
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
@@ -144,7 +144,7 @@ def is_number_in_slice(slice_):
     return decision
 
 
-def get_number_in_slice(slice_):
+def _get_number_in_slice(slice_):
     """
     Function to get number, the transition time, in that slice.
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
@@ -158,37 +158,37 @@ def get_number_in_slice(slice_):
     return number
 
 
-def and_evaluate_slice(slice_):
+def _and_evaluate_slice(slice_):
     """
     Evaluate slice according to AND gate
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
     :return: Result of slice according to AND gate
     """
-    if is_all_up(slice_):
+    if _is_all_up(slice_):
         element = HIGH
-    elif is_number_in_slice(slice_):
-        element = get_number_in_slice(slice_)
+    elif _is_number_in_slice(slice_):
+        element = _get_number_in_slice(slice_)
     else:
         element = LOW
     return element
 
 
-def or_evaluate_slice(slice_):
+def _or_evaluate_slice(slice_):
     """
     Evaluate slice according to AND gate
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
     :return: Result of slice according to OR gate
     """
-    if is_all_down(slice_):
+    if _is_all_down(slice_):
         element = LOW
-    elif is_number_in_slice(slice_):
-        element = get_number_in_slice(slice_)
+    elif _is_number_in_slice(slice_):
+        element = _get_number_in_slice(slice_)
     else:
         element = HIGH
     return element
 
 
-def evaluate_transitions(gate, coded_data_streams, length):
+def _evaluate_transitions(gate, coded_data_streams, length):
     """
     Evaluate edge_transition_coded_data_streams by taking each index at a time and creating a 'slice'
     from the streams that happen at the same instant.
@@ -198,19 +198,19 @@ def evaluate_transitions(gate, coded_data_streams, length):
     :param length:
     :return:
     """
-    result_list = initialize_result_data_stream(length)
+    result_list = _initialize_result_data_stream(length)
     for i in range(len(coded_data_streams[0])):
         slice_ = []
         for j in range(len(coded_data_streams)):
             slice_.append(coded_data_streams[j][i])
             if gate == 'AND':
-                result_list[i] = and_evaluate_slice(slice_)
+                result_list[i] = _and_evaluate_slice(slice_)
             if gate == 'OR':
-                result_list[i] = or_evaluate_slice(slice_)
+                result_list[i] = _or_evaluate_slice(slice_)
     return result_list
 
 
-def filter_stream(stream):
+def _filter_stream(stream):
     """
     Filter out the UP and DOWN elements from data stream just to get transition times
     :param stream: Stream of data
@@ -233,9 +233,9 @@ def evaluate(gate, streams):
     :param streams: List of data streams
     :return: Resulting list of transition times according the the logic gate
     """
-    sorted_stream = create_data_stream_dict(streams)
+    sorted_stream = _create_data_stream_dict(streams)
 
-    edge_transition_coded_data_streams = initialize_coded_data_streams(len(sorted_stream), len(streams))
+    edge_transition_coded_data_streams = _initialize_coded_data_streams(len(sorted_stream), len(streams))
 
     '''
     Fill out edge_transition_coded_data_streams according to the transition times in
@@ -245,7 +245,7 @@ def evaluate(gate, streams):
     '''
     counter = 0
     for time, stream_index in sorted_stream.items():
-        edge = get_subsequent_edge_type(streams[stream_index], time)
+        edge = _get_subsequent_edge_type(streams[stream_index], time)
         coded_data_stream_i = edge_transition_coded_data_streams[stream_index]
         coded_data_stream_i[counter] = edge[0]
         counter += 1
@@ -253,10 +253,10 @@ def evaluate(gate, streams):
         counter += 1
         coded_data_stream_i[counter] = edge[2]
 
-    fill_out_missing_entries(edge_transition_coded_data_streams)
+    _fill_out_missing_entries(edge_transition_coded_data_streams)
 
-    result = evaluate_transitions(gate, edge_transition_coded_data_streams, len(sorted_stream))
+    result = _evaluate_transitions(gate, edge_transition_coded_data_streams, len(sorted_stream))
 
-    result = filter_stream(result)
+    result = _filter_stream(result)
 
     return result
