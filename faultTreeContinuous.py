@@ -2,6 +2,8 @@ from anytree import NodeMixin, RenderTree, LevelOrderIter
 import timeseries
 import logicgate
 
+DISPLAY_UP_TO = 10
+
 
 # Smarter way to handle distributions as arguments
 class Event(NodeMixin):
@@ -29,13 +31,17 @@ class Event(NodeMixin):
                                                            size)
 
     def __repr__(self):
-        return self.name + ' : ' + str(self.time_series)
+        return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
 
 
 class Gate(NodeMixin):
-    def __init__(self, name, parent=None):
+    def __init__(self, name, parent=None, k=None):
         self.name = name
         self.parent = parent
+        self.k = k
+
+    def get_number_of_children(self):
+        return len(self.children)
 
     def evaluate(self):
         """
@@ -53,11 +59,16 @@ class Gate(NodeMixin):
             fault_logic = 'OR'
         if self.name == 'OR':
             fault_logic = 'AND'
+        if self.name == 'VOTING':
+            fault_logic = self.k
 
         self.parent.time_series = logicgate.evaluate(fault_logic, data_streams)
 
     def __repr__(self):
-        return self.name
+        if self.k is None:
+            return self.name
+        else:
+            return str(self.k) + '/' + str(self.get_number_of_children()) + ' ' + self.name
 
 
 class FaultTree:
@@ -146,9 +157,26 @@ or1 = Gate('OR', parent=intermediateEvent2)
 basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
 basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
 
+
+'''
+# k/N Voting Example
+topEvent = Event('Top Event')
+and1 = Gate('AND', parent=topEvent)
+intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
+intermediateEvent2 = Event('Intermediate Event 2', parent=and1)
+and2 = Gate('AND', parent=intermediateEvent1)
+basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=and2)
+basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=and2)
+or1 = Gate('VOTING', parent=intermediateEvent2, k=2)
+basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
+basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
+basicEvent5 = Event('Basic Event 5', 'EXP', 10, 'EXP', 4, parent=or1)
+
+'''
+
 fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-fault_tree.generate_basic_event_time_series(100)
-fault_tree.calculate_time_series()
+#fault_tree.generate_basic_event_time_series(1000)
+#fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series('testdata2')
+#fault_tree.export_time_series('testdata2')

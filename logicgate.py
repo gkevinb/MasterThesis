@@ -130,6 +130,23 @@ def _is_all_down(slice_):
     return decision
 
 
+def _is_k_down(slice_, k):
+    """
+    Check if there is at least k number of LOW states in slice_
+    :param slice_: A 'slice' of data holding the state of the data streams at a certain time
+    :param k: There must be at least k number of LOW states in this slice
+    :return: Boolean indicating if there is at least k number of LOW states
+    """
+    decision = False
+    counter = 0
+    for element in slice_:
+        if element == LOW:
+            counter += 1
+    if counter >= k:
+        decision = True
+    return decision
+
+
 def _is_number_in_slice(slice_):
     """
     Function to check if at least one element is a number, meaning there is a transition there
@@ -188,12 +205,23 @@ def _or_evaluate_slice(slice_):
     return element
 
 
+def _k_voting_evaluate_slice(slice_, k):
+    if _is_number_in_slice(slice_):
+        element = _get_number_in_slice(slice_)
+    elif _is_k_down(slice_, k):
+        element = LOW
+    else:
+        element = HIGH
+
+    return element
+
+
 def _evaluate_transitions(gate, coded_data_streams, length):
     """
     Evaluate edge_transition_coded_data_streams by taking each index at a time and creating a 'slice'
     from the streams that happen at the same instant.
     i is the index of the stream, j is the index of the slice
-    :param gate: The logic gate used to evaluate the slice
+    :param gate: The logic gate used to evaluate the slice, or in case of voting gate, the k value.
     :param coded_data_streams: List of data streams with states and transition times
     :param length:
     :return:
@@ -207,6 +235,9 @@ def _evaluate_transitions(gate, coded_data_streams, length):
                 result_list[i] = _and_evaluate_slice(slice_)
             if gate == 'OR':
                 result_list[i] = _or_evaluate_slice(slice_)
+            if isinstance(gate, Number):
+                result_list[i] = _k_voting_evaluate_slice(slice_, gate)
+
     return result_list
 
 
@@ -229,7 +260,7 @@ def evaluate(gate, streams):
     Evaluate the streams according to the gate, gate can be 'AND' or 'OR'
     Returns a data stream containing the edge transition times after the
     logic gate.
-    :param gate: The logic gate used for evaluation
+    :param gate: The logic gate used for evaluation, or in case of voting gate, the k value.
     :param streams: List of data streams
     :return: Resulting list of transition times according the the logic gate
     """
