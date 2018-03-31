@@ -206,6 +206,12 @@ def _or_evaluate_slice(slice_):
 
 
 def _k_voting_evaluate_slice(slice_, k):
+    """
+    Evaluate slice according to k/N VOTING
+    :param slice_: A 'slice' of data holding the state of the data streams at a certain time
+    :param k: There must be at least k number of LOW states in this slice.
+    :return: Result of slice according to k/N VOTING gate
+    """
     if _is_number_in_slice(slice_):
         element = _get_number_in_slice(slice_)
     elif _is_k_down(slice_, k):
