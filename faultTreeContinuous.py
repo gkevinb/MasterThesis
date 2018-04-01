@@ -2,7 +2,7 @@ from anytree import NodeMixin, RenderTree, LevelOrderIter
 import timeseries
 import logicgate
 
-DISPLAY_UP_TO = 10
+DISPLAY_UP_TO = 6
 
 
 # Smarter way to handle distributions as arguments
