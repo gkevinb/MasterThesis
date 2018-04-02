@@ -2,12 +2,14 @@ import cutset_to_gate as c2g
 
 
 # cut_sets = [[1, 2], [3, 4]]
-cut_sets = [[1, 3], [1, 4], [2, 3], [2, 4]]
+# cut_sets = [[1, 3], [1, 4], [2, 3], [2, 4]]
 # cut_sets = ((1,), (2,))
 # cut_sets = ((1, 2), (3,), (4,))
 # CANT HANDLE # cut_sets = (1, 2) BECAUSE IT IS ONLY ONE CUT SET,
 # SO WRITE THIS INSTEAD:
 # cut_sets = ((1, 2),)
+
+cut_sets = [[1, 2, 3], [1, 2, 4]]
 
 print('Cut Sets:')
 
@@ -99,5 +101,7 @@ for i in range(len(events)):
         children = c2g.find_children_indices(i, events)
         gate = c2g.find_relationship(i, children, sets)
         print(str(gate) + '   parent: ' + str(name_of_events[i]))
-        for child in children:
-            print(str(name_of_events[child]) + '   parent: ' + str(gate))
+        for j in range(len(children)):
+            child = children[j]
+            gate_parent = gate + str(i + 1)
+            print(str(name_of_events[child]) + '         parent: ' + str(gate_parent))
