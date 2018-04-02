@@ -62,6 +62,8 @@ while len(event_dict) != 1:
 print('--------------------------------------')
 c2g.print_event_dictionary(entire_event_dict)
 
+print('--------------------------------------')
+
 events = []
 sets = []
 for e, s in entire_event_dict.items():
@@ -71,7 +73,31 @@ for e, s in entire_event_dict.items():
 events.reverse()
 sets.reverse()
 
-print(events)
-print(sets)
+# events as TUPLES
+# print(events)
 
-print(c2g.give_names_to_event(events))
+events = c2g.convert_list_of_tuples_to_list_of_sets(events)
+
+name_of_events = c2g.give_names_to_events(events)
+print('Names: ' + str(name_of_events))
+# events as SETS
+print('Events: ' + str(events))
+print('Sets: ' + str(sets))
+print('--------------------------------------')
+print('Children:')
+children_ = c2g.find_children_indices(0, events)
+print(children_)
+print(c2g.find_relationship(0, children_, sets))
+print('--------------------------------------')
+# print(c2g.is_children_mutual_exclusive_union_of_parent({0, 1, 2, 3}, [{0, 2}, {1, 3}]))
+# print(c2g.is_children_identical_to_parent({0, 1, 2, 3}, [{0, 1, 2, 3}, {0, 1, 2, 3}]))
+# print(c2g.get_sets_of_indices([4, 2, 3], events))
+
+print(name_of_events[0])
+for i in range(len(events)):
+    if len(events[i]) > 1:
+        children = c2g.find_children_indices(i, events)
+        gate = c2g.find_relationship(i, children, sets)
+        print(str(gate) + '   parent: ' + str(name_of_events[i]))
+        for child in children:
+            print(str(name_of_events[child]) + '   parent: ' + str(gate))

@@ -84,7 +84,7 @@ def find_mutual_exclusive_sets(event_dictionary):
     return mutual_exclusive_sets
 
 
-def give_names_to_event(events):
+def give_names_to_events(events):
     length = len(events)
     names = ['NULL'] * length
 
@@ -102,3 +102,86 @@ def give_names_to_event(events):
             basic_event_index += 1
 
     return names
+
+
+def convert_list_of_tuples_to_list_of_sets(list_of_tuples):
+    list_of_sets = []
+    for tuple_ in list_of_tuples:
+        set_ = set(tuple_)
+        list_of_sets.append(set_)
+    return list_of_sets
+
+
+def find_children_indices(parent_index, events):
+    parent = events[parent_index]
+    children = []
+    sub_events = set()
+    for i in range(len(events)):
+        if parent is not events[i]:
+            if events[i].issubset(parent):
+                sub_events.update(events[i])
+                children.append(i)
+            if is_sets_identical(sub_events, parent):
+                break
+    return children
+
+
+def get_sets_of_indices(indices, sets):
+    list_of_sets = []
+    for index in indices:
+        list_of_sets.append(sets[index])
+    return list_of_sets
+
+
+def is_children_identical_to_parent(parent, children):
+    decision = False
+    counter = 0
+    for child in children:
+        if is_sets_identical(child, parent):
+            counter += 1
+
+    if counter == len(children):
+        decision = True
+
+    return decision
+
+
+# NOT USED, PROBABLY NOT NEEDED
+def n_choose_2(n):
+    if n > 1:
+        return (n * (n - 1))/2
+    else:
+        return 0
+
+
+def is_children_mutual_exclusive_union_of_parent(parent, children):
+    sets = set()
+    decision = False
+    tick = True
+    for child in children:
+        for child_ in children:
+            if child is not child_:
+                if is_sets_mutually_exclusive(child, child_):
+                    pass
+                else:
+                    tick = False
+    if tick:
+        for child in children:
+            sets.update(child)
+        if is_sets_identical(sets, parent):
+            decision = True
+
+    return decision
+
+
+def find_relationship(parent_index, children_indices, sets):
+    parent = sets[parent_index]
+    children = get_sets_of_indices(children_indices, sets)
+    relationship = 'NULL'
+
+    if is_children_identical_to_parent(parent, children):
+        relationship = 'AND'
+    if is_children_mutual_exclusive_union_of_parent(parent, children):
+        relationship = 'OR'
+
+    return relationship
