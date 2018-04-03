@@ -1,42 +1,47 @@
-from numbers import Number
-import collections
-
-
 EMPTY_LIST = list()
 
 
-def get_basic_events(cut_sets):
+def get_basic_events(minimal_cut_sets):
+    """
+    Get list of basic events from the list of minimal cut sets.
+    :param minimal_cut_sets: List of minimal cut sets
+    :return: List of basic events
+    """
     basic_events = set()
-    for cut_set in cut_sets:
+    for cut_set in minimal_cut_sets:
         for event in cut_set:
             basic_events.add(event)
-        '''
-        # PROBABLY UNNEEDED IF CUT SETS ARE ENTERED LIKE THIS cut_sets = ((1, 2),) AND NOT LIKE THIS cut_sets = (1, 2) 
-        if isinstance(cut_set, Number):
-            basic_events.add(cut_set)
-        else:
-            for event in cut_set:
-                basic_events.add(event)
-        '''
 
     return basic_events
 
 
-def create_event_cut_set_dict(basic_events, cut_sets):
+def create_event_cut_set_dict(basic_events, minimal_cut_sets):
+    """
+    Create a dictionary where the keys are index of basic events (index starts from 1) and the value is the
+    indices of the minimal cut sets (index starts from 0) which include that basic event.
+    :param basic_events: Set which includes the index of basic events (index starts from 1)
+    :param minimal_cut_sets: List of minimal cut sets (index starts from 0)
+    :return: Returns event dictionary
+    """
     event_dictionary = {}
 
     for basic_event in basic_events:
-        event = [basic_event]
-        cut_set_ids = set()
-        for i in range(len(cut_sets)):
-            if basic_event in cut_sets[i]:
-                cut_set_ids.add(i)
-        event_dictionary[tuple(event)] = cut_set_ids
+        minimal_cut_set_ids = set()
+        for i in range(len(minimal_cut_sets)):
+            if basic_event in minimal_cut_sets[i]:
+                minimal_cut_set_ids.add(i)
+        event_dictionary[tuple([basic_event])] = minimal_cut_set_ids
 
     return event_dictionary
 
 
 def is_sets_identical(set1, set2):
+    """
+    Checks if the two sets are identical or not.
+    :param set1: First set
+    :param set2: Second set
+    :return: True if sets are identical, False if not
+    """
     if set1 == set2:
         return True
     else:
@@ -44,6 +49,12 @@ def is_sets_identical(set1, set2):
 
 
 def is_sets_mutually_exclusive(set1, set2):
+    """
+    Checks if the two sets are mutually exclusive or not.
+    :param set1: First set
+    :param set2: Second set
+    :return: True if sets are mutually exclusive, False if not
+    """
     if set1.isdisjoint(set2):
         return True
     else:
@@ -51,11 +62,22 @@ def is_sets_mutually_exclusive(set1, set2):
 
 
 def print_event_dictionary(event_dictionary):
+    """
+    Print the event dictionary in easily readable format.
+    :param event_dictionary: Event dictionary
+    :return:
+    """
     for event, sets in event_dictionary.items():
         print('Event: ' + str(event) + ' - Sets: ' + str(sets))
 
 
 def add_to_event_set(event_set, event):
+    """
+    Add event to a set of events
+    :param event_set: Set of events
+    :param event: An event
+    :return:
+    """
     for e in event:
         event_set.add(e)
 
@@ -85,6 +107,33 @@ def find_mutual_exclusive_sets(event_dictionary):
                     sets = sets.union(sets_op)
         mutual_exclusive_sets[tuple(event_set)] = sets
     return mutual_exclusive_sets
+
+
+def expand_event_dictionary(event_dictionary):
+    entire_event_dictionary = {}
+    entire_event_dictionary.update(event_dictionary)
+
+    print('--------------------------------------')
+    print_event_dictionary(event_dictionary)
+    # ALGORITHM STILL NEEDS TO BE OPTIMIZED!!!!!!!!
+    while len(event_dictionary) != 1:
+        event_dictionary = find_identical_sets(event_dictionary)
+        print('--------------------------------------')
+        print_event_dictionary(event_dictionary)
+        entire_event_dictionary.update(event_dictionary)
+
+        # K/N VOTING SHOULD PROBABLY GO RIGHT HERE!!!!!!!!!
+
+        event_dictionary = find_mutual_exclusive_sets(event_dictionary)
+        print('--------------------------------------')
+        print_event_dictionary(event_dictionary)
+        entire_event_dictionary.update(event_dictionary)
+
+    print('--------------------------------------')
+    print_event_dictionary(entire_event_dictionary)
+
+    print('--------------------------------------')
+    return entire_event_dictionary
 
 
 def give_names_to_events(events):
@@ -181,14 +230,6 @@ def is_children_identical_to_parent(parent, children):
     return decision
 
 
-# NOT USED, PROBABLY NOT NEEDED
-def n_choose_2(n):
-    if n > 1:
-        return (n * (n - 1))/2
-    else:
-        return 0
-
-
 def is_children_mutual_exclusive_union_of_parent(parent, children):
     sets = set()
     decision = False
@@ -223,11 +264,48 @@ def find_relationship(parent_index, children_indices, sets):
 
 
 def get_object_name(name):
+    """
+    Converts the name string by replacing ' ' (space) with '_' (underscore) and changing the letters to lowercase.
+    :param name: A string
+    :return: Converted string
+    """
     return name.lower().replace(' ', '_')
 
 
 def get_object_names(names):
+    """
+    Calls the get_object_name method in a loop for each name in the list of names.
+    :param names: List of strings
+    :return: List of converted strings
+    """
     object_names = []
     for name in names:
         object_names.append(get_object_name(name))
     return object_names
+
+
+def reconstruct_fault_tree(event_dictionary):
+
+    events, sets = zip(*event_dictionary.items())
+
+    events, sets = reverse_events_and_sets(events, sets)
+
+    events = convert_list_of_tuples_to_list_of_sets(events)
+
+    name_of_events = give_names_to_events(events)
+    object_names = get_object_names(name_of_events)
+
+    print('--------------------------------------')
+    print(str(object_names[0]) + ' = Event("' + name_of_events[0] + '")')
+    for i in range(len(events)):
+        if len(events[i]) > 1:
+            children = find_children_indices(i, events)
+            gate = find_relationship(i, children, sets)
+            object_gate = get_object_name(gate) + str(i + 1)
+            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_names[i]) + ')')
+            for j in range(len(children)):
+                child = children[j]
+                print(str(object_names[child]) + ' = Event("' + str(name_of_events[child]) +
+                      '", parent=' + str(object_gate) + ')')
+
+    print('--------------------------------------')
