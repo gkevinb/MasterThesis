@@ -2,6 +2,9 @@ from numbers import Number
 import collections
 
 
+EMPTY_LIST = list()
+
+
 def get_basic_events(cut_sets):
     basic_events = set()
     for cut_set in cut_sets:
@@ -112,6 +115,38 @@ def convert_list_of_tuples_to_list_of_sets(list_of_tuples):
     return list_of_sets
 
 
+def reverse_events_and_sets(events, sets):
+    top_event_length = len(events[-1])
+    grouped_events = []
+    grouped_sets = []
+    for i in range(1, top_event_length + 1):
+        i_event_group = []
+        i_set_group = []
+        for j in range(len(events)):
+            if len(events[j]) == i:
+                i_event_group.append(events[j])
+                i_set_group.append(sets[j])
+
+        grouped_events.append(i_event_group)
+        grouped_sets.append(i_set_group)
+
+    grouped_events.reverse()
+    grouped_sets.reverse()
+
+    events = []
+    sets = []
+
+    for i in range(len(grouped_events)):
+        if grouped_events[i] != EMPTY_LIST:
+            for event_ in grouped_events[i]:
+                events.append(event_)
+        if grouped_events[i] != EMPTY_LIST:
+            for set_ in grouped_sets[i]:
+                sets.append(set_)
+
+    return events, sets
+
+
 def find_children_indices(parent_index, events):
     parent = events[parent_index]
     children = []
@@ -185,3 +220,14 @@ def find_relationship(parent_index, children_indices, sets):
         relationship = 'OR'
 
     return relationship
+
+
+def get_object_name(name):
+    return name.lower().replace(' ', '_')
+
+
+def get_object_names(names):
+    object_names = []
+    for name in names:
+        object_names.append(get_object_name(name))
+    return object_names
