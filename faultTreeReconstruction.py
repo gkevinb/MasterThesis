@@ -117,13 +117,15 @@ def find_interconnected_sets(event_dictionary):
     interconnected_sets = {}
     for event, sets in event_dictionary.items():
         event_set = set()
+        sets_to_add = sets
         add_to_event_set(event_set, event)
         for event_op, sets_op in event_dictionary.items():
             if event is not event_op:
                 if not is_sets_identical(sets, sets_op) and not is_sets_mutually_exclusive(sets, sets_op):
-                    add_to_event_set(event_set, event_op)
-                    sets = sets.union(sets_op)
-        interconnected_sets[tuple(event_set)] = sets
+                    if len(sets) == len(sets_op):
+                        add_to_event_set(event_set, event_op)
+                        sets_to_add = sets_to_add.union(sets_op)
+        interconnected_sets[tuple(event_set)] = sets_to_add
     return interconnected_sets
 
 
@@ -131,30 +133,29 @@ def expand_event_dictionary(event_dictionary):
     entire_event_dictionary = {}
     entire_event_dictionary.update(event_dictionary)
 
-    print('--------------------------------------')
+    print('----------------Start----------------------')
     print_event_dictionary(event_dictionary)
     # ALGORITHM STILL NEEDS TO BE OPTIMIZED!!!!!!!!
     while len(event_dictionary) != 1:
         event_dictionary = find_identical_sets(event_dictionary)
-        print('--------------------------------------')
+        print('----------------And----------------------')
+        print_event_dictionary(event_dictionary)
+        entire_event_dictionary.update(event_dictionary)
+
+        event_dictionary = find_mutual_exclusive_sets(event_dictionary)
+        print('-----------------OR---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
         # K/N VOTING SHOULD PROBABLY GO RIGHT HERE!!!!!!!!!
         event_dictionary = find_interconnected_sets(event_dictionary)
-        print('--------------------------------------')
+        print('-----------------k/N---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
-        event_dictionary = find_mutual_exclusive_sets(event_dictionary)
-        print('--------------------------------------')
-        print_event_dictionary(event_dictionary)
-        entire_event_dictionary.update(event_dictionary)
-
-    print('--------------------------------------')
+    print('--------------Entire------------------------')
     print_event_dictionary(entire_event_dictionary)
 
-    print('--------------------------------------')
     return entire_event_dictionary
 
 
