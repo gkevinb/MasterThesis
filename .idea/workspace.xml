@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/faultTreeContinuous.py" afterPath="$PROJECT_DIR$/faultTreeContinuous.py" />
       <change beforePath="$PROJECT_DIR$/faultTreeReconstruction.py" afterPath="$PROJECT_DIR$/faultTreeReconstruction.py" />
-      <change beforePath="$PROJECT_DIR$/faultTreeReconstruction_test.py" afterPath="$PROJECT_DIR$/faultTreeReconstruction_test.py" />
-      <change beforePath="$PROJECT_DIR$/testdata2.txt" afterPath="$PROJECT_DIR$/testdata2.txt" />
+      <change beforePath="$PROJECT_DIR$/faultTreeReconstruction_test.py" afterPath="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" />
+      <change beforePath="$PROJECT_DIR$/test_faultTreeReconstruction.py" afterPath="$PROJECT_DIR$/test_faultTreeReconstruction.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,67 +14,48 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Thesis" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3111">
-              <caret line="185" column="54" lean-forward="false" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="54" />
+            <state relative-caret-position="429">
+              <caret line="180" column="65" lean-forward="true" selection-start-line="180" selection-start-column="65" selection-end-line="180" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyzeData.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analyzeData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2397">
-              <caret line="142" column="25" lean-forward="false" selection-start-line="142" selection-start-column="25" selection-end-line="142" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="faultTreeReconstruction.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="faultTreeReconstruction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeReconstruction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="133" column="48" lean-forward="false" selection-start-line="133" selection-start-column="48" selection-end-line="133" selection-end-column="48" />
+            <state relative-caret-position="7106">
+              <caret line="418" column="25" lean-forward="true" selection-start-line="418" selection-start-column="25" selection-end-line="418" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faultTreeReconstruction_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultTreeReconstruction_test.py">
+      <file leaf-file-name="faultTreeReconstruction_cutsets.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faultTreeReconstruction_cutsets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_faultTreeReconstruction.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_faultTreeReconstruction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_faultTreeReconstruction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+            <state relative-caret-position="430">
+              <caret line="94" column="19" lean-forward="true" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logicgate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logicgate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2907">
-              <caret line="171" column="8" lean-forward="false" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>evalua</find>
-      <find>sdnorm</find>
       <find>print</find>
       <find>append_edges</find>
       <find>index</find>
@@ -118,6 +96,12 @@
       <find>find_identical_sets</find>
       <find>find_ide</find>
       <find>give_names_to_events</find>
+      <find>type</find>
+      <find>is_children_n_choose_k_of_parent</find>
+      <find>find_children_indices</find>
+      <find>get_sets_of_indices</find>
+      <find>get_children_from_indices</find>
+      <find>find_childre</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,10 +125,11 @@
         <option value="$PROJECT_DIR$/scrap.py" />
         <option value="$PROJECT_DIR$/cutset_to_gate.py" />
         <option value="$PROJECT_DIR$/cutset_to_gate_test.py" />
-        <option value="$PROJECT_DIR$/test_faultTreeReconstruction.py" />
         <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
-        <option value="$PROJECT_DIR$/faultTreeReconstruction_test.py" />
         <option value="$PROJECT_DIR$/faultTreeReconstruction.py" />
+        <option value="$PROJECT_DIR$/faultTreeReconstruction_test.py" />
+        <option value="$PROJECT_DIR$/test_faultTreeReconstruction.py" />
+        <option value="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" />
       </list>
     </option>
   </component>
@@ -200,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.faultTreeReconstruction_test">
+  <component name="RunManager" selected="Python tests.Unittests in test_faultTreeReconstruction.py">
     <configuration name="faultTreeContinuous" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -249,13 +234,13 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Thesis" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faultTreeReconstruction_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Unittests for test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_faultTreeReconstruction.ChildrenTestCase.test_FindChildren" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -266,7 +251,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Thesis" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive&quot;" />
+      <option name="_new_target" value="&quot;test_faultTreeReconstruction.ChildrenTestCase.test_FindChildren&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in test_faultTreeReconstruction.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -287,14 +272,14 @@
       <item index="0" class="java.lang.String" itemvalue="Python.faultTreeReconstruction_test" />
       <item index="1" class="java.lang.String" itemvalue="Python.faultTreeReconstruction" />
       <item index="2" class="java.lang.String" itemvalue="Python.faultTreeContinuous" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_faultTreeReconstruction.ChildrenTestCase.test_FindChildren" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.faultTreeReconstruction_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.faultTreeReconstruction_test" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_faultTreeReconstruction.ChildrenTestCase.test_FindChildren" />
         <item index="3" class="java.lang.String" itemvalue="Python.faultTreeContinuous" />
         <item index="4" class="java.lang.String" itemvalue="Python.faultTreeReconstruction" />
       </list>
@@ -317,34 +302,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_faultTreeReconstruction_SetsTestCase_test_NotSetsMutuallyExclusive - 2018.04.04 at 20h 16m 45s.xml">
-      <configuration name="Unittests for test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_faultTreeReconstruction_SetsTestCase_test_NotSetsMutuallyExclusive - 2018.04.04 at 20h 16m 55s.xml">
-      <configuration name="Unittests for test_faultTreeReconstruction.SetsTestCase.test_NotSetsMutuallyExclusive" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 24m 10s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.04 at 23h 57m 05s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 24m 50s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.04 at 23h 57m 40s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 24m 52s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 00m 04s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 25m 03s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 00m 23s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 26m 02s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 00m 27s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.03 at 23h 26m 18s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 00m 30s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.04 at 20h 16m 51s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 01m 24s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.04 at 20h 16m 57s.xml">
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 02m 27s.xml">
+      <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 03m 47s.xml">
+      <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_faultTreeReconstruction_py - 2018.04.05 at 00h 06m 04s.xml">
       <configuration name="Unittests in test_faultTreeReconstruction.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -352,16 +337,16 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22291666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21944444" sideWeight="0.49407783" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2777778" sideWeight="0.2133538" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35882354" sideWeight="0.7866462" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5024665" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29882354" sideWeight="0.7866462" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282353" sideWeight="0.49753347" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22269204" sideWeight="0.50592214" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -370,6 +355,32 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -579,13 +590,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.5/site-packages/scipy/stats/_distn_infrastructure.py" />
     <entry file="file:///usr/lib/python3.5/tkinter/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/metropolis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gateExample.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -684,31 +688,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logicgate.py">
+    <entry file="file://$PROJECT_DIR$/metropolis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
-          <caret line="171" column="8" lean-forward="false" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="39" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
+    <entry file="file://$PROJECT_DIR$/faultTreeReconstruction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3111">
-          <caret line="185" column="54" lean-forward="false" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="54" />
+        <state relative-caret-position="7106">
+          <caret line="418" column="25" lean-forward="true" selection-start-line="418" selection-start-column="25" selection-end-line="418" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_faultTreeReconstruction.py">
+    <entry file="file://$PROJECT_DIR$/faultTreeReconstruction_cutsets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -720,19 +722,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeReconstruction_test.py">
+    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="180" column="65" lean-forward="true" selection-start-line="180" selection-start-column="65" selection-end-line="180" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeReconstruction.py">
+    <entry file="file://$PROJECT_DIR$/logicgate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="133" column="48" lean-forward="false" selection-start-line="133" selection-start-column="48" selection-end-line="133" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="515">
+          <caret line="171" column="8" lean-forward="false" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_faultTreeReconstruction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="94" column="19" lean-forward="true" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

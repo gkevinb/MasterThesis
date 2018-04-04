@@ -85,51 +85,78 @@ def add_to_event_set(event_set, event):
         event_set.add(e)
 
 
-# COMBINE TWO METHODS BELOW INTO ONE
-def find_identical_sets(event_dictionary):
-    identical_sets = {}
-    for event, sets in event_dictionary.items():
-        event_set = set()
-        add_to_event_set(event_set, event)
-        for event_op, sets_op in event_dictionary.items():
-            if event is not event_op:
-                if is_sets_identical(sets, sets_op):
-                    add_to_event_set(event_set, event_op)
-        identical_sets[tuple(event_set)] = sets
-    return identical_sets
+def compress_identical_sets(event_dictionary):
+    """
+    Compress sets that are identical in the event dictionary.
+    :param event_dictionary: Event dictionary
+    :return: Compressed event dictionary
+    """
+    return compress_sets_that_are('identical', event_dictionary)
 
 
-def find_mutual_exclusive_sets(event_dictionary):
-    mutual_exclusive_sets = {}
-    for event, sets in event_dictionary.items():
-        event_set = set()
-        add_to_event_set(event_set, event)
-        for event_op, sets_op in event_dictionary.items():
-            if event is not event_op:
-                if is_sets_mutually_exclusive(sets, sets_op):
-                    add_to_event_set(event_set, event_op)
-                    sets = sets.union(sets_op)
-        mutual_exclusive_sets[tuple(event_set)] = sets
-    return mutual_exclusive_sets
+def compress_mutually_exclusive_sets(event_dictionary):
+    """
+    Compress sets that are mutually exclusive in the event dictionary.
+    :param event_dictionary: Event dictionary
+    :return: Compressed event dictionary
+    """
+    return compress_sets_that_are('mutually exclusive', event_dictionary)
 
 
-def find_interconnected_sets(event_dictionary):
-    interconnected_sets = {}
+def compress_interconnected_sets(event_dictionary):
+    """
+    Compress sets that are 'interconnected' in the event dictionary, this means sets that show
+    a n choose k pattern, meaning they are joined by a k/N voting gate.
+    :param event_dictionary: Event dictionary
+    :return: Compressed event dictionary
+    """
+    return compress_sets_that_are('interconnected', event_dictionary)
+
+
+def compress_sets_that_are(of_type, event_dictionary):
+    """
+    This method is called by the above three functions depending on the compression needed. The first code block
+    loops through the events in such a way that the same events aren't compared only to other events. Then
+    depending on the type of compression, a new event dictionary is created and returned.
+    :param of_type: Type of sets to compress
+    :param event_dictionary: Event dictionary
+    :return: Compressed event dictionary
+    """
+    type_of_sets = {}
     for event, sets in event_dictionary.items():
         event_set = set()
         sets_to_add = sets
         add_to_event_set(event_set, event)
         for event_op, sets_op in event_dictionary.items():
             if event is not event_op:
-                if not is_sets_identical(sets, sets_op) and not is_sets_mutually_exclusive(sets, sets_op):
-                    if len(sets) == len(sets_op):
+
+                if of_type == 'identical':
+                    if is_sets_identical(sets, sets_op):
+                        add_to_event_set(event_set, event_op)
+
+                if of_type == 'mutually exclusive':
+                    if is_sets_mutually_exclusive(sets, sets_op):
                         add_to_event_set(event_set, event_op)
                         sets_to_add = sets_to_add.union(sets_op)
-        interconnected_sets[tuple(event_set)] = sets_to_add
-    return interconnected_sets
+
+                if of_type == 'interconnected':
+                    if not is_sets_identical(sets, sets_op) and not is_sets_mutually_exclusive(sets, sets_op):
+                        if len(sets) == len(sets_op):
+                            add_to_event_set(event_set, event_op)
+                            sets_to_add = sets_to_add.union(sets_op)
+
+        type_of_sets[tuple(event_set)] = sets_to_add
+    return type_of_sets
 
 
 def expand_event_dictionary(event_dictionary):
+    """
+    Expand the event dictionary by running the compression methods on them numerous times until the event dictionary
+    only holds one element, the top event. Throughout the compression the entire event dictionary is saved to see
+    how the algorithm propagated through the events.
+    :param event_dictionary: Starting event dictionary holding only the basic events.
+    :return: Entire event dictionary of all the events.
+    """
     entire_event_dictionary = {}
     entire_event_dictionary.update(event_dictionary)
 
@@ -137,18 +164,18 @@ def expand_event_dictionary(event_dictionary):
     print_event_dictionary(event_dictionary)
     # ALGORITHM STILL NEEDS TO BE OPTIMIZED!!!!!!!!
     while len(event_dictionary) != 1:
-        event_dictionary = find_identical_sets(event_dictionary)
+        event_dictionary = compress_identical_sets(event_dictionary)
         print('----------------And----------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
-        event_dictionary = find_mutual_exclusive_sets(event_dictionary)
+        event_dictionary = compress_mutually_exclusive_sets(event_dictionary)
         print('-----------------OR---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
         # K/N VOTING SHOULD PROBABLY GO RIGHT HERE!!!!!!!!!
-        event_dictionary = find_interconnected_sets(event_dictionary)
+        event_dictionary = compress_interconnected_sets(event_dictionary)
         print('-----------------k/N---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
@@ -160,6 +187,14 @@ def expand_event_dictionary(event_dictionary):
 
 
 def give_names_to_events(events):
+    """
+    Give names to the events so they are labeled with a descriptive name instead of a number or a tuple of numbers.
+    The events represented by one number are the basic events.
+    The top event is the event represented by the largest tuple of numbers. Which is also the first event in the list
+    of events. The rest are intermediate events where the event are represented by a tuple of numbers.
+    :param events: List of events
+    :return: List of event names
+    """
     length = len(events)
     names = ['NULL'] * length
 
@@ -180,6 +215,11 @@ def give_names_to_events(events):
 
 
 def convert_list_of_tuples_to_list_of_sets(list_of_tuples):
+    """
+    Converts a list of tuples to a list of sets. Since sets only have unique elements (no duplicate elements).
+    :param list_of_tuples: List of tuples
+    :return: List of sets
+    """
     list_of_sets = []
     for tuple_ in list_of_tuples:
         set_ = set(tuple_)
@@ -188,9 +228,21 @@ def convert_list_of_tuples_to_list_of_sets(list_of_tuples):
 
 
 def reverse_events_and_sets(events, sets):
+    """
+    Reverse the order of both events and sets according to events. They way it is reversed is the events with more
+    element are listed first and then the events with less elements are listed later, however the order of those
+    events with certain number of elements aren't changed. A visual example explains the concept better.
+    Original events: [{1}, {2}, {3}, {4}, {1, 2}, {3, 4}, {1, 2, 3, 4}]
+    Returned events: [{1, 2, 3, 4}, {1, 2}, {3, 4}, {1}, {2}, {3}, {4}]
+    :param events: List of sets representing events
+    :param sets: List of sets representing cut sets
+    :return: Reversed list of events and list of sets
+    """
     top_event_length = len(events[-1])
     grouped_events = []
     grouped_sets = []
+
+    # Group events and sets according to the length of events
     for i in range(1, top_event_length + 1):
         i_event_group = []
         i_set_group = []
@@ -202,12 +254,15 @@ def reverse_events_and_sets(events, sets):
         grouped_events.append(i_event_group)
         grouped_sets.append(i_set_group)
 
+    # Reverse the grouped events and grouped sets
     grouped_events.reverse()
     grouped_sets.reverse()
 
+    # Resets events and sets
     events = []
     sets = []
 
+    # Unpack the grouped events and grouped sets and append it to the events and sets, respectively
     for i in range(len(grouped_events)):
         if grouped_events[i] != EMPTY_LIST:
             for event_ in grouped_events[i]:
@@ -220,25 +275,38 @@ def reverse_events_and_sets(events, sets):
 
 
 def find_children_indices(parent_index, events):
-    # print('Events: ' + str(events))
+    """
+    Find the indices representing the children by looking through the events list of sets and
+    :param parent_index: Index of parent
+    :param events: List of sets representing the events
+    :return: The indices of the children of the parent
+    """
     parent = events[parent_index]
-    # print('parent: ' + str(parent))
-    children = []
-    sub_events = set()
+    children_indices = []
+    children = set()
 
     for i in range(len(events)):
+        potential_child = events[i]
         if parent is not events[i]:
-            if events[i].issubset(parent):
-                # If children already a subset of sub_events, don't add them again
-                if not events[i].issubset(sub_events):
-                    sub_events.update(events[i])
-                    children.append(i)
-            if is_sets_identical(sub_events, parent):
+            if potential_child.issubset(parent):
+                # If potential child already a subset of children, don't add them again
+                if not potential_child.issubset(children):
+                    # children holds the children so far
+                    children.update(potential_child)
+                    children_indices.append(i)
+            # if children set is identical parent set, all children are found, break from loop and return indices
+            if is_sets_identical(children, parent):
                 break
-    return children
+    return children_indices
 
 
-def get_sets_of_indices(indices, sets):
+def get_children_from_indices(indices, sets):
+    """
+    Get children from list of sets that match the indices
+    :param indices: List of indexes
+    :param sets: List of sets
+    :return: List of sets that matched the indices
+    """
     list_of_sets = []
     for index in indices:
         list_of_sets.append(sets[index])
@@ -246,6 +314,12 @@ def get_sets_of_indices(indices, sets):
 
 
 def is_children_identical_to_parent(parent, children):
+    """
+    Checks if the all the children are identical to the parent.
+    :param parent: Set representing the parent
+    :param children: List of sets representing the children
+    :return: True if all the children are identical to the parent, false if not
+    """
     decision = False
     counter = 0
     for child in children:
@@ -259,17 +333,27 @@ def is_children_identical_to_parent(parent, children):
 
 
 def is_children_mutual_exclusive_union_of_parent(parent, children):
+    """
+    Checks if the children are mutually exclusive to each other and their union is identical to the parent.
+    :param parent: Set representing the parent
+    :param children: List of sets representing the children
+    :return: True if the children are mutually exclusive to each other and the union of the children
+    is identical to the parent, false if not.
+    """
     sets = set()
     decision = False
-    tick = True
+    toggle = True
+
+    # Checks if all children are mutually exclusive to each other.
     for child in children:
         for child_ in children:
             if child is not child_:
-                if is_sets_mutually_exclusive(child, child_):
-                    pass
-                else:
-                    tick = False
-    if tick:
+                if not is_sets_mutually_exclusive(child, child_):
+                    toggle = False
+
+    # If children were mutually exclusive to each other,
+    # check if the union of the children is identical to the parent.
+    if toggle:
         for child in children:
             sets.update(child)
         if is_sets_identical(sets, parent):
@@ -278,7 +362,14 @@ def is_children_mutual_exclusive_union_of_parent(parent, children):
     return decision
 
 
-def is_children_n_choose_k(parent, children):
+# Look over function and define it better, still results in incorrect returns
+def is_children_n_choose_k_of_parent(parent, children):
+    """
+    Checks if the children are in a n choose k pattern to the parent.
+    :param parent: Set representing the parent
+    :param children: List of sets representing the children
+    :return:
+    """
     decision = True
 
     for child in children:
@@ -298,32 +389,41 @@ def is_children_n_choose_k(parent, children):
     return decision
 
 
-def get_n_in_voting_gate(parent, children):
+def calculate_k_in_voting_gate(parent, children):
+    """
+    Calculate the k in the n/K voting gate.
+    :param parent: Set representing the parent
+    :param children: List of sets representing the children
+    :return:
+    """
     n = len(parent)
     n_simplified = len(children)
     k = len(children[0])
-    # print('N = ' + str(n))
-    # print('N simplified = ' + str(n_simplified))
-    # print('k = ' + str(k))
 
     k_simplified = int(k / (n / n_simplified))
-    # print('k simplified: ' + str(k_simplified))
+
     return k_simplified
 
 
 def find_relationship(parent_index, children_indices, sets):
+    """
+    Find the relationship between the children, the gate that connects them.
+    :param parent_index: Index of parent
+    :param children_indices: Indexes of the children
+    :param sets:
+    :return: A string stating if the gate is AND or OR, or a number representing
+    the k in the k/N VOTING gate.
+    """
     parent = sets[parent_index]
-    children = get_sets_of_indices(children_indices, sets)
+    children = get_children_from_indices(children_indices, sets)
     relationship = 'NULL'
-    # print('Children: ' + str(children))
-    # print('Parent: ' + str(parent))
 
     if is_children_identical_to_parent(parent, children):
         relationship = 'AND'
     if is_children_mutual_exclusive_union_of_parent(parent, children):
         relationship = 'OR'
-    if is_children_n_choose_k(parent, children):
-        relationship = get_n_in_voting_gate(parent, children)
+    if is_children_n_choose_k_of_parent(parent, children):
+        relationship = calculate_k_in_voting_gate(parent, children)
 
     return relationship
 
@@ -350,17 +450,24 @@ def get_object_names(names):
 
 
 def print_out_fault_tree(event_dictionary):
+    """
+    Print out the code of the reconstructed fault tree to the console. Copy the code snippet
+    and run it to display the fault tree.
+    :param event_dictionary: Event dictionary
+    :return:
+    """
 
     events, sets = zip(*event_dictionary.items())
 
-    events, sets = reverse_events_and_sets(events, sets)
-
     events = convert_list_of_tuples_to_list_of_sets(events)
 
+    events, sets = reverse_events_and_sets(events, sets)
+    print('Events: ' + str(events))
     name_of_events = give_names_to_events(events)
     object_event_names = get_object_names(name_of_events)
 
     print('--------------------------------------')
+
     print(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")')
     for i in range(len(events)):
         if len(events[i]) > 1:
@@ -387,6 +494,11 @@ def print_out_fault_tree(event_dictionary):
 
 
 def reconstruct_fault_tree(minimal_cut_sets):
+    """
+    Reconstruct the fault tree from the minimal cut sets.
+    :param minimal_cut_sets: List of minimal cut sets
+    :return:
+    """
     basic_events = get_basic_events(minimal_cut_sets)
 
     event_dict = create_event_cut_set_dict(basic_events, minimal_cut_sets)
