@@ -177,13 +177,10 @@ basicEvent5 = Event('Basic Event 5', 'EXP', 10, 'EXP', 4, parent=vote)
 '''
 
 top_event = Event("Top Event")
-or1 = Gate("OR", parent=top_event)
-intermediate_event_1 = Event("Intermediate Event 1", parent=or1)
-basic_event_3 = Event("Basic Event 3", parent=or1)
-basic_event_4 = Event("Basic Event 4", parent=or1)
-and2 = Gate("AND", parent=intermediate_event_1)
-basic_event_1 = Event("Basic Event 1", parent=and2)
-basic_event_2 = Event("Basic Event 2", parent=and2)
+voting1 = Gate("VOTING", parent=top_event, k=2)
+basic_event_1 = Event("Basic Event 1", parent=voting1)
+basic_event_2 = Event("Basic Event 2", parent=voting1)
+basic_event_3 = Event("Basic Event 3", parent=voting1)
 
 fault_tree = FaultTree(top_event)
 # 10000 generation size takes a good minute

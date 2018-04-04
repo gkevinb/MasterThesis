@@ -1,3 +1,6 @@
+from numbers import Number
+
+
 EMPTY_LIST = list()
 
 
@@ -110,6 +113,20 @@ def find_mutual_exclusive_sets(event_dictionary):
     return mutual_exclusive_sets
 
 
+def find_interconnected_sets(event_dictionary):
+    interconnected_sets = {}
+    for event, sets in event_dictionary.items():
+        event_set = set()
+        add_to_event_set(event_set, event)
+        for event_op, sets_op in event_dictionary.items():
+            if event is not event_op:
+                if not is_sets_identical(sets, sets_op) and not is_sets_mutually_exclusive(sets, sets_op):
+                    add_to_event_set(event_set, event_op)
+                    sets = sets.union(sets_op)
+        interconnected_sets[tuple(event_set)] = sets
+    return interconnected_sets
+
+
 def expand_event_dictionary(event_dictionary):
     entire_event_dictionary = {}
     entire_event_dictionary.update(event_dictionary)
@@ -124,6 +141,10 @@ def expand_event_dictionary(event_dictionary):
         entire_event_dictionary.update(event_dictionary)
 
         # K/N VOTING SHOULD PROBABLY GO RIGHT HERE!!!!!!!!!
+        event_dictionary = find_interconnected_sets(event_dictionary)
+        print('--------------------------------------')
+        print_event_dictionary(event_dictionary)
+        entire_event_dictionary.update(event_dictionary)
 
         event_dictionary = find_mutual_exclusive_sets(event_dictionary)
         print('--------------------------------------')
@@ -256,6 +277,39 @@ def is_children_mutual_exclusive_union_of_parent(parent, children):
     return decision
 
 
+def is_children_n_choose_k(parent, children):
+    decision = True
+
+    for child in children:
+        for child_ in children:
+            if child is not child_:
+                if is_sets_identical(child, child_):
+                    decision = False
+                if is_sets_mutually_exclusive(child, child_):
+                    decision = False
+                if not child.intersection(child_):
+                    decision = False
+                if not child.issubset(parent):
+                    decision = False
+                if len(child) != len(child_):
+                    decision = False
+
+    return decision
+
+
+def get_n_in_voting_gate(parent, children):
+    n = len(parent)
+    n_simplified = len(children)
+    k = len(children[0])
+    # print('N = ' + str(n))
+    # print('N simplified = ' + str(n_simplified))
+    # print('k = ' + str(k))
+
+    k_simplified = int(k / (n / n_simplified))
+    # print('k simplified: ' + str(k_simplified))
+    return k_simplified
+
+
 def find_relationship(parent_index, children_indices, sets):
     parent = sets[parent_index]
     children = get_sets_of_indices(children_indices, sets)
@@ -267,6 +321,8 @@ def find_relationship(parent_index, children_indices, sets):
         relationship = 'AND'
     if is_children_mutual_exclusive_union_of_parent(parent, children):
         relationship = 'OR'
+    if is_children_n_choose_k(parent, children):
+        relationship = get_n_in_voting_gate(parent, children)
 
     return relationship
 
@@ -292,7 +348,7 @@ def get_object_names(names):
     return object_names
 
 
-def reconstruct_fault_tree(event_dictionary):
+def print_out_fault_tree(event_dictionary):
 
     events, sets = zip(*event_dictionary.items())
 
@@ -309,12 +365,31 @@ def reconstruct_fault_tree(event_dictionary):
         if len(events[i]) > 1:
             children = find_children_indices(i, events)
             gate = find_relationship(i, children, sets)
+            k = 0
             # print('Gate: ' + gate)
+            if isinstance(gate, Number):
+                k = gate
+                gate = 'VOTING'
             object_gate = get_object_name(gate) + str(i + 1)
-            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]) + ')')
+            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]),
+                  end="", flush=True)
+            if k > 0:
+                print(', k=' + str(k) + ')')
+            else:
+                print(')')
             for j in range(len(children)):
                 child = children[j]
                 print(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) +
                       '", parent=' + str(object_gate) + ')')
 
     print('--------------------------------------')
+
+
+def reconstruct_fault_tree(minimal_cut_sets):
+    basic_events = get_basic_events(minimal_cut_sets)
+
+    event_dict = create_event_cut_set_dict(basic_events, minimal_cut_sets)
+
+    entire_event_dict = expand_event_dictionary(event_dict)
+
+    print_out_fault_tree(entire_event_dict)
