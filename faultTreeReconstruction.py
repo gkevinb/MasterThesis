@@ -82,6 +82,7 @@ def add_to_event_set(event_set, event):
         event_set.add(e)
 
 
+# COMBINE TWO METHODS BELOW INTO ONE
 def find_identical_sets(event_dictionary):
     identical_sets = {}
     for event, sets in event_dictionary.items():
@@ -197,14 +198,19 @@ def reverse_events_and_sets(events, sets):
 
 
 def find_children_indices(parent_index, events):
+    # print('Events: ' + str(events))
     parent = events[parent_index]
+    # print('parent: ' + str(parent))
     children = []
     sub_events = set()
+
     for i in range(len(events)):
         if parent is not events[i]:
             if events[i].issubset(parent):
-                sub_events.update(events[i])
-                children.append(i)
+                # If children already a subset of sub_events, don't add them again
+                if not events[i].issubset(sub_events):
+                    sub_events.update(events[i])
+                    children.append(i)
             if is_sets_identical(sub_events, parent):
                 break
     return children
@@ -254,6 +260,8 @@ def find_relationship(parent_index, children_indices, sets):
     parent = sets[parent_index]
     children = get_sets_of_indices(children_indices, sets)
     relationship = 'NULL'
+    # print('Children: ' + str(children))
+    # print('Parent: ' + str(parent))
 
     if is_children_identical_to_parent(parent, children):
         relationship = 'AND'
@@ -293,19 +301,20 @@ def reconstruct_fault_tree(event_dictionary):
     events = convert_list_of_tuples_to_list_of_sets(events)
 
     name_of_events = give_names_to_events(events)
-    object_names = get_object_names(name_of_events)
+    object_event_names = get_object_names(name_of_events)
 
     print('--------------------------------------')
-    print(str(object_names[0]) + ' = Event("' + name_of_events[0] + '")')
+    print(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")')
     for i in range(len(events)):
         if len(events[i]) > 1:
             children = find_children_indices(i, events)
             gate = find_relationship(i, children, sets)
+            # print('Gate: ' + gate)
             object_gate = get_object_name(gate) + str(i + 1)
-            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_names[i]) + ')')
+            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]) + ')')
             for j in range(len(children)):
                 child = children[j]
-                print(str(object_names[child]) + ' = Event("' + str(name_of_events[child]) +
+                print(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) +
                       '", parent=' + str(object_gate) + ')')
 
     print('--------------------------------------')
