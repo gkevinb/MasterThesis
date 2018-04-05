@@ -126,12 +126,11 @@ class FaultTree:
 
     def export_time_series(self, file_name):
         """
-        Export time series into a txt file with file_name as the name.
-        :param file_name: Name of the file without extension
+        Export time series into a file called file_name.
+        :param file_name: Name of the file with extension
         :return:
         """
-        file_ext = file_name + '.txt'
-        file = open(file_ext, 'w')
+        file = open(file_name, 'w')
         root = self.root
         for times in root.time_series:
             file.write('%s ' % times)
@@ -175,7 +174,9 @@ basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=vote)
 basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=vote)
 basicEvent5 = Event('Basic Event 5', 'EXP', 10, 'EXP', 4, parent=vote)
 '''
+
 '''
+# RECONSTRUCTED FAULT TREE
 top_event = Event("Top Event")
 and1 = Gate("AND", parent=top_event)
 intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
@@ -189,7 +190,6 @@ basic_event_1 = Event("Basic Event 1", parent=and3)
 basic_event_2 = Event("Basic Event 2", parent=and3)
 '''
 
-'''
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
@@ -207,8 +207,9 @@ intermediateEvent4 = Event('Intermediate Event 4', parent=or1)
 and3 = Gate('AND', parent=intermediateEvent4)
 basicEvent6 = Event('Basic Event 6', 'EXP', 10, 'EXP', 4, parent=and3)
 basicEvent7 = Event('Basic Event 7', 'EXP', 10, 'EXP', 4, parent=and3)
-'''
 
+'''
+# RECONSTRUCTED FAULT TREE
 top_event = Event("Top Event")
 and1 = Gate("AND", parent=top_event)
 intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
@@ -226,11 +227,11 @@ basic_event_4 = Event("Basic Event 4", parent=and4)
 and5 = Gate("AND", parent=intermediate_event_4)
 basic_event_6 = Event("Basic Event 6", parent=and5)
 basic_event_7 = Event("Basic Event 7", parent=and5)
+'''
 
-
-fault_tree = FaultTree(top_event)
+fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-# fault_tree.generate_basic_event_time_series(3000)
+# fault_tree.generate_basic_event_time_series(1000)
 # fault_tree.calculate_time_series()
 fault_tree.print_tree()
-# fault_tree.export_time_series('testdata2')
+# fault_tree.export_time_series('testdata2.txt')

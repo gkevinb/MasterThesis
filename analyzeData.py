@@ -26,7 +26,7 @@ class TimeSeries:
         returns the number of basic events found in the file.
         """
         file = open(self.file_name, 'r')
-        dict_time_series = {}
+        time_series_dictionary = {}
         index = 0
 
         lines = file.readlines()
@@ -34,10 +34,10 @@ class TimeSeries:
             event_time_series = []
             for time in line.split():
                 event_time_series.append(float(time))
-            dict_time_series[index] = event_time_series
+            time_series_dictionary[index] = event_time_series
             index += 1
 
-            self.time_series = collections.OrderedDict(sorted(dict_time_series.items()))
+            self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
 
         file.close()
         return index - 1
@@ -134,6 +134,9 @@ class TimeSeries:
     def get_minimal_cut_sets(self):
         return self.minimal_cut_sets
 
+    def reconstruct_fault_tree(self):
+        ftr.reconstruct_fault_tree(self.minimal_cut_sets)
+
 
 time_series = TimeSeries('testdata2.txt')
 # time_series = TimeSeries('testfile.txt')
@@ -146,6 +149,5 @@ print('Cut sets')
 time_series.calculate_cut_sets()
 print('Minimal cut sets')
 time_series.calculate_minimal_cut_sets()
-minimal_cut_sets = time_series.get_minimal_cut_sets()
 
-ftr.reconstruct_fault_tree(minimal_cut_sets)
+time_series.reconstruct_fault_tree()

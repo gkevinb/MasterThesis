@@ -130,7 +130,7 @@ def _is_all_down(slice_):
     return decision
 
 
-def _is_k_down(slice_, k):
+def _is_at_least_k_down(slice_, k):
     """
     Check if there is at least k number of LOW states in slice_
     :param slice_: A 'slice' of data holding the state of the data streams at a certain time
@@ -214,7 +214,7 @@ def _k_voting_evaluate_slice(slice_, k):
     """
     if _is_number_in_slice(slice_):
         element = _get_number_in_slice(slice_)
-    elif _is_k_down(slice_, k):
+    elif _is_at_least_k_down(slice_, k):
         element = LOW
     else:
         element = HIGH
