@@ -53,6 +53,8 @@ class ChildrenTestCase(unittest.TestCase):
 
     def setUp(self):
         self.events = [{1, 2, 3, 4}, {1, 2}, {3, 4}, {1}, {2}, {3}, {4}]
+        self.parent = {0, 1, 2, 3, 4, 5}
+        self.children = [{0, 1, 2}, {0, 3, 4}, {1, 3, 5}, {4, 5, 2}]
 
     def test_FindChildren(self):
         self.assertEqual(ftr.find_children_indices(0, self.events), [1, 2])
@@ -68,6 +70,7 @@ class ChildrenTestCase(unittest.TestCase):
 
     def test_ChildrenNChooseKOfParent(self):
         self.assertTrue(ftr.is_children_n_choose_k_of_parent({0, 1, 2}, [{0, 1}, {0, 2}, {1, 2}]))
+        self.assertTrue(ftr.is_children_n_choose_k_of_parent(self.parent, self.children))
 
     def test_CalculateK(self):
         self.assertEqual(ftr.calculate_k_in_voting_gate({0, 1, 2}, [{0, 1}, {0, 2}, {1, 2}]), 2)
@@ -89,6 +92,15 @@ class RelationshipTestCase(unittest.TestCase):
     def test_VOTING(self):
         self.assertEqual(ftr.find_relationship(0, [1, 2, 3], self.sets3), 2)
         self.assertGreater(ftr.find_relationship(0, [1, 2, 3], self.sets3), 1)
+
+
+class ConversionTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.sets = [{0, 1}, {0, 2}, {1, 2}]
+
+    def test_ListOfSetsToList(self):
+        self.assertEqual(ftr.convert_list_of_sets_to_list(self.sets), [0, 1, 0, 2, 1, 2])
 
 
 if __name__ == '__main__':

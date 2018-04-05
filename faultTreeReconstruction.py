@@ -100,8 +100,17 @@ def convert_list_of_sets_to_list(sets):
     return list_
 
 
-def check_n_choose_k_pattern(parent, children):
+def is_n_choose_k_satisfied(parent, children):
+    """
+    Checks if the parent and children follow a n choose k pattern. The parent set represents
+    the n, and the children are the possible solutions of n choose k.
+    :param parent: Set
+    :param children: List of set
+    :return: True if it is n choose k pattern, False if not
+    """
     # {0, 1, 2} : [{0, 1}, {0, 2}, {1, 2}]
+    # Shortcomings: {0, 1, 2} : [{0, 1}, {0, 2}, {1, 2, 3}] Gives back True as well, that's why
+    # the method that calls this method, checks other requirements
     decision = True
     children_list = convert_list_of_sets_to_list(children)
     k = calculate_k_in_voting_gate(parent, children)
@@ -412,6 +421,9 @@ def is_children_n_choose_k_of_parent(parent, children):
                     decision = False
                 if len(child) != len(child_):
                     decision = False
+
+    if not is_n_choose_k_satisfied(parent, children):
+        decision = False
 
     return decision
 
