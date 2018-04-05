@@ -1,5 +1,6 @@
 import collections
 import cutsets
+import faultTreeReconstruction as ftr
 
 
 is_EVEN = lambda i: i % 2 == 0
@@ -130,6 +131,9 @@ class TimeSeries:
         self.minimal_cut_sets = cutsets.calculate_minimal_cut_sets(self.cut_sets)
         print(self.minimal_cut_sets)
 
+    def get_minimal_cut_sets(self):
+        return self.minimal_cut_sets
+
 
 time_series = TimeSeries('testdata2.txt')
 # time_series = TimeSeries('testfile.txt')
@@ -142,3 +146,6 @@ print('Cut sets')
 time_series.calculate_cut_sets()
 print('Minimal cut sets')
 time_series.calculate_minimal_cut_sets()
+minimal_cut_sets = time_series.get_minimal_cut_sets()
+
+ftr.reconstruct_fault_tree(minimal_cut_sets)
