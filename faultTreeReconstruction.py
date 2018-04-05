@@ -85,6 +85,33 @@ def add_to_event_set(event_set, event):
         event_set.add(e)
 
 
+def convert_list_of_sets_to_list(sets):
+    """
+    Convert a list of sets into just a list.
+    Ex: [{0, 1}, {0, 2}, {1, 2}] -> [0, 1, 0, 2, 1, 2]
+    :param sets: List of sets
+    :return: List
+    """
+    list_ = []
+    for set_ in sets:
+        for component in set_:
+            list_.append(component)
+
+    return list_
+
+
+def check_n_choose_k_pattern(parent, children):
+    # {0, 1, 2} : [{0, 1}, {0, 2}, {1, 2}]
+    decision = True
+    children_list = convert_list_of_sets_to_list(children)
+    k = calculate_k_in_voting_gate(parent, children)
+    for i in parent:
+        if k != children_list.count(i):
+            decision = False
+
+    return decision
+
+
 def compress_identical_sets(event_dictionary):
     """
     Compress sets that are identical in the event dictionary.
@@ -501,8 +528,8 @@ def reconstruct_fault_tree(minimal_cut_sets):
     """
     basic_events = get_basic_events(minimal_cut_sets)
 
-    event_dict = create_event_cut_set_dict(basic_events, minimal_cut_sets)
+    starting_event_dict = create_event_cut_set_dict(basic_events, minimal_cut_sets)
 
-    entire_event_dict = expand_event_dictionary(event_dict)
+    entire_event_dict = expand_event_dictionary(starting_event_dict)
 
     print_out_fault_tree(entire_event_dict)
