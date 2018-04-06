@@ -97,8 +97,6 @@ class FaultTree:
                 basic_events.append(node)
         return basic_events
 
-    # Maybe make a better way to generate time series for Basic events, probably use inheritance, probably don't
-    # need to!!!!!
     def generate_basic_event_time_series(self, size):
         """
         Generate time series for basic events.
@@ -189,7 +187,7 @@ and3 = Gate("AND", parent=intermediate_event_2)
 basic_event_1 = Event("Basic Event 1", parent=and3)
 basic_event_2 = Event("Basic Event 2", parent=and3)
 '''
-
+'''
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
@@ -207,31 +205,33 @@ intermediateEvent4 = Event('Intermediate Event 4', parent=or1)
 and3 = Gate('AND', parent=intermediateEvent4)
 basicEvent6 = Event('Basic Event 6', 'EXP', 10, 'EXP', 4, parent=and3)
 basicEvent7 = Event('Basic Event 7', 'EXP', 10, 'EXP', 4, parent=and3)
-
+basicEvent8 = Event('Basic Event 8', 'EXP', 10, 'EXP', 4, parent=and3)
 '''
+
 # RECONSTRUCTED FAULT TREE
 top_event = Event("Top Event")
 and1 = Gate("AND", parent=top_event)
 intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
 intermediate_event_2 = Event("Intermediate Event 2", parent=and1)
-voting2 = Gate("VOTING", parent=intermediate_event_1, k=2)
-intermediate_event_3 = Event("Intermediate Event 3", parent=voting2)
-basic_event_1 = Event("Basic Event 1", parent=voting2)
-basic_event_2 = Event("Basic Event 2", parent=voting2)
-or3 = Gate("OR", parent=intermediate_event_2)
-intermediate_event_4 = Event("Intermediate Event 4", parent=or3)
-basic_event_5 = Event("Basic Event 5", parent=or3)
+or2 = Gate("OR", parent=intermediate_event_1)
+intermediate_event_3 = Event("Intermediate Event 3", parent=or2)
+basic_event_5 = Event("Basic Event 5", parent=or2)
+voting3 = Gate("VOTING", parent=intermediate_event_2, k=2)
+intermediate_event_4 = Event("Intermediate Event 4", parent=voting3)
+basic_event_1 = Event("Basic Event 1", parent=voting3)
+basic_event_2 = Event("Basic Event 2", parent=voting3)
 and4 = Gate("AND", parent=intermediate_event_3)
-basic_event_3 = Event("Basic Event 3", parent=and4)
-basic_event_4 = Event("Basic Event 4", parent=and4)
+basic_event_6 = Event("Basic Event 6", parent=and4)
+basic_event_7 = Event("Basic Event 7", parent=and4)
+basic_event_8 = Event("Basic Event 8", parent=and4)
 and5 = Gate("AND", parent=intermediate_event_4)
-basic_event_6 = Event("Basic Event 6", parent=and5)
-basic_event_7 = Event("Basic Event 7", parent=and5)
-'''
+basic_event_3 = Event("Basic Event 3", parent=and5)
+basic_event_4 = Event("Basic Event 4", parent=and5)
 
-fault_tree = FaultTree(topEvent)
+
+fault_tree = FaultTree(top_event)
 # 10000 generation size takes a good minute
-# fault_tree.generate_basic_event_time_series(1000)
+# fault_tree.generate_basic_event_time_series(2000)
 # fault_tree.calculate_time_series()
 fault_tree.print_tree()
 # fault_tree.export_time_series('testdata2.txt')

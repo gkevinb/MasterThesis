@@ -1,8 +1,6 @@
-string = 'Top Event'
+import itertools
 
-print(string)
+mylist = range(5)
 
-string = string.lower()
-string = string.replace(' ', '_')
-
-print(string)
+for x,y in itertools.combinations(mylist, 2):
+    print(x,y)
