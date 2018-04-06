@@ -575,7 +575,7 @@ def write_fault_tree_to_file(event_dictionary, file_name):
                 file.write(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) + '", parent=' +
                            str(object_gate) + ')\n')
 
-    file.write('\nfault_tree = FaultTree(top_event)\n')
+    file.write('\nfault_tree = FaultTree(' + object_event_names[0] + ')\n')
     file.write('fault_tree.print_tree()\n')
 
     file.close()
