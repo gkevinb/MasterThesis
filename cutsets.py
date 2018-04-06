@@ -1,4 +1,5 @@
 import collections
+import itertools
 
 
 HIGH = 'HIGH'
@@ -153,18 +154,16 @@ def calculate_minimal_cut_sets(cut_sets):
     """
     cut_sets_for_removal = []
     # Get cut_set from cut_sets
-    for cut_set in cut_sets:
-        # Get another cut_set(_under_test) from cut_sets
-        for cut_set_under_test in cut_sets:
-            # Check if the two cut_set are not the same
-            if cut_set != cut_set_under_test:
-                # Check if cut_set_under_test can be reduced to cut_set
-                if _is_cut_set_reducible(cut_set, cut_set_under_test):
-                    # If can be reduced set up for removal
-                    # Check if cut_set_under_test is not marked for removal yet
-                    if cut_set_under_test not in cut_sets_for_removal:
-                        # If not marked for removal yet, added it for removal
-                        cut_sets_for_removal.append(cut_set_under_test)
+    # Get another cut_set(_under_test) from cut_sets
+    # Check if the two cut_set are not the same
+    for cut_set, cut_set_under_test in itertools.permutations(cut_sets, 2):
+        # Check if cut_set_under_test can be reduced to cut_set
+        if _is_cut_set_reducible(cut_set, cut_set_under_test):
+            # If can be reduced set up for removal
+            # Check if cut_set_under_test is not marked for removal yet
+            if cut_set_under_test not in cut_sets_for_removal:
+                # If not marked for removal yet, added it for removal
+                cut_sets_for_removal.append(cut_set_under_test)
     # Remove the cut_set from cut_sets that are marked for removal
     for cut_set in cut_sets_for_removal:
         cut_sets.remove(cut_set)

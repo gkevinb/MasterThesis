@@ -1,4 +1,5 @@
 from numbers import Number
+import itertools
 
 
 EMPTY_LIST = list()
@@ -312,7 +313,7 @@ def reverse_events_and_sets(events, sets):
 
 def find_children_indices(parent_index, events):
     """
-    Find the indices representing the children by looking through the events list of sets and
+    Find the indices representing the children by looking through the events list of sets
     :param parent_index: Index of parent
     :param events: List of sets representing the events
     :return: The indices of the children of the parent
@@ -323,7 +324,7 @@ def find_children_indices(parent_index, events):
 
     for i in range(len(events)):
         potential_child = events[i]
-        if parent is not events[i]:
+        if parent is not potential_child:
             if potential_child.issubset(parent):
                 # If potential child already a subset of children, don't add them again
                 if not potential_child.issubset(children):
@@ -381,11 +382,11 @@ def is_children_mutual_exclusive_union_of_parent(parent, children):
     toggle = True
 
     # Checks if all children are mutually exclusive to each other.
-    for child in children:
-        for child_ in children:
-            if child is not child_:
-                if not is_sets_mutually_exclusive(child, child_):
-                    toggle = False
+    # Combination is enough, permutation is not needed since it doesnt have to check
+    # both, for example, {0, 1}, {2, 3} and {2, 3}, {0, 1}
+    for child, child_ in itertools.combinations(children, 2):
+        if not is_sets_mutually_exclusive(child, child_):
+            toggle = False
 
     # If children were mutually exclusive to each other,
     # check if the union of the children is identical to the parent.
@@ -408,19 +409,21 @@ def is_children_n_choose_k_of_parent(parent, children):
     """
     decision = True
 
-    for child in children:
-        for child_ in children:
-            if child is not child_:
-                if is_sets_identical(child, child_):
-                    decision = False
-                if is_sets_mutually_exclusive(child, child_):
-                    decision = False
-                if not child.intersection(child_):
-                    decision = False
-                if not child.issubset(parent):
-                    decision = False
-                if len(child) != len(child_):
-                    decision = False
+    # Combination is enough, permutation is not needed since it doesnt have to check
+    # both, for example, {0, 1}, {1, 2} and {1, 2}, {0, 1}
+    for child, child_ in itertools.combinations(children, 2):
+        if is_sets_identical(child, child_):
+            decision = False
+        if is_sets_mutually_exclusive(child, child_):
+            decision = False
+        if not child.intersection(child_):
+            decision = False
+        if not child.issubset(parent):
+            decision = False
+        if not child_.issubset(parent):
+            decision = False
+        if len(child) != len(child_):
+            decision = False
 
     if not is_n_choose_k_satisfied(parent, children):
         decision = False

@@ -146,18 +146,14 @@ class FaultTree:
 
 '''
 topEvent = Event('Top Event')
-and1 = Gate('AND', parent=topEvent)
-intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
-intermediateEvent2 = Event('Intermediate Event 2', parent=and1)
-and2 = Gate('AND', parent=intermediateEvent1)
-basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=and2)
-basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=and2)
-or1 = Gate('OR', parent=intermediateEvent2)
-basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=or1)
-basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=or1)
+or1 = Gate('OR', parent=topEvent)
+basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=or1)
+basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=or1)
+intermed = Event('Inter event ', parent=or1)
+and1 = Gate('AND', parent=intermed)
+basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=and1)
+basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=and1)
 '''
-
-
 '''
 # k/N Voting Example
 topEvent = Event('Top Event')
@@ -187,7 +183,7 @@ and3 = Gate("AND", parent=intermediate_event_2)
 basic_event_1 = Event("Basic Event 1", parent=and3)
 basic_event_2 = Event("Basic Event 2", parent=and3)
 '''
-'''
+
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
@@ -206,8 +202,8 @@ and3 = Gate('AND', parent=intermediateEvent4)
 basicEvent6 = Event('Basic Event 6', 'EXP', 10, 'EXP', 4, parent=and3)
 basicEvent7 = Event('Basic Event 7', 'EXP', 10, 'EXP', 4, parent=and3)
 basicEvent8 = Event('Basic Event 8', 'EXP', 10, 'EXP', 4, parent=and3)
-'''
 
+'''
 # RECONSTRUCTED FAULT TREE
 top_event = Event("Top Event")
 and1 = Gate("AND", parent=top_event)
@@ -227,11 +223,11 @@ basic_event_8 = Event("Basic Event 8", parent=and4)
 and5 = Gate("AND", parent=intermediate_event_4)
 basic_event_3 = Event("Basic Event 3", parent=and5)
 basic_event_4 = Event("Basic Event 4", parent=and5)
+'''
 
-
-fault_tree = FaultTree(top_event)
+fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-# fault_tree.generate_basic_event_time_series(2000)
-# fault_tree.calculate_time_series()
+fault_tree.generate_basic_event_time_series(2000)
+fault_tree.calculate_time_series()
 fault_tree.print_tree()
-# fault_tree.export_time_series('testdata2.txt')
+fault_tree.export_time_series('testdata2.txt')
