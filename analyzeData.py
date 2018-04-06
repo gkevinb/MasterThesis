@@ -1,6 +1,7 @@
 import collections
 from modules import cutsets, faultTreeReconstruction as ftr
 
+
 is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
 
