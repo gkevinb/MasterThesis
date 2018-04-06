@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analyzeData.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyzeData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cutsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/cutsets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faultTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeDiscrete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/faultTreeContinuous.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeContinuous.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faultTreeReconstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/faultTreeReconstruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicgate.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/logicgate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraps/scrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraps/scrap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdata2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_faultTreeReconstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_faultTreeReconstruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_logicgate.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_logicgate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/faultTreeReconstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/faultTreeReconstruction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_series.txt" beforeDir="false" afterPath="$PROJECT_DIR$/time_series.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/timeseries.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="257">
+              <caret line="130" column="24" lean-forward="true" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -44,14 +32,46 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="generateFaultTree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generateFaultTree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="analyzeData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyzeData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="410">
+              <caret line="135" column="67" selection-start-line="135" selection-start-column="67" selection-end-line="135" selection-end-column="67" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reconstructFaultTree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reconstructFaultTree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generatedFT.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/generatedFT.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="faultTreeReconstruction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="577" column="18" selection-start-line="577" selection-start-column="18" selection-end-line="577" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -125,10 +145,13 @@
         <option value="$PROJECT_DIR$/tests/test_logicgate.py" />
         <option value="$PROJECT_DIR$/cutsets.py" />
         <option value="$PROJECT_DIR$/faultTreeReconstruction.py" />
-        <option value="$PROJECT_DIR$/analyzeData.py" />
-        <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
         <option value="$PROJECT_DIR$/scraps/scrap.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
+        <option value="$PROJECT_DIR$/generateFaultTree.py" />
+        <option value="$PROJECT_DIR$/analyzeData.py" />
+        <option value="$PROJECT_DIR$/reconstructFaultTree.py" />
+        <option value="$PROJECT_DIR$/modules/faultTreeReconstruction.py" />
       </list>
     </option>
   </component>
@@ -149,6 +172,11 @@
             <path>
               <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="Thesis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -180,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.analyzeData">
+  <component name="RunManager" selected="Python.reconstructFaultTree">
     <configuration name="analyzeData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -194,24 +222,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyzeData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="faultTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Thesis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faultTreeDiscrete.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -235,7 +245,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="scrap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="genFT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -243,43 +253,66 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scraps" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scraps/scrap.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/genFT.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Unittests in test_faultTreeReconstruction.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="generateFaultTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_faultTreeReconstruction.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generateFaultTree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="reconstructFaultTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reconstructFaultTree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.scrap" />
       <item itemvalue="Python.faultTreeContinuous" />
       <item itemvalue="Python.analyzeData" />
-      <item itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
-      <item itemvalue="Python.faultTree" />
+      <item itemvalue="Python.generateFaultTree" />
+      <item itemvalue="Python.reconstructFaultTree" />
+      <item itemvalue="Python.genFT" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.reconstructFaultTree" />
+        <item itemvalue="Python.genFT" />
+        <item itemvalue="Python.generateFaultTree" />
         <item itemvalue="Python.analyzeData" />
         <item itemvalue="Python.faultTreeContinuous" />
-        <item itemvalue="Python.faultTree" />
-        <item itemvalue="Python tests.Unittests in test_faultTreeReconstruction.py" />
-        <item itemvalue="Python.scrap" />
       </list>
     </recent_temporary>
   </component>
@@ -330,13 +363,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.21944444" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.21944444" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5024665" side_tool="true" weight="0.32889965" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32900944" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7866462" weight="0.4681604" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7866462" weight="0.3207547" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49753347" weight="0.3282353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -349,6 +380,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900944" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,23 +418,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8738">
-          <caret line="514" column="12" selection-start-line="514" selection-start-column="12" selection-end-line="514" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/scrap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3978">
@@ -635,9 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2618">
           <caret line="154" column="29" lean-forward="true" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -648,36 +660,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7038">
-          <caret line="414" column="44" lean-forward="true" selection-start-line="414" selection-start-column="44" selection-end-line="414" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testdata2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_series.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testdata.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfile.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testdata.txt" />
+    <entry file="file://$PROJECT_DIR$/testfile.txt" />
     <entry file="file://$PROJECT_DIR$/scraps/scrap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -706,25 +690,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="130" column="24" lean-forward="true" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateFaultTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analyzeData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+        <state relative-caret-position="410">
+          <caret line="135" column="67" selection-start-line="135" selection-start-column="67" selection-end-line="135" selection-end-column="67" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
+    <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="389">
+          <caret line="577" column="18" selection-start-line="577" selection-start-column="18" selection-end-line="577" selection-end-column="18" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reconstructFaultTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genFT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generatedFT.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

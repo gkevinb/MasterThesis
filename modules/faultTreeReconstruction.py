@@ -535,10 +535,57 @@ def print_out_fault_tree(event_dictionary):
     print('--------------------------------------')
 
 
-def reconstruct_fault_tree(minimal_cut_sets):
+def write_fault_tree_to_file(event_dictionary, file_name):
+    """
+    Write code of regenerated fault tree into separate file named file_name.
+    :param event_dictionary: Event dictionary
+    :param file_name
+    :return:
+    """
+
+    events, sets = zip(*event_dictionary.items())
+
+    events = convert_list_of_tuples_to_list_of_sets(events)
+
+    events, sets = reverse_events_and_sets(events, sets)
+    name_of_events = give_names_to_events(events)
+    object_event_names = get_object_names(name_of_events)
+
+    file = open(file_name, 'w')
+
+    file.write('from faultTreeContinuous import Event, Gate, FaultTree\n\n\n')
+
+    file.write(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")\n')
+    for i in range(len(events)):
+        if len(events[i]) > 1:
+            children = find_children_indices(i, events)
+            gate = find_relationship(i, children, sets)
+            k = 0
+            if isinstance(gate, Number):
+                k = gate
+                gate = 'VOTING'
+            object_gate = get_object_name(gate) + str(i + 1)
+            file.write(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]))
+            if k > 0:
+                file.write(', k=' + str(k) + ')\n')
+            else:
+                file.write(')\n')
+            for j in range(len(children)):
+                child = children[j]
+                file.write(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) + '", parent=' +
+                           str(object_gate) + ')\n')
+
+    file.write('\nfault_tree = FaultTree(top_event)\n')
+    file.write('fault_tree.print_tree()\n')
+
+    file.close()
+
+
+def reconstruct_fault_tree(minimal_cut_sets, file_name):
     """
     Reconstruct the fault tree from the minimal cut sets.
     :param minimal_cut_sets: List of minimal cut sets
+    :param file_name
     :return:
     """
     basic_events = get_basic_events(minimal_cut_sets)
@@ -548,3 +595,5 @@ def reconstruct_fault_tree(minimal_cut_sets):
     entire_event_dict = expand_event_dictionary(starting_event_dict)
 
     print_out_fault_tree(entire_event_dict)
+
+    write_fault_tree_to_file(entire_event_dict, file_name)
