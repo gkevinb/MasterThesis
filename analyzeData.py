@@ -1,7 +1,5 @@
 import collections
-import cutsets
-import faultTreeReconstruction as ftr
-
+from modules import cutsets, faultTreeReconstruction as ftr
 
 is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
@@ -138,8 +136,7 @@ class TimeSeries:
         ftr.reconstruct_fault_tree(self.minimal_cut_sets)
 
 
-time_series = TimeSeries('testdata2.txt')
-# time_series = TimeSeries('testfile.txt')
+time_series = TimeSeries('time_series.txt')
 time_series.display_event_time_series(8)
 print('Number of basic event: ' + str(time_series.number_of_basic_events))
 TOP_EVENT = time_series.top_event_index

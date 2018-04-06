@@ -1,7 +1,5 @@
 import itertools
 
-mylist = range(5)
-
 
 p = {0, 1, 2}
 children = [{0, 1}, {0, 2}, {1, 2}]

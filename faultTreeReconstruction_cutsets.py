@@ -1,4 +1,4 @@
-import faultTreeReconstruction as ftr
+from modules import faultTreeReconstruction as ftr
 
 # minimal_cut_sets = [[1, 2], [3, 4]]
 # minimal_cut_sets = [[1, 3], [1, 4], [2, 3], [2, 4]]

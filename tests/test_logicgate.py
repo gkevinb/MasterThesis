@@ -1,6 +1,5 @@
 import unittest
-import logicgate
-
+from modules import logicgate
 
 HIGH = 'HIGH'
 LOW = 'LOW'

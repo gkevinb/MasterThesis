@@ -1,5 +1,5 @@
 import unittest
-import faultTreeReconstruction as ftr
+from modules import faultTreeReconstruction as ftr
 
 
 class GetBasicEventTestCase(unittest.TestCase):

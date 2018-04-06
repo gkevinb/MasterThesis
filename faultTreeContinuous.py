@@ -1,6 +1,5 @@
 from anytree import NodeMixin, RenderTree, LevelOrderIter
-import timeseries
-import logicgate
+from modules import logicgate, timeseries
 
 DISPLAY_UP_TO = 6
 
@@ -230,4 +229,4 @@ fault_tree = FaultTree(topEvent)
 fault_tree.generate_basic_event_time_series(2000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series('testdata2.txt')
+fault_tree.export_time_series('time_series.txt')
