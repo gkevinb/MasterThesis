@@ -504,7 +504,10 @@ def print_out_fault_tree(event_dictionary):
     events = convert_list_of_tuples_to_list_of_sets(events)
 
     events, sets = reverse_events_and_sets(events, sets)
+
+    print('--------------------------------------')
     print('Events: ' + str(events))
+
     name_of_events = give_names_to_events(events)
     object_event_names = get_object_names(name_of_events)
 
