@@ -22,6 +22,11 @@ def _generate_numbers(distribution, length):
         for i in range(length):
             num = random.weibullvariate(scale_, shape_)
             random_numbers.append(num)
+    if name == 'LOGNORMAL':
+        mu_, sigma_ = parameters
+        for i in range(length):
+            num = random.lognormvariate(mu_, sigma_)
+            random_numbers.append(num)
     return random_numbers
 
 
@@ -58,7 +63,7 @@ def _create_time_series(stream):
     return time_series
 
 
-def generate_time_series(reliability_dist, MTTF, maintainability_dist, MTTR, size):
+def generate_time_series(reliability_dist, maintainability_dist, size):
     """
     Generate time series according to distributions
     :param reliability_dist:
@@ -68,11 +73,9 @@ def generate_time_series(reliability_dist, MTTF, maintainability_dist, MTTR, siz
     :param size:
     :return:
     """
-    dist1 = [reliability_dist, 1/MTTF]
-    dist2 = [maintainability_dist, 1/MTTR]
 
-    time_to_failure = _generate_numbers(dist1, size)
-    time_to_repair = _generate_numbers(dist2, size)
+    time_to_failure = _generate_numbers(reliability_dist, size)
+    time_to_repair = _generate_numbers(maintainability_dist, size)
 
     '''
     # For logging

@@ -6,13 +6,10 @@ DISPLAY_UP_TO = 6
 
 # Smarter way to handle distributions as arguments
 class Event(NodeMixin):
-    def __init__(self, name, reliability_distribution=None, mean_time_to_failure=None,
-                 maintainability_distribution=None, mean_time_to_repair=None, parent=None):
+    def __init__(self, name, reliability_distribution=None, maintainability_distribution=None, parent=None):
         self.name = name
         self.reliability_distribution = reliability_distribution
         self.maintainability_distribution = maintainability_distribution
-        self.mean_time_to_failure = mean_time_to_failure
-        self.mean_time_to_repair = mean_time_to_repair
         self.parent = parent
         self.time_series = []
 
@@ -24,9 +21,7 @@ class Event(NodeMixin):
         :return:
         """
         self.time_series = timeseries.generate_time_series(self.reliability_distribution,
-                                                           self.mean_time_to_failure,
                                                            self.maintainability_distribution,
-                                                           self.mean_time_to_repair,
                                                            size)
 
     def __repr__(self):
