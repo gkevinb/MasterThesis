@@ -17,6 +17,11 @@ def _generate_numbers(distribution, length):
         for i in range(length):
             num = random.expovariate(lambda_)
             random_numbers.append(num)
+    if name == 'WEIBULL':
+        scale_, shape_ = parameters
+        for i in range(length):
+            num = random.weibullvariate(scale_, shape_)
+            random_numbers.append(num)
     return random_numbers
 
 

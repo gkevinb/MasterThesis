@@ -12,4 +12,8 @@ time_series.calculate_cut_sets()
 print('Minimal cut sets')
 time_series.calculate_minimal_cut_sets()
 
-time_series.reconstruct_fault_tree('generatedFT.py')
+# print('TimeSeries: ')
+# print(time_series.time_series[2])
+
+
+# time_series.reconstruct_fault_tree('generatedFT.py')

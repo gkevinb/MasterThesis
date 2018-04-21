@@ -22,8 +22,8 @@ print(udo.children)
 n1 = Number("Four", 4)
 n2 = Number("Five", 5, parent=n1)
 n3 = Number("Six", 6, parent=n1)
-n4 = Number("TwentyFive", 25, parent=n2)
-n5 = Number("TwentyFive", 25, parent=n2)
+n4 = Number("Seven", 7, parent=n2)
+n5 = Number("Eight", 8, parent=n2)
 
 '''
 # Print out entire tree

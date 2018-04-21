@@ -71,8 +71,8 @@ class Gate(NodeMixin):
 
 
 class FaultTree:
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, top_event):
+        self.top_event = top_event
 
     def _get_gates_reversed(self):
         """
@@ -80,7 +80,7 @@ class FaultTree:
         :return: List of gates ordered from the lower level to the higher level.
         """
         gates = []
-        for node in LevelOrderIter(self.root):
+        for node in LevelOrderIter(self.top_event):
             if type(node) is Gate:
                 gates.append(node)
         return gates[::-1]
@@ -91,7 +91,7 @@ class FaultTree:
         :return: Basic events
         """
         basic_events = []
-        for node in self.root.descendants:
+        for node in self.top_event.descendants:
             if node.is_leaf:
                 basic_events.append(node)
         return basic_events
@@ -119,7 +119,7 @@ class FaultTree:
         Render the tree in the console.
         :return:
         """
-        print(RenderTree(self.root))
+        print(RenderTree(self.top_event))
 
     def export_time_series(self, file_name):
         """
@@ -128,7 +128,7 @@ class FaultTree:
         :return:
         """
         file = open(file_name, 'w')
-        root = self.root
+        root = self.top_event
         for times in root.time_series:
             file.write('%s ' % times)
         file.write('\n')
@@ -138,3 +138,11 @@ class FaultTree:
             file.write('\n')
 
         file.close()
+
+    def load_time_series_into_basic_events(self, time_series):
+        basic_events = self._get_basic_events()
+        for basic_event in basic_events:
+            basic_event_id = int(basic_event.name[12:])
+            # print(basic_event_id)
+            # print(time_series[basic_event_id])
+            basic_event.time_series = time_series[basic_event_id]
