@@ -93,7 +93,8 @@ basic_event_4 = Event("Basic Event 4", parent=and5)
 
 fault_tree = FaultTree(topEvent)
 # 10000 generation size takes a good minute
-fault_tree.generate_basic_event_time_series(1000)
+# 100000 takes more than 10 minutes didn't wait to finish
+fault_tree.generate_basic_event_time_series(10000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
 # fault_tree.export_time_series('time_series.txt')

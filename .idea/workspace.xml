@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faultTreeContinuous.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeContinuous.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generateFaultTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateFaultTree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/timeseries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraps/distributionFitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraps/distributionFitting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraps/scrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraps/scrap.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +30,7 @@
       <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="350">
               <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
@@ -56,8 +54,8 @@
       <file leaf-file-name="timeseries.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+            <state relative-caret-position="29">
+              <caret line="3" column="44" lean-forward="true" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -65,8 +63,8 @@
       <file leaf-file-name="generateFaultTree.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateFaultTree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            <state relative-caret-position="325">
+              <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -74,7 +72,7 @@
       <file leaf-file-name="faultTreeDiscrete.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
+            <state relative-caret-position="478">
               <caret line="114" selection-start-line="114" selection-end-line="114" />
             </state>
           </provider>
@@ -83,8 +81,8 @@
       <file leaf-file-name="analyzeData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyzeData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+            <state>
+              <caret line="59" column="58" lean-forward="true" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -92,23 +90,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scrap.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scrap.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scraps/scrap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-797">
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="distributionFitting.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="distributionFitting.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scraps/distributionFitting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+            <state relative-caret-position="1836">
+              <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -194,10 +189,10 @@
         <option value="$PROJECT_DIR$/reconstructFaultTree.py" />
         <option value="$PROJECT_DIR$/reloadTimeseries.py" />
         <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
-        <option value="$PROJECT_DIR$/generateFaultTree.py" />
         <option value="$PROJECT_DIR$/modules/timeseries.py" />
-        <option value="$PROJECT_DIR$/scraps/distributionFitting.py" />
+        <option value="$PROJECT_DIR$/generateFaultTree.py" />
         <option value="$PROJECT_DIR$/scraps/scrap.py" />
+        <option value="$PROJECT_DIR$/scraps/distributionFitting.py" />
       </list>
     </option>
   </component>
@@ -264,7 +259,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.scrap">
+  <component name="RunManager" selected="Python.distributionFitting">
     <configuration name="distributionFitting" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -359,8 +354,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scrap" />
         <item itemvalue="Python.distributionFitting" />
+        <item itemvalue="Python.scrap" />
         <item itemvalue="Python.generateFaultTree" />
         <item itemvalue="Python.faultTreeContinuous" />
         <item itemvalue="Python tests.Unittests for test_logicgate.KNVotingGateTestCase" />
@@ -424,7 +419,7 @@
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49753347" weight="0.3282353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39976415" />
       <window_info id="Favorites" order="2" sideWeight="0.50592214" side_tool="true" weight="0.22269204" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -679,13 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/time_series.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -697,9 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,6 +702,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generatedFT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/reloadTimeseries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -727,63 +736,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateFaultTree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generatedFT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        <state relative-caret-position="29">
+          <caret line="3" column="44" lean-forward="true" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/analyzeData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+        <state>
+          <caret line="59" column="58" lean-forward="true" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/distributionFitting.py">
+    <entry file="file://$PROJECT_DIR$/generateFaultTree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="325">
+          <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scraps/scrap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+        <state relative-caret-position="-797">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraps/distributionFitting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

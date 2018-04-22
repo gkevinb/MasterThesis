@@ -47,12 +47,16 @@ print(math.gamma(4))
 gamma = math.gamma(1/beta + 1)
 mttf = nu * gamma
 print(mttf)
-exp = timeseries._generate_numbers(['EXP', 1/5], 10000)
+
+
+size = 10000
+
+exp = timeseries._generate_numbers(['EXP', 1/5], size)
 print(exp)
-weibull = timeseries._generate_numbers(['WEIBULL', nu, beta], 10000)
+weibull = timeseries._generate_numbers(['WEIBULL', nu, beta], size)
 print(weibull)
 
-lognormal = timeseries._generate_numbers(['LOGNORMAL', 5, 2], 10000)
+lognormal = timeseries._generate_numbers(['LOGNORMAL', 5, 2], size)
 print(lognormal)
 
 # Calculate the MTTF of lognormal equation
@@ -64,8 +68,8 @@ print(np.std(ln_times))
 print(lognorm.fit(lognormal))
 print(weibull_min.fit(weibull))
 print(expon.fit(exp))
+undertest = exp
+print(stats.kstest(undertest, 'expon', stats.expon.fit(undertest)))
+print(stats.kstest(undertest, 'lognorm', stats.lognorm.fit(undertest)))
+print(stats.kstest(undertest, 'weibull_min', stats.weibull_min.fit(undertest)))
 
-print(stats.kstest(exp, 'expon'))
-print(stats.kstest(exp, 'expon', stats.expon.fit(exp)))
-print(stats.kstest(lognormal, 'lognorm', stats.lognorm.fit(lognormal)))
-print(stats.kstest(weibull, 'weibull_min', stats.weibull_min.fit(weibull)))
