@@ -1,5 +1,6 @@
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries
+from analyzeData import TimeSeries
 
 DISPLAY_UP_TO = 6
 
@@ -25,7 +26,9 @@ class Event(NodeMixin):
                                                            size)
 
     def __repr__(self):
-        return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
+        # return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
+        # MAKE THIS BETTER LATER!!!!!!!!
+        return self.name + ' : ' + str(self.reliability_distribution)
 
 
 class Gate(NodeMixin):
@@ -137,7 +140,17 @@ class FaultTree:
     def load_time_series_into_basic_events(self, time_series):
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
+            # basic_event.name[12:] is to only show numbers, ex: (Basic Event 12) => 12
             basic_event_id = int(basic_event.name[12:])
             # print(basic_event_id)
             # print(time_series[basic_event_id])
             basic_event.time_series = time_series[basic_event_id]
+
+    def determine_distributions_of_basic_events(self):
+        # NAME FOR THIS FUNCTION NOT ACCURATE, ACTUALLY CALCULATES MTTF AS OF NOW!!!
+        time_series = TimeSeries('time_series.txt')
+        basic_events = self._get_basic_events()
+        for basic_event in basic_events:
+            basic_event_id = int(basic_event.name[12:])
+            basic_event.reliability_distribution = time_series.calculate_mean_time_to_failure(basic_event_id)
+

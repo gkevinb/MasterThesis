@@ -21,4 +21,5 @@ basic_event_3 = Event("Basic Event 3", parent=and5)
 basic_event_4 = Event("Basic Event 4", parent=and5)
 
 fault_tree = FaultTree(top_event)
+fault_tree.determine_distributions_of_basic_events()
 fault_tree.print_tree()

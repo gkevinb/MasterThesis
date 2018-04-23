@@ -27,6 +27,11 @@ def _generate_numbers(distribution, length):
         for i in range(length):
             num = random.lognormvariate(mu_, sigma_)
             random_numbers.append(num)
+    if name == 'NORMAL':
+        mu_, sigma_ = parameters
+        for i in range(length):
+            num = random.normalvariate(mu_, sigma_)
+            random_numbers.append(num)
     return random_numbers
 
 
