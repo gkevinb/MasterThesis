@@ -1,5 +1,5 @@
 from analyzeData import TimeSeries
-from scraps import distributionFitting as dF
+from scraps import distributionFitting_example as dF
 
 time_series = TimeSeries('time_series.txt')
 time_series.display_event_time_series(8)
