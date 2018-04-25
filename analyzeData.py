@@ -47,7 +47,7 @@ class TimeSeries:
         """
         return range(self.basic_event_start_index, len(self.time_series))
 
-    def get_basic_events(self):
+    def get_basic_events_time_series(self):
         """
         Get time series of basic events.
         :return: List of time series of the basic events.
@@ -118,7 +118,7 @@ class TimeSeries:
         :return:
         """
         top_event = self.time_series[self.top_event_index]
-        basic_events = self.get_basic_events()
+        basic_events = self.get_basic_events_time_series()
         self.cut_sets = cutsets.calculate_cut_sets(top_event, basic_events)
         print(self.cut_sets)
 
