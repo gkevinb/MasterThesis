@@ -176,6 +176,7 @@ def compress_sets_that_are(of_type, event_dictionary):
                         add_to_event_set(event_set, event_op)
                         sets_to_add = sets_to_add.union(sets_op)
 
+                # STRICTER CONDITIONS ARE NEEDED HERE
                 if of_type == 'interconnected':
                     if not is_sets_identical(sets, sets_op) and not is_sets_mutually_exclusive(sets, sets_op):
                         if len(sets) == len(sets_op):

@@ -149,7 +149,7 @@ class FaultTree:
 
         file.close()
 
-    def read_time_series_from_file(self, file_name):
+    def import_time_series(self, file_name):
         """
         Reads time series from the file given in the __init__ function.
         Places the times series of the top event as the first element in
@@ -284,4 +284,7 @@ class FaultTree:
 
     def reconstruct_fault_tree(self, file_name):
         ftr.reconstruct_fault_tree(self.minimal_cut_sets, file_name)
+
+    def get_length_of_top_event_time_series(self):
+        return len(self.time_series[0])
 
