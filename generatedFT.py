@@ -2,6 +2,12 @@ from faultTreeContinuous import Event, Gate, FaultTree
 
 
 top_event = Event("Top Event")
+
+
+fault_tree = FaultTree(top_event)
+fault_tree.print_tree()
+
+
 and1 = Gate("AND", parent=top_event)
 intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
 intermediate_event_2 = Event("Intermediate Event 2", parent=and1)
@@ -20,6 +26,6 @@ and5 = Gate("AND", parent=intermediate_event_4)
 basic_event_3 = Event("Basic Event 3", parent=and5)
 basic_event_4 = Event("Basic Event 4", parent=and5)
 
-fault_tree = FaultTree(top_event)
+
 fault_tree.determine_distributions_of_basic_events()
 fault_tree.print_tree()
