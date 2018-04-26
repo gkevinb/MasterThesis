@@ -18,6 +18,8 @@ class Event(NodeMixin):
         self.name = name
         self.reliability_distribution = reliability_distribution
         self.maintainability_distribution = maintainability_distribution
+        self.MTTF = 0
+        self.MTTR = 0
         self.parent = parent
         self.time_series = []
 
@@ -31,6 +33,20 @@ class Event(NodeMixin):
         self.time_series = timeseries.generate_time_series(self.reliability_distribution,
                                                            self.maintainability_distribution,
                                                            size)
+
+    def calculate_MTTF(self):
+        self.MTTF = timeseries.calculate_mean_time_to_failure(self.time_series)
+
+    def calculate_MTTR(self):
+        self.MTTR = timeseries.calculate_mean_time_to_repair(self.time_series)
+
+    def determine_reliability_distribution(self):
+        time_of_failures = timeseries.calculate_time_to_failures(self.time_series)
+        self.reliability_distribution = DF.determine_distribution(time_of_failures)
+
+    def determine_maintainability_distribution(self):
+        time_of_repairs = timeseries.calculate_time_to_repairs(self.time_series)
+        self.maintainability_distribution = DF.determine_distribution(time_of_repairs)
 
     def __repr__(self):
         return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
@@ -98,13 +114,15 @@ class FaultTree:
 
     def _get_basic_events(self):
         """
-        Get basic events from Fault Tree Structure
+        Get basic events from Fault Tree Structure, sorted numerically by name.
         :return: Basic events
         """
         basic_events = []
         for node in self.top_event.descendants:
             if node.is_leaf:
                 basic_events.append(node)
+        basic_events = sorted(basic_events, key=lambda event: event.name)
+
         return basic_events
 
     def generate_basic_event_time_series(self, size):
@@ -172,6 +190,7 @@ class FaultTree:
         self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
 
         file.close()
+
         self.number_of_basic_events = index - 1
 
     def load_time_series_into_basic_events(self):
@@ -184,17 +203,10 @@ class FaultTree:
             basic_event.time_series = self.time_series[basic_event_id]
 
     def determine_distributions_of_basic_events(self):
-        # THIS METHOD IS NOT FINISHED!!!!!
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
-            basic_event.reliability_distribution = DF.determine_distribution()
-
-    def determine_mttf_of_basic_events(self):
-        # THIS METHOD IS NOT FINISHED!!!!!!
-        basic_events = self._get_basic_events()
-        for basic_event in basic_events:
-            basic_event_id = int(basic_event.name[12:])
-            #basic_event.reliability_distribution = self.calculate_mean_time_to_failure(basic_event_id)
+            basic_event.determine_reliability_distribution()
+            basic_event.determine_maintainability_distribution()
 
     def basic_events_indexing(self):
         """
@@ -222,22 +234,8 @@ class FaultTree:
         for i in self.basic_events_indexing():
             print('Basic Event ' + str(i) + ' : ' + str(self.time_series[i][:display_up_to]))
 
-    def calculate_time_differences(self, event):
-        """
-        Calculate time differences from the time series to get the times. Basically subtracts the previous time from
-        the next time to get the difference between the time series times.
-        :param event: The event of which we need the time series of.
-        :return: The time differences extracted from the time series.
-        """
-        event_time_series = self.time_series[event]
-        time_difference = 0
-        times = []
-        for time in event_time_series:
-            times.append(time - time_difference)
-            time_difference = time
-        return times
-
     def calculate_mean_time_to_failure(self, event):
+        # FUNCTION IS BROKEN RIGHT NOW
         """
         Calculate mean time to failure for a certain event
         :param event: The event to calculate the mean time to failure of.
@@ -252,7 +250,28 @@ class FaultTree:
         mean_time_to_failure = sum(time_to_failures)/len(time_to_failures)
         return mean_time_to_failure
 
+    def calculate_MTTF_of_basic_events(self):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_MTTF()
+
+    def calculate_MTTR_of_basic_events(self):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_MTTR()
+
+    def print_MTTF_MTTR_of_basic_events(self):
+        for basic_event in self._get_basic_events():
+            print(basic_event.name)
+            print('MTTF: ' + str(basic_event.MTTF))
+            print('MTTR: ' + str(basic_event.MTTR))
+
+    def print_distributions_of_basic_events(self):
+        for basic_event in self._get_basic_events():
+            print(basic_event.name)
+            print('Reliability: ' + str(basic_event.reliability_distribution))
+            print('Maintainability: ' + str(basic_event.maintainability_distribution))
+
     def calculate_mean_time_to_repair(self, event):
+        # FUNCTION IS BROKEN RIGHT NOW
         """
         Calculate mean time to repair for a certain event
         :param event: The event to calculate the mean time to repair of.

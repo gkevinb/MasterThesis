@@ -1,6 +1,10 @@
 import random
 
 
+is_EVEN = lambda i: i % 2 == 0
+is_ODD = lambda i: i % 2 == 1
+
+
 def _generate_numbers(distribution, length):
     """
     Generate random numbers of length according to the distribution.
@@ -72,9 +76,7 @@ def generate_time_series(reliability_dist, maintainability_dist, size):
     """
     Generate time series according to distributions
     :param reliability_dist:
-    :param MTTF:
     :param maintainability_dist:
-    :param MTTR:
     :param size:
     :return:
     """
@@ -82,21 +84,73 @@ def generate_time_series(reliability_dist, maintainability_dist, size):
     time_to_failure = _generate_numbers(reliability_dist, size)
     time_to_repair = _generate_numbers(maintainability_dist, size)
 
-    '''
-    # For logging
-    print('Time to failure')
-    print(time_to_failure)
-    print('Average: ' + str(sum(time_to_failure)/len(time_to_failure)))
-    print('Length: ' + str(len(time_to_failure)))
-    print('Time to repair')
-    print(time_to_repair)
-    print('Average: ' + str(sum(time_to_repair)/len(time_to_repair)))
-    print('Length: ' + str(len(time_to_repair)))
-    '''
-
     times = _merge_streams(time_to_failure, time_to_repair)
-    '''
-    print(times)
-    '''
+
     time_series = _create_time_series(times)
+
     return time_series
+
+
+def calculate_time_differences(time_series):
+    """
+    Calculate time differences from the time series to get the times. Basically subtracts the previous time from
+    the next time to get the difference between the time series times.
+    :param time_series: The time series.
+    :return: The time differences extracted from the time series.
+    """
+    time_difference = 0
+    times = []
+    for time in time_series:
+        times.append(time - time_difference)
+        time_difference = time
+    return times
+
+
+def calculate_time_to_failures(time_series):
+    """
+    Calculate the time of failures from the time series.
+    :param time_series: The time series.
+    :return: List of time of failures.
+    """
+    times = calculate_time_differences(time_series)
+    time_to_failures = []
+    for i in range(len(times)):
+        if is_EVEN(i):
+            time_to_failures.append(times[i])
+
+    return time_to_failures
+
+
+def calculate_time_to_repairs(time_series):
+    """
+    Calculate the time of repairs from the time series.
+    :param time_series: The time series.
+    :return: List of time of repairs.
+    """
+    times = calculate_time_differences(time_series)
+    time_to_repairs = []
+    for i in range(len(times)):
+        if is_ODD(i):
+            time_to_repairs.append(times[i])
+
+    return time_to_repairs
+
+
+def calculate_mean_time_to_failure(time_series):
+    """
+    Calculate mean time to failure from the time series.
+    :param time_series: The time series.
+    :return: Mean time to failure
+    """
+    time_to_failures = calculate_time_to_failures(time_series)
+    return sum(time_to_failures) / len(time_to_failures)
+
+
+def calculate_mean_time_to_repair(time_series):
+    """
+    Calculate mean time to repair from the time series.
+    :param time_series: The time series.
+    :return: Mean time to failure
+    """
+    time_to_repairs = calculate_time_to_repairs(time_series)
+    return sum(time_to_repairs) / len(time_to_repairs)
