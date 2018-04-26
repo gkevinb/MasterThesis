@@ -514,7 +514,7 @@ def print_out_fault_tree(event_dictionary):
 
     print('--------------------------------------')
 
-    print(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")')
+    print(object_event_names[0] + ' = Event("' + name_of_events[0] + '")')
     for i in range(len(events)):
         if len(events[i]) > 1:
             children = find_children_indices(i, events)
@@ -525,7 +525,7 @@ def print_out_fault_tree(event_dictionary):
                 k = gate
                 gate = 'VOTING'
             object_gate = get_object_name(gate) + str(i + 1)
-            print(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]),
+            print(object_gate + ' = Gate("' + gate + '", parent=' + object_event_names[i],
                   end="", flush=True)
             if k > 0:
                 print(', k=' + str(k) + ')')
@@ -533,10 +533,18 @@ def print_out_fault_tree(event_dictionary):
                 print(')')
             for j in range(len(children)):
                 child = children[j]
-                print(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) +
-                      '", parent=' + str(object_gate) + ')')
+                print(object_event_names[child] + ' = Event("' + name_of_events[child] +
+                      '", parent=' + object_gate + ')')
 
     print('--------------------------------------')
+
+
+def TAB(file):
+    file.write('    ')
+
+
+def NEWLINE(file):
+    file.write('\n')
 
 
 def write_fault_tree_to_file(event_dictionary, file_name):
@@ -557,9 +565,13 @@ def write_fault_tree_to_file(event_dictionary, file_name):
 
     file = open(file_name, 'w')
 
-    file.write('from faultTreeContinuous import Event, Gate, FaultTree\n\n\n')
+    file.write('from faultTreeContinuous import Event, Gate, FaultTree')
+    NEWLINE(file)
+    NEWLINE(file)
+    NEWLINE(file)
 
-    file.write(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")\n')
+    file.write(str(object_event_names[0]) + ' = Event("' + name_of_events[0] + '")')
+    NEWLINE(file)
     for i in range(len(events)):
         if len(events[i]) > 1:
             children = find_children_indices(i, events)
@@ -571,17 +583,84 @@ def write_fault_tree_to_file(event_dictionary, file_name):
             object_gate = get_object_name(gate) + str(i + 1)
             file.write(str(object_gate) + ' = Gate("' + str(gate) + '", parent=' + str(object_event_names[i]))
             if k > 0:
-                file.write(', k=' + str(k) + ')\n')
+                file.write(', k=' + str(k) + ')')
+                NEWLINE(file)
             else:
-                file.write(')\n')
+                file.write(')')
+                NEWLINE(file)
             for j in range(len(children)):
                 child = children[j]
                 file.write(str(object_event_names[child]) + ' = Event("' + str(name_of_events[child]) + '", parent=' +
-                           str(object_gate) + ')\n')
+                           str(object_gate) + ')')
+                NEWLINE(file)
 
-    file.write('\nfault_tree = FaultTree(' + object_event_names[0] + ')\n')
-    file.write('fault_tree.print_tree()\n')
+    NEWLINE(file)
+    file.write('fault_tree = FaultTree(' + object_event_names[0] + ')')
+    NEWLINE(file)
+    file.write('fault_tree.print_tree()')
+    NEWLINE(file)
 
+    file.close()
+
+
+def export_fault_tree_to_method(event_dictionary, file_name):
+    """
+    Write a method into a file which reconstructs the fault tree and can be called later to reload into the
+    Fault Tree class.
+    :param event_dictionary: Event dictionary
+    :param file_name
+    :return:
+    """
+
+    events, sets = zip(*event_dictionary.items())
+
+    events = convert_list_of_tuples_to_list_of_sets(events)
+
+    events, sets = reverse_events_and_sets(events, sets)
+    name_of_events = give_names_to_events(events)
+    object_event_names = get_object_names(name_of_events)
+
+    file = open(file_name, 'w')
+
+    file.write('from faultTreeContinuous import Event, Gate')
+    NEWLINE(file)
+    NEWLINE(file)
+    NEWLINE(file)
+
+    file.write('def build_fault_tree():')
+    NEWLINE(file)
+
+    TAB(file)
+    file.write(object_event_names[0] + ' = Event("' + name_of_events[0] + '")')
+    NEWLINE(file)
+    for i in range(len(events)):
+        if len(events[i]) > 1:
+            children = find_children_indices(i, events)
+            gate = find_relationship(i, children, sets)
+            k = 0
+            if isinstance(gate, Number):
+                k = gate
+                gate = 'VOTING'
+            object_gate = get_object_name(gate) + str(i + 1)
+            TAB(file)
+            file.write(object_gate + ' = Gate("' + gate + '", parent=' + object_event_names[i])
+            if k > 0:
+                file.write(', k=' + str(k) + ')')
+                NEWLINE(file)
+            else:
+                file.write(')')
+                NEWLINE(file)
+            for j in range(len(children)):
+                child = children[j]
+                TAB(file)
+                file.write(object_event_names[child] + ' = Event("' + name_of_events[child] + '", parent=' +
+                           object_gate + ')')
+                NEWLINE(file)
+
+    NEWLINE(file)
+    TAB(file)
+    file.write('return ' + object_event_names[0])
+    NEWLINE(file)
     file.close()
 
 
@@ -600,4 +679,5 @@ def reconstruct_fault_tree(minimal_cut_sets, file_name):
 
     print_out_fault_tree(entire_event_dict)
 
-    write_fault_tree_to_file(entire_event_dict, file_name)
+    # write_fault_tree_to_file(entire_event_dict, file_name)
+    export_fault_tree_to_method(entire_event_dict, file_name)

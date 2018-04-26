@@ -36,7 +36,7 @@ class TimeSeries:
             time_series_dictionary[index] = event_time_series
             index += 1
 
-            self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
+        self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
 
         file.close()
         return index - 1

@@ -1,8 +1,10 @@
 import collections
+import importlib
 from anytree import NodeMixin, RenderTree, LevelOrderIter
-from modules import logicgate, timeseries
+from modules import logicgate, timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
-from analyzeData import TimeSeries
+# from generatedFT_method import build_fault_tree
+
 
 DISPLAY_UP_TO = 6
 
@@ -31,9 +33,9 @@ class Event(NodeMixin):
                                                            size)
 
     def __repr__(self):
-        # return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
+        return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
         # MAKE THIS BETTER LATER!!!!!!!!
-        return self.name + ' : ' + str(self.reliability_distribution)
+        # return self.name + ' : ' + str(self.reliability_distribution)
 
 
 class Gate(NodeMixin):
@@ -76,7 +78,6 @@ class Gate(NodeMixin):
 class FaultTree:
     def __init__(self, top_event=None):
         self.top_event = top_event
-        # self.file_name = ''
         self.time_series = {}
         self.top_event_index = 0
         self.basic_event_start_index = 1
@@ -168,27 +169,32 @@ class FaultTree:
             time_series_dictionary[index] = event_time_series
             index += 1
 
-            self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
+        self.time_series = collections.OrderedDict(sorted(time_series_dictionary.items()))
 
         file.close()
         self.number_of_basic_events = index - 1
 
-    def load_time_series_into_basic_events(self, time_series):
+    def load_time_series_into_basic_events(self):
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
             # basic_event.name[12:] is to only show numbers, ex: (Basic Event 12) => 12
             basic_event_id = int(basic_event.name[12:])
             # print(basic_event_id)
             # print(time_series[basic_event_id])
-            basic_event.time_series = time_series[basic_event_id]
+            basic_event.time_series = self.time_series[basic_event_id]
 
     def determine_distributions_of_basic_events(self):
-        # NAME FOR THIS FUNCTION NOT ACCURATE, ACTUALLY CALCULATES MTTF AS OF NOW!!!
-        time_series = TimeSeries('time_series.txt')
+        # THIS METHOD IS NOT FINISHED!!!!!
+        basic_events = self._get_basic_events()
+        for basic_event in basic_events:
+            basic_event.reliability_distribution = DF.determine_distribution()
+
+    def determine_mttf_of_basic_events(self):
+        # THIS METHOD IS NOT FINISHED!!!!!!
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
             basic_event_id = int(basic_event.name[12:])
-            basic_event.reliability_distribution = time_series.calculate_mean_time_to_failure(basic_event_id)
+            #basic_event.reliability_distribution = self.calculate_mean_time_to_failure(basic_event_id)
 
     def basic_events_indexing(self):
         """
@@ -285,6 +291,15 @@ class FaultTree:
     def reconstruct_fault_tree(self, file_name):
         ftr.reconstruct_fault_tree(self.minimal_cut_sets, file_name)
 
-    def get_length_of_top_event_time_series(self):
-        return len(self.time_series[0])
+    def load_in_fault_tree(self, module_name):
+        custom_module = importlib.import_module(module_name)
+        self.top_event = custom_module.build_fault_tree()
 
+    def get_length_of_top_event_time_series(self):
+        return len(self.time_series[self.top_event_index])
+
+    def check_if_top_event_same(self):
+        # Check if recalculated top event time series are the same as the top event times series in the exported file.
+        print(self.top_event.time_series)
+        print(self.time_series[self.top_event_index])
+        return self.top_event.time_series == self.time_series[self.top_event_index]

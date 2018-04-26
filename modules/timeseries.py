@@ -22,7 +22,7 @@ def _generate_numbers(distribution, length):
         for i in range(length):
             num = random.weibullvariate(scale_, shape_)
             random_numbers.append(num)
-    if name == 'LOGNORMAL':
+    if name == 'LOGNORM':
         mu_, sigma_ = parameters
         for i in range(length):
             num = random.lognormvariate(mu_, sigma_)
