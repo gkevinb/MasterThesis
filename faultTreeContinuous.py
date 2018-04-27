@@ -67,6 +67,17 @@ class Gate(NodeMixin):
     def get_number_of_children(self):
         return len(self.children)
 
+    def determine_fault_logic(self):
+        fault_logic = None
+        if self.name == 'AND':
+            fault_logic = 'OR'
+        if self.name == 'OR':
+            fault_logic = 'AND'
+        if self.name == 'VOTING':
+            fault_logic = self.k
+
+        return fault_logic
+
     def evaluate_time_series(self):
         """
         Evaluate the gate inputs and modify the gate output. Based on the gate type and gate input time series,
@@ -78,13 +89,7 @@ class Gate(NodeMixin):
         for child in self.children:
             data_streams.append(child.time_series)
 
-        fault_logic = None
-        if self.name == 'AND':
-            fault_logic = 'OR'
-        if self.name == 'OR':
-            fault_logic = 'AND'
-        if self.name == 'VOTING':
-            fault_logic = self.k
+        fault_logic = self.determine_fault_logic()
 
         self.parent.time_series = logicgate.evaluate_time_series(fault_logic, data_streams)
 
@@ -94,13 +99,7 @@ class Gate(NodeMixin):
         for child in self.children:
             states.append(child.state)
 
-        fault_logic = None
-        if self.name == 'AND':
-            fault_logic = 'OR'
-        if self.name == 'OR':
-            fault_logic = 'AND'
-        if self.name == 'VOTING':
-            fault_logic = self.k
+        fault_logic = self.determine_fault_logic()
 
         self.parent.state = logicgate.evaluate_boolean_logic(fault_logic, states)
 
@@ -117,9 +116,13 @@ class FaultTree:
         self.time_series = {}
         self.top_event_index = 0
         self.basic_event_start_index = 1
-        self.number_of_basic_events = 0
         self.cut_sets = []
         self.minimal_cut_sets = []
+
+        if top_event is not None:
+            self.number_of_basic_events = len(self._get_basic_events())
+        else:
+            self.number_of_basic_events = 0
 
     def _get_gates_reversed(self):
         """
@@ -162,6 +165,15 @@ class FaultTree:
         gates = self._get_gates_reversed()
         for gate in gates:
             gate.evaluate_time_series()
+
+    def calculate_states(self):
+        """
+        Calculate states of all events except basic events.
+        :return:
+        """
+        gates = self._get_gates_reversed()
+        for gate in gates:
+            gate.evaluate_states()
 
     def print_tree(self):
         """
@@ -224,6 +236,13 @@ class FaultTree:
             # print(time_series[basic_event_id])
             basic_event.time_series = self.time_series[basic_event_id]
 
+    def load_states_into_basic_events(self, states):
+        basic_events = self._get_basic_events()
+        i = 0
+        for basic_event in basic_events:
+            basic_event.state = states[i]
+            i += 1
+
     def determine_distributions_of_basic_events(self):
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
@@ -232,9 +251,10 @@ class FaultTree:
 
     def basic_events_indexing(self):
         """
+        self.number_of_basic_events + 1, the 1 is needed because go until that number.
         :return: The indexing of the basic events, useful for for loops in other methods to make code cleaner.
         """
-        return range(self.basic_event_start_index, len(self.time_series))
+        return range(self.basic_event_start_index, self.number_of_basic_events + 1)
 
     def get_basic_events_time_series(self):
         """
@@ -257,7 +277,7 @@ class FaultTree:
             print('Basic Event ' + str(i) + ' : ' + str(self.time_series[i][:display_up_to]))
 
     def calculate_mean_time_to_failure(self, event):
-        # FUNCTION IS BROKEN RIGHT NOW
+        # FUNCTION IS BROKEN RIGHT NOW, MAYBE MAKE IT DYNAMIC SO IT'S EVALUATED FOR THE EVENT PASSED IN AS ARGUMENT
         """
         Calculate mean time to failure for a certain event
         :param event: The event to calculate the mean time to failure of.
@@ -266,7 +286,7 @@ class FaultTree:
         pass
 
     def calculate_mean_time_to_repair(self, event):
-        # FUNCTION IS BROKEN RIGHT NOW
+        # FUNCTION IS BROKEN RIGHT NOW, MAYBE MAKE IT DYNAMIC SO IT'S EVALUATED FOR THE EVENT PASSED IN AS ARGUMENT
         """
         Calculate mean time to repair for a certain event
         :param event: The event to calculate the mean time to repair of.
