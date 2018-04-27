@@ -261,7 +261,7 @@ def _filter_stream(stream):
     return result_list
 
 
-def evaluate(gate, streams):
+def evaluate_time_series(gate, streams):
     """
     Evaluate the streams according to the gate, gate can be 'AND' or 'OR'
     Returns a data stream containing the edge transition times after the
@@ -296,4 +296,19 @@ def evaluate(gate, streams):
 
     result = _filter_stream(result)
 
+    return result
+
+
+def evaluate_boolean_logic(gate, boolean_values):
+    result = None
+
+    if gate == 'AND':
+        result = all(boolean_values)
+    if gate == 'OR':
+        result = any(boolean_values)
+    if isinstance(gate, Number):
+        if gate <= boolean_values.count(False):
+            result = False
+        else:
+            result = True
     return result

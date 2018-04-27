@@ -3,7 +3,6 @@ import importlib
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
-# from generatedFT_method import build_fault_tree
 
 
 DISPLAY_UP_TO = 6
@@ -12,7 +11,10 @@ is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
 
 
-# Smarter way to handle distributions as arguments
+OPERATIONAL = True
+FAILED = False
+
+
 class Event(NodeMixin):
     def __init__(self, name, reliability_distribution=None, maintainability_distribution=None, parent=None):
         self.name = name
@@ -22,6 +24,7 @@ class Event(NodeMixin):
         self.MTTR = 0
         self.parent = parent
         self.time_series = []
+        self.state = None
 
     def generate(self, size):
         """
@@ -49,9 +52,10 @@ class Event(NodeMixin):
         self.maintainability_distribution = DF.determine_distribution(time_of_repairs)
 
     def __repr__(self):
-        return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
+        #return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
         # MAKE THIS BETTER LATER!!!!!!!!
         # return self.name + ' : ' + str(self.reliability_distribution)
+        return self.name + ' : ' + str(self.state)
 
 
 class Gate(NodeMixin):
@@ -63,7 +67,7 @@ class Gate(NodeMixin):
     def get_number_of_children(self):
         return len(self.children)
 
-    def evaluate(self):
+    def evaluate_time_series(self):
         """
         Evaluate the gate inputs and modify the gate output. Based on the gate type and gate input time series,
         calculate time series for gate output.
@@ -82,7 +86,23 @@ class Gate(NodeMixin):
         if self.name == 'VOTING':
             fault_logic = self.k
 
-        self.parent.time_series = logicgate.evaluate(fault_logic, data_streams)
+        self.parent.time_series = logicgate.evaluate_time_series(fault_logic, data_streams)
+
+    def evaluate_states(self):
+        states = []
+
+        for child in self.children:
+            states.append(child.state)
+
+        fault_logic = None
+        if self.name == 'AND':
+            fault_logic = 'OR'
+        if self.name == 'OR':
+            fault_logic = 'AND'
+        if self.name == 'VOTING':
+            fault_logic = self.k
+
+        self.parent.state = logicgate.evaluate_boolean_logic(fault_logic, states)
 
     def __repr__(self):
         if self.k is None:
@@ -141,7 +161,7 @@ class FaultTree:
         """
         gates = self._get_gates_reversed()
         for gate in gates:
-            gate.evaluate()
+            gate.evaluate_time_series()
 
     def print_tree(self):
         """
@@ -170,10 +190,12 @@ class FaultTree:
 
     def import_time_series(self, file_name):
         """
-        Reads time series from the file given in the __init__ function.
+        Reads time series from the file given as file_name
         Places the times series of the top event as the first element in
         the dictionary and then all the basic events follow. The function
-        returns the number of basic events found in the file.
+        also sets the number of basic events found in the file.
+        :param file_name: Name of file
+        :return:
         """
         file = open(file_name, 'r')
         time_series_dictionary = {}
@@ -241,14 +263,16 @@ class FaultTree:
         :param event: The event to calculate the mean time to failure of.
         :return: Mean time to failure
         """
-        times = self.calculate_time_differences(event)
-        time_to_failures = []
-        for i in range(len(times)):
-            if is_EVEN(i):
-                time_to_failures.append(times[i])
+        pass
 
-        mean_time_to_failure = sum(time_to_failures)/len(time_to_failures)
-        return mean_time_to_failure
+    def calculate_mean_time_to_repair(self, event):
+        # FUNCTION IS BROKEN RIGHT NOW
+        """
+        Calculate mean time to repair for a certain event
+        :param event: The event to calculate the mean time to repair of.
+        :return: Mean time to repair
+        """
+        pass
 
     def calculate_MTTF_of_basic_events(self):
         for basic_event in self._get_basic_events():
@@ -269,22 +293,6 @@ class FaultTree:
             print(basic_event.name)
             print('Reliability: ' + str(basic_event.reliability_distribution))
             print('Maintainability: ' + str(basic_event.maintainability_distribution))
-
-    def calculate_mean_time_to_repair(self, event):
-        # FUNCTION IS BROKEN RIGHT NOW
-        """
-        Calculate mean time to repair for a certain event
-        :param event: The event to calculate the mean time to repair of.
-        :return: Mean time to repair
-        """
-        times = self.calculate_time_differences(event)
-        time_to_repair = []
-        for i in range(len(times)):
-            if is_ODD(i):
-                time_to_repair.append(times[i])
-
-        mean_time_to_repair = sum(time_to_repair)/len(time_to_repair)
-        return mean_time_to_repair
 
     def calculate_cut_sets(self):
         """
@@ -311,14 +319,12 @@ class FaultTree:
         ftr.reconstruct_fault_tree(self.minimal_cut_sets, file_name)
 
     def load_in_fault_tree(self, module_name):
-        custom_module = importlib.import_module(module_name)
-        self.top_event = custom_module.build_fault_tree()
+        fault_tree_creator = importlib.import_module(module_name)
+        self.top_event = fault_tree_creator.build_fault_tree()
 
     def get_length_of_top_event_time_series(self):
         return len(self.time_series[self.top_event_index])
 
     def check_if_top_event_same(self):
         # Check if recalculated top event time series are the same as the top event times series in the exported file.
-        print(self.top_event.time_series)
-        print(self.time_series[self.top_event_index])
         return self.top_event.time_series == self.time_series[self.top_event_index]
