@@ -1,4 +1,5 @@
 import collections
+import itertools
 import importlib
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
@@ -6,6 +7,8 @@ from modules import cutsets, faultTreeReconstruction as ftr
 
 
 DISPLAY_UP_TO = 6
+# 'distributions', 'states', 'time_series'
+EVENT_PRINT = 'distributions'
 
 is_EVEN = lambda i: i % 2 == 0
 is_ODD = lambda i: i % 2 == 1
@@ -52,10 +55,15 @@ class Event(NodeMixin):
         self.maintainability_distribution = DF.determine_distribution(time_of_repairs)
 
     def __repr__(self):
-        #return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
-        # MAKE THIS BETTER LATER!!!!!!!!
-        # return self.name + ' : ' + str(self.reliability_distribution)
-        return self.name + ' : ' + str(self.state)
+        if EVENT_PRINT == 'time_series':
+            return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
+        if EVENT_PRINT == 'distributions':
+            return self.name + ' : ' + str(self.reliability_distribution) + ' : '\
+                   + str(self.maintainability_distribution)
+        if EVENT_PRINT == 'states':
+            return self.name + ' : ' + str(self.state)
+        else:
+            return self.name
 
 
 class Gate(NodeMixin):
@@ -148,6 +156,9 @@ class FaultTree:
 
         return basic_events
 
+    def get_top_event_state(self):
+        return self.top_event.state
+
     def generate_basic_event_time_series(self, size):
         """
         Generate time series for basic events.
@@ -189,8 +200,8 @@ class FaultTree:
         :return:
         """
         file = open(file_name, 'w')
-        root = self.top_event
-        for times in root.time_series:
+        top_event = self.top_event
+        for times in top_event.time_series:
             file.write('%s ' % times)
         file.write('\n')
         for basic_event in self._get_basic_events():
@@ -242,6 +253,38 @@ class FaultTree:
         for basic_event in basic_events:
             basic_event.state = states[i]
             i += 1
+
+    def generate_truth_table(self):
+        return list(itertools.product([True, False], repeat=self.number_of_basic_events))
+
+    def export_truth_table(self, file_name=None):
+
+        def convert_boolean_to_binary(boolean):
+            if boolean is True:
+                return 1
+            else:
+                return 0
+
+        truth_table = self.generate_truth_table()
+
+        file = open(file_name, 'w')
+
+        for basic_event_id in self.basic_events_indexing():
+            file.write('%s ' % basic_event_id)
+        file.write('TE')
+        file.write('\n')
+
+        for row in truth_table:
+            binaries = list(map(convert_boolean_to_binary, row))
+            for binary in binaries:
+                file.write('%s ' % binary)
+            self.load_states_into_basic_events(row)
+            self.calculate_states()
+            binary = convert_boolean_to_binary(self.get_top_event_state())
+            file.write('%s ' % binary)
+            file.write('\n')
+
+        file.close()
 
     def determine_distributions_of_basic_events(self):
         basic_events = self._get_basic_events()

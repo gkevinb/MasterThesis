@@ -1,6 +1,6 @@
 from faultTreeContinuous import Event, Gate, FaultTree
 
-
+# BAD GENERATION!!!!!!!!!!
 top_event = Event("Top Event")
 and1 = Gate("AND", parent=top_event)
 intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
