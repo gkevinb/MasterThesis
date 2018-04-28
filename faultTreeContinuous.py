@@ -4,6 +4,7 @@ import importlib
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
+from modules import distributionplotting as DP
 
 
 DISPLAY_UP_TO = 6
@@ -132,6 +133,11 @@ class FaultTree:
         else:
             self.number_of_basic_events = 0
 
+    @staticmethod
+    def _get_id_of_basic_event(basic_event):
+        # basic_event.name[12:] is to only show numbers, ex: (Basic Event 12) => 12
+        return int(basic_event.name[12:])
+
     def _get_gates_reversed(self):
         """
         Get the reverse order of the gates so it starts from the lower level gates and goes to the higher level gates.
@@ -155,6 +161,38 @@ class FaultTree:
         basic_events = sorted(basic_events, key=lambda event: event.name)
 
         return basic_events
+
+    def get_basic_event_(self, basic_event_id):
+        for basic_event in self._get_basic_events():
+            if basic_event_id == self._get_id_of_basic_event(basic_event):
+                return basic_event
+
+        # If can't find it return None.
+        return None
+
+    def plot_reliability_distribution_of_basic_event_(self, basic_event_id):
+        basic_event = self.get_basic_event_(basic_event_id)
+        name = basic_event.name
+        reliability = 'Reliability'
+        rel_dist = basic_event.reliability_distribution
+        times = timeseries.calculate_time_to_failures(basic_event.time_series)
+
+        if rel_dist[0] == 'EXP':
+            DP.plot_exp(name, reliability, rel_dist, times)
+        if rel_dist[0] == 'WEIBULL':
+            DP.plot_weibull(name, reliability, rel_dist, times)
+        if rel_dist[0] == 'NORMAL':
+            DP.plot_normal(name, reliability, rel_dist, times)
+        if rel_dist[0] == 'LOGNORM':
+            DP.plot_lognorm(name, reliability, rel_dist, times)
+
+    def plot_distribution_of_top_event(self):
+        times = timeseries.calculate_time_to_failures(self.top_event.time_series)
+
+        rel_dist = DF.determine_distribution(times)
+        print(rel_dist)
+        DP.plot_arbitrary_distribution('Top Event', times)
+        #DP.plot_lognorm('Top Event', 'Reliability', rel_dist, times)
 
     def get_top_event_state(self):
         return self.top_event.state
@@ -241,10 +279,7 @@ class FaultTree:
     def load_time_series_into_basic_events(self):
         basic_events = self._get_basic_events()
         for basic_event in basic_events:
-            # basic_event.name[12:] is to only show numbers, ex: (Basic Event 12) => 12
-            basic_event_id = int(basic_event.name[12:])
-            # print(basic_event_id)
-            # print(time_series[basic_event_id])
+            basic_event_id = self._get_id_of_basic_event(basic_event)
             basic_event.time_series = self.time_series[basic_event_id]
 
     def load_states_into_basic_events(self, states):

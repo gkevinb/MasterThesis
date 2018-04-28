@@ -66,5 +66,7 @@ print(FT.check_if_top_event_same())
 
 FT.export_truth_table('truth_table_reconstructed.txt')
 
+#FT.plot_reliability_distribution_of_basic_event_(1)
+FT.plot_distribution_of_top_event()
 
 print('It took', time.time() - start, 'seconds.')

@@ -32,6 +32,7 @@ basic_event_4 = Event("Basic Event 4", parent=and5)
 
 FT = FaultTree(top_event)
 FT.print_tree()
+be1 = FT.get_basic_event_(1)
+print(be1)
 
-
-FT.export_truth_table('truth_table_test.txt')
+# FT.export_truth_table('truth_table_test.txt')
