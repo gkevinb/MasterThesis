@@ -81,7 +81,7 @@ def determine_distribution(samples):
             # print('Deleting WEIBULL...')
         if 'WEIBULL' in p_values.keys() and 'EXP' in p_values.keys():
             del p_values['WEIBULL']
-            #print('Deleting WEIBULL...')
+            # print('Deleting WEIBULL...')
 
     if len(p_values) == 1:
         distribution = p_values.popitem()

@@ -3,10 +3,9 @@ import scipy.stats
 import pylab
 from modules import distributionfitting as DF
 
-size = 100000
+size = 10000
 x = scipy.arange(size)
-# FIX NAMING CONVENTION LOGNORM OR LOGNORMAL!!! AND LOOK INTO OTHER ONES AS WELL!!!!
-y = timeseries._generate_numbers(['LOGNORMAL', 2, 1], size)
+y = timeseries._generate_numbers(['LOGNORM', 2, 1], size)
 #y = timeseries._generate_numbers(['NORMAL', 15, 2], size)
 
 #y = timeseries._generate_numbers(['EXP', 1/5], size)

@@ -17,7 +17,7 @@ import numpy as np
 
 # Generate an array of 200 random sample from a normal dist with
 # mean 0 and stdv 1
-random_sample = norm.rvs(loc=0,scale=1,size=200)
+random_sample = norm.rvs(loc=0, scale=1, size=2000)
 
 # Distribution fitting
 # norm.fit(data) returns a list of two parameters
