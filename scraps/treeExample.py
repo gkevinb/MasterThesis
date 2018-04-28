@@ -42,3 +42,5 @@ revL = L[::-1]
 print(revL)
 print(jill.is_leaf)
 print(udo.descendants)
+print(len(udo.descendants))
+print(len(n1.descendants))

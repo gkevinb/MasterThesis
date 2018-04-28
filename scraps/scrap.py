@@ -1,75 +1,37 @@
 import itertools
-import random
-import math
-from modules import timeseries
-import numpy as np
-from scipy.stats import expon, lognorm, weibull_min
-from scipy import stats
-'''
-p = {0, 1, 2}
-children = [{0, 1}, {0, 2}, {1, 2}]
-for x, y in itertools.permutations(children, 2):
-    print(x, y)
-
-print('----------------------------------')
-for x in children:
-    # Get another cut_set(_under_test) from cut_sets
-    for y in children:
-        # Check if the two cut_set are not the same
-        if x != y:
-            print(x, y)
-
-print('----------------------------------')
-
-# is_EVEN = lambda i: i % 2 == 0
-# is_ODD = lambda i: i % 2 == 1
+from faultTreeContinuous import Gate, Event, FaultTree
 
 
-def is_EVEN(i): return i % 2 == 0
+top_event = Event('Top Event')
+or1 = Gate('OR', parent=top_event)
+basicEvent1 = Event('Basic Event 1', parent=or1)
+basicEvent2 = Event('Basic Event 2', parent=or1)
 
-
-def is_ODD(i): return i % 2 == 1
-
-
-print(is_EVEN(10))
 
 '''
-#print(random.weibullvariate(60, 100))
-#print(random.expovariate(1/50))
-#print(random.lognormvariate(5, 6))
-nu = 60
-beta = 10
-print(random.weibullvariate(nu, beta))
 
-# Calculate the MTTF of weibull equation
-# Gamma function
-print(math.gamma(4))
-gamma = math.gamma(1/beta + 1)
-mttf = nu * gamma
-print(mttf)
+top_event = Event("Top Event")
+and1 = Gate("AND", parent=top_event)
+intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
+intermediate_event_2 = Event("Intermediate Event 2", parent=and1)
+or2 = Gate("OR", parent=intermediate_event_1)
+intermediate_event_3 = Event("Intermediate Event 3", parent=or2)
+basic_event_5 = Event("Basic Event 5", parent=or2)
+voting3 = Gate("VOTING", parent=intermediate_event_2, k=2)
+intermediate_event_4 = Event("Intermediate Event 4", parent=voting3)
+basic_event_1 = Event("Basic Event 1", parent=voting3)
+basic_event_2 = Event("Basic Event 2", parent=voting3)
+and4 = Gate("AND", parent=intermediate_event_3)
+basic_event_6 = Event("Basic Event 6", parent=and4)
+basic_event_7 = Event("Basic Event 7", parent=and4)
+basic_event_8 = Event("Basic Event 8", parent=and4)
+and5 = Gate("AND", parent=intermediate_event_4)
+basic_event_3 = Event("Basic Event 3", parent=and5)
+basic_event_4 = Event("Basic Event 4", parent=and5)
+'''
+
+FT = FaultTree(top_event)
+FT.print_tree()
 
 
-size = 10000
-
-exp = timeseries._generate_numbers(['EXP', 1/5], size)
-print(exp)
-weibull = timeseries._generate_numbers(['WEIBULL', nu, beta], size)
-print(weibull)
-
-lognormal = timeseries._generate_numbers(['LOGNORMAL', 5, 2], size)
-print(lognormal)
-
-# Calculate the MTTF of lognormal equation
-ln_times = []
-for x in lognormal:
-    ln_times.append(np.log(x))
-print(np.mean(ln_times))
-print(np.std(ln_times))
-print(lognorm.fit(lognormal))
-print(weibull_min.fit(weibull))
-print(expon.fit(exp))
-undertest = exp
-print(stats.kstest(undertest, 'expon', stats.expon.fit(undertest)))
-print(stats.kstest(undertest, 'lognorm', stats.lognorm.fit(undertest)))
-print(stats.kstest(undertest, 'weibull_min', stats.weibull_min.fit(undertest)))
-
+FT.export_truth_table('truth_table_test.txt')

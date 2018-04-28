@@ -1,19 +1,36 @@
 from faultTreeContinuous import Event, Gate, FaultTree
+import time
 
+
+start = time.time()
 
 # Find way to only allow events to connect with gates and vice versa,
 # Event | Gate | Event | Gate | Event layers.
 
 '''
+Pay attention when giving distributions, so that all combinations of failures happen. This means
+that the time series for each basic event should last for about the same time.
+
+'''
+rel_exp_dist = ['EXP', 1/40]
+lognorm = ['LOGNORM', 2, 1]
+norm = ['NORMAL', 15, 2]
+main_exp_dist = ['EXP', 1/10]
+rel_weibull_dist = ['WEIBULL', 10, 8]
+main_weibull_dist = ['WEIBULL', 4, 10]
+
+'''
 topEvent = Event('Top Event')
 or1 = Gate('OR', parent=topEvent)
-basicEvent1 = Event('Basic Event 1', 'EXP', 10, 'EXP', 4, parent=or1)
-basicEvent2 = Event('Basic Event 2', 'EXP', 10, 'EXP', 4, parent=or1)
+basicEvent1 = Event('Basic Event 1', rel_exp_dist, main_exp_dist, parent=or1)
+basicEvent2 = Event('Basic Event 2', rel_exp_dist, main_exp_dist, parent=or1)
 intermed = Event('Inter event ', parent=or1)
 and1 = Gate('AND', parent=intermed)
-basicEvent3 = Event('Basic Event 3', 'EXP', 10, 'EXP', 4, parent=and1)
-basicEvent4 = Event('Basic Event 4', 'EXP', 10, 'EXP', 4, parent=and1)
+basicEvent3 = Event('Basic Event 3', rel_weibull_dist, main_weibull_dist, parent=and1)
+basicEvent4 = Event('Basic Event 4', rel_weibull_dist, main_weibull_dist, parent=and1)
 '''
+
+
 '''
 # k/N Voting Example
 topEvent = Event('Top Event')
@@ -44,30 +61,25 @@ basic_event_1 = Event("Basic Event 1", parent=and3)
 basic_event_2 = Event("Basic Event 2", parent=and3)
 '''
 
-rel_exp_dist = ['EXP', 10]
-main_exp_dist = ['EXP', 4]
-rel_weibull_dist = ['WEIBULL', 10, 8]
-main_weibull_dist = ['WEIBULL', 4, 10]
-
 
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
 intermediateEvent1 = Event('Intermediate Event 1', parent=and1)
 intermediateEvent2 = Event('Intermediate Event 2', parent=and1)
 vote2 = Gate('VOTING', parent=intermediateEvent1, k=2)
-basicEvent1 = Event('Basic Event 1', rel_exp_dist, main_weibull_dist, parent=vote2)
-basicEvent2 = Event('Basic Event 2', rel_exp_dist, main_weibull_dist, parent=vote2)
+basicEvent1 = Event('Basic Event 1', rel_exp_dist, main_exp_dist, parent=vote2)
+basicEvent2 = Event('Basic Event 2', rel_weibull_dist, main_exp_dist, parent=vote2)
 intermediateEvent3 = Event('Intermediate Event 3', parent=vote2)
 and2 = Gate('AND', parent=intermediateEvent3)
-basicEvent3 = Event('Basic Event 3', rel_exp_dist, main_weibull_dist, parent=and2)
-basicEvent4 = Event('Basic Event 4', rel_weibull_dist, main_weibull_dist,  parent=and2)
+basicEvent3 = Event('Basic Event 3', rel_exp_dist, rel_weibull_dist, parent=and2)
+basicEvent4 = Event('Basic Event 4', rel_exp_dist, main_exp_dist,  parent=and2)
 or1 = Gate('OR', parent=intermediateEvent2)
-basicEvent5 = Event('Basic Event 5', rel_weibull_dist, main_weibull_dist, parent=or1)
+basicEvent5 = Event('Basic Event 5', norm, main_exp_dist, parent=or1)
 intermediateEvent4 = Event('Intermediate Event 4', parent=or1)
 and3 = Gate('AND', parent=intermediateEvent4)
-basicEvent6 = Event('Basic Event 6', rel_weibull_dist, main_weibull_dist, parent=and3)
-basicEvent7 = Event('Basic Event 7', ['NORMAL', 15, 2], main_weibull_dist,  parent=and3)
-basicEvent8 = Event('Basic Event 8', ['LOGNORMAL', 5, 2], main_weibull_dist,  parent=and3)
+basicEvent6 = Event('Basic Event 6', rel_exp_dist, lognorm, parent=and3)
+basicEvent7 = Event('Basic Event 7', lognorm, main_exp_dist,  parent=and3)
+basicEvent8 = Event('Basic Event 8', rel_exp_dist, norm,  parent=and3)
 
 '''
 # RECONSTRUCTED FAULT TREE
@@ -92,9 +104,14 @@ basic_event_4 = Event("Basic Event 4", parent=and5)
 '''
 
 fault_tree = FaultTree(topEvent)
+# 5000 takes about 30 seconds depending on FT complexity of course
 # 10000 generation size takes a good minute
-# 100000 takes more than 10 minutes didn't wait to finish
-fault_tree.generate_basic_event_time_series(10000)
+# 30000 takes more than 30 minutes didn't wait to finish
+fault_tree.generate_basic_event_time_series(6000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
 fault_tree.export_time_series('time_series.txt')
+
+fault_tree.export_truth_table('truth_table_generated.txt')
+
+print('It took', time.time() - start, 'seconds.')

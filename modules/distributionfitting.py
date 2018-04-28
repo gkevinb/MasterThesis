@@ -66,22 +66,22 @@ def determine_distribution(samples):
     p_values['WEIBULL'] = p_value_if_weibull(samples)
     p_values['NORMAL'] = p_value_if_norm(samples)
 
-    print('P values: ' + str(p_values))
+    # print('P values: ' + str(p_values))
     p_values = possible_distributions(p_values)
-    print('P values: ' + str(p_values))
+    # print('P values: ' + str(p_values))
 
     best_fit_distribution = []
 
     if len(p_values) > 1:
         if 'LOGNORM' in p_values.keys() and 'NORMAL' in p_values.keys():
             del p_values['LOGNORM']
-            print('Deleting LOGNORM...')
+            # print('Deleting LOGNORM...')
         if 'WEIBULL' in p_values.keys() and 'NORMAL' in p_values.keys():
             del p_values['WEIBULL']
-            print('Deleting WEIBULL...')
+            # print('Deleting WEIBULL...')
         if 'WEIBULL' in p_values.keys() and 'EXP' in p_values.keys():
             del p_values['WEIBULL']
-            print('Deleting WEIBULL...')
+            #print('Deleting WEIBULL...')
 
     if len(p_values) == 1:
         distribution = p_values.popitem()

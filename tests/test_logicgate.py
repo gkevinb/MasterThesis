@@ -29,7 +29,7 @@ class KNVotingGateTestCase(unittest.TestCase):
         self.assertEqual(logicgate._k_voting_evaluate_slice(self.slice_, 5), HIGH)
 
     def test_Evaluate(self):
-        self.assertEqual(logicgate.evaluate(2, self.streams), [2, 5, 6, 7])
+        self.assertEqual(logicgate.evaluate_time_series(2, self.streams), [2, 5, 6, 7])
 
 
 class AndGateTestCase(unittest.TestCase):
@@ -40,7 +40,26 @@ class AndGateTestCase(unittest.TestCase):
         self.data_streams = [x, y]
 
     def test_Evaluate(self):
-        self.assertEqual(logicgate.evaluate('AND', self.data_streams), [8.618904143724958, 18.760026889953128])
+        self.assertEqual(logicgate.evaluate_time_series('AND', self.data_streams),
+                         [8.618904143724958, 18.760026889953128])
+
+
+class BooleanLogicTestCase(unittest.TestCase):
+
+    def test_And(self):
+        self.assertTrue(logicgate.evaluate_boolean_logic('AND', [True, True, True]))
+        self.assertFalse(logicgate.evaluate_boolean_logic('AND', [True, True, False]))
+        self.assertFalse(logicgate.evaluate_boolean_logic('AND', [False, False, False]))
+
+    def test_Or(self):
+        self.assertTrue(logicgate.evaluate_boolean_logic('OR', [True, True, True]))
+        self.assertTrue(logicgate.evaluate_boolean_logic('OR', [True, True, False]))
+        self.assertFalse(logicgate.evaluate_boolean_logic('OR', [False, False, False]))
+
+    def test_kN_Voting(self):
+        self.assertFalse(logicgate.evaluate_boolean_logic(2, [True, True, False, False]))
+        self.assertFalse(logicgate.evaluate_boolean_logic(2, [True, False, False]))
+        self.assertTrue(logicgate.evaluate_boolean_logic(2, [True, True, False]))
 
 
 if __name__ == '__main__':

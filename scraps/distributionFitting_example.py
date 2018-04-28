@@ -6,12 +6,12 @@ from modules import distributionfitting as DF
 size = 100000
 x = scipy.arange(size)
 # FIX NAMING CONVENTION LOGNORM OR LOGNORMAL!!! AND LOOK INTO OTHER ONES AS WELL!!!!
-#y = timeseries._generate_numbers(['LOGNORMAL', 5, 2], size)
+y = timeseries._generate_numbers(['LOGNORMAL', 2, 1], size)
 #y = timeseries._generate_numbers(['NORMAL', 15, 2], size)
 
 #y = timeseries._generate_numbers(['EXP', 1/5], size)
 #y = timeseries._generate_numbers(['WEIBULL', 60, 10], size)
-y = timeseries._generate_numbers(['WEIBULL', 10, 8], size)
+#y = timeseries._generate_numbers(['WEIBULL', 10, 8], size)
 
 
 '''
