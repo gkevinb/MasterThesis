@@ -107,10 +107,10 @@ fault_tree = FaultTree(topEvent)
 # 5000 takes about 30 seconds depending on FT complexity of course
 # 10000 generation size takes a good minute
 # 30000 takes more than 30 minutes didn't wait to finish
-fault_tree.generate_basic_event_time_series(5000)
+fault_tree.generate_basic_event_time_series(6000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series('time_series_3.txt')
+fault_tree.export_time_series('time_series.txt')
 
 fault_tree.export_truth_table('truth_table_generated.txt')
 

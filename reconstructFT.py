@@ -7,7 +7,7 @@ start = time.time()
 
 FT = FaultTree()
 
-FT.import_time_series('time_series_3.txt')
+FT.import_time_series('time_series.txt')
 FT.display_event_time_series(8)
 print('Number of basic event: ' + str(FT.number_of_basic_events))
 TOP_EVENT = FT.top_event_index
