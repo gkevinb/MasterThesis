@@ -1,6 +1,9 @@
 import collections
 import itertools
 import importlib
+from scipy.stats import expon, norm, weibull_min, lognorm
+import math
+from functools import reduce
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
@@ -24,6 +27,8 @@ class Event(NodeMixin):
         self.name = name
         self.reliability_distribution = reliability_distribution
         self.maintainability_distribution = maintainability_distribution
+        self.reliability_function = None
+        self.maintainability_function = None
         self.MTTF = 0
         self.MTTR = 0
         self.parent = parent
@@ -50,6 +55,27 @@ class Event(NodeMixin):
     def determine_reliability_distribution(self):
         time_of_failures = timeseries.calculate_time_to_failures(self.time_series)
         self.reliability_distribution = DF.determine_distribution(time_of_failures)
+
+    def calculate_reliability_function(self, linspace):
+        # Create one for UNIDENTIFIED DISTRIBUTION!!!!!!!!!!!!!!!!
+        rel_dist = self.reliability_distribution
+        if rel_dist[0] == 'EXP':
+            lambda_ = rel_dist[1]
+            scale_ = 1 / lambda_
+            self.reliability_function = 1 - expon.cdf(linspace, scale=scale_)
+        if rel_dist[0] == 'WEIBULL':
+            scale = rel_dist[1]
+            shape = rel_dist[2]
+            self.reliability_function = 1 - weibull_min.cdf(linspace, shape, loc=0, scale=scale)
+        if rel_dist[0] == 'NORMAL':
+            mu = rel_dist[1]
+            sigma = rel_dist[2]
+            self.reliability_function = 1 - norm.cdf(linspace, loc=mu, scale=sigma)
+        if rel_dist[0] == 'LOGNORM':
+            mu = rel_dist[1]
+            sigma = rel_dist[2]
+            scale = math.exp(mu)
+            self.reliability_function = 1 - lognorm.cdf(linspace, sigma, loc=0, scale=scale)
 
     def determine_maintainability_distribution(self):
         time_of_repairs = timeseries.calculate_time_to_repairs(self.time_series)
@@ -111,6 +137,45 @@ class Gate(NodeMixin):
         fault_logic = self.determine_fault_logic()
 
         self.parent.state = logicgate.evaluate_boolean_logic(fault_logic, states)
+
+    def evaluate_reliability(self):
+
+        def k_N_voting(k, N, input_reliabilities):
+            """
+            Pseudocode on page 38 of Fault tree analysis: A survey of the state-of-the-art
+            in modeling, analysis and tools
+            Using recursion to calculate reliability when the gate is k/N Voting
+
+            :param k:
+            :param N:
+            :param input_reliabilities:
+            :return:
+            """
+            print(input_reliabilities)
+            if k == 0:
+                return 1
+            if k == N:
+                return reduce(lambda x, y: x * y, input_reliabilities)
+
+            result = input_reliabilities[0] * k_N_voting(k - 1, N - 1, input_reliabilities[1:]) + \
+                     (1 - input_reliabilities[0]) * k_N_voting(k, N - 1, input_reliabilities[1:])
+            return result
+
+        reliabilities = 1
+        if self.name == 'AND':
+            for child in self.children:
+                reliabilities *= (1 - child.reliability_function)
+            self.parent.reliability_function = 1 - reliabilities
+        if self.name == 'OR':
+            for child in self.children:
+                reliabilities *= child.reliability_function
+            self.parent.reliability_function = reliabilities
+        if self.name == 'VOTING':
+            child_reliability_functions = []
+            N = len(self.children)
+            for child in self.children:
+                child_reliability_functions.append(child.reliability_function)
+            self.parent.reliability_function = k_N_voting(self.k, N, child_reliability_functions)
 
     def __repr__(self):
         if self.k is None:
@@ -186,11 +251,27 @@ class FaultTree:
         if rel_dist[0] == 'LOGNORM':
             DP.plot_lognorm(name, reliability, rel_dist, times)
 
+    def plot_maintainability_distribution_of_basic_event_(self, basic_event_id):
+        basic_event = self.get_basic_event_(basic_event_id)
+        name = basic_event.name
+        maintainability = 'Maintainability'
+        main_dist = basic_event.maintainability_distribution
+        times = timeseries.calculate_time_to_repairs(basic_event.time_series)
+
+        if main_dist[0] == 'EXP':
+            DP.plot_exp(name, maintainability, main_dist, times)
+        if main_dist[0] == 'WEIBULL':
+            DP.plot_weibull(name, maintainability, main_dist, times)
+        if main_dist[0] == 'NORMAL':
+            DP.plot_normal(name, maintainability, main_dist, times)
+        if main_dist[0] == 'LOGNORM':
+            DP.plot_lognorm(name, maintainability, main_dist, times)
+
     def plot_distribution_of_top_event(self):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
 
-        rel_dist = DF.determine_distribution(times)
-        print(rel_dist)
+        #rel_dist = DF.determine_distribution(times)
+        #print(rel_dist)
         DP.plot_arbitrary_distribution('Top Event', times)
         #DP.plot_lognorm('Top Event', 'Reliability', rel_dist, times)
 
@@ -223,6 +304,14 @@ class FaultTree:
         gates = self._get_gates_reversed()
         for gate in gates:
             gate.evaluate_states()
+
+    def calculate_reliability(self, linspace):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_reliability_function(linspace)
+
+        gates = self._get_gates_reversed()
+        for gate in gates:
+            gate.evaluate_reliability()
 
     def print_tree(self):
         """
