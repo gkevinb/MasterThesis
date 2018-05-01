@@ -3,15 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compareFTs.py" beforeDir="false" afterPath="$PROJECT_DIR$/compareFTs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/faultTreeContinuous.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeContinuous.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generateFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateFT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generatedFT_method.py" beforeDir="false" afterPath="$PROJECT_DIR$/generatedFT_method.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/distributionplotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/distributionplotting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reconstructFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/reconstructFT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraps/distribution_plotting_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraps/distribution_plotting_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reliability.py" beforeDir="false" afterPath="$PROJECT_DIR$/reliability.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_series.txt" beforeDir="false" afterPath="$PROJECT_DIR$/time_series.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/truth_table_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/truth_table_generated.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/truth_table_reconstructed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/truth_table_reconstructed.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3432">
-              <caret line="274" column="27" selection-start-line="274" selection-start-column="27" selection-end-line="274" selection-end-column="27" />
+            <state relative-caret-position="2771">
+              <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -40,8 +38,8 @@
       <file leaf-file-name="reconstructFT.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reconstructFT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="1445">
+              <caret line="85" selection-start-line="85" selection-end-line="86" selection-end-column="34" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -52,64 +50,20 @@
       <file leaf-file-name="reliability.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reliability.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
+            <state relative-caret-position="816">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="k_N_voting_reliability.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scraps/k_N_voting_reliability.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-40">
-              <caret selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="faultTreeDiscrete.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="111" column="46" lean-forward="true" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="distribution_plotting_example.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scraps/distribution_plotting_example.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="generateFT.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generateFT.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="truth_table_generated.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/truth_table_generated.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="distributionplotting.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="189" column="40" lean-forward="true" selection-start-line="189" selection-start-column="40" selection-end-line="189" selection-end-column="40" />
+            <state relative-caret-position="5644">
+              <caret line="332" column="32" selection-start-line="332" selection-start-column="32" selection-end-line="332" selection-end-column="32" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -117,11 +71,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compareFTs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compareFTs.py">
+      <file leaf-file-name="analysisFT.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/analysisFT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="257">
+              <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generateFT.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generateFT.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1411">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,11 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DISPLAY_UP_TO</find>
-      <find>mean_time_to_failure</find>
-      <find>read_time_series_from_file</find>
-      <find>self.file_name</find>
-      <find>compress_mutually_exclusive_sets</find>
       <find>calculate_time_differences</find>
       <find>load_time_series_into_basic_events</find>
       <find>sets</find>
@@ -167,6 +131,11 @@
       <find>stats</find>
       <find>expon</find>
       <find>ftr</find>
+      <find>plot</find>
+      <find>labels</find>
+      <find>legend</find>
+      <find>rel_weibull_dist</find>
+      <find>lognorm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/metropolis.py" />
         <option value="$PROJECT_DIR$/andGate.py" />
         <option value="$PROJECT_DIR$/randomGen.py" />
         <option value="$PROJECT_DIR$/treeExample.py" />
@@ -212,7 +180,6 @@
         <option value="$PROJECT_DIR$/generateFaultTree.py" />
         <option value="$PROJECT_DIR$/reconstruct_FT_new.py" />
         <option value="$PROJECT_DIR$/truth_table_reconstructed" />
-        <option value="$PROJECT_DIR$/compareFTs.py" />
         <option value="$PROJECT_DIR$/modules/distributionfitting.py" />
         <option value="$PROJECT_DIR$/scraps/fitter_distFitting.py" />
         <option value="$PROJECT_DIR$/scraps/distributionFitting_example.py" />
@@ -222,10 +189,12 @@
         <option value="$PROJECT_DIR$/scraps/distribution_plotting_example.py" />
         <option value="$PROJECT_DIR$/scraps/k_N_voting_reliability.py" />
         <option value="$PROJECT_DIR$/reliability.py" />
-        <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
         <option value="$PROJECT_DIR$/generateFT.py" />
         <option value="$PROJECT_DIR$/reconstructFT.py" />
+        <option value="$PROJECT_DIR$/compareFTs.py" />
         <option value="$PROJECT_DIR$/modules/distributionplotting.py" />
+        <option value="$PROJECT_DIR$/faultTreeContinuous.py" />
+        <option value="$PROJECT_DIR$/analysisFT.py" />
       </list>
     </option>
   </component>
@@ -240,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,7 +236,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,8 +261,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.compareFTs">
-    <configuration name="compareFTs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.analysisFT">
+    <configuration name="analysisFT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -305,7 +274,25 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/compareFTs.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysisFT.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="faultTreeContinuous" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faultTreeContinuous.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -324,24 +311,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generateFT.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="k_N_voting_reliability" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Thesis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scraps" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scraps/k_N_voting_reliability.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -386,17 +355,17 @@
     <list>
       <item itemvalue="Python.reconstructFT" />
       <item itemvalue="Python.reliability" />
-      <item itemvalue="Python.k_N_voting_reliability" />
       <item itemvalue="Python.generateFT" />
-      <item itemvalue="Python.compareFTs" />
+      <item itemvalue="Python.analysisFT" />
+      <item itemvalue="Python.faultTreeContinuous" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.compareFTs" />
+        <item itemvalue="Python.analysisFT" />
+        <item itemvalue="Python.faultTreeContinuous" />
         <item itemvalue="Python.reconstructFT" />
         <item itemvalue="Python.generateFT" />
         <item itemvalue="Python.reliability" />
-        <item itemvalue="Python.k_N_voting_reliability" />
       </list>
     </recent_temporary>
   </component>
@@ -449,10 +418,9 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.21944444" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.21944444" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.39027777" side_tool="true" weight="0.30542454" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32665095" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6097222" weight="0.35023585" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49753347" weight="0.3282353" />
@@ -466,6 +434,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32665095" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -503,13 +472,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scraps/treeExample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraps/treeExample.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -614,24 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generatedFT_method.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11305">
           <caret line="666" column="4" selection-start-line="666" selection-start-column="4" selection-end-line="666" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_series.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="2" column="44590" selection-start-line="2" selection-start-column="44590" selection-end-line="2" selection-end-column="44590" />
         </state>
       </provider>
     </entry>
@@ -670,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraps/distributionFitting_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -691,30 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/distributionfitting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244">
-          <caret line="90" column="73" lean-forward="true" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/seaborn_distfitting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="111" column="46" lean-forward="true" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -722,76 +639,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="109" column="3" lean-forward="true" selection-start-line="109" selection-start-column="3" selection-end-line="109" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.1/python_stubs/-777881331/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="477" column="4" selection-start-line="477" selection-start-column="4" selection-end-line="477" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scraps/distribution_plotting_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/truth_table_generated.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generateFT.py">
+    <entry file="file://$PROJECT_DIR$/scraps/k_N_voting_reliability.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reliability.py">
+    <entry file="file://$PROJECT_DIR$/scraps/seaborn_distfitting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/distributionfitting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="90" column="73" lean-forward="true" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_series.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-470">
+          <caret line="2" column="18457" lean-forward="true" selection-start-line="2" selection-start-column="18457" selection-end-line="2" selection-end-column="18457" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-598">
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compareFTs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reconstructFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="1445">
+          <caret line="85" selection-start-line="85" selection-end-line="86" selection-end-column="34" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generatedFT_method.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reliability.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="189" column="40" lean-forward="true" selection-start-line="189" selection-start-column="40" selection-end-line="189" selection-end-column="40" />
+        <state relative-caret-position="5644">
+          <caret line="332" column="32" selection-start-line="332" selection-start-column="32" selection-end-line="332" selection-end-column="32" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compareFTs.py">
+    <entry file="file://$PROJECT_DIR$/generateFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/k_N_voting_reliability.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret selection-end-column="28" />
+        <state relative-caret-position="1411">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3432">
-          <caret line="274" column="27" selection-start-line="274" selection-start-column="27" selection-end-line="274" selection-end-column="27" />
+        <state relative-caret-position="2771">
+          <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysisFT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>

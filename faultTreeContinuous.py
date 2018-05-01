@@ -151,7 +151,6 @@ class Gate(NodeMixin):
             :param input_reliabilities:
             :return:
             """
-            print(input_reliabilities)
             if k == 0:
                 return 1
             if k == N:
@@ -235,7 +234,7 @@ class FaultTree:
         # If can't find it return None.
         return None
 
-    def plot_reliability_distribution_of_basic_event_(self, basic_event_id):
+    def plot_reliability_distribution_of_basic_event_(self, basic_event_id, theoretical_distribution=None):
         basic_event = self.get_basic_event_(basic_event_id)
         name = basic_event.name
         reliability = 'Reliability'
@@ -243,15 +242,16 @@ class FaultTree:
         times = timeseries.calculate_time_to_failures(basic_event.time_series)
 
         if rel_dist[0] == 'EXP':
-            DP.plot_exp(name, reliability, rel_dist, times)
+            DP.plot_exp(name, reliability, rel_dist, times, theoretical_distribution)
         if rel_dist[0] == 'WEIBULL':
-            DP.plot_weibull(name, reliability, rel_dist, times)
+            DP.plot_weibull(name, reliability, rel_dist, times, theoretical_distribution)
         if rel_dist[0] == 'NORMAL':
-            DP.plot_normal(name, reliability, rel_dist, times)
+            DP.plot_normal(name, reliability, rel_dist, times, theoretical_distribution)
         if rel_dist[0] == 'LOGNORM':
-            DP.plot_lognorm(name, reliability, rel_dist, times)
+            DP.plot_lognorm(name, reliability, rel_dist, times, theoretical_distribution)
+        # IF CAN'T FIND DISTRIBUTION
 
-    def plot_maintainability_distribution_of_basic_event_(self, basic_event_id):
+    def plot_maintainability_distribution_of_basic_event_(self, basic_event_id, theoretical_distribution=None):
         basic_event = self.get_basic_event_(basic_event_id)
         name = basic_event.name
         maintainability = 'Maintainability'
@@ -259,20 +259,21 @@ class FaultTree:
         times = timeseries.calculate_time_to_repairs(basic_event.time_series)
 
         if main_dist[0] == 'EXP':
-            DP.plot_exp(name, maintainability, main_dist, times)
+            DP.plot_exp(name, maintainability, main_dist, times, theoretical_distribution)
         if main_dist[0] == 'WEIBULL':
-            DP.plot_weibull(name, maintainability, main_dist, times)
+            DP.plot_weibull(name, maintainability, main_dist, times, theoretical_distribution)
         if main_dist[0] == 'NORMAL':
-            DP.plot_normal(name, maintainability, main_dist, times)
+            DP.plot_normal(name, maintainability, main_dist, times, theoretical_distribution)
         if main_dist[0] == 'LOGNORM':
-            DP.plot_lognorm(name, maintainability, main_dist, times)
+            DP.plot_lognorm(name, maintainability, main_dist, times, theoretical_distribution)
+        # IF CAN'T FIND DISTRIBUTION
 
-    def plot_distribution_of_top_event(self):
+    def plot_distribution_of_top_event(self, linspace, theoretical):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
 
-        #rel_dist = DF.determine_distribution(times)
-        #print(rel_dist)
-        DP.plot_arbitrary_distribution('Top Event', times)
+        rel_dist = DF.determine_distribution(times)
+        print(rel_dist)
+        DP.plot_arbitrary_distribution('Top Event', times, linspace, theoretical)
         #DP.plot_lognorm('Top Event', 'Reliability', rel_dist, times)
 
     def get_top_event_state(self):

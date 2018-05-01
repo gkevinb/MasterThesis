@@ -59,6 +59,18 @@ FT.print_distributions_of_basic_events()
 
 FT.print_tree()
 
+rel_exp_dist = ['EXP', 1/40]
+lognorm = ['LOGNORM', 2, 1]
+norm = ['NORMAL', 15, 2]
+main_exp_dist = ['EXP', 1/10]
+rel_weibull_dist = ['WEIBULL', 10, 8]
+main_weibull_dist = ['WEIBULL', 4, 10]
+
+FT.plot_reliability_distribution_of_basic_event_(2, rel_weibull_dist)
+FT.plot_maintainability_distribution_of_basic_event_(3, lognorm)
+
+plt.show()
+'''
 FT.calculate_time_series()
 
 FT.print_tree()
@@ -68,18 +80,20 @@ print(FT.check_if_top_event_same())
 
 FT.export_truth_table('truth_table_reconstructed.txt')
 
-#FT.plot_maintainability_distribution_of_basic_event_(6)
+# FT.plot_maintainability_distribution_of_basic_event_(6)
 
 
 linspace = np.linspace(0, 100, 1000)
 FT.calculate_reliability(linspace)
 
-print(FT.top_event.reliability_function)
+# print(FT.top_event.reliability_function)
 
 fig, subplot = plt.subplots(1, 1)
 subplot.plot(linspace, FT.top_event.reliability_function)
+subplot.set_title('Top event calculated')
 plt.show(block=False)
 
 FT.plot_distribution_of_top_event()
 
 print('It took', time.time() - start, 'seconds.')
+'''

@@ -48,7 +48,7 @@ FT = FaultTree(topEvent)
 FT.print_tree()
 
 # FT.plot_reliability_distribution_of_basic_event_(1)
-# FT.plot_reliability_distribution_of_basic_event_(1)
+FT.plot_reliability_distribution_of_basic_event_(2)
 
 linspace = np.linspace(0, 100, 1000)
 FT.calculate_reliability(linspace)
