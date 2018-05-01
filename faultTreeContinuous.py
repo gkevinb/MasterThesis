@@ -2,6 +2,7 @@ import collections
 import itertools
 import importlib
 from scipy.stats import expon, norm, weibull_min, lognorm
+from scipy import integrate
 import math
 from functools import reduce
 from anytree import NodeMixin, RenderTree, LevelOrderIter
@@ -46,18 +47,23 @@ class Event(NodeMixin):
                                                            self.maintainability_distribution,
                                                            size)
 
-    def calculate_MTTF(self):
+    def calculate_MTTF_from_time_series(self):
         self.MTTF = timeseries.calculate_mean_time_to_failure(self.time_series)
 
-    def calculate_MTTR(self):
+    def calculate_MTTR_from_time_series(self):
         self.MTTR = timeseries.calculate_mean_time_to_repair(self.time_series)
+
+    def calculate_MTTF_from_distribution(self):
+        self.MTTF = DF.calculate_mttf_or_mttr_from_distribution(self.reliability_distribution)
+
+    def calculate_MTTR_from_distribution(self):
+        self.MTTR = DF.calculate_mttf_or_mttr_from_distribution(self.maintainability_distribution)
 
     def determine_reliability_distribution(self):
         time_of_failures = timeseries.calculate_time_to_failures(self.time_series)
         self.reliability_distribution = DF.determine_distribution(time_of_failures)
 
     def calculate_reliability_function(self, linspace):
-        # Create one for UNIDENTIFIED DISTRIBUTION!!!!!!!!!!!!!!!!
         rel_dist = self.reliability_distribution
         if rel_dist[0] == 'EXP':
             lambda_ = rel_dist[1]
@@ -80,6 +86,26 @@ class Event(NodeMixin):
     def determine_maintainability_distribution(self):
         time_of_repairs = timeseries.calculate_time_to_repairs(self.time_series)
         self.maintainability_distribution = DF.determine_distribution(time_of_repairs)
+
+    def calculate_maintainability_function(self, linspace):
+        main_dist = self.maintainability_distribution
+        if main_dist[0] == 'EXP':
+            lambda_ = main_dist[1]
+            scale_ = 1 / lambda_
+            self.maintainability_function = expon.cdf(linspace, scale=scale_)
+        if main_dist[0] == 'WEIBULL':
+            scale = main_dist[1]
+            shape = main_dist[2]
+            self.maintainability_function = weibull_min.cdf(linspace, shape, loc=0, scale=scale)
+        if main_dist[0] == 'NORMAL':
+            mu = main_dist[1]
+            sigma = main_dist[2]
+            self.maintainability_function = norm.cdf(linspace, loc=mu, scale=sigma)
+        if main_dist[0] == 'LOGNORM':
+            mu = main_dist[1]
+            sigma = main_dist[2]
+            scale = math.exp(mu)
+            self.maintainability_function = lognorm.cdf(linspace, sigma, loc=0, scale=scale)
 
     def __repr__(self):
         if EVENT_PRINT == 'time_series':
@@ -138,7 +164,7 @@ class Gate(NodeMixin):
 
         self.parent.state = logicgate.evaluate_boolean_logic(fault_logic, states)
 
-    def evaluate_reliability(self):
+    def evaluate_reliability_maintainability(self):
 
         def k_N_voting(k, N, input_reliabilities):
             """
@@ -161,20 +187,36 @@ class Gate(NodeMixin):
             return result
 
         reliabilities = 1
+        maintainabilities = 1
+
         if self.name == 'AND':
             for child in self.children:
                 reliabilities *= (1 - child.reliability_function)
+                maintainabilities *= (1 - child.maintainability_function)
+
             self.parent.reliability_function = 1 - reliabilities
+            self.parent.maintainability_function = 1 - maintainabilities
+
         if self.name == 'OR':
             for child in self.children:
                 reliabilities *= child.reliability_function
+
+                maintainabilities *= child.maintainability_function
+
             self.parent.reliability_function = reliabilities
+            self.parent.maintainability_function = maintainabilities
+
         if self.name == 'VOTING':
             child_reliability_functions = []
+            child_maintainability_functions = []
             N = len(self.children)
             for child in self.children:
                 child_reliability_functions.append(child.reliability_function)
+
+                child_maintainability_functions.append(child.maintainability_function)
+
             self.parent.reliability_function = k_N_voting(self.k, N, child_reliability_functions)
+            self.parent.maintainability_function = k_N_voting(self.k, N, child_maintainability_functions)
 
     def __repr__(self):
         if self.k is None:
@@ -241,14 +283,7 @@ class FaultTree:
         rel_dist = basic_event.reliability_distribution
         times = timeseries.calculate_time_to_failures(basic_event.time_series)
 
-        if rel_dist[0] == 'EXP':
-            DP.plot_exp(name, reliability, rel_dist, times, theoretical_distribution)
-        if rel_dist[0] == 'WEIBULL':
-            DP.plot_weibull(name, reliability, rel_dist, times, theoretical_distribution)
-        if rel_dist[0] == 'NORMAL':
-            DP.plot_normal(name, reliability, rel_dist, times, theoretical_distribution)
-        if rel_dist[0] == 'LOGNORM':
-            DP.plot_lognorm(name, reliability, rel_dist, times, theoretical_distribution)
+        DP.plot_distributions(name, reliability, rel_dist, times, theoretical_distribution)
         # IF CAN'T FIND DISTRIBUTION
 
     def plot_maintainability_distribution_of_basic_event_(self, basic_event_id, theoretical_distribution=None):
@@ -258,23 +293,21 @@ class FaultTree:
         main_dist = basic_event.maintainability_distribution
         times = timeseries.calculate_time_to_repairs(basic_event.time_series)
 
-        if main_dist[0] == 'EXP':
-            DP.plot_exp(name, maintainability, main_dist, times, theoretical_distribution)
-        if main_dist[0] == 'WEIBULL':
-            DP.plot_weibull(name, maintainability, main_dist, times, theoretical_distribution)
-        if main_dist[0] == 'NORMAL':
-            DP.plot_normal(name, maintainability, main_dist, times, theoretical_distribution)
-        if main_dist[0] == 'LOGNORM':
-            DP.plot_lognorm(name, maintainability, main_dist, times, theoretical_distribution)
-        # IF CAN'T FIND DISTRIBUTION
+        DP.plot_distributions(name, maintainability, main_dist, times, theoretical_distribution)
 
-    def plot_distribution_of_top_event(self, linspace, theoretical=None):
+    def plot_reliability_distribution_of_top_event(self, linspace, theoretical=None):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
-
         rel_dist = DF.determine_distribution(times)
         print(rel_dist)
-        DP.plot_arbitrary_distribution('Top Event', times, linspace, theoretical)
-        #DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
+        DP.plot_arbitrary_distribution('Top Event', 'Reliability', times, linspace, theoretical)
+        # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
+
+    def plot_maintainability_distribution_of_top_event(self, linspace, theoretical=None):
+        times = timeseries.calculate_time_to_repairs(self.top_event.time_series)
+        main_dist = DF.determine_distribution(times)
+        print(main_dist)
+        DP.plot_arbitrary_distribution('Top Event', 'Maintainability', times, linspace, theoretical)
+        # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
     def get_top_event_state(self):
         return self.top_event.state
@@ -306,13 +339,14 @@ class FaultTree:
         for gate in gates:
             gate.evaluate_states()
 
-    def calculate_reliability(self, linspace):
+    def calculate_reliability_maintainability(self, linspace):
         for basic_event in self._get_basic_events():
             basic_event.calculate_reliability_function(linspace)
+            basic_event.calculate_maintainability_function(linspace)
 
         gates = self._get_gates_reversed()
         for gate in gates:
-            gate.evaluate_reliability()
+            gate.evaluate_reliability_maintainability()
 
     def print_tree(self):
         """
@@ -444,31 +478,37 @@ class FaultTree:
         for i in self.basic_events_indexing():
             print('Basic Event ' + str(i) + ' : ' + str(self.time_series[i][:display_up_to]))
 
-    def calculate_mean_time_to_failure(self, event):
-        # FUNCTION IS BROKEN RIGHT NOW, MAYBE MAKE IT DYNAMIC SO IT'S EVALUATED FOR THE EVENT PASSED IN AS ARGUMENT
-        """
-        Calculate mean time to failure for a certain event
-        :param event: The event to calculate the mean time to failure of.
-        :return: Mean time to failure
-        """
-        pass
+    def calculate_MTTF_of_top_event_from_time_series(self):
+        self.top_event.calculate_MTTF_from_time_series()
 
-    def calculate_mean_time_to_repair(self, event):
-        # FUNCTION IS BROKEN RIGHT NOW, MAYBE MAKE IT DYNAMIC SO IT'S EVALUATED FOR THE EVENT PASSED IN AS ARGUMENT
-        """
-        Calculate mean time to repair for a certain event
-        :param event: The event to calculate the mean time to repair of.
-        :return: Mean time to repair
-        """
-        pass
+    def calculate_MTTR_of_top_event_from_time_series(self):
+        self.top_event.calculate_MTTR_from_time_series()
 
-    def calculate_MTTF_of_basic_events(self):
+    def calculate_MTTF_of_basic_events_from_time_series(self):
         for basic_event in self._get_basic_events():
-            basic_event.calculate_MTTF()
+            basic_event.calculate_MTTF_from_time_series()
 
-    def calculate_MTTR_of_basic_events(self):
+    def calculate_MTTR_of_basic_events_from_time_series(self):
         for basic_event in self._get_basic_events():
-            basic_event.calculate_MTTR()
+            basic_event.calculate_MTTR_from_time_series()
+
+    def calculate_MTTF_of_top_event_from_reliability_function(self, linspace):
+        y_int = integrate.cumtrapz(self.top_event.reliability_function, linspace, initial=0)
+        self.top_event.MTTF = y_int[-1]
+
+    def calculate_MTTR_of_top_event_from_maintainability_function(self, linspace):
+        # Its 1 - maintainability, since it has to be in the shape of reliability,
+        # meaning it will go down to zero
+        y_int = integrate.cumtrapz(1 - self.top_event.maintainability_function, linspace, initial=0)
+        self.top_event.MTTR = y_int[-1]
+
+    def calculate_MTTF_of_basic_events_from_distributions(self):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_MTTF_from_distribution()
+
+    def calculate_MTTR_of_basic_events_from_distributions(self):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_MTTR_from_distribution()
 
     def print_MTTF_MTTR_of_basic_events(self):
         for basic_event in self._get_basic_events():

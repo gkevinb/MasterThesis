@@ -12,7 +12,6 @@ def differentiate(x, y):
     dy = np.zeros(y.shape, np.float)
     dy[0:-1] = np.diff(y) / np.diff(x)
     dy[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
-
     return dy
 
 
@@ -53,170 +52,142 @@ def setup_fig_subplots(metric):
     figure_width = 0
 
     if metric == 'Reliability':
-        num_of_subplots = 3
+        num_of_subplots = 4
         figure_width = 13
     if metric == 'Maintainability':
-        num_of_subplots = 2
+        num_of_subplots = 3
         figure_width = 9
 
     fig, subplots = plt.subplots(1, num_of_subplots, figsize=(figure_width, 4))
     return fig, subplots
 
-def plot_exp(name, metric, distribution, times, theoretical_distribution=None):
-    lambda_ = distribution[1]
-    scale_ = 1/lambda_
 
-    theoretical_scale = None
-    # Checks whether there is a theoretical distribution to compare it to
-    if theoretical_distribution is not None:
-        theoretical_lambda = theoretical_distribution[1]
-        theoretical_scale = 1/theoretical_lambda
+def name_of_distribution(distribution):
+    if distribution[0] == 'EXP':
+        return 'Exponential'
 
-    fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    if distribution[0] == 'WEIBULL':
+        return 'Weibull'
 
-    linspace = np.linspace(expon.ppf(0.001, scale=scale_), expon.ppf(0.999, scale=scale_), 1000)
+    if distribution[0] == 'NORMAL':
+        return 'Normal'
 
-    # First plot PDF
-    if theoretical_distribution is not None:
-        subplots[0].plot(linspace, expon.pdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6, label='Reconstructed')
-        subplots[0].plot(linspace, expon.pdf(linspace, scale=theoretical_scale), 'b-', lw=1, alpha=0.6,
-                         label='Theoretical')
-        subplots[0].legend()
-    else:
-        subplots[0].plot(linspace, expon.pdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6)
-
-    if times != EMPTY_LIST:
-        if metric == 'Reliability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
-        if metric == 'Maintainability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
-        subplots[0].legend()
-    subplots[0].set_title('Exponential PDF')
+    if distribution[0] == 'LOGNORM':
+        return 'Lognormal'
 
 
-    # Second plot CDF and/or Maintainability
-    if theoretical_distribution is not None:
-        subplots[1].plot(linspace, expon.cdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6, label='Reconstructed')
-        subplots[1].plot(linspace, expon.cdf(linspace, scale=theoretical_scale), 'b-', lw=1, alpha=0.6,
-                         label='Theoretical')
-        subplots[1].legend()
-    else:
-        subplots[1].plot(linspace, expon.cdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6)
-    if metric == 'Reliability':
-        subplots[1].set_title('Exponential CDF')
-    if metric == 'Maintainability':
-        subplots[1].set_title('Exponential CDF (Maintainability)')
+def calculate_pdf(distribution, linspace):
+    if distribution[0] == 'EXP':
+        lambda_ = distribution[1]
+        scale_ = 1 / lambda_
+        return expon.pdf(linspace, scale=scale_)
 
-    # Third plot Reliability
-    if metric == 'Reliability':
-        if theoretical_distribution is not None:
-            subplots[2].plot(linspace, 1 - expon.cdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6,
-                             label='Reconstructed')
-            subplots[2].plot(linspace, 1 - expon.cdf(linspace, scale=theoretical_scale), 'b-', lw=1, alpha=0.6,
-                             label='Theoretical')
-            subplots[2].legend()
-        else:
-            subplots[2].plot(linspace, 1 - expon.cdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6)
-        subplots[2].set_title(metric)
+    if distribution[0] == 'WEIBULL':
+        scale = distribution[1]
+        shape = distribution[2]
+        return weibull_min.pdf(linspace, shape, loc=0, scale=scale)
 
-    print(expon.pdf(linspace, scale=scale_) / (1 - expon.cdf(linspace, scale=scale_)))
+    if distribution[0] == 'NORMAL':
+        mu = distribution[1]
+        sigma = distribution[2]
+        return norm.pdf(linspace, loc=mu, scale=sigma)
 
-    #plt.show()
-    plt.show(block=False)
+    if distribution[0] == 'LOGNORM':
+        mu = distribution[1]
+        sigma = distribution[2]
+        scale = math.exp(mu)
+        return lognorm.pdf(linspace, sigma, loc=0, scale=scale)
 
 
-def plot_normal(name, metric, distribution, times, theoretical_distribution=None):
-    mu = distribution[1]
-    sigma = distribution[2]
+def calculate_cdf(distribution, linspace):
+    if distribution[0] == 'EXP':
+        lambda_ = distribution[1]
+        scale_ = 1 / lambda_
+        return expon.cdf(linspace, scale=scale_)
 
-    theoretical_mu = None
-    theoretical_sigma = None
-    # Checks whether there is a theoretical distribution to compare it to
-    if theoretical_distribution is not None:
-        theoretical_mu = theoretical_distribution[1]
-        theoretical_sigma = theoretical_distribution[2]
+    if distribution[0] == 'WEIBULL':
+        scale = distribution[1]
+        shape = distribution[2]
+        return weibull_min.cdf(linspace, shape, loc=0, scale=scale)
 
-    fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    if distribution[0] == 'NORMAL':
+        mu = distribution[1]
+        sigma = distribution[2]
+        return norm.cdf(linspace, loc=mu, scale=sigma)
 
-    linspace = np.linspace(norm.ppf(0.001, loc=mu, scale=sigma), norm.ppf(0.999, loc=mu, scale=sigma), 1000)
-
-    # First plot PDF
-    if theoretical_distribution is not None:
-        subplots[0].plot(linspace, norm.pdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[0].plot(linspace, norm.pdf(linspace, loc=theoretical_mu, scale=theoretical_sigma),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[0].legend()
-    else:
-        subplots[0].plot(linspace, norm.pdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6)
-
-    if times != EMPTY_LIST:
-        if metric == 'Reliability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
-        if metric == 'Maintainability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
-        subplots[0].legend()
-    subplots[0].set_title('Normal PDF')
-
-    # Second plot CDF and/or Maintainability
-    if theoretical_distribution is not None:
-        subplots[1].plot(linspace, norm.cdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[1].plot(linspace, norm.cdf(linspace, loc=theoretical_mu, scale=theoretical_sigma),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[1].legend()
-    else:
-        subplots[1].plot(linspace, norm.cdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6)
-
-    if metric == 'Reliability':
-        subplots[1].set_title('Normal CDF')
-    if metric == 'Maintainability':
-        subplots[1].set_title('Normal CDF (Maintainability)')
-
-    # Third plot Reliability
-    if metric == 'Reliability':
-        if theoretical_distribution is not None:
-            subplots[2].plot(linspace, 1 - norm.cdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6,
-                             label='Reconstructed')
-            subplots[2].plot(linspace, 1 - norm.cdf(linspace, loc=theoretical_mu, scale=theoretical_sigma),
-                             'b-', lw=1, alpha=0.6, label='Theoretical')
-            subplots[2].legend()
-        else:
-            subplots[2].plot(linspace, 1 - norm.cdf(linspace, loc=mu, scale=sigma), 'r-', lw=1, alpha=0.6)
-        subplots[2].set_title(metric)
-
-    #plt.show()
-    plt.show(block=False)
+    if distribution[0] == 'LOGNORM':
+        mu = distribution[1]
+        sigma = distribution[2]
+        scale = math.exp(mu)
+        return lognorm.cdf(linspace, sigma, loc=0, scale=scale)
 
 
-def plot_weibull(name, metric, distribution, times, theoretical_distribution=None):
-    scale = distribution[1]
-    shape = distribution[2]
+def calculate_reliability(distribution, linspace):
+    if distribution[0] == 'EXP':
+        lambda_ = distribution[1]
+        scale_ = 1 / lambda_
+        return 1 - expon.cdf(linspace, scale=scale_)
 
-    theoretical_scale = None
-    theoretical_shape = None
-    # Checks whether there is a theoretical distribution to compare it to
-    if theoretical_distribution is not None:
-        theoretical_scale = theoretical_distribution[1]
-        theoretical_shape = theoretical_distribution[2]
+    if distribution[0] == 'WEIBULL':
+        scale = distribution[1]
+        shape = distribution[2]
+        return 1 - weibull_min.cdf(linspace, shape, loc=0, scale=scale)
 
-    fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    if distribution[0] == 'NORMAL':
+        mu = distribution[1]
+        sigma = distribution[2]
+        return 1 - norm.cdf(linspace, loc=mu, scale=sigma)
 
-    linspace = np.linspace(weibull_min.ppf(0.001, shape, loc=0, scale=scale),
+    if distribution[0] == 'LOGNORM':
+        mu = distribution[1]
+        sigma = distribution[2]
+        scale = math.exp(mu)
+        return 1 - lognorm.cdf(linspace, sigma, loc=0, scale=scale)
+
+
+def calculate_linspace(distribution):
+    if distribution[0] == 'EXP':
+        lambda_ = distribution[1]
+        scale_ = 1 / lambda_
+        return np.linspace(expon.ppf(0.001, scale=scale_), expon.ppf(0.999, scale=scale_), 1000)
+
+    if distribution[0] == 'WEIBULL':
+        scale = distribution[1]
+        shape = distribution[2]
+        return np.linspace(weibull_min.ppf(0.001, shape, loc=0, scale=scale),
                            weibull_min.ppf(0.999, shape, loc=0, scale=scale), 1000)
 
-    # First plot PDF
-    if theoretical_distribution is not None:
-        subplots[0].plot(linspace, weibull_min.pdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[0].plot(linspace, weibull_min.pdf(linspace, theoretical_shape, loc=0, scale=theoretical_scale),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[0].legend()
+    if distribution[0] == 'NORMAL':
+        mu = distribution[1]
+        sigma = distribution[2]
+        return np.linspace(norm.ppf(0.001, loc=mu, scale=sigma), norm.ppf(0.999, loc=mu, scale=sigma), 1000)
+
+    if distribution[0] == 'LOGNORM':
+        mu = distribution[1]
+        sigma = distribution[2]
+        scale = math.exp(mu)
+        return np.linspace(lognorm.ppf(0.001, sigma, loc=0, scale=scale),
+                           lognorm.ppf(0.999, sigma, loc=0, scale=scale), 1000)
     else:
-        subplots[0].plot(linspace, weibull_min.pdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
+        return np.linspace(0, 100, 1000)
+
+
+def plot_identified_distribution_comparison(name, metric, distribution, times, theoretical_distribution):
+    fig, subplots = setup_fig_subplots(metric)
+    fig.suptitle(name)
+
+    linspace = calculate_linspace(distribution)
+    pdf = calculate_pdf(distribution, linspace)
+    cdf = calculate_cdf(distribution, linspace)
+    distribution_name = name_of_distribution(distribution)
+
+    theoretical_pdf = calculate_pdf(theoretical_distribution, linspace)
+    theoretical_cdf = calculate_cdf(theoretical_distribution, linspace)
+
+    # First plot PDF
+    subplots[0].plot(linspace, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[0].plot(linspace, theoretical_pdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[0].legend()
 
     if times != EMPTY_LIST:
         if metric == 'Reliability':
@@ -224,147 +195,275 @@ def plot_weibull(name, metric, distribution, times, theoretical_distribution=Non
         if metric == 'Maintainability':
             subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
         subplots[0].legend()
-    subplots[0].set_title('Weibull PDF')
+    subplots[0].set_title(distribution_name + ' PDF')
 
     # Second plot CDF and/or Maintainability
-    if theoretical_distribution is not None:
-        subplots[1].plot(linspace, weibull_min.cdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[1].plot(linspace, weibull_min.cdf(linspace, theoretical_shape, loc=0, scale=theoretical_scale),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[1].legend()
-    else:
-        subplots[1].plot(linspace, weibull_min.cdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
+    subplots[1].plot(linspace, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[1].plot(linspace, theoretical_cdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[1].legend()
 
-    if metric == 'Reliability':
-        subplots[1].set_title('Weibull CDF')
     if metric == 'Maintainability':
-        subplots[1].set_title('Weibull CDF (Maintainability)')
+        subplots[1].set_title(distribution_name + ' CDF (Maintainability)')
+        subplots[2].plot(linspace, pdf / (1 - cdf), 'b-', lw=1, alpha=0.6, label='Reconstructed')
+        subplots[2].plot(linspace, theoretical_pdf / (1 - theoretical_cdf), 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[2].set_title('Repair Rate')
+        subplots[2].legend()
+        if distribution[0] == 'EXP':
+            subplots[2].set_ylim([0, 1])
 
     # Third plot Reliability
     if metric == 'Reliability':
-        if theoretical_distribution is not None:
-            subplots[2].plot(linspace, 1 - weibull_min.cdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                             label='Reconstructed')
-            subplots[2].plot(linspace, 1 - weibull_min.cdf(linspace, theoretical_shape, loc=0, scale=theoretical_scale),
-                             'b-', lw=1, alpha=0.6, label='Theoretical')
-            subplots[2].legend()
-        else:
-            subplots[2].plot(linspace, 1 - weibull_min.cdf(linspace, shape, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
+        subplots[1].set_title(distribution_name + ' CDF')
+        reliability = calculate_reliability(distribution, linspace)
+        theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
+        subplots[2].plot(linspace, reliability, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+        subplots[2].plot(linspace, theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[2].legend()
         subplots[2].set_title(metric)
 
-    #plt.show()
+        subplots[3].plot(linspace, pdf/reliability, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+        subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[3].set_title('Failure Rate')
+        subplots[3].legend()
+        if distribution[0] == 'EXP':
+            subplots[3].set_ylim([0, 1])
+
+
+    # plt.show()
     plt.show(block=False)
 
 
-def plot_lognorm(name, metric, distribution, times, theoretical_distribution=None):
-    # s = sigma and scale = exp(mu).
-    mu = distribution[1]
-    sigma = distribution[2]
-    scale = math.exp(mu)
-
-    theoretical_sigma = None
-    theoretical_scale = None
-    # Checks whether there is a theoretical distribution to compare it to
-    if theoretical_distribution is not None:
-        theoretical_mu = theoretical_distribution[1]
-        theoretical_sigma = theoretical_distribution[2]
-        theoretical_scale = math.exp(theoretical_mu)
-
+def plot_unidentified_distribution_comparison(name, metric, times, theoretical_distribution):
+    # Maybe fix inconsistencies with the numbers on the axis
     fig, subplots = setup_fig_subplots(metric)
     fig.suptitle(name)
 
-    linspace = np.linspace(lognorm.ppf(0.001, sigma, loc=0, scale=scale),
-                           lognorm.ppf(0.999, sigma, loc=0, scale=scale), 1000)
+    linspace = calculate_linspace(theoretical_distribution)
+    distribution_name = name_of_distribution(theoretical_distribution)
+    theoretical_pdf = calculate_pdf(theoretical_distribution, linspace)
+    theoretical_cdf = calculate_cdf(theoretical_distribution, linspace)
+    theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
 
-    # First plot PDF
-    if theoretical_distribution is not None:
-        subplots[0].plot(linspace, lognorm.pdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[0].plot(linspace, lognorm.pdf(linspace, theoretical_sigma, loc=0, scale=theoretical_scale),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[0].legend()
-    else:
-        subplots[0].plot(linspace, lognorm.pdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
+    # PDF
+    sns.distplot(times, hist=True, ax=subplots[0], label='Reconstructed')
+    subplots[0].plot(linspace, theoretical_pdf, 'r-', label='Theoretical')
+    subplots[0].set_title(distribution_name + ' PDF')
+    subplots[0].legend()
 
-    if times != EMPTY_LIST:
-        if metric == 'Reliability':
-            subplots[0].hist(times, bins=50, normed=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
-        if metric == 'Maintainability':
-            subplots[0].hist(times, bins=50, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
-        subplots[0].legend()
-    subplots[0].set_title('Lognormal PDF')
-
-    # Second plot CDF and/or Maintainability
-    if theoretical_distribution is not None:
-        subplots[1].plot(linspace, lognorm.cdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                         label='Reconstructed')
-        subplots[1].plot(linspace, lognorm.cdf(linspace, theoretical_sigma, loc=0, scale=theoretical_scale),
-                         'b-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[1].legend()
-    else:
-        subplots[1].plot(linspace, lognorm.cdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
-
-    if metric == 'Reliability':
-        subplots[1].set_title('Lognormal CDF')
+    # CDF
+    sns.kdeplot(times, cumulative=True, ax=subplots[1], label='Reconstructed')
+    subplots[1].plot(linspace, theoretical_cdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[1].legend()
     if metric == 'Maintainability':
-        subplots[1].set_title('Lognormal CDF (Maintainability)')
+        subplots[1].set_title(distribution_name + ' CDF (Maintainability')
 
-    # Third plot Reliability
     if metric == 'Reliability':
-        if theoretical_distribution is not None:
-            subplots[2].plot(linspace, 1 - lognorm.cdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6,
-                             label='Reconstructed')
-            subplots[2].plot(linspace, 1 - lognorm.cdf(linspace, theoretical_sigma, loc=0, scale=theoretical_scale),
-                             'b-', lw=1, alpha=0.6, label='Theoretical')
-            subplots[2].legend()
-        else:
-            subplots[2].plot(linspace, 1 - lognorm.cdf(linspace, sigma, loc=0, scale=scale), 'r-', lw=1, alpha=0.6)
-        subplots[2].set_title(metric)
+        subplots[1].set_title(distribution_name + ' CDF')
 
-    #plt.show()
+        times.sort()
+        samples = len(times)
+        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        # Get length of this and see if its the same length as the reliability of the top event
+        # Better yet when calculating relability function use the same number of elements as the
+        # length of top events time of failure or time of repair.
+        subplots[2].plot(times, one_minus_cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+        subplots[2].plot(linspace, theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[2].set_ylim([0, 1.05])
+        # For comparing graphs
+        # subplots[2].set_xlim([0, 100])
+        subplots[2].set_title('Reliability')
+        subplots[2].legend()
+
+    # plt.show()
     plt.show(block=False)
 
 
-def plot_arbitrary_distribution(name, times, linspace, theoretical_reliability=None):
+def plot_distributions_comparison(name, metric, distribution, times, theoretical_distribution):
+    if distribution[0] == 'UNIDENTIFIED DISTRIBUTION':
+        plot_unidentified_distribution_comparison(name, metric, times, theoretical_distribution)
+    else:
+        plot_identified_distribution_comparison(name, metric, distribution, times, theoretical_distribution)
+
+
+def plot_identified_distribution_no_comparison(name, metric, distribution, times):
+    fig, subplots = setup_fig_subplots(metric)
+    fig.suptitle(name)
+
+    linspace = calculate_linspace(distribution)
+    pdf = calculate_pdf(distribution, linspace)
+    cdf = calculate_cdf(distribution, linspace)
+    distribution_name = name_of_distribution(distribution)
+
+    # First plot PDF
+    subplots[0].plot(linspace, pdf, 'b-', lw=1, alpha=0.6)
+    if times != EMPTY_LIST:
+        if metric == 'Reliability':
+            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
+        if metric == 'Maintainability':
+            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
+        subplots[0].legend()
+    subplots[0].set_title(distribution_name + ' PDF')
+
+    # Second plot CDF
+    subplots[1].plot(linspace, cdf, 'b-', lw=1, alpha=0.6)
+
+    if metric == 'Maintainability':
+        subplots[1].set_title(distribution_name + ' CDF (Maintainability)')
+        subplots[2].plot(linspace, pdf / (1 - cdf), 'b-', lw=1, alpha=0.6)
+        subplots[2].set_title('Repair Rate')
+        if distribution[0] == 'EXP':
+            subplots[2].set_ylim([0, 1])
+
+    # Third plot Reliability
+    if metric == 'Reliability':
+        subplots[1].set_title(distribution_name + ' CDF')
+        reliability = calculate_reliability(distribution, linspace)
+        subplots[2].plot(linspace, reliability, 'b-', lw=1, alpha=0.6)
+        subplots[2].set_title(metric)
+        subplots[3].plot(linspace, pdf / reliability, 'b-', lw=1, alpha=0.6)
+        subplots[3].set_title('Failure Rate')
+        if distribution[0] == 'EXP':
+            subplots[3].set_ylim([0, 1])
+
+    plt.show(block=False)
+
+
+def plot_unidentified_distribution_no_comparison(name, metric, times):
+    fig, subplots = setup_fig_subplots(metric)
+    fig.suptitle(name)
+
+    times.sort()
+    samples = len(times)
+    one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+
+    # PDF
+    sns.distplot(times, hist=True, ax=subplots[0])
+    subplots[0].set_title('PDF')
+
+    # CDF
+    sns.kdeplot(times, cumulative=True, ax=subplots[1])
+    if metric == 'Maintainability':
+        subplots[1].set_title('CDF (Maintainability)')
+
+    if metric == 'Reliability':
+        subplots[1].set_title('CDF')
+
+        # Get length of this and see if its the same length as the reliability of the top event
+        # Better yet when calculating relability function use the same number of elements as the
+        # length of top events time of failure or time of repair.
+        subplots[2].plot(times, one_minus_cdf)
+        subplots[2].set_ylim([0, 1.05])
+        # For comparing graphs
+        # subplots[2].set_xlim([0, 100])
+        subplots[2].set_title('Reliability')
+
+    # plt.show()
+    plt.show(block=False)
+
+
+def plot_distributions_no_comparison(name, metric, distribution, times):
+    if distribution[0] == 'UNIDENTIFIED DISTRIBUTION':
+        plot_unidentified_distribution_no_comparison(name, metric, times)
+    else:
+        plot_identified_distribution_no_comparison(name, metric, distribution, times)
+
+
+def plot_distributions(name, metric, distribution, times, theoretical_distribution=None):
+    if theoretical_distribution is not None:
+        plot_distributions_comparison(name, metric, distribution, times, theoretical_distribution)
+    else:
+        plot_distributions_no_comparison(name, metric, distribution, times)
+
+
+def plot_arbitrary__distribution_no_compare(name, metric, times):
     # Reliability for now
     # Maybe fix inconsistencies with the numbers on the axis
-    fig, subplots = plt.subplots(1, 3, figsize=(13, 4))
+    fig, subplots = setup_fig_subplots(metric)
     fig.suptitle(name)
 
     # PDF
     sns.distplot(times, hist=True, ax=subplots[0])
     subplots[0].set_title('PDF')
-    if theoretical_reliability is not None:
-        theoretical_cdf = 1 - theoretical_reliability
-        theoretical_pdf = differentiate(linspace, theoretical_cdf)
-        subplots[0].plot(linspace, theoretical_pdf)
 
     # CDF
     sns.kdeplot(times, cumulative=True, ax=subplots[1])
-    if theoretical_reliability is not None:
-        theoretical_cdf = 1 - theoretical_reliability
-        subplots[1].plot(linspace, theoretical_cdf)
-    subplots[1].set_title('CDF')
 
-    times.sort()
-    samples = len(times)
-    print('Samples: ' + str(samples))
-    one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
-    # Get length of this and see if its the same length as the reliability of the top event
-    # Better yet when calculating relability function use the same number of elements as the
-    # length of top events time of failure or time of repair.
-    # Reliability
-    subplots[2].plot(times, one_minus_cdf)
-    if theoretical_reliability is not None:
-        subplots[2].plot(linspace, theoretical_reliability)
-    subplots[2].set_ylim([0, 1.05])
-    # For comparing graphs
-    #subplots[2].set_xlim([0, 100])
-    subplots[2].set_title('Reliability')
+    if metric == 'Maintainability':
+        subplots[1].set_title('CDF (Maintainability)')
+
+    if metric == 'Reliability':
+        subplots[1].set_title('CDF')
+        times.sort()
+        samples = len(times)
+        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        # Get length of this and see if its the same length as the reliability of the top event
+        # Better yet when calculating relability function use the same number of elements as the
+        # length of top events time of failure or time of repair.
+        # Reliability
+        subplots[2].plot(times, one_minus_cdf)
+        subplots[2].set_ylim([0, 1.05])
+        # For comparing graphs
+        #subplots[2].set_xlim([0, 100])
+
+        subplots[2].set_title('Reliability')
 
     # plt.show()
     plt.show(block=False)
+
+
+def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretical):
+    # Reliability for now
+    # Maybe fix inconsistencies with the numbers on the axis
+    fig, subplots = setup_fig_subplots(metric)
+    fig.suptitle(name)
+
+    # PDF
+    sns.distplot(times, hist=True, ax=subplots[0])
+    subplots[0].set_title('PDF')
+
+    theoretical_cdf = 0
+    if metric == 'Reliability':
+        theoretical_cdf = 1 - theoretical
+    if metric == 'Maintainability':
+        theoretical_cdf = theoretical
+    theoretical_pdf = differentiate(linspace, theoretical_cdf)
+    subplots[0].plot(linspace, theoretical_pdf)
+
+    # CDF
+    sns.kdeplot(times, cumulative=True, ax=subplots[1])
+    subplots[1].plot(linspace, theoretical_cdf)
+
+    if metric == 'Maintainability':
+        subplots[1].set_title('CDF (Maintainability)')
+    if metric == 'Reliability':
+        subplots[1].set_title('CDF')
+
+        times.sort()
+        samples = len(times)
+        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        # Get length of this and see if its the same length as the reliability of the top event
+        # Better yet when calculating relability function use the same number of elements as the
+        # length of top events time of failure or time of repair.
+        # Reliability
+        subplots[2].plot(times, one_minus_cdf)
+        subplots[2].plot(linspace, 1 - theoretical_cdf)
+        subplots[2].set_ylim([0, 1.05])
+        # For comparing graphs
+        #subplots[2].set_xlim([0, 100])
+        subplots[2].set_title('Reliability')
+
+    #if theoretical_reliability is not None:
+    #subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)
+
+    # plt.show()
+    plt.show(block=False)
+
+
+def plot_arbitrary_distribution(name, metric, times, linspace, theoretical=None):
+    if theoretical is not None:
+        plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretical)
+    else:
+        plot_arbitrary__distribution_no_compare(name, metric, times)
 
 
 def plot_():

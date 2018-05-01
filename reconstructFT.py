@@ -48,8 +48,8 @@ FT.load_in_fault_tree('generatedFT_method')
 
 
 FT.load_time_series_into_basic_events()
-FT.calculate_MTTF_of_basic_events()
-FT.calculate_MTTR_of_basic_events()
+FT.calculate_MTTF_of_basic_events_from_time_series()
+FT.calculate_MTTR_of_basic_events_from_time_series()
 
 FT.print_MTTF_MTTR_of_basic_events()
 

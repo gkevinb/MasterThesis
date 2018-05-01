@@ -43,7 +43,7 @@ print(d)
 # d = ['LOGNORM', 5, 2]
 
 print('MTTF (from data): ' + str(sum(y)/len(y)))
-print('MTTF (from distribution): ' + str(DF.calculate_mttf_of(d)))
+print('MTTF (from distribution): ' + str(DF.calculate_mttf_or_mttr_from_distribution(d)))
 # scipy.stats.probplot(y, dist=scipy.stats.lognorm, sparams=(5, 2), plot=pylab)
 # pylab.show()
 print(scipy.stats.weibull_min.mean(10, 8))

@@ -111,7 +111,7 @@ def determine_distribution(samples):
 # when it should be NORMAL
 
 
-def calculate_mttf_of(distribution):
+def calculate_mttf_or_mttr_from_distribution(distribution):
     mttf = 0
     if distribution[0] == 'NORMAL':
         mttf = distribution[1]
