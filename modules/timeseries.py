@@ -154,3 +154,45 @@ def calculate_mean_time_to_repair(time_series):
     """
     time_to_repairs = calculate_time_to_repairs(time_series)
     return sum(time_to_repairs) / len(time_to_repairs)
+
+
+def get_time_series_up_to(time_series, up_to_time):
+    time_series_up_to = []
+    for i in range(0, len(time_series)):
+        if time_series[i] < up_to_time:
+            time_series_up_to.append(time_series[i])
+        else:
+            break
+    return time_series_up_to
+
+
+def calculate_up_time(time_series):
+    return calculate_time_to_failures(time_series)
+
+
+def calculate_remaining_time(time_series, up_to_time):
+    if is_EVEN(len(time_series)):
+        return up_to_time - time_series[-1]
+    else:
+        return 0
+
+
+def calculate_total_up_time_up_to(time_series, up_to_time):
+    if up_to_time < time_series[-1]:
+        time_series_up_to = get_time_series_up_to(time_series, up_to_time)
+        up_times = calculate_up_time(time_series_up_to)
+
+        total_up_time = sum(up_times)
+        total_up_time += calculate_remaining_time(time_series_up_to, up_to_time)
+
+        return total_up_time
+    else:
+        return 0
+
+
+def calculate_operational_availability(time_series, operating_cycle):
+    if operating_cycle < time_series[-1]:
+        up_time = calculate_total_up_time_up_to(time_series, operating_cycle)
+        return up_time / operating_cycle
+    else:
+        return 0

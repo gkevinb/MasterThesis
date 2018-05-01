@@ -32,6 +32,8 @@ class Event(NodeMixin):
         self.maintainability_function = None
         self.MTTF = 0
         self.MTTR = 0
+        self.availability_inherent = 0
+        self.availability_operational = 0
         self.parent = parent
         self.time_series = []
         self.state = None
@@ -58,6 +60,12 @@ class Event(NodeMixin):
 
     def calculate_MTTR_from_distribution(self):
         self.MTTR = DF.calculate_mttf_or_mttr_from_distribution(self.maintainability_distribution)
+
+    def calculate_inherent_availability(self):
+        self.availability_inherent = self.MTTF/(self.MTTF + self.MTTR)
+
+    def calculate_operational_availability(self, operating_cycle):
+        self.availability_operational = timeseries.calculate_operational_availability(self.time_series, operating_cycle)
 
     def determine_reliability_distribution(self):
         time_of_failures = timeseries.calculate_time_to_failures(self.time_series)
@@ -298,14 +306,14 @@ class FaultTree:
     def plot_reliability_distribution_of_top_event(self, linspace, theoretical=None):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
         rel_dist = DF.determine_distribution(times)
-        print(rel_dist)
+        print('SUGGESTED RELIABILITY DISTRIBUTION FOR TOP EVENT: ' + str(rel_dist))
         DP.plot_arbitrary_distribution('Top Event', 'Reliability', times, linspace, theoretical)
         # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
     def plot_maintainability_distribution_of_top_event(self, linspace, theoretical=None):
         times = timeseries.calculate_time_to_repairs(self.top_event.time_series)
         main_dist = DF.determine_distribution(times)
-        print(main_dist)
+        print('SUGGESTED MAINTAINABILITY DISTRIBUTION FOR TOP EVENT: ' + str(main_dist))
         DP.plot_arbitrary_distribution('Top Event', 'Maintainability', times, linspace, theoretical)
         # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
@@ -491,6 +499,16 @@ class FaultTree:
     def calculate_MTTR_of_basic_events_from_time_series(self):
         for basic_event in self._get_basic_events():
             basic_event.calculate_MTTR_from_time_series()
+
+    def calculate_inherent_availability_of_basic_events(self):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_inherent_availability()
+
+    def calculate_inherent_availability_of_top_event(self):
+        self.top_event.calculate_inherent_availability()
+
+    def calculate_operational_availability_of_top_event(self, operating_cycle):
+        self.top_event.calculate_operational_availability(operating_cycle)
 
     def calculate_MTTF_of_top_event_from_reliability_function(self, linspace):
         y_int = integrate.cumtrapz(self.top_event.reliability_function, linspace, initial=0)
