@@ -8,6 +8,14 @@ import seaborn as sns
 EMPTY_LIST = []
 
 
+def differentiate(x, y):
+    dy = np.zeros(y.shape, np.float)
+    dy[0:-1] = np.diff(y) / np.diff(x)
+    dy[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
+
+    return dy
+
+
 def mean_squared_error(y, y_estimated):
     return np.square(y - y_estimated).mean()
 
@@ -53,7 +61,6 @@ def setup_fig_subplots(metric):
 
     fig, subplots = plt.subplots(1, num_of_subplots, figsize=(figure_width, 4))
     return fig, subplots
-
 
 def plot_exp(name, metric, distribution, times, theoretical_distribution=None):
     lambda_ = distribution[1]
@@ -112,6 +119,8 @@ def plot_exp(name, metric, distribution, times, theoretical_distribution=None):
         else:
             subplots[2].plot(linspace, 1 - expon.cdf(linspace, scale=scale_), 'r-', lw=1, alpha=0.6)
         subplots[2].set_title(metric)
+
+    print(expon.pdf(linspace, scale=scale_) / (1 - expon.cdf(linspace, scale=scale_)))
 
     #plt.show()
     plt.show(block=False)
@@ -317,7 +326,7 @@ def plot_lognorm(name, metric, distribution, times, theoretical_distribution=Non
     plt.show(block=False)
 
 
-def plot_arbitrary_distribution(name, times, linspace, theoretical):
+def plot_arbitrary_distribution(name, times, linspace, theoretical_reliability=None):
     # Reliability for now
     # Maybe fix inconsistencies with the numbers on the axis
     fig, subplots = plt.subplots(1, 3, figsize=(13, 4))
@@ -326,10 +335,16 @@ def plot_arbitrary_distribution(name, times, linspace, theoretical):
     # PDF
     sns.distplot(times, hist=True, ax=subplots[0])
     subplots[0].set_title('PDF')
+    if theoretical_reliability is not None:
+        theoretical_cdf = 1 - theoretical_reliability
+        theoretical_pdf = differentiate(linspace, theoretical_cdf)
+        subplots[0].plot(linspace, theoretical_pdf)
 
     # CDF
     sns.kdeplot(times, cumulative=True, ax=subplots[1])
-    subplots[1].plot(linspace, 1 - theoretical)
+    if theoretical_reliability is not None:
+        theoretical_cdf = 1 - theoretical_reliability
+        subplots[1].plot(linspace, theoretical_cdf)
     subplots[1].set_title('CDF')
 
     times.sort()
@@ -341,7 +356,8 @@ def plot_arbitrary_distribution(name, times, linspace, theoretical):
     # length of top events time of failure or time of repair.
     # Reliability
     subplots[2].plot(times, one_minus_cdf)
-    subplots[2].plot(linspace, theoretical)
+    if theoretical_reliability is not None:
+        subplots[2].plot(linspace, theoretical_reliability)
     subplots[2].set_ylim([0, 1.05])
     # For comparing graphs
     #subplots[2].set_xlim([0, 100])

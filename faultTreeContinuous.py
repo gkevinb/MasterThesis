@@ -268,13 +268,13 @@ class FaultTree:
             DP.plot_lognorm(name, maintainability, main_dist, times, theoretical_distribution)
         # IF CAN'T FIND DISTRIBUTION
 
-    def plot_distribution_of_top_event(self, linspace, theoretical):
+    def plot_distribution_of_top_event(self, linspace, theoretical=None):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
 
         rel_dist = DF.determine_distribution(times)
         print(rel_dist)
         DP.plot_arbitrary_distribution('Top Event', times, linspace, theoretical)
-        #DP.plot_lognorm('Top Event', 'Reliability', rel_dist, times)
+        #DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
     def get_top_event_state(self):
         return self.top_event.state

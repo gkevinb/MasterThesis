@@ -22,21 +22,21 @@ def compare_maintainability_of_basic_event_(basic_event_id, reconstructedFT, ori
     reconstructedFT.plot_maintainability_distribution_of_basic_event_(basic_event_id, theoretical_distribution)
 
 
-rel_exp_dist = ['EXP', 1/600]
+rel_exp_dist = ['EXP', 1/5]
 lognorm_dist = ['LOGNORM', 4, 2]
 norm_dist = ['NORMAL', 500, 40]
-main_exp_dist = ['EXP', 1/10]
+main_exp_dist = ['EXP', 1/2]
 rel_weibull_dist = ['WEIBULL', 10, 8]
 main_weibull_dist = ['WEIBULL', 4, 10]
 
 
 topEvent = Event('Top Event')
 or1 = Gate('OR', parent=topEvent)
-basicEvent1 = Event('Basic Event 1', lognorm_dist, main_exp_dist, parent=or1)
+basicEvent1 = Event('Basic Event 1', rel_exp_dist, main_exp_dist, parent=or1)
 basicEvent2 = Event('Basic Event 2', rel_exp_dist, main_exp_dist, parent=or1)
 intermed = Event('Inter event ', parent=or1)
 and1 = Gate('AND', parent=intermed)
-basicEvent3 = Event('Basic Event 3', norm_dist, main_exp_dist, parent=and1)
+basicEvent3 = Event('Basic Event 3', rel_exp_dist, main_exp_dist, parent=and1)
 basicEvent4 = Event('Basic Event 4', rel_exp_dist, main_exp_dist, parent=and1)
 
 '''
@@ -68,7 +68,7 @@ fault_tree = FaultTree(topEvent)
 fault_tree.generate_basic_event_time_series(4000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series('time_series.txt')
+#fault_tree.export_time_series('time_series.txt')
 
 #fault_tree.plot_reliability_distribution_of_basic_event_(1)
 
@@ -77,7 +77,7 @@ fault_tree.export_time_series('time_series.txt')
 
 FT = FaultTree()
 
-FT.import_time_series('time_series.txt')
+FT.import_time_series('time_series_determined_weibull.txt')
 FT.display_event_time_series(8)
 
 
@@ -117,19 +117,23 @@ FT.print_tree()
 #FT.plot_maintainability_distribution_of_basic_event_(3)
 
 #compare_reliability_of_basic_event_(1, FT, fault_tree)
-compare_reliability_of_basic_event_(2, FT, fault_tree)
-compare_maintainability_of_basic_event_(1, FT, fault_tree)
+#compare_reliability_of_basic_event_(2, FT, fault_tree)
+#compare_maintainability_of_basic_event_(1, FT, fault_tree)
 compare_maintainability_of_basic_event_(2, FT, fault_tree)
 
 # int(number_of_times_of_failure_top_event)
 # doesn't have to be the same as times of failures for top event
-linspace = np.linspace(0, 3000, 3000)
+linspace = np.linspace(0, 30, 1000)
 fault_tree.calculate_reliability(linspace)
 
 FT.calculate_time_series()
-FT.plot_distribution_of_top_event(linspace, fault_tree.top_event.reliability_function)
 
+top_event_reliability = fault_tree.top_event.reliability_function
+#print('Reliability at time 7: ' + str(top_event_reliability))
+FT.plot_distribution_of_top_event(linspace, top_event_reliability)
 
+'''
 fig, subplot = plt.subplots(1, 1)
 subplot.plot(linspace, fault_tree.top_event.reliability_function)
+'''
 plt.show()
