@@ -8,6 +8,14 @@ import seaborn as sns
 
 EMPTY_LIST = []
 
+TOLERANCE = 0.000001
+
+
+def get_index_of_first_zero_in_array(array):
+    for index in range(0, len(array)):
+        if array[index] < TOLERANCE:
+            return index
+
 
 def differentiate(x, y):
     if type(y) is list:
@@ -422,26 +430,43 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     fig.suptitle(name)
 
     # PDF
-    sns.distplot(times, hist=True, ax=subplots[0])
-    x, pdf = subplots[0].lines[0].get_data()
-
     subplots[0].set_title('PDF')
 
     theoretical_cdf = 0
     if metric == 'Reliability':
         theoretical_cdf = 1 - theoretical
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to failures')
     if metric == 'Maintainability':
         theoretical_cdf = theoretical
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to repairs')
+    index = get_index_of_first_zero_in_array(1 - theoretical_cdf)
     theoretical_pdf = differentiate(linspace, theoretical_cdf)
-    subplots[0].plot(linspace, theoretical_pdf)
+
+    x, pdf = subplots[0].lines[0].get_data()
+    subplots[0].plot(x, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[0].plot(linspace[:index], theoretical_pdf[:index], 'r-', lw=1.5, alpha=0.6, label='Theoretical')
+    subplots[0].legend()
+    #subplots[0].set_xlim([0, 30])
 
     # CDF
-    sns.kdeplot(times, cumulative=True, ax=subplots[1])
-    subplots[1].plot(linspace, theoretical_cdf)
+    sns.kdeplot(times, cumulative=True, ax=subplots[1], label='Reconstructed')
+    subplots[1].plot(linspace[:index], theoretical_cdf[:index], 'r-', lw=1.5, alpha=0.6, label='Theoretical')
+    subplots[1].legend()
+    #subplots[1].set_xlim([0, 30])
     _, cdf = subplots[1].lines[0].get_data()
 
     if metric == 'Maintainability':
         subplots[1].set_title('CDF (Maintainability)')
+
+        subplots[2].plot(x, pdf/(1 - cdf), 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+
+        subplots[2].plot(linspace[:index], theoretical_pdf[:index]/(1 - theoretical_cdf[:index]),
+                         'r-', lw=1.5, alpha=0.6, label='Theoretical')
+        subplots[2].set_title('Repair Rate')
+        #subplots[2].set_xlim([0, 50])
+        subplots[2].set_ylim([0, 5])
+        subplots[2].legend()
+        #subplots[3].set_xlim([0, 320])
     if metric == 'Reliability':
         theoretical_reliability = theoretical
         reliability = 1 - cdf
@@ -456,18 +481,23 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
         # Better yet when calculating relability function use the same number of elements as the
         # length of top events time of failure or time of repair.
         # Reliability
-        subplots[2].plot(x, reliability)
-        subplots[2].plot(linspace, theoretical_reliability)
+        subplots[2].plot(x, reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        subplots[2].plot(linspace[:index], theoretical_reliability[:index],
+                         'r-', lw=1.5, alpha=0.6, label='Theoretical')
         subplots[2].set_ylim([0, 1.05])
         # For comparing graphs
         # subplots[2].set_xlim([0, 100])
         subplots[2].set_title('Reliability')
-        subplots[3].plot(x, pdf/reliability)
+        subplots[2].legend()
+        subplots[3].plot(x, pdf/reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
         #subplots[2].set_ylim([0, 0.01])
-        print(theoretical_reliability)
-        # Fix so won't divide by zero
-        subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)
-        #subplots[3].set_xlim([0, 320])
+
+        subplots[3].plot(linspace[:index], theoretical_pdf[:index]/theoretical_reliability[:index],
+                         'r-', lw=1.5, alpha=0.6, label='Theoretical')
+        subplots[3].set_title('Failure Rate')
+        #subplots[3].set_ylim([0, 0.1])
+        subplots[3].legend()
+        #subplots[3].set_xlim([300, 325])
 
     #if theoretical_reliability is not None:
     #subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)

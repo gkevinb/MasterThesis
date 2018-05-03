@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysisFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysisFT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/distributionplotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/distributionplotting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraps/seaborn_distfitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraps/seaborn_distfitting.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="faultTreeContinuous.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="311" selection-start-line="311" selection-end-line="311" />
+            <state relative-caret-position="-2134">
+              <caret line="363" column="41" lean-forward="true" selection-start-line="363" selection-start-column="41" selection-end-line="363" selection-end-column="41" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -43,8 +42,8 @@
       <file leaf-file-name="analysisFT.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysisFT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+            <state relative-caret-position="13">
+              <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -64,7 +63,7 @@
       <file leaf-file-name="timeseries.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="3264">
               <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
             </state>
           </provider>
@@ -73,8 +72,8 @@
       <file leaf-file-name="distributionplotting.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="467" column="37" selection-start-line="467" selection-start-column="37" selection-end-line="467" selection-end-column="37" />
+            <state relative-caret-position="61">
+              <caret line="424" lean-forward="true" selection-start-line="424" selection-end-line="424" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -85,8 +84,8 @@
       <file leaf-file-name="integration.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scraps/integration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="43" />
+            <state relative-caret-position="119">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="43" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -97,8 +96,8 @@
       <file leaf-file-name="seaborn_distfitting.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scraps/seaborn_distfitting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            <state relative-caret-position="68">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -110,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/scraps/plotting_grid.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -126,8 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>12</find>
-      <find>_get_basic_events</find>
       <find>OPERATIONAL</find>
       <find>FAILED</find>
       <find>evaluate_reliability</find>
@@ -156,6 +153,8 @@
       <find>calculate_operational_availability</find>
       <find>pdf</find>
       <find>subplots[3]</find>
+      <find>plot_unidentified_distribution_no_comparison</find>
+      <find>calculate_maintainability_function</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -441,7 +440,7 @@
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.21944444" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.39027777" side_tool="true" weight="0.30542454" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6097222" weight="0.36792454" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6097222" visible="true" weight="0.36792454" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49753347" weight="0.3282353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -716,7 +715,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="3264">
           <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
         </state>
       </provider>
@@ -731,14 +730,14 @@
     <entry file="file://$PROJECT_DIR$/scraps/plotting_grid.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scraps/seaborn_distfitting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        <state relative-caret-position="68">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -747,20 +746,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scraps/integration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="43" />
+        <state relative-caret-position="119">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="43" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="311" selection-start-line="311" selection-end-line="311" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -772,10 +761,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/faultTreeContinuous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2134">
+          <caret line="363" column="41" lean-forward="true" selection-start-line="363" selection-start-column="41" selection-end-line="363" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analysisFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+        <state relative-caret-position="13">
+          <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
@@ -784,8 +783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="467" column="37" selection-start-line="467" selection-start-column="37" selection-end-line="467" selection-end-column="37" />
+        <state relative-caret-position="61">
+          <caret line="424" lean-forward="true" selection-start-line="424" selection-end-line="424" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

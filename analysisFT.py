@@ -210,7 +210,7 @@ fault_tree = FaultTree(topEvent)
 fault_tree.generate_basic_event_time_series(3000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-#fault_tree.export_time_series('time_series.txt')
+# fault_tree.export_time_series('time_series.txt')
 
 
 # --------------------------START RECONSTRUCTION -------------------------------
