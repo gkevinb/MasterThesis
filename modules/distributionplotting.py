@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 from scipy.stats import expon, norm, weibull_min, lognorm
+import scipy
 import numpy as np
 import seaborn as sns
 
@@ -9,7 +10,10 @@ EMPTY_LIST = []
 
 
 def differentiate(x, y):
-    dy = np.zeros(y.shape, np.float)
+    if type(y) is list:
+        dy = np.zeros(len(y), np.float)
+    else:
+        dy = np.zeros(y.shape, np.float)
     dy[0:-1] = np.diff(y) / np.diff(x)
     dy[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
     return dy
@@ -419,6 +423,8 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
 
     # PDF
     sns.distplot(times, hist=True, ax=subplots[0])
+    x, pdf = subplots[0].lines[0].get_data()
+
     subplots[0].set_title('PDF')
 
     theoretical_cdf = 0
@@ -432,25 +438,36 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     # CDF
     sns.kdeplot(times, cumulative=True, ax=subplots[1])
     subplots[1].plot(linspace, theoretical_cdf)
+    _, cdf = subplots[1].lines[0].get_data()
 
     if metric == 'Maintainability':
         subplots[1].set_title('CDF (Maintainability)')
     if metric == 'Reliability':
+        theoretical_reliability = theoretical
+        reliability = 1 - cdf
         subplots[1].set_title('CDF')
 
-        times.sort()
-        samples = len(times)
-        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        #times.sort()
+        #samples = len(times)
+        #one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        #cdf = [(x / samples) for x in range(1, samples + 1)]
+
         # Get length of this and see if its the same length as the reliability of the top event
         # Better yet when calculating relability function use the same number of elements as the
         # length of top events time of failure or time of repair.
         # Reliability
-        subplots[2].plot(times, one_minus_cdf)
-        subplots[2].plot(linspace, 1 - theoretical_cdf)
+        subplots[2].plot(x, reliability)
+        subplots[2].plot(linspace, theoretical_reliability)
         subplots[2].set_ylim([0, 1.05])
         # For comparing graphs
-        #subplots[2].set_xlim([0, 100])
+        # subplots[2].set_xlim([0, 100])
         subplots[2].set_title('Reliability')
+        subplots[3].plot(x, pdf/reliability)
+        #subplots[2].set_ylim([0, 0.01])
+        print(theoretical_reliability)
+        # Fix so won't divide by zero
+        subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)
+        #subplots[3].set_xlim([0, 320])
 
     #if theoretical_reliability is not None:
     #subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)

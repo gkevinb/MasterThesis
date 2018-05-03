@@ -210,7 +210,7 @@ fault_tree = FaultTree(topEvent)
 fault_tree.generate_basic_event_time_series(3000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-fault_tree.export_time_series('time_series.txt')
+#fault_tree.export_time_series('time_series.txt')
 
 
 # --------------------------START RECONSTRUCTION -------------------------------
@@ -222,7 +222,7 @@ FT.display_event_time_series(8)
 
 run_reconstruction_analysis(FT)
 
-linspace = np.linspace(0, 300, 3000)
+linspace = np.linspace(0, 500, 5000)
 
 run_theoretical_analysis(fault_tree, linspace)
 
@@ -240,7 +240,7 @@ FT.print_tree()
 # int(number_of_times_of_failure_top_event)
 # doesn't have to be the same as times of failures for top event
 
-
+compare_reliability_of_basic_event_(1, FT, fault_tree)
 compare_reliability_of_top_event(linspace, FT, fault_tree)
 compare_maintainability_of_top_event(linspace, FT, fault_tree)
 
