@@ -9,6 +9,8 @@ from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
 from modules import distributionplotting as DP
+import proxel
+import numpy as np
 
 
 DISPLAY_UP_TO = 6
@@ -37,6 +39,8 @@ class Event(NodeMixin):
         self.parent = parent
         self.time_series = []
         self.state = None
+        self.proxel_time_series = []
+        self.proxel_probability_of_failure = []
 
     def generate(self, size):
         """
@@ -114,6 +118,13 @@ class Event(NodeMixin):
             sigma = main_dist[2]
             scale = math.exp(mu)
             self.maintainability_function = lognorm.cdf(linspace, sigma, loc=0, scale=scale)
+
+    def calculate_probability_of_failure_using_proxel_based_method(self, delta_time, simulation_time):
+        pn = proxel.ProxelNetwork(delta_time, simulation_time, self.reliability_distribution,
+                                  self.maintainability_distribution)
+        pn.expand_network()
+        self.proxel_time_series = np.asarray(pn.time_series)
+        self.proxel_probability_of_failure = np.asarray(pn.probability_of_failure)
 
     def __repr__(self):
         if EVENT_PRINT == 'time_series':
@@ -208,7 +219,6 @@ class Gate(NodeMixin):
         if self.name == 'OR':
             for child in self.children:
                 reliabilities *= child.reliability_function
-
                 maintainabilities *= child.maintainability_function
 
             self.parent.reliability_function = reliabilities
@@ -225,6 +235,22 @@ class Gate(NodeMixin):
 
             self.parent.reliability_function = k_N_voting(self.k, N, child_reliability_functions)
             self.parent.maintainability_function = k_N_voting(self.k, N, child_maintainability_functions)
+
+    def evaluate_proxel_probabilities(self):
+        probabilities = 1
+        if self.name == 'AND':
+            for child in self.children:
+                self.parent.proxel_time_series = child.proxel_time_series
+                probabilities *= child.proxel_probability_of_failure
+
+            self.parent.proxel_probability_of_failure = probabilities
+
+        if self.name == 'OR':
+            for child in self.children:
+                self.parent.proxel_time_series = child.proxel_time_series
+                probabilities *= (1 - child.proxel_probability_of_failure)
+
+            self.parent.proxel_probability_of_failure = 1 - probabilities
 
     def __repr__(self):
         if self.k is None:
@@ -317,6 +343,13 @@ class FaultTree:
         DP.plot_arbitrary_distribution('Top Event', 'Maintainability', times, linspace, theoretical)
         # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
+    def plot_probability_of_failure_of_basic_event_(self, basic_event_id):
+        basic_event = self.get_basic_event_(basic_event_id)
+        DP.plot_probability_of_failure(basic_event.proxel_time_series, basic_event.proxel_probability_of_failure)
+
+    def plot_probability_of_failure_of_top_event(self):
+        DP.plot_probability_of_failure(self.top_event.proxel_time_series, self.top_event.proxel_probability_of_failure)
+
     def get_top_event_state(self):
         return self.top_event.state
 
@@ -355,6 +388,14 @@ class FaultTree:
         gates = self._get_gates_reversed()
         for gate in gates:
             gate.evaluate_reliability_maintainability()
+
+    def calculate_proxel_probalities(self, delta_time, simulation_time):
+        for basic_event in self._get_basic_events():
+            basic_event.calculate_probability_of_failure_using_proxel_based_method(delta_time, simulation_time)
+
+        gates = self._get_gates_reversed()
+        for gate in gates:
+            gate.evaluate_proxel_probabilities()
 
     def print_tree(self):
         """

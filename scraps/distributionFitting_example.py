@@ -5,11 +5,11 @@ from modules import distributionfitting as DF
 
 size = 10000
 x = scipy.arange(size)
-y = timeseries._generate_numbers(['LOGNORM', 2, 1], size)
+#y = timeseries._generate_numbers(['LOGNORM', 2, 1], size)
 #y = timeseries._generate_numbers(['NORMAL', 15, 2], size)
 
 #y = timeseries._generate_numbers(['EXP', 1/5], size)
-#y = timeseries._generate_numbers(['WEIBULL', 60, 10], size)
+y = timeseries._generate_numbers(['WEIBULL', 60, 10], size)
 #y = timeseries._generate_numbers(['WEIBULL', 10, 8], size)
 
 

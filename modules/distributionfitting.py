@@ -68,7 +68,6 @@ def determine_distribution(samples):
 
     # print('P values: ' + str(p_values))
     p_values = possible_distributions(p_values)
-    # print('P values: ' + str(p_values))
 
     best_fit_distribution = []
 

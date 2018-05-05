@@ -164,23 +164,25 @@ def run_theoretical_analysis(faultTree, linspace):
 
 # --------------------PROGRAM STARTS HERE-------------------------
 
-rel_exp_dist = ['EXP', 1/200]
-lognorm_dist = ['LOGNORM', 2, 1]
-norm_dist = ['NORMAL', 240, 10]
-main_exp_dist = ['EXP', 1/2]
-rel_weibull_dist = ['WEIBULL', 10, 8]
+rel_weibull_dist = ['WEIBULL', 60, 10]
 main_weibull_dist = ['WEIBULL', 4, 10]
 
+rel_exp_dist = ['EXP', 1 / 200]
+lognorm_dist = ['LOGNORM', 2, 1]
+norm_dist = ['NORMAL', 24, 1]
+main_exp_dist = ['EXP', 1 / 2]
 
 topEvent = Event('Top Event')
-or1 = Gate('OR', parent=topEvent)
-basicEvent1 = Event('Basic Event 1', norm_dist, main_exp_dist, parent=or1)
-basicEvent2 = Event('Basic Event 2', rel_exp_dist, main_exp_dist, parent=or1)
+and1 = Gate('AND', parent=topEvent)
+basicEvent1 = Event('Basic Event 1', rel_exp_dist, main_exp_dist, parent=and1)
+basicEvent2 = Event('Basic Event 2', ['EXP', 1 / 100], main_exp_dist, parent=and1)
+
+'''
 intermed = Event('Inter event ', parent=or1)
 and1 = Gate('AND', parent=intermed)
-basicEvent3 = Event('Basic Event 3', rel_exp_dist, main_exp_dist, parent=and1)
+basicEvent3 = Event('Basic Event 3', lognorm_dist, norm_dist, parent=and1)
 basicEvent4 = Event('Basic Event 4', rel_exp_dist, main_exp_dist, parent=and1)
-
+'''
 '''
 topEvent = Event('Top Event')
 and1 = Gate('AND', parent=topEvent)
@@ -207,10 +209,10 @@ fault_tree = FaultTree(topEvent)
 # 5000 takes about 30 seconds depending on FT complexity of course
 # 10000 generation size takes a good minute
 # 30000 takes more than 30 minutes didn't wait to finish
-fault_tree.generate_basic_event_time_series(3000)
+fault_tree.generate_basic_event_time_series(2000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
-# fault_tree.export_time_series('time_series.txt')
+fault_tree.export_time_series('time_series.txt')
 
 
 # --------------------------START RECONSTRUCTION -------------------------------
@@ -222,7 +224,7 @@ FT.display_event_time_series(8)
 
 run_reconstruction_analysis(FT)
 
-linspace = np.linspace(0, 500, 5000)
+linspace = np.linspace(0, 1500, 15000)
 
 run_theoretical_analysis(fault_tree, linspace)
 

@@ -525,3 +525,9 @@ def plot_():
     subplot.plot(linspace, rel)
 
     plt.show()
+
+
+def plot_probability_of_failure(time_series, probability_of_failure):
+    plt.plot(time_series, probability_of_failure)
+
+    plt.show(block=False)
