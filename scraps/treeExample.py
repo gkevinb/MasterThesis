@@ -1,4 +1,5 @@
 from anytree import Node, NodeMixin, RenderTree
+from anytree.exporter import DotExporter
 
 
 class Number(NodeMixin):
@@ -11,6 +12,7 @@ class Number(NodeMixin):
         return self.name + ' : ' + str(self.num)
 
 
+
 udo = Node("Udo")
 marc = Node("Marc", parent=udo)
 lol = Node("Lol", parent=udo)
@@ -19,6 +21,8 @@ jill = Node("Jill", parent=marc)
 
 print(RenderTree(udo))
 print(udo.children)
+
+
 n1 = Number("Four", 4)
 n2 = Number("Five", 5, parent=n1)
 n3 = Number("Six", 6, parent=n1)
@@ -30,6 +34,7 @@ n5 = Number("Eight", 8, parent=n2)
 for pre, _, node in RenderTree(n1):
     treestr = u"%s%s" % (pre, node.name)
     print(treestr.ljust(7), node.num)
+'''
 '''
 print(udo.descendants)
 print(RenderTree(n1))
@@ -44,3 +49,10 @@ print(jill.is_leaf)
 print(udo.descendants)
 print(len(udo.descendants))
 print(len(n1.descendants))
+'''
+
+print(RenderTree(n1))
+for line in DotExporter(n1):
+    print(line)
+
+DotExporter(n1).to_picture('treee.png')

@@ -1,0 +1,11 @@
+digraph tree {
+    "Four";
+    "Five";
+    "Seven";
+    "Eight";
+    "Six";
+    "Four" -> "Five";
+    "Four" -> "Six";
+    "Five" -> "Seven";
+    "Five" -> "Eight";
+}

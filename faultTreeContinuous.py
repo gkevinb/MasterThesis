@@ -3,7 +3,7 @@ import itertools
 import importlib
 from scipy.stats import expon, norm, weibull_min, lognorm
 from scipy import integrate
-import math
+import math, random
 from functools import reduce
 from anytree import NodeMixin, RenderTree, LevelOrderIter
 from modules import logicgate, timeseries, distributionfitting as DF
@@ -140,7 +140,14 @@ class Event(NodeMixin):
 
 class Gate(NodeMixin):
     def __init__(self, name, parent=None, k=None):
+        """
+        ID is only for visualization purposes so each gate has a unique identifier when using DOT language.
+        :param name:
+        :param parent:
+        :param k:
+        """
         self.name = name
+        self.id = random.randint(0, 1000000)
         self.parent = parent
         self.k = k
 

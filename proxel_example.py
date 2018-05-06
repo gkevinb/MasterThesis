@@ -27,6 +27,4 @@ FT.calculate_proxel_probalities(0.5, 6)
 #FT.plot_probability_of_failure_of_basic_event_(1)
 #FT.plot_probability_of_failure_of_basic_event_(2)
 FT.plot_probability_of_failure_of_top_event()
-
-
 plt.show()
