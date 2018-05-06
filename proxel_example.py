@@ -1,4 +1,6 @@
-from faultTreeContinuous import Event, Gate, FaultTree
+from modules.gate import Gate
+from modules.event import Event
+from modules.faulttree import FaultTree
 import matplotlib.pyplot as plt
 
 

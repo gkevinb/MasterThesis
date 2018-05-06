@@ -506,7 +506,7 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     plt.show(block=False)
 
 
-def plot_arbitrary_distribution(name, metric, times, linspace, theoretical=None):
+def plot_arbitrary_distribution(name, metric, times, linspace=None, theoretical=None):
     if theoretical is not None:
         plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretical)
     else:

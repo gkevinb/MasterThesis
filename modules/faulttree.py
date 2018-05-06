@@ -1,266 +1,12 @@
-'''
 import collections
 import itertools
 import importlib
-from scipy.stats import expon, norm, weibull_min, lognorm
 from scipy import integrate
-import math, random
-from functools import reduce
-from anytree import NodeMixin, RenderTree, LevelOrderIter
-from modules import logicgate, timeseries, distributionfitting as DF
+from anytree import RenderTree, LevelOrderIter
+from modules import timeseries, distributionfitting as DF
 from modules import cutsets, faultTreeReconstruction as ftr
-from modules import distributionplotting as DP
-import proxel
-import numpy as np
-
-
-DISPLAY_UP_TO = 6
-# 'distributions', 'states', 'time_series'
-EVENT_PRINT = 'distributions'
-
-is_EVEN = lambda i: i % 2 == 0
-is_ODD = lambda i: i % 2 == 1
-
-
-class Event(NodeMixin):
-    def __init__(self, name, reliability_distribution=None, maintainability_distribution=None, parent=None):
-        self.name = name
-        self.reliability_distribution = reliability_distribution
-        self.maintainability_distribution = maintainability_distribution
-        self.reliability_function = None
-        self.maintainability_function = None
-        self.MTTF = 0
-        self.MTTR = 0
-        self.availability_inherent = 0
-        self.availability_operational = 0
-        self.parent = parent
-        self.time_series = []
-        self.state = None
-        self.proxel_time_series = []
-        self.proxel_probability_of_failure = []
-
-    def generate(self, size):
-        """
-        Generate time series based on distribution of events.
-        :param size: Size of time series to generate; Size right now generates a time series 2 x size,
-        since generates both failure times and repair times.
-        :return:
-        """
-        self.time_series = timeseries.generate_time_series(self.reliability_distribution,
-                                                           self.maintainability_distribution,
-                                                           size)
-
-    def calculate_MTTF_from_time_series(self):
-        self.MTTF = timeseries.calculate_mean_time_to_failure(self.time_series)
-
-    def calculate_MTTR_from_time_series(self):
-        self.MTTR = timeseries.calculate_mean_time_to_repair(self.time_series)
-
-    def calculate_MTTF_from_distribution(self):
-        self.MTTF = DF.calculate_mttf_or_mttr_from_distribution(self.reliability_distribution)
-
-    def calculate_MTTR_from_distribution(self):
-        self.MTTR = DF.calculate_mttf_or_mttr_from_distribution(self.maintainability_distribution)
-
-    def calculate_inherent_availability(self):
-        self.availability_inherent = self.MTTF/(self.MTTF + self.MTTR)
-
-    def calculate_operational_availability(self, operating_cycle):
-        self.availability_operational = timeseries.calculate_operational_availability(self.time_series, operating_cycle)
-
-    def determine_reliability_distribution(self):
-        time_of_failures = timeseries.calculate_time_to_failures(self.time_series)
-        self.reliability_distribution = DF.determine_distribution(time_of_failures)
-
-    def calculate_reliability_function(self, linspace):
-        rel_dist = self.reliability_distribution
-        if rel_dist[0] == 'EXP':
-            lambda_ = rel_dist[1]
-            scale_ = 1 / lambda_
-            self.reliability_function = 1 - expon.cdf(linspace, scale=scale_)
-        if rel_dist[0] == 'WEIBULL':
-            scale = rel_dist[1]
-            shape = rel_dist[2]
-            self.reliability_function = 1 - weibull_min.cdf(linspace, shape, loc=0, scale=scale)
-        if rel_dist[0] == 'NORMAL':
-            mu = rel_dist[1]
-            sigma = rel_dist[2]
-            self.reliability_function = 1 - norm.cdf(linspace, loc=mu, scale=sigma)
-        if rel_dist[0] == 'LOGNORM':
-            mu = rel_dist[1]
-            sigma = rel_dist[2]
-            scale = math.exp(mu)
-            self.reliability_function = 1 - lognorm.cdf(linspace, sigma, loc=0, scale=scale)
-
-    def determine_maintainability_distribution(self):
-        time_of_repairs = timeseries.calculate_time_to_repairs(self.time_series)
-        self.maintainability_distribution = DF.determine_distribution(time_of_repairs)
-
-    def calculate_maintainability_function(self, linspace):
-        main_dist = self.maintainability_distribution
-        if main_dist[0] == 'EXP':
-            lambda_ = main_dist[1]
-            scale_ = 1 / lambda_
-            self.maintainability_function = expon.cdf(linspace, scale=scale_)
-        if main_dist[0] == 'WEIBULL':
-            scale = main_dist[1]
-            shape = main_dist[2]
-            self.maintainability_function = weibull_min.cdf(linspace, shape, loc=0, scale=scale)
-        if main_dist[0] == 'NORMAL':
-            mu = main_dist[1]
-            sigma = main_dist[2]
-            self.maintainability_function = norm.cdf(linspace, loc=mu, scale=sigma)
-        if main_dist[0] == 'LOGNORM':
-            mu = main_dist[1]
-            sigma = main_dist[2]
-            scale = math.exp(mu)
-            self.maintainability_function = lognorm.cdf(linspace, sigma, loc=0, scale=scale)
-
-    def calculate_probability_of_failure_using_proxel_based_method(self, delta_time, simulation_time):
-        pn = proxel.ProxelNetwork(delta_time, simulation_time, self.reliability_distribution,
-                                  self.maintainability_distribution)
-        pn.expand_network()
-        self.proxel_time_series = np.asarray(pn.time_series)
-        self.proxel_probability_of_failure = np.asarray(pn.probability_of_failure)
-
-    def __repr__(self):
-        if EVENT_PRINT == 'time_series':
-            return self.name + ' : ' + str(self.time_series[:DISPLAY_UP_TO])
-        if EVENT_PRINT == 'distributions':
-            return self.name + ' : ' + str(self.reliability_distribution) + ' : '\
-                   + str(self.maintainability_distribution)
-        if EVENT_PRINT == 'states':
-            return self.name + ' : ' + str(self.state)
-        else:
-            return self.name
-
-
-class Gate(NodeMixin):
-    def __init__(self, name, parent=None, k=None):
-        """
-        ID is only for visualization purposes so each gate has a unique identifier when using DOT language.
-        :param name:
-        :param parent:
-        :param k:
-        """
-        self.name = name
-        self.id = random.randint(0, 1000000)
-        self.parent = parent
-        self.k = k
-
-    def get_number_of_children(self):
-        return len(self.children)
-
-    def determine_fault_logic(self):
-        fault_logic = None
-        if self.name == 'AND':
-            fault_logic = 'OR'
-        if self.name == 'OR':
-            fault_logic = 'AND'
-        if self.name == 'VOTING':
-            fault_logic = self.k
-
-        return fault_logic
-
-    def evaluate_time_series(self):
-        """
-        Evaluate the gate inputs and modify the gate output. Based on the gate type and gate input time series,
-        calculate time series for gate output.
-        Note: Fault tree gate logic is opposite, since it checks for failures not successes.
-        :return:
-        """
-        data_streams = []
-        for child in self.children:
-            data_streams.append(child.time_series)
-
-        fault_logic = self.determine_fault_logic()
-
-        self.parent.time_series = logicgate.evaluate_time_series(fault_logic, data_streams)
-
-    def evaluate_states(self):
-        states = []
-
-        for child in self.children:
-            states.append(child.state)
-
-        fault_logic = self.determine_fault_logic()
-
-        self.parent.state = logicgate.evaluate_boolean_logic(fault_logic, states)
-
-    def evaluate_reliability_maintainability(self):
-
-        def k_N_voting(k, N, input_reliabilities):
-            """
-            Pseudocode on page 38 of Fault tree analysis: A survey of the state-of-the-art
-            in modeling, analysis and tools
-            Using recursion to calculate reliability when the gate is k/N Voting
-
-            :param k:
-            :param N:
-            :param input_reliabilities:
-            :return:
-            """
-            if k == 0:
-                return 1
-            if k == N:
-                return reduce(lambda x, y: x * y, input_reliabilities)
-
-            result = input_reliabilities[0] * k_N_voting(k - 1, N - 1, input_reliabilities[1:]) + \
-                     (1 - input_reliabilities[0]) * k_N_voting(k, N - 1, input_reliabilities[1:])
-            return result
-
-        reliabilities = 1
-        maintainabilities = 1
-
-        if self.name == 'AND':
-            for child in self.children:
-                reliabilities *= (1 - child.reliability_function)
-                maintainabilities *= (1 - child.maintainability_function)
-
-            self.parent.reliability_function = 1 - reliabilities
-            self.parent.maintainability_function = 1 - maintainabilities
-
-        if self.name == 'OR':
-            for child in self.children:
-                reliabilities *= child.reliability_function
-                maintainabilities *= child.maintainability_function
-
-            self.parent.reliability_function = reliabilities
-            self.parent.maintainability_function = maintainabilities
-
-        if self.name == 'VOTING':
-            child_reliability_functions = []
-            child_maintainability_functions = []
-            N = len(self.children)
-            for child in self.children:
-                child_reliability_functions.append(child.reliability_function)
-
-                child_maintainability_functions.append(child.maintainability_function)
-
-            self.parent.reliability_function = k_N_voting(self.k, N, child_reliability_functions)
-            self.parent.maintainability_function = k_N_voting(self.k, N, child_maintainability_functions)
-
-    def evaluate_proxel_probabilities(self):
-        probabilities = 1
-        if self.name == 'AND':
-            for child in self.children:
-                self.parent.proxel_time_series = child.proxel_time_series
-                probabilities *= child.proxel_probability_of_failure
-
-            self.parent.proxel_probability_of_failure = probabilities
-
-        if self.name == 'OR':
-            for child in self.children:
-                self.parent.proxel_time_series = child.proxel_time_series
-                probabilities *= (1 - child.proxel_probability_of_failure)
-
-            self.parent.proxel_probability_of_failure = 1 - probabilities
-
-    def __repr__(self):
-        if self.k is None:
-            return self.name
-        else:
-            return str(self.k) + '/' + str(self.get_number_of_children()) + ' ' + self.name
+from modules import FTVisualizer, distributionplotting as DP
+from modules.gate import Gate
 
 
 class FaultTree:
@@ -333,14 +79,14 @@ class FaultTree:
 
         DP.plot_distributions(name, maintainability, main_dist, times, theoretical_distribution)
 
-    def plot_reliability_distribution_of_top_event(self, linspace, theoretical=None):
+    def plot_reliability_distribution_of_top_event(self, linspace=None, theoretical=None):
         times = timeseries.calculate_time_to_failures(self.top_event.time_series)
         rel_dist = DF.determine_distribution(times)
         print('SUGGESTED RELIABILITY DISTRIBUTION FOR TOP EVENT: ' + str(rel_dist))
         DP.plot_arbitrary_distribution('Top Event', 'Reliability', times, linspace, theoretical)
         # DP.plot_weibull('Top Event', 'Reliability', rel_dist, times, theoretical)
 
-    def plot_maintainability_distribution_of_top_event(self, linspace, theoretical=None):
+    def plot_maintainability_distribution_of_top_event(self, linspace=None, theoretical=None):
         times = timeseries.calculate_time_to_repairs(self.top_event.time_series)
         main_dist = DF.determine_distribution(times)
         print('SUGGESTED MAINTAINABILITY DISTRIBUTION FOR TOP EVENT: ' + str(main_dist))
@@ -407,6 +153,9 @@ class FaultTree:
         :return:
         """
         print(RenderTree(self.top_event))
+
+    def export_to_png(self, file_name):
+        FTVisualizer.export_to_png(self, file_name)
 
     def export_time_series(self, file_name):
         """
@@ -617,6 +366,5 @@ class FaultTree:
         return len(self.time_series[self.top_event_index])
 
     def check_if_top_event_same(self):
-        # Check if recalculated top event time series are the same as the top event times series in the exported file.
         return self.top_event.time_series == self.time_series[self.top_event_index]
-'''
+        # Check if recalculated top event time series are the same as the top event times series in the exported file.

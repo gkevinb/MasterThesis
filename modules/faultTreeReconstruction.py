@@ -622,7 +622,9 @@ def export_fault_tree_to_method(event_dictionary, file_name):
 
     file = open(file_name, 'w')
 
-    file.write('from faultTreeContinuous import Event, Gate')
+    file.write('from modules.gate import Gate')
+    NEWLINE(file)
+    file.write('from modules.event import Event')
     NEWLINE(file)
     NEWLINE(file)
     NEWLINE(file)
