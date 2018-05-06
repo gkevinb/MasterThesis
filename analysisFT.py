@@ -3,18 +3,13 @@ from modules.event import Event
 from modules.faulttree import FaultTree
 import matplotlib.pyplot as plt
 import numpy as np
-from modules import distributionplotting as DP
 
 
 def compare_reliability_of_basic_event_(basic_event_id, reconstructedFT, originalFT):
     original_basic_event = originalFT.get_basic_event_(basic_event_id)
-    #reconstructed_basic_event = reconstructedFT.get_basic_event_(basic_event_id)
-    #reconstructed_distribution = reconstructed_basic_event.reliability_distribution
 
     theoretical_distribution = original_basic_event.reliability_distribution
     reconstructedFT.plot_reliability_distribution_of_basic_event_(basic_event_id, theoretical_distribution)
-
-    #print(DP.mse_exp(theoretical_distribution, reconstructed_distribution))
 
 
 def compare_maintainability_of_basic_event_(basic_event_id, reconstructedFT, originalFT):
@@ -53,12 +48,12 @@ def compare_MTTF_MTTR_of_basic_events(reconstructedFT, originalFT):
     reconstructedMTTR = []
     originalMTTF = []
     originalMTTR = []
-    for basic_event in reconstructedFT._get_basic_events():
+    for basic_event in reconstructedFT.get_basic_events():
         basic_event_names.append(basic_event.name)
         reconstructedMTTF.append(basic_event.MTTF)
         reconstructedMTTR.append(basic_event.MTTR)
 
-    for basic_event in originalFT._get_basic_events():
+    for basic_event in originalFT.get_basic_events():
         originalMTTF.append(basic_event.MTTF)
         originalMTTR.append(basic_event.MTTR)
 
@@ -76,12 +71,13 @@ def compare_distributions_of_basic_events(reconstructedFT, originalFT):
     reconstructed_maintainability = []
     original_reliability = []
     original_maintainability = []
-    for basic_event in reconstructedFT._get_basic_events():
+
+    for basic_event in reconstructedFT.get_basic_events():
         basic_event_names.append(basic_event.name)
         reconstructed_reliability.append(basic_event.reliability_distribution)
         reconstructed_maintainability.append(basic_event.maintainability_distribution)
 
-    for basic_event in originalFT._get_basic_events():
+    for basic_event in originalFT.get_basic_events():
         original_reliability.append(basic_event.reliability_distribution)
         original_maintainability.append(basic_event.maintainability_distribution)
 
@@ -97,11 +93,11 @@ def compare_inherent_availability_of_basic_events(reconstructedFT, originalFT):
     basic_event_names = []
     reconstructed_availability_inherent = []
     original_availability_inherent = []
-    for basic_event in reconstructedFT._get_basic_events():
+    for basic_event in reconstructedFT.get_basic_events():
         basic_event_names.append(basic_event.name)
         reconstructed_availability_inherent.append(basic_event.availability_inherent)
 
-    for basic_event in originalFT._get_basic_events():
+    for basic_event in originalFT.get_basic_events():
         original_availability_inherent.append(basic_event.availability_inherent)
 
     print('Reconstructed Fault Tree\t\t\t\t\t\tOriginal Fault Tree')
@@ -143,8 +139,8 @@ def run_reconstruction_analysis(faultTree):
     faultTree.calculate_MTTF_of_basic_events_from_time_series()
     faultTree.calculate_MTTR_of_basic_events_from_time_series()
 
-    faultTree.calculate_inherent_availability_of_basic_events()
-    faultTree.calculate_inherent_availability_of_top_event()
+    #faultTree.calculate_inherent_availability_of_basic_events()
+    #faultTree.calculate_inherent_availability_of_top_event()
 
     faultTree.calculate_operational_availability_of_top_event(30000)
 
@@ -152,8 +148,8 @@ def run_reconstruction_analysis(faultTree):
 def run_theoretical_analysis(faultTree, linspace):
     faultTree.calculate_reliability_maintainability(linspace)
 
-    faultTree.calculate_MTTF_of_top_event_from_reliability_function(linspace)
-    faultTree.calculate_MTTR_of_top_event_from_maintainability_function(linspace)
+    #faultTree.calculate_MTTF_of_top_event_from_reliability_function(linspace)
+    #faultTree.calculate_MTTR_of_top_event_from_maintainability_function(linspace)
 
     faultTree.calculate_MTTF_of_basic_events_from_distributions()
     faultTree.calculate_MTTR_of_basic_events_from_distributions()

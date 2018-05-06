@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import math
 from scipy.stats import expon, norm, weibull_min, lognorm
-import scipy
+from modules.faultTreeReconstruction import get_object_name
+import os
 import numpy as np
 import seaborn as sns
 
@@ -242,6 +243,7 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
 
 
     # plt.show()
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '.png')
     plt.show(block=False)
 
 

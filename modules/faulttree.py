@@ -19,7 +19,7 @@ class FaultTree:
         self.minimal_cut_sets = []
 
         if top_event is not None:
-            self.number_of_basic_events = len(self._get_basic_events())
+            self.number_of_basic_events = len(self.get_basic_events())
         else:
             self.number_of_basic_events = 0
 
@@ -39,7 +39,7 @@ class FaultTree:
                 gates.append(node)
         return gates[::-1]
 
-    def _get_basic_events(self):
+    def get_basic_events(self):
         """
         Get basic events from Fault Tree Structure, sorted numerically by name.
         :return: Basic events
@@ -53,7 +53,7 @@ class FaultTree:
         return basic_events
 
     def get_basic_event_(self, basic_event_id):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             if basic_event_id == self._get_id_of_basic_event(basic_event):
                 return basic_event
 
@@ -109,7 +109,7 @@ class FaultTree:
         :param size: Size of generated time series.
         :return:
         """
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.generate(size)
 
     def calculate_time_series(self):
@@ -131,7 +131,7 @@ class FaultTree:
             gate.evaluate_states()
 
     def calculate_reliability_maintainability(self, linspace):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_reliability_function(linspace)
             basic_event.calculate_maintainability_function(linspace)
 
@@ -140,7 +140,7 @@ class FaultTree:
             gate.evaluate_reliability_maintainability()
 
     def calculate_proxel_probalities(self, delta_time, simulation_time):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_probability_of_failure_using_proxel_based_method(delta_time, simulation_time)
 
         gates = self._get_gates_reversed()
@@ -168,7 +168,7 @@ class FaultTree:
         for times in top_event.time_series:
             file.write('%s ' % times)
         file.write('\n')
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             for times in basic_event.time_series:
                 file.write('%s ' % times)
             file.write('\n')
@@ -203,13 +203,13 @@ class FaultTree:
         self.number_of_basic_events = index - 1
 
     def load_time_series_into_basic_events(self):
-        basic_events = self._get_basic_events()
+        basic_events = self.get_basic_events()
         for basic_event in basic_events:
             basic_event_id = self._get_id_of_basic_event(basic_event)
             basic_event.time_series = self.time_series[basic_event_id]
 
     def load_states_into_basic_events(self, states):
-        basic_events = self._get_basic_events()
+        basic_events = self.get_basic_events()
         i = 0
         for basic_event in basic_events:
             basic_event.state = states[i]
@@ -248,7 +248,7 @@ class FaultTree:
         file.close()
 
     def determine_distributions_of_basic_events(self):
-        basic_events = self._get_basic_events()
+        basic_events = self.get_basic_events()
         for basic_event in basic_events:
             basic_event.determine_reliability_distribution()
             basic_event.determine_maintainability_distribution()
@@ -287,15 +287,15 @@ class FaultTree:
         self.top_event.calculate_MTTR_from_time_series()
 
     def calculate_MTTF_of_basic_events_from_time_series(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_MTTF_from_time_series()
 
     def calculate_MTTR_of_basic_events_from_time_series(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_MTTR_from_time_series()
 
     def calculate_inherent_availability_of_basic_events(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_inherent_availability()
 
     def calculate_inherent_availability_of_top_event(self):
@@ -315,21 +315,21 @@ class FaultTree:
         self.top_event.MTTR = y_int[-1]
 
     def calculate_MTTF_of_basic_events_from_distributions(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_MTTF_from_distribution()
 
     def calculate_MTTR_of_basic_events_from_distributions(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             basic_event.calculate_MTTR_from_distribution()
 
     def print_MTTF_MTTR_of_basic_events(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             print(basic_event.name)
             print('MTTF: ' + str(basic_event.MTTF))
             print('MTTR: ' + str(basic_event.MTTR))
 
     def print_distributions_of_basic_events(self):
-        for basic_event in self._get_basic_events():
+        for basic_event in self.get_basic_events():
             print(basic_event.name)
             print('Reliability: ' + str(basic_event.reliability_distribution))
             print('Maintainability: ' + str(basic_event.maintainability_distribution))

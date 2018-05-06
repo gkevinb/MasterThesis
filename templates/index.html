@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fault Tree Analysis</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <h1>Fault Tree Analysis</h1>
+
+        <div id="events">
+            <form action="">
+                {% for event in orignal_events %}
+                    <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
+                {% endfor %}
+            </form>
+            <ul>
+                {% for event in orignal_events %}
+                    <li>{{ event.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="original_fault_tree">
+            <img src="/static/images/Original_FT.png" alt="Original Fault Tree">
+
+        </div>
+        <div id="reconstructed_fault_tree">
+            <img src="/static/images/Reconstructed_FT.png" alt="Reconstructed Fault Tree">
+
+        </div>
+        <div id="plots">
+            <img src="/static/images/basic_event_1.png" id="plot" alt="plot">
+        </div>
+
+
+        <script type="text/javascript" src="/static/js/script.js">
+        </script>
+    </body>
+</html>

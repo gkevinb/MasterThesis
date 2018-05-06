@@ -2,515 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysisFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysisFT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faultTreeContinuous.py" beforeDir="false" afterPath="$PROJECT_DIR$/faultTreeContinuous.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generatedFT_method.py" beforeDir="false" afterPath="$PROJECT_DIR$/generatedFT_method.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/distributionplotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/distributionplotting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/faultTreeReconstruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/faultTreeReconstruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxel_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/proxel_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/faulttree.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/faulttree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_series.txt" beforeDir="false" afterPath="$PROJECT_DIR$/time_series.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/bin/sphinx-apidoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/bin/sphinx-autogen" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/bin/sphinx-build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/bin/sphinx-quickstart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/bin/yappi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/DESCRIPTION.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/Sphinx-1.7.3.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/_yappi.cpython-36m-darwin.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/installed-files.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/not-zip-safe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter-1.0.8-py3.6.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/fitter/fitter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/__main__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/addnodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/apidoc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/application.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/_epub_base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/applehelp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/changes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/devhelp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/dummy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/epub3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/gettext.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/html.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/htmlhelp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/latex/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/latex/transforms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/linkcheck.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/manpage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/qthelp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/texinfo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/text.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/websupport.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/builders/xml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/cmd/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/cmd/build.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/cmd/quickstart.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/cmdline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/deprecation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/directives/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/directives/code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/directives/other.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/directives/patches.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/c.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/cpp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/javascript.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/python.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/rst.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/domains/std.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/adapters/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/adapters/asset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/adapters/indexentries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/adapters/toctree.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/asset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/dependencies.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/indexentries.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/metadata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/title.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/environment/collectors/toctree.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/errors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/events.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/apidoc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autodoc/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autodoc/directive.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autodoc/importer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autodoc/inspector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosectionlabel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosummary/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosummary/generate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosummary/templates/autosummary/base.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosummary/templates/autosummary/class.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/autosummary/templates/autosummary/module.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/coverage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/doctest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/extlinks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/githubpages.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/graphviz.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/ifconfig.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/imgconverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/imgmath.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/inheritance_diagram.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/intersphinx.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/jsmath.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/linkcode.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/mathbase.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/mathjax.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/napoleon/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/napoleon/docstring.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/napoleon/iterators.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/pngmath.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/todo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/ext/viewcode.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/extension.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/highlighting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/io.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/jinja2glue.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/bn/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/bn/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/bn/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ca/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ca/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ca/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cs/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cs/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cs/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cy/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cy/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/cy/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/da/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/da/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/da/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/de/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/de/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/de/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/el/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/el/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/el/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eo/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eo/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eo/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/es/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/es/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/es/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/et/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/et/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/et/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eu/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eu/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/eu/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fa/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fa/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fa/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fi/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fi/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fi/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fr/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fr/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/fr/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/he/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/he/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/he/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi_IN/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi_IN/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hi_IN/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hr/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hr/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hr/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hu/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hu/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/hu/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/id/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/id/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/id/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/it/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/it/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/it/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ja/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ja/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ja/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ko/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ko/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ko/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lt/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lt/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lt/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lv/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lv/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/lv/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/mk/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/mk/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/mk/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nb_NO/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nb_NO/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nb_NO/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ne/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ne/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ne/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nl/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nl/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/nl/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pl/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pl/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pl/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_BR/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_BR/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_BR/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_PT/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_PT/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/pt_PT/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ro/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ro/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ro/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ru/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ru/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ru/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/si/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/si/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/si/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sk/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sk/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sk/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sl/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sl/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sl/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sphinx.pot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr@latin/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr@latin/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sr@latin/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sv/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sv/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/sv/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ta/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ta/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/ta/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/tr/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/tr/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/tr/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/uk_UA/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/uk_UA/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/uk_UA/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/vi/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/vi/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/vi/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_CN/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_CN/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_CN/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_TW/LC_MESSAGES/sphinx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_TW/LC_MESSAGES/sphinx.mo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/locale/zh_TW/LC_MESSAGES/sphinx.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/make_mode.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/parsers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/pycode/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/pycode/parser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/pygments_styles.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/quickstart.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/registry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/roles.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/da.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/de.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/en.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/es.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/fi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/fr.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/hu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/it.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/ja.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/jssplitter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/nl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/no.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/danish-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/dutch-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/finnish-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/french-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/german-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/hungarian-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/italian-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/norwegian-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/porter-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/portuguese-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/romanian-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/russian-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/spanish-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/swedish-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/non-minified-js/turkish-stemmer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/pt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/ro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/ru.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/sv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/tr.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/search/zh.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/setup_command.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/epub3/container.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/epub3/content.opf_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/epub3/mimetype" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/epub3/nav.xhtml_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/epub3/toc.ncx_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/latex/latex.tex_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/latex/longtable.tex_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/latex/tabular.tex_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/latex/tabulary.tex_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/qthelp/project.qhcp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/qthelp/project.qhp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/Makefile.new_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/Makefile_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/conf.py_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/make.bat.new_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/make.bat_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/templates/quickstart/master_doc.rst_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/testing/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/testing/fixtures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/testing/path.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/testing/util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/Makefile_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/footnotehyper-sphinx.sty" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/latexmkjarc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/latexmkrc_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/python.ist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/sphinx.sty" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/sphinxhowto.cls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/sphinxmanual.cls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs/sphinxmulticell.sty" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/texinputs_win/Makefile_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/agogo/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/agogo/static/agogo.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/agogo/static/bgfooter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/agogo/static/bgtop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/agogo/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/changes/frameset.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/changes/rstsource.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/changes/versionchanges.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/defindex.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/domainindex.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/genindex-single.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/genindex-split.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/genindex.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/globaltoc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/localtoc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/opensearch.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/relations.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/searchbox.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/searchresults.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/sourcelink.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/ajax-loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/basic.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/comment-bright.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/comment-close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/comment.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/doctools.js_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/documentation_options.js_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/down-pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/file.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/jquery-3.2.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/searchtools.js_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/underscore-1.3.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/underscore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/up-pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/static/websupport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/basic/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/static/background_b01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/static/bizstyle.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/static/bizstyle.js_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/static/css3-mediaqueries.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/static/css3-mediaqueries_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/bizstyle/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/classic/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/classic/static/classic.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/classic/static/sidebar.js_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/classic/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/default/static/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/default/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/epub/epub-cover.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/epub/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/epub/static/epub.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/epub/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/static/alert_info_32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/static/alert_warning_32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/static/bg-page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/static/bullet_orange.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/static/haiku.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/haiku/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/nature/static/nature.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/nature/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/nonav/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/nonav/static/nonav.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/nonav/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/dialog-note.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/dialog-seealso.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/dialog-todo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/dialog-topic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/dialog-warning.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/epub.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/footerbg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/headerbg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/ie6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/middlebg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/pyramid.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/static/transparent.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/pyramid/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/artwork/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/darkmetal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/headerbg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/metal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/navigation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/print.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/scrolls.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/theme_extras.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/watermark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/static/watermark_blur.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/scrolls/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/sphinxdoc/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/sphinxdoc/static/contents.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/sphinxdoc/static/navigation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/sphinxdoc/static/sphinxdoc.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/sphinxdoc/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/traditional/static/traditional.css_t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/themes/traditional/theme.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/theming.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/compact_bullet_list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/i18n.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/post_transforms/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/post_transforms/images.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/transforms/references.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/console.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/docfields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/docstrings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/docutils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/fileutil.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/i18n.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/images.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/inspect.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/inventory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/jsdump.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/jsonimpl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/logging.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/matching.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/nodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/osutil.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/parallel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/pycompat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/requests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/rst.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/smartypants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/stemmer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/stemmer/porter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/tags.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/template.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/texescape.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/typing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/util/websupport.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/versioning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/errors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/search/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/search/nullsearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/search/whooshsearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/search/xapiansearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/storage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/storage/differ.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/storage/sqlalchemy_db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/websupport/storage/sqlalchemystorage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/html.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/html5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/latex.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/manpage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/texinfo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/text.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/websupport.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/sphinx/writers/xml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/installed-files.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi-0.98-py3.6.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/yappi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv_mac/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv_mac/pip-selfcheck.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -527,31 +25,31 @@
       <file leaf-file-name="event.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/event.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+            <state relative-caret-position="1785">
+              <caret line="110" column="27" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="faulttree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-350">
+              <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="8" />
               <folding>
-                <element signature="e#3#60#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timeseries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
+      <file leaf-file-name="generatedFT_method.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generatedFT_method.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="196" column="9" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="distributionplotting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="390" column="25" selection-start-line="390" selection-start-column="25" selection-end-line="390" selection-end-column="25" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -560,8 +58,8 @@
       <file leaf-file-name="analysisFT.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysisFT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="156" selection-start-line="156" selection-end-line="156" />
+            <state relative-caret-position="41">
+              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -569,14 +67,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faulttree.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
+      <file leaf-file-name="fault_tree_framework.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="304" column="46" selection-start-line="304" selection-start-column="46" selection-end-line="304" selection-end-column="46" />
+            <state relative-caret-position="-491">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="75" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -592,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mttf</find>
       <find>print</find>
       <find>determine_reliability_distribution</find>
       <find>determine_distributions_of_basic_events</find>
@@ -622,6 +149,7 @@
       <find>is_ODD</find>
       <find>buil</find>
       <find>opera</find>
+      <find>number_of_basic_events</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -630,12 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/logicgate.py" />
-        <option value="$PROJECT_DIR$/test_logicgate.py" />
-        <option value="$PROJECT_DIR$/gateExample.py" />
-        <option value="$PROJECT_DIR$/cutsets.py" />
-        <option value="$PROJECT_DIR$/faultTreeReconstruction.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/modules/cutsets.py" />
         <option value="$PROJECT_DIR$/testFT.py" />
         <option value="$PROJECT_DIR$/faultTreeReconstruction_cutsets.py" />
@@ -678,9 +200,15 @@
         <option value="$PROJECT_DIR$/generatedFT_method.py" />
         <option value="$PROJECT_DIR$/modules/faultTreeReconstruction.py" />
         <option value="$PROJECT_DIR$/modules/event.py" />
-        <option value="$PROJECT_DIR$/modules/distributionplotting.py" />
+        <option value="$PROJECT_DIR$/Thesis.ipynb" />
+        <option value="$PROJECT_DIR$/dashboard.py" />
         <option value="$PROJECT_DIR$/modules/faulttree.py" />
+        <option value="$PROJECT_DIR$/modules/distributionplotting.py" />
         <option value="$PROJECT_DIR$/analysisFT.py" />
+        <option value="$PROJECT_DIR$/fault_tree_framework.py" />
+        <option value="$PROJECT_DIR$/static/js/script.js" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
   </component>
@@ -711,7 +239,24 @@
             <path>
               <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="Thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="scraps" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Thesis" type="b2602c69:ProjectViewProjectNode" />
@@ -733,6 +278,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scraps" />
       <recent name="$PROJECT_DIR$/modules" />
@@ -751,25 +299,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.analysisFT">
-    <configuration name="FT_to_PNG" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Thesis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FT_to_PNG.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.main">
     <configuration name="analysisFT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -783,6 +313,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysisFT.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="dashboard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dashboard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -806,7 +354,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="gate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -814,11 +362,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/gate.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -860,21 +408,38 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Thesis" type="Python.Ipnb" factoryName="Jupyter Notebook">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+    </configuration>
     <list>
       <item itemvalue="Python.proxel" />
+      <item itemvalue="Jupyter Notebook.Thesis" />
       <item itemvalue="Python.analysisFT" />
       <item itemvalue="Python.proxel_example" />
-      <item itemvalue="Python.FT_to_PNG" />
-      <item itemvalue="Python.gate" />
       <item itemvalue="Python.event" />
+      <item itemvalue="Python.dashboard" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.analysisFT" />
+        <item itemvalue="Python.dashboard" />
         <item itemvalue="Python.proxel_example" />
         <item itemvalue="Python.event" />
-        <item itemvalue="Python.gate" />
-        <item itemvalue="Python.FT_to_PNG" />
       </list>
     </recent_temporary>
   </component>
@@ -981,75 +546,57 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/FTVisualizer.py">
+    <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="2873">
+          <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generatedFT.py" />
-    <entry file="file://$PROJECT_DIR$/testFT.py" />
-    <entry file="file://$PROJECT_DIR$/scraps/truth_table_test.txt">
+    <entry file="file://$PROJECT_DIR$/analysisFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="68">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/matplotlib/axes/_axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="6461" selection-start-line="6461" selection-end-line="6461" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/metropolis.py">
+    <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/faultTreeReconstruction_cutsets.py">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="108" lean-forward="true" selection-start-line="14" selection-start-column="108" selection-end-line="14" selection-end-column="108" />
+        <state relative-caret-position="595">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/numpy/lib/function_base.py">
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="837" selection-start-line="837" selection-end-line="837" />
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultTreeDiscrete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="109" column="3" lean-forward="true" selection-start-line="109" selection-start-column="3" selection-end-line="109" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.1/python_stubs/-777881331/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="477" column="4" selection-start-line="477" selection-start-column="4" selection-end-line="477" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraps/distribution_plotting_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="204">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1151,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/distributionfitting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="64" column="53" lean-forward="true" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraps/distributionFitting_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1193,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateFT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="65" column="35" lean-forward="true" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraps/tree.dot">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1211,9 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1228,19 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="699">
           <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proxel_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="39" />
-          <folding>
-            <element signature="e#56#85#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1255,46 +772,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generatedFT_method.py">
+    <entry file="file://$PROJECT_DIR$/ft_detailed.dot">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
+    <entry file="file://$PROJECT_DIR$/proxel_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5038">
-          <caret line="626" column="49" selection-start-line="626" selection-start-column="49" selection-end-line="626" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="390" column="25" selection-start-line="390" selection-start-column="25" selection-end-line="390" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
-          <folding>
-            <element signature="e#3#60#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="27" selection-start-line="6" selection-end-line="7" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1305,42 +796,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/flask/templating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.py" />
+    <entry file="file://$PROJECT_DIR$/Thesis.ipynb" />
+    <entry file="file://$PROJECT_DIR$/modules/faultTreeReconstruction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5692">
+          <caret line="473" column="4" selection-start-line="473" selection-start-column="4" selection-end-line="473" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/FTVisualizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/distributionfitting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="110" column="27" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateFT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-763">
+          <caret line="239" column="28" selection-start-line="239" selection-start-column="28" selection-end-line="239" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analysisFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="156" selection-start-line="156" selection-end-line="156" />
+        <state relative-caret-position="41">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Reconstruced_FT.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/FTVisualizer.py">
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Original_FT.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ft_detailed.dot">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        <state relative-caret-position="527">
+          <caret line="31" column="75" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="304" column="46" selection-start-line="304" selection-start-column="46" selection-end-line="304" selection-end-column="46" />
+        <state relative-caret-position="-350">
+          <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="8" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generatedFT_method.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-118" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-491">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
