@@ -1,0 +1,15 @@
+#original_fault_tree{
+    border: 6px solid red;
+    /*
+    float: right;
+    */
+}
+
+#reconstructed_fault_tree{
+    border: 6px solid blue;
+    /*float: right;*/
+}
+
+#metric_bar{
+
+}

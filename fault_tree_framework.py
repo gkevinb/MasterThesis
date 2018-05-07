@@ -21,18 +21,20 @@ def create_fault_tree():
 
     rel_exp_dist = ['EXP', 1 / 3]
     main_exp_dist = ['EXP', 1 / 2]
+    lognorm_dist = ['LOGNORM', 2, 1]
+    norm_dist = ['NORMAL', 5, 1]
 
     top_event = Event("Top Event")
     and1 = Gate("AND", parent=top_event)
-    intermediate_event_1 = Event("Intermediate Event 1", rel_exp_dist, main_exp_dist, parent=and1)
-    intermediate_event_2 = Event("Intermediate Event 2", rel_exp_dist, main_exp_dist, parent=and1)
+    intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
+    intermediate_event_2 = Event("Intermediate Event 2", parent=and1)
     voting2 = Gate("VOTING", parent=intermediate_event_1, k=2)
-    basic_event_3 = Event("Basic Event 3", rel_exp_dist, main_exp_dist, parent=voting2)
+    basic_event_3 = Event("Basic Event 3", norm_dist, main_exp_dist, parent=voting2)
     basic_event_4 = Event("Basic Event 4", rel_exp_dist, main_exp_dist, parent=voting2)
-    basic_event_5 = Event("Basic Event 5", rel_exp_dist, main_exp_dist, parent=voting2)
-    and3 = Gate("AND", parent=intermediate_event_2)
-    basic_event_1 = Event("Basic Event 1", rel_exp_dist, main_exp_dist, parent=and3)
-    basic_event_2 = Event("Basic Event 2", rel_exp_dist, main_exp_dist, parent=and3)
+    basic_event_5 = Event("Basic Event 5", norm_dist, main_exp_dist, parent=voting2)
+    or3 = Gate("OR", parent=intermediate_event_2)
+    basic_event_1 = Event("Basic Event 1", rel_exp_dist, main_exp_dist, parent=or3)
+    basic_event_2 = Event("Basic Event 2", rel_exp_dist, main_exp_dist, parent=or3)
 
     fault_tree = FaultTree(top_event)
 
@@ -89,3 +91,6 @@ def run_theoretical_analysis(fault_tree, linspace, operating_cycle):
 def create_plots(reconstructed_fault_tree, original_fault_tree):
     for i in range(1, reconstructed_fault_tree.number_of_basic_events + 1):
         compare_reliability_of_basic_event_(i, reconstructed_fault_tree, original_fault_tree)
+        compare_maintainability_of_basic_event_(i, reconstructed_fault_tree, original_fault_tree)
+    reconstructed_fault_tree.plot_reliability_distribution_of_top_event()
+    reconstructed_fault_tree.plot_maintainability_distribution_of_top_event()

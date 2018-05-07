@@ -13,13 +13,13 @@ def node_name(node):
 def node_attr(node):
     if node.name in GATES:
         if node.name == 'VOTING':
-            return 'shape=house label="%s/%s %s"' % (node.k, len(node.children), node.name)
+            return 'color="red" shape=house label="%s/%s %s"' % (node.k, len(node.children), node.name)
         if node.name == 'AND':
-            return 'shape=house label="%s"' % node.name
+            return 'color="red" shape=house label="%s"' % node.name
         if node.name == 'OR':
-            return 'shape=house label="%s"' % node.name
+            return 'color="red" shape=house label="%s"' % node.name
     else:
-        return "shape=box"
+        return 'color="blue" shape=box'
 
 
 def edge_type(node, child):

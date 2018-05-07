@@ -17,6 +17,26 @@ class Gate(NodeMixin):
         self.parent = parent
         self.k = k
 
+    def k_N_voting(self, k, N, input_probabilities):
+        """
+        Pseudocode on page 38 of Fault tree analysis: A survey of the state-of-the-art
+        in modeling, analysis and tools
+        Using recursion to calculate reliability when the gate is k/N Voting
+
+        :param k:
+        :param N:
+        :param input_probabilities:
+        :return:
+        """
+        if k == 0:
+            return 1
+        if k == N:
+            return reduce(lambda x, y: x * y, input_probabilities)
+
+        result = input_probabilities[0] * self.k_N_voting(k - 1, N - 1, input_probabilities[1:]) + \
+                 (1 - input_probabilities[0]) * self.k_N_voting(k, N - 1, input_probabilities[1:])
+        return result
+
     def get_number_of_children(self):
         return len(self.children)
 
@@ -58,26 +78,6 @@ class Gate(NodeMixin):
 
     def evaluate_reliability_maintainability(self):
 
-        def k_N_voting(k, N, input_reliabilities):
-            """
-            Pseudocode on page 38 of Fault tree analysis: A survey of the state-of-the-art
-            in modeling, analysis and tools
-            Using recursion to calculate reliability when the gate is k/N Voting
-
-            :param k:
-            :param N:
-            :param input_reliabilities:
-            :return:
-            """
-            if k == 0:
-                return 1
-            if k == N:
-                return reduce(lambda x, y: x * y, input_reliabilities)
-
-            result = input_reliabilities[0] * k_N_voting(k - 1, N - 1, input_reliabilities[1:]) + \
-                     (1 - input_reliabilities[0]) * k_N_voting(k, N - 1, input_reliabilities[1:])
-            return result
-
         reliabilities = 1
         maintainabilities = 1
 
@@ -103,11 +103,10 @@ class Gate(NodeMixin):
             N = len(self.children)
             for child in self.children:
                 child_reliability_functions.append(child.reliability_function)
-
                 child_maintainability_functions.append(child.maintainability_function)
 
-            self.parent.reliability_function = k_N_voting(self.k, N, child_reliability_functions)
-            self.parent.maintainability_function = k_N_voting(self.k, N, child_maintainability_functions)
+            self.parent.reliability_function = self.k_N_voting(self.k, N, child_reliability_functions)
+            self.parent.maintainability_function = self.k_N_voting(self.k, N, child_maintainability_functions)
 
     def evaluate_proxel_probabilities(self):
         probabilities = 1
@@ -124,6 +123,15 @@ class Gate(NodeMixin):
                 probabilities *= (1 - child.proxel_probability_of_failure)
 
             self.parent.proxel_probability_of_failure = 1 - probabilities
+
+        if self.name == 'VOTING':
+            children_proxel_probabilities = []
+            N = len(self.children)
+            for child in self.children:
+                self.parent.proxel_time_series = child.proxel_time_series
+                children_proxel_probabilities.append(child.proxel_probability_of_failure)
+
+            self.parent.proxel_probability_of_failure = self.k_N_voting(self.k, N, children_proxel_probabilities)
 
     def __repr__(self):
         if self.k is None:

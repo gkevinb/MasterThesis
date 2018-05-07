@@ -11,8 +11,8 @@ def build_fault_tree():
     basic_event_3 = Event("Basic Event 3", parent=voting2)
     basic_event_4 = Event("Basic Event 4", parent=voting2)
     basic_event_5 = Event("Basic Event 5", parent=voting2)
-    and3 = Gate("AND", parent=intermediate_event_2)
-    basic_event_1 = Event("Basic Event 1", parent=and3)
-    basic_event_2 = Event("Basic Event 2", parent=and3)
+    or3 = Gate("OR", parent=intermediate_event_2)
+    basic_event_1 = Event("Basic Event 1", parent=or3)
+    basic_event_2 = Event("Basic Event 2", parent=or3)
 
     return top_event

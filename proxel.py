@@ -106,12 +106,12 @@ class ProxelNetwork:
             self.current_proxels = next_proxels
             self.delete_proxels_with_low_probability()
             # print('Number of nodes in layer: ' + str(len(self.current_proxels)))
-            #print(len(self.current_proxels))
             # print(self.current_proxels)
             self.add_delta_time_to_time_series()
             self.calculate_probabity_state_is_true()
             self.calculate_probabity_state_is_false()
             total_probability = (self.probability_of_OK[-1] + self.probability_of_failure[-1])
+            # print(total_probability)
             if total_probability < 0.999 or total_probability > 1.001:
                 print('INVALID RESULT DUE TO TOTAL PROBABILITY TOO FAR FROM 1')
                 break

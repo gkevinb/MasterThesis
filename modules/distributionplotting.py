@@ -66,10 +66,10 @@ def setup_fig_subplots(metric):
 
     if metric == 'Reliability':
         num_of_subplots = 4
-        figure_width = 13
+        figure_width = 15
     if metric == 'Maintainability':
         num_of_subplots = 3
-        figure_width = 9
+        figure_width = 12
 
     fig, subplots = plt.subplots(1, num_of_subplots, figsize=(figure_width, 4))
     return fig, subplots
@@ -187,7 +187,7 @@ def calculate_linspace(distribution):
 
 def plot_identified_distribution_comparison(name, metric, distribution, times, theoretical_distribution):
     fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    #fig.suptitle(name + '\n\n', fontsize=16)
 
     linspace = calculate_linspace(distribution)
     pdf = calculate_pdf(distribution, linspace)
@@ -200,6 +200,8 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
     # First plot PDF
     subplots[0].plot(linspace, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
     subplots[0].plot(linspace, theoretical_pdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[0].set_xlabel('time (t)')
+    subplots[0].set_ylabel('P(t)')
     subplots[0].legend()
 
     if times != EMPTY_LIST:
@@ -213,6 +215,8 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
     # Second plot CDF and/or Maintainability
     subplots[1].plot(linspace, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
     subplots[1].plot(linspace, theoretical_cdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[1].set_xlabel('time (t)')
+    subplots[1].set_ylabel('P(T\u2264t)')
     subplots[1].legend()
 
     if metric == 'Maintainability':
@@ -220,6 +224,8 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
         subplots[2].plot(linspace, pdf / (1 - cdf), 'b-', lw=1, alpha=0.6, label='Reconstructed')
         subplots[2].plot(linspace, theoretical_pdf / (1 - theoretical_cdf), 'r-', lw=1, alpha=0.6, label='Theoretical')
         subplots[2].set_title('Repair Rate')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('\u03BC(t)')
         subplots[2].legend()
         if distribution[0] == 'EXP':
             subplots[2].set_ylim([0, 1])
@@ -231,19 +237,24 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
         theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
         subplots[2].plot(linspace, reliability, 'b-', lw=1, alpha=0.6, label='Reconstructed')
         subplots[2].plot(linspace, theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('R(t)')
         subplots[2].legend()
         subplots[2].set_title(metric)
 
         subplots[3].plot(linspace, pdf/reliability, 'b-', lw=1, alpha=0.6, label='Reconstructed')
         subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
         subplots[3].set_title('Failure Rate')
+        subplots[3].set_xlabel('time (t)')
+        subplots[3].set_ylabel('\u03BB(t)')
         subplots[3].legend()
         if distribution[0] == 'EXP':
             subplots[3].set_ylim([0, 1])
 
 
     # plt.show()
-    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '.png')
+    plt.tight_layout()
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
     plt.show(block=False)
 
 
@@ -393,35 +404,72 @@ def plot_arbitrary__distribution_no_compare(name, metric, times):
     # Reliability for now
     # Maybe fix inconsistencies with the numbers on the axis
     fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    #fig.suptitle(name + '\n\n', fontsize=16)
 
     # PDF
-    sns.distplot(times, hist=True, ax=subplots[0])
     subplots[0].set_title('PDF')
+
+    theoretical_cdf = 0
+    if metric == 'Reliability':
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to failures')
+    if metric == 'Maintainability':
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to repairs')
+
+    x, pdf = subplots[0].lines[0].get_data()
+    subplots[0].plot(x, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[0].set_xlabel('time (t)')
+    subplots[0].set_ylabel('P(t)')
+    subplots[0].legend()
+    #subplots[0].set_xlim([0, 30])
 
     # CDF
     sns.kdeplot(times, cumulative=True, ax=subplots[1])
+    _, cdf = subplots[1].lines[0].get_data()
+    subplots[1].plot(x, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[1].set_xlabel('time (t)')
+    subplots[1].set_ylabel('P(T\u2264t)')
+    subplots[1].legend()
 
     if metric == 'Maintainability':
         subplots[1].set_title('CDF (Maintainability)')
 
+        subplots[2].plot(x, pdf/(1 - cdf), 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        subplots[2].set_title('Repair Rate')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('\u03BC(t)')
+        subplots[2].set_ylim([0, 5])
+        subplots[2].legend()
+
     if metric == 'Reliability':
+        reliability = 1 - cdf
         subplots[1].set_title('CDF')
-        times.sort()
-        samples = len(times)
-        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+
         # Get length of this and see if its the same length as the reliability of the top event
         # Better yet when calculating relability function use the same number of elements as the
         # length of top events time of failure or time of repair.
         # Reliability
-        subplots[2].plot(times, one_minus_cdf)
+        subplots[2].plot(x, reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
         subplots[2].set_ylim([0, 1.05])
+        subplots[2].legend()
         # For comparing graphs
-        #subplots[2].set_xlim([0, 100])
-
+        # subplots[2].set_xlim([0, 100])
         subplots[2].set_title('Reliability')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('R(t)')
+
+        subplots[3].plot(x, pdf/reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        #subplots[2].set_ylim([0, 0.01])
+
+        subplots[3].set_title('Failure Rate')
+        subplots[3].set_xlabel('time (t)')
+        subplots[3].set_ylabel('\u03BB(t)')
+        #subplots[3].set_ylim([0, 0.1])
+        subplots[3].legend()
+        #subplots[3].set_xlim([300, 325])
 
     # plt.show()
+    plt.tight_layout()
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
     plt.show(block=False)
 
 
