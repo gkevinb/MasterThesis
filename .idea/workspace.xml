@@ -3,7 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fault_tree_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/fault_tree_framework.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/distributionplotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/distributionplotting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/timeseries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_2_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_2_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_2_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_2_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_3_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_3_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_3_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_3_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_4_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_4_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_4_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_4_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_5_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_5_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_5_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_5_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/top_event_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ts.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,76 +38,47 @@
       <file leaf-file-name="event.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/event.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1802">
-              <caret line="111" column="58" selection-start-line="111" selection-start-column="58" selection-end-line="111" selection-end-column="58" />
+            <state relative-caret-position="263">
+              <caret line="23" column="37" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/gate.py">
+      <file leaf-file-name="timeseries.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2125">
-              <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+            <state relative-caret-position="106">
+              <caret line="183" selection-start-line="183" selection-end-line="183" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="distributionplotting.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="distributionplotting.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1703">
-              <caret line="566" column="31" lean-forward="true" selection-start-line="566" selection-start-column="31" selection-end-line="566" selection-end-column="31" />
+            <state relative-caret-position="-4104">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="faulttree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="303" column="8" selection-start-line="303" selection-start-column="8" selection-end-line="303" selection-end-column="8" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reconstructed_FT.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/images/Reconstructed_FT.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="fault_tree_framework.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proxel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxel_example.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proxel_example.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="analysisFT.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analysisFT.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="907">
-              <caret line="159" column="13" selection-start-line="159" selection-start-column="4" selection-end-line="159" selection-end-column="13" />
+            <state relative-caret-position="351">
+              <caret line="123" column="62" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -100,11 +89,38 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="-135">
+              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="52" selection-start-column="52" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-260">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
@@ -120,11 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>calculate_reliability_function</find>
-      <find>calculate_MTTF_of_basic_events_from_time_series</find>
-      <find>reliability_function</find>
-      <find>top_event_reliability</find>
-      <find>run_reconstruction_analysis</find>
       <find>calculate_operational_availability</find>
       <find>pdf</find>
       <find>subplots[3]</find>
@@ -144,12 +155,17 @@
       <find>buil</find>
       <find>opera</find>
       <find>number_of_basic_events</find>
-      <find>get_object_name</find>
       <find>proxel</find>
       <find>input_reliabilities</find>
       <find>proxel_time_series</find>
       <find>savefig</find>
       <find>getcwd</find>
+      <find>EXPORT_PNG</find>
+      <find>object`</find>
+      <find>get_object_name</find>
+      <find>avail</find>
+      <find>availability_operational</find>
+      <find>operati</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,7 +200,6 @@
         <option value="$PROJECT_DIR$/scraps/derivative.py" />
         <option value="$PROJECT_DIR$/scraps/integration.py" />
         <option value="$PROJECT_DIR$/scraps/availability_operational.py" />
-        <option value="$PROJECT_DIR$/modules/timeseries.py" />
         <option value="$PROJECT_DIR$/scraps/seaborn_distfitting.py" />
         <option value="$PROJECT_DIR$/scraps/scrap.py" />
         <option value="$PROJECT_DIR$/scraps/distributionFitting_example.py" />
@@ -198,17 +213,18 @@
         <option value="$PROJECT_DIR$/Thesis.ipynb" />
         <option value="$PROJECT_DIR$/dashboard.py" />
         <option value="$PROJECT_DIR$/analysisFT.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/modules/FTVisualizer.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/static/js/script.js" />
         <option value="$PROJECT_DIR$/modules/faulttree.py" />
-        <option value="$PROJECT_DIR$/fault_tree_framework.py" />
         <option value="$PROJECT_DIR$/proxel.py" />
         <option value="$PROJECT_DIR$/modules/gate.py" />
         <option value="$PROJECT_DIR$/proxel_example.py" />
         <option value="$PROJECT_DIR$/modules/distributionplotting.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/fault_tree_framework.py" />
+        <option value="$PROJECT_DIR$/static/js/script.js" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/modules/timeseries.py" />
       </list>
     </option>
   </component>
@@ -305,7 +321,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.proxel_example">
+  <component name="RunManager" selected="Python.main">
     <configuration name="analysisFT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -441,8 +457,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.proxel_example" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.proxel_example" />
         <item itemvalue="Python.analysisFT" />
         <item itemvalue="Python.dashboard" />
         <item itemvalue="Python.event" />
@@ -498,7 +514,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.20625" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49407783" visible="true" weight="0.20625" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.39027777" side_tool="true" weight="0.30542454" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6097222" weight="0.4481132" />
@@ -552,13 +568,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/proxel_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/event.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
@@ -760,13 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="196" column="9" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv_mac/lib/python3.6/site-packages/flask/templating.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -809,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -823,64 +818,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="143" column="47" selection-start-line="143" selection-start-column="47" selection-end-line="143" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proxel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="111" column="58" selection-start-line="111" selection-start-column="58" selection-end-line="111" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/gate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2125">
           <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_series.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-526" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/jquery-3.3.1.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proxel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -893,29 +852,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysisFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="159" column="13" selection-start-line="159" selection-start-column="4" selection-end-line="159" selection-end-column="13" />
+        <state relative-caret-position="-950">
+          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_series.txt">
+    <entry file="file://$PROJECT_DIR$/modules/faulttree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-526" />
+        <state relative-caret-position="131">
+          <caret line="303" column="8" selection-start-line="303" selection-start-column="8" selection-end-line="303" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/images/Reconstructed_FT.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/modules/event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fault_tree_framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="123" column="62" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/distributionplotting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1703">
-          <caret line="566" column="31" lean-forward="true" selection-start-line="566" selection-start-column="31" selection-end-line="566" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-4104">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/timeseries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
         </state>
       </provider>
     </entry>

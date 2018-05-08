@@ -1,6 +1,8 @@
 from modules.gate import Gate
 from modules.event import Event
 from modules.faulttree import FaultTree
+from modules.faultTreeReconstruction import get_object_name
+import json
 
 
 def compare_reliability_of_basic_event_(basic_event_id, reconstructedFT, originalFT):
@@ -54,7 +56,7 @@ def reconstruct_fault_tree(file_name):
     return fault_tree
 
 
-def run_reconstruction_analysis(fault_tree, operating_cycle):
+def run_reconstruction_analysis(fault_tree):
     fault_tree.calculate_cut_sets()
     fault_tree.calculate_minimal_cut_sets()
 
@@ -74,18 +76,20 @@ def run_reconstruction_analysis(fault_tree, operating_cycle):
     fault_tree.calculate_MTTF_of_basic_events_from_time_series()
     fault_tree.calculate_MTTR_of_basic_events_from_time_series()
 
+    operating_cycle = fault_tree.top_event.time_series[-1]
     fault_tree.calculate_operational_availability_of_top_event(operating_cycle)
 
+    for basic_event in fault_tree.get_basic_events():
+        basic_event.calculate_operational_availability(operating_cycle)
 
-def run_theoretical_analysis(fault_tree, linspace, operating_cycle):
+
+def run_theoretical_analysis(fault_tree, linspace):
     fault_tree.calculate_reliability_maintainability(linspace)
 
     fault_tree.calculate_MTTF_of_basic_events_from_distributions()
     fault_tree.calculate_MTTR_of_basic_events_from_distributions()
 
     fault_tree.calculate_inherent_availability_of_basic_events()
-
-    fault_tree.calculate_operational_availability_of_top_event(operating_cycle)
 
 
 def create_plots(reconstructed_fault_tree, original_fault_tree):
@@ -94,3 +98,36 @@ def create_plots(reconstructed_fault_tree, original_fault_tree):
         compare_maintainability_of_basic_event_(i, reconstructed_fault_tree, original_fault_tree)
     reconstructed_fault_tree.plot_reliability_distribution_of_top_event()
     reconstructed_fault_tree.plot_maintainability_distribution_of_top_event()
+
+
+def get_info_on_events(fault_tree):
+    events = []
+
+    event_dictionary = {
+        'event_name': get_object_name(fault_tree.top_event.name),
+        'mtbf': fault_tree.top_event.MTTF,
+        'mtbr': fault_tree.top_event.MTTR,
+        'reliability_dist': fault_tree.top_event.reliability_distribution,
+        'maitainability': fault_tree.top_event.maintainability_distribution,
+        'oper_avail': fault_tree.top_event.availability_operational
+    }
+
+    events.append(event_dictionary)
+
+    for basic_event in fault_tree.get_basic_events():
+        event_dictionary = {
+            'event_name': get_object_name(basic_event.name),
+            'mtbf': basic_event.MTTF,
+            'mtbr': basic_event.MTTR,
+            'reliability_dist': basic_event.reliability_distribution,
+            'maitainability': basic_event.maintainability_distribution,
+            'oper_avail': basic_event.availability_operational
+        }
+        events.append(event_dictionary)
+
+    return events
+
+
+def export_info_to_json(file_name, data):
+    with open(file_name, 'w') as outfile:
+        json.dump(data, outfile)

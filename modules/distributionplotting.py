@@ -257,10 +257,10 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
 
     # plt.show()
     plt.tight_layout()
-    if EXPORT_PNG is True:
-        fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
-    else:
-        plt.show(block=False)
+    #if EXPORT_PNG is True:
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
+    #else:
+    plt.show(block=False)
 
 
 def plot_unidentified_distribution_comparison(name, metric, times, theoretical_distribution):
@@ -474,10 +474,10 @@ def plot_arbitrary__distribution_no_compare(name, metric, times):
 
     # plt.show()
     plt.tight_layout()
-    if EXPORT_PNG is True:
-        fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
-    else:
-        plt.show(block=False)
+    #if EXPORT_PNG is True:
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
+    #else:
+    plt.show(block=False)
 
 
 def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretical):

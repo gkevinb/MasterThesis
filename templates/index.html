@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Fault Tree Analysis</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script src="/static/js/jquery-3.3.1.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head>
     <body>
@@ -31,11 +32,48 @@
             <img src="/static/images/Reconstructed_FT.png" alt="Reconstructed Fault Tree">
 
         </div>
-        <div id="event_metrics">
-            <h3 id="event_title">Basic Event 1</h3>
-            <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
+
+        <div id="minimal_cut_sets">
+            <ul>
+                {% for set in mcs %}
+                <li>{{ set }} </li>
+                {% endfor %}
+            </ul>
         </div>
 
+        <div id="event_metrics">
+            <h3 id="event_title">Basic Event 1</h3>
+            <table>
+                <tr>
+                    <th>Fault Tree</th>
+                    <th>Original</th>
+                    <th>Reconstructed</th>
+                </tr>
+                <tr>
+                    <td>Reliability Distribution</td>
+                    <td id="oft_rel_dis"></td>
+                    <td id="rft_rel_dis"></td>
+                </tr>
+                <tr>
+                    <td>Maintainability Distribution</td>
+                    <td id="oft_main_dis"></td>
+                    <td id="rft_main_dis"></td>
+                </tr>
+                <tr>
+                    <td>MTBF</td>
+                    <td id="oft_mtbf"></td>
+                    <td id="rft_mtbf"></td>
+                </tr>
+                <tr>
+                    <td>MTBR</td>
+                    <td id="oft_mtbr"></td>
+                    <td id="rft_mtbr"></td>
+                </tr>
+            </table>
+            <p>Operational Availability</p>
+            <p id="oper_avail"></p>
+            <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
+        </div>
 
         <script type="text/javascript" src="/static/js/script.js">
         </script>

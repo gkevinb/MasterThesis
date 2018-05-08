@@ -178,7 +178,7 @@ def calculate_remaining_time(time_series, up_to_time):
 
 
 def calculate_total_up_time_up_to(time_series, up_to_time):
-    if up_to_time < time_series[-1]:
+    if up_to_time <= time_series[-1]:
         time_series_up_to = get_time_series_up_to(time_series, up_to_time)
         up_times = calculate_up_time(time_series_up_to)
 
@@ -191,7 +191,7 @@ def calculate_total_up_time_up_to(time_series, up_to_time):
 
 
 def calculate_operational_availability(time_series, operating_cycle):
-    if operating_cycle < time_series[-1]:
+    if operating_cycle <= time_series[-1]:
         up_time = calculate_total_up_time_up_to(time_series, operating_cycle)
         return up_time / operating_cycle
     else:
