@@ -266,7 +266,6 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
 def plot_unidentified_distribution_comparison(name, metric, times, theoretical_distribution):
     # Maybe fix inconsistencies with the numbers on the axis
     fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
 
     linspace = calculate_linspace(theoretical_distribution)
     distribution_name = name_of_distribution(theoretical_distribution)
@@ -274,37 +273,69 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
     theoretical_cdf = calculate_cdf(theoretical_distribution, linspace)
     theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
 
-    # PDF
-    sns.distplot(times, hist=True, ax=subplots[0], label='Reconstructed')
-    subplots[0].plot(linspace, theoretical_pdf, 'r-', label='Theoretical')
+    if metric == 'Reliability':
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to failures')
+    if metric == 'Maintainability':
+        sns.distplot(times, hist=True, ax=subplots[0], label='Time to repairs')
+
+    x, pdf = subplots[0].lines[0].get_data()
+    subplots[0].plot(x, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
+    subplots[0].set_xlabel('time (t)')
+
+    subplots[0].plot(linspace, theoretical_pdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
     subplots[0].set_title(distribution_name + ' PDF')
+    subplots[0].set_xlabel('time (t)')
+    subplots[0].set_ylabel('P(t)')
     subplots[0].legend()
 
     # CDF
     sns.kdeplot(times, cumulative=True, ax=subplots[1], label='Reconstructed')
+    _, cdf = subplots[1].lines[0].get_data()
+    # Second plot CDF and/or Maintainability
+    subplots[1].plot(x, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
     subplots[1].plot(linspace, theoretical_cdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
+    subplots[1].set_xlabel('time (t)')
+    subplots[1].set_ylabel('P(T\u2264t)')
     subplots[1].legend()
+
     if metric == 'Maintainability':
         subplots[1].set_title(distribution_name + ' CDF (Maintainability')
+        subplots[2].plot(x, pdf/(1 - cdf), 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        subplots[2].plot(linspace, theoretical_pdf/theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[2].set_title('Repair Rate')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('\u03BC(t)')
+        subplots[2].set_ylim([0, 5])
+        subplots[2].legend()
 
     if metric == 'Reliability':
+        reliability = 1 - cdf
         subplots[1].set_title(distribution_name + ' CDF')
 
-        times.sort()
-        samples = len(times)
-        one_minus_cdf = [1 - (x / samples) for x in range(1, samples + 1)]
+        subplots[2].plot(x, reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        subplots[2].set_ylim([0, 1.05])
         # Get length of this and see if its the same length as the reliability of the top event
         # Better yet when calculating relability function use the same number of elements as the
         # length of top events time of failure or time of repair.
-        subplots[2].plot(times, one_minus_cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
         subplots[2].plot(linspace, theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
-        subplots[2].set_ylim([0, 1.05])
         # For comparing graphs
         # subplots[2].set_xlim([0, 100])
         subplots[2].set_title('Reliability')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('R(t)')
         subplots[2].legend()
 
+        subplots[3].plot(x, pdf/reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
+        subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
+        subplots[3].set_title('Failure Rate')
+        subplots[3].set_xlabel('time (t)')
+        subplots[3].set_ylabel('\u03BB(t)')
+        subplots[3].legend()
+
     # plt.show()
+    plt.tight_layout()
+    #if EXPORT_PNG is True:
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
     plt.show(block=False)
 
 

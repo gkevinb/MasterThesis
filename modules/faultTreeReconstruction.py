@@ -202,6 +202,7 @@ def expand_event_dictionary(event_dictionary):
     print_event_dictionary(event_dictionary)
     # ALGORITHM STILL NEEDS TO BE OPTIMIZED!!!!!!!!
     while len(event_dictionary) != 1:
+        length = len(event_dictionary)
         event_dictionary = compress_identical_sets(event_dictionary)
         print('----------------And----------------------')
         print_event_dictionary(event_dictionary)
@@ -217,6 +218,12 @@ def expand_event_dictionary(event_dictionary):
         print('-----------------k/N---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
+
+        # If length of event dictionary didn't change, which means it can't be reduced, then break.
+        if length == len(event_dictionary):
+            entire_event_dictionary = None
+            print('---------FAULT TREE CANNOT BE RECONSTRUCTED------')
+            break
 
     print('--------------Entire------------------------')
     print_event_dictionary(entire_event_dictionary)

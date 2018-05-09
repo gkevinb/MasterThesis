@@ -11,8 +11,9 @@ app = Flask(__name__)
 def index():
     print('STARTING')
     cwd = os.getcwd()
-    SIZE = 2000
-    OPERATING_CYCLE = 1000
+    SIZE = 500
+    # CHECK WHEN SIZE IS REALLY LOW AND MAKE SURE TO EXPORT DISTRIBUTION WHICH ARE UNIDENTIFIED
+    # THINK OF MAKING PLOT SHOWING AVAILABILITY OF EVENTS, UP AND DOWN
     linspace = np.linspace(0, 100, 1000)
     print(os.getcwd())
     original_fault_tree = FTF.create_fault_tree()
@@ -42,7 +43,8 @@ def index():
     FTF.export_info_to_json('/Users/gkevinb/PycharmProjects/Thesis/static/data.json', json_content)
 
     return render_template("index.html", orignal_events=original_events, reconstructed_events=reconstructed_events,
-                           mcs=reconstructed_fault_tree.minimal_cut_sets)
+                           mcs=reconstructed_fault_tree.minimal_cut_sets, oft_info=original_fault_tree_info,
+                           rft_info=reconstructed_fault_tree_info)
 
 
 if __name__ == "__main__":

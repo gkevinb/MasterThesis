@@ -76,7 +76,7 @@ def run_reconstruction_analysis(fault_tree):
     fault_tree.calculate_MTTF_of_basic_events_from_time_series()
     fault_tree.calculate_MTTR_of_basic_events_from_time_series()
 
-    operating_cycle = fault_tree.top_event.time_series[-1]
+    operating_cycle = fault_tree.top_event.time_series[-1] * 0.6
     fault_tree.calculate_operational_availability_of_top_event(operating_cycle)
 
     for basic_event in fault_tree.get_basic_events():
@@ -107,8 +107,8 @@ def get_info_on_events(fault_tree):
         'event_name': get_object_name(fault_tree.top_event.name),
         'mtbf': fault_tree.top_event.MTTF,
         'mtbr': fault_tree.top_event.MTTR,
-        'reliability_dist': fault_tree.top_event.reliability_distribution,
-        'maitainability': fault_tree.top_event.maintainability_distribution,
+        'reliability': fault_tree.top_event.reliability_distribution,
+        'maintainability': fault_tree.top_event.maintainability_distribution,
         'oper_avail': fault_tree.top_event.availability_operational
     }
 
@@ -119,8 +119,8 @@ def get_info_on_events(fault_tree):
             'event_name': get_object_name(basic_event.name),
             'mtbf': basic_event.MTTF,
             'mtbr': basic_event.MTTR,
-            'reliability_dist': basic_event.reliability_distribution,
-            'maitainability': basic_event.maintainability_distribution,
+            'reliability': basic_event.reliability_distribution,
+            'maintainability': basic_event.maintainability_distribution,
             'oper_avail': basic_event.availability_operational
         }
         events.append(event_dictionary)
