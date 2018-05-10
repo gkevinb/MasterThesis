@@ -9,36 +9,43 @@
     <body>
 
         <h1>Fault Tree Analysis</h1>
-        <p>Metric</p>
-        <div id="metric_bar">
-            <form action="">
-                    <input type="radio" name="metric" value="Reliability">Reliability<br>
-                    <input type="radio" name="metric" value="Maintainability">Maintainability<br>
-            </form>
-        </div>
-        <p>Event</p>
-        <div id="events_bar">
-            <form action="">
-                {% for event in orignal_events %}
-                    <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
-                {% endfor %}
-            </form>
-        </div>
+
         <div id="original_fault_tree">
+            <h2>Original Fault Tree</h2>
             <img src="/static/images/Original_FT.png" alt="Original Fault Tree">
 
         </div>
         <div id="reconstructed_fault_tree">
+            <h2>Reconstructed Fault Tree</h2>
             <img src="/static/images/Reconstructed_FT.png" alt="Reconstructed Fault Tree">
 
         </div>
 
         <div id="minimal_cut_sets">
+            <h3>Minimal Cut Sets</h3>
             <ul>
                 {% for set in mcs %}
                 <li>{{ set }} </li>
                 {% endfor %}
             </ul>
+        </div>
+
+        <div id="event_board">
+            <p>Event</p>
+            <div id="events_bar">
+                <form action="">
+                    {% for event in orignal_events %}
+                        <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
+                    {% endfor %}
+                </form>
+            </div>
+            <p>Metric</p>
+            <div id="metric_bar">
+                <form action="">
+                    <input type="radio" name="metric" value="Reliability">Reliability<br>
+                    <input type="radio" name="metric" value="Maintainability">Maintainability<br>
+                </form>
+            </div>
         </div>
 
         <div id="event_metrics">
@@ -72,9 +79,8 @@
             </table>
             <p>Operational Availability</p>
             <p id="oper_avail"></p>
-            <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
         </div>
-
+        <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
         <script type="text/javascript" src="/static/js/script.js">
         </script>
     </body>

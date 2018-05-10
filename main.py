@@ -11,7 +11,7 @@ app = Flask(__name__)
 def index():
     print('STARTING')
     cwd = os.getcwd()
-    SIZE = 500
+    SIZE = 200
     # CHECK WHEN SIZE IS REALLY LOW AND MAKE SURE TO EXPORT DISTRIBUTION WHICH ARE UNIDENTIFIED
     # THINK OF MAKING PLOT SHOWING AVAILABILITY OF EVENTS, UP AND DOWN
     linspace = np.linspace(0, 100, 1000)

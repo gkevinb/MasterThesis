@@ -1,15 +1,67 @@
 #original_fault_tree{
-    border: 6px solid red;
-    /*
-    float: right;
-    */
+    /*border: 6px solid red;*/
+    text-align: center;
+    float: left;
+    text-align: center;
+    border-right: 4px dotted black;
+    margin-left: 10px;
+    padding-right: 10px;
 }
 
 #reconstructed_fault_tree{
-    border: 6px solid blue;
-    /*float: right;*/
+    /*border: 6px solid blue;*/
+    text-align: center;
+    float: left;
+    margin-left: 10px;
 }
 
-#metric_bar{
+#minimal_cut_sets{
+    clear: left;
+    /*float: center;
+    margin: auto;
+    width: 50%;*/
+}
 
+#minimal_cut_sets h3{
+    float: left;
+}
+
+#minimal_cut_sets ul{
+    float: left;
+}
+
+li{
+    display: inline;
+    padding-right: 10px;
+}
+
+#event_metrics{
+    float: left;
+
+}
+#event_board{
+    float: left;
+    max-width: 160px;
+    clear: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    /*border: 4px solid green;*/
+
+}
+
+#original_fault_tree img{
+    width: 650px;
+
+}
+#reconstructed_fault_tree img{
+    width: 650px;
+
+}
+#plot{
+    margin-top: 40px;
+    clear: left;
+    float: left;
+    /*max-width: 1300px;
+    width: 90%;*/
+    height: 360px;
 }
