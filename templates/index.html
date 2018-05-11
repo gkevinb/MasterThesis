@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head>
     <body>
+    <div id="main_page">
 
         <h1>Fault Tree Analysis</h1>
 
@@ -52,36 +53,40 @@
             <h3 id="event_title">Basic Event 1</h3>
             <table>
                 <tr>
-                    <th>Fault Tree</th>
+                    <th>Fault Tree:</th>
                     <th>Original</th>
                     <th>Reconstructed</th>
                 </tr>
                 <tr>
-                    <td>Reliability Distribution</td>
+                    <td>Reliability Distribution:</td>
                     <td id="oft_rel_dis"></td>
                     <td id="rft_rel_dis"></td>
                 </tr>
                 <tr>
-                    <td>Maintainability Distribution</td>
+                    <td>Maintainability Distribution:</td>
                     <td id="oft_main_dis"></td>
                     <td id="rft_main_dis"></td>
                 </tr>
                 <tr>
-                    <td>Mean Time Between Failures</td>
+                    <td>Mean Time Between Failures:</td>
                     <td id="oft_mtbf"></td>
                     <td id="rft_mtbf"></td>
                 </tr>
                 <tr>
-                    <td>Mean Time Between Repairs</td>
+                    <td>Mean Time Between Repairs:</td>
                     <td id="oft_mtbr"></td>
                     <td id="rft_mtbr"></td>
                 </tr>
+                <tr>
+                    <td>Operational Availability:</td>
+                    <td></td>
+                    <td id="oper_avail"></td>
+                </tr>
             </table>
-            <p>Operational Availability</p>
-            <p id="oper_avail"></p>
         </div>
         <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
         <script type="text/javascript" src="/static/js/script.js">
         </script>
+    </div>
     </body>
 </html>
