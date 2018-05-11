@@ -7,8 +7,6 @@
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head>
     <body>
-    <div id="main_page">
-
         <h1>Fault Tree Analysis</h1>
 
         <div id="original_fault_tree">
@@ -36,14 +34,18 @@
             <div id="events_bar">
                 <form action="">
                     {% for event in orignal_events %}
-                        <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
+                        {% if event.name == 'Basic Event 1' %}
+                            <input type="radio" name="events" value="{{ event.name }}" checked="checked">{{ event.name }}<br>
+                        {% else %}
+                            <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
+                        {% endif %}
                     {% endfor %}
                 </form>
             </div>
             <p>Metric</p>
             <div id="metric_bar">
                 <form action="">
-                    <input type="radio" name="metric" value="Reliability">Reliability<br>
+                    <input type="radio" name="metric" value="Reliability" checked="checked">Reliability<br>
                     <input type="radio" name="metric" value="Maintainability">Maintainability<br>
                 </form>
             </div>
@@ -87,6 +89,5 @@
         <img src="/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
         <script type="text/javascript" src="/static/js/script.js">
         </script>
-    </div>
     </body>
 </html>

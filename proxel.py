@@ -99,19 +99,19 @@ class ProxelNetwork:
     def expand_network(self):
         stop = int(self.simulation_time / self.delta_time)
         for i in range(1, stop):
-            #print('Depth: ' + str(i))
+            print('Depth: ' + str(i))
             next_proxels = []
             for proxel in self.current_proxels:
                 next_proxels.extend(self.expand_proxel(proxel))
             self.current_proxels = next_proxels
             self.delete_proxels_with_low_probability()
-            # print('Number of nodes in layer: ' + str(len(self.current_proxels)))
-            # print(self.current_proxels)
+            print('Number of nodes in layer: ' + str(len(self.current_proxels)))
+            print(self.current_proxels)
             self.add_delta_time_to_time_series()
             self.calculate_probabity_state_is_true()
             self.calculate_probabity_state_is_false()
             total_probability = (self.probability_of_OK[-1] + self.probability_of_failure[-1])
-            # print(total_probability)
+            print('Total Probability: ' + str(total_probability))
             if total_probability < 0.999 or total_probability > 1.001:
                 print('INVALID RESULT DUE TO TOTAL PROBABILITY TOO FAR FROM 1')
                 break
@@ -126,26 +126,3 @@ class Proxel:
     def __repr__(self):
         return '(' + str(self.state) + ', ' + str(self.timestamp) + ', ' + str(self.probability) + ')'
 
-
-'''
-rel_exp_dist = ['EXP', 1/4]
-main_exp_dist = ['EXP', 1/2]
-norm_dist = ['NORMAL', 3, 1]
-lognorm_dist = ['LOGNORM', 2, 1]
-rel_weibull_dist = ['WEIBULL', 10, 8]
-
-pn = ProxelNetwork(0.5, 8, norm_dist, main_exp_dist)
-pn.expand_network()
-x = pn.time_series
-y = pn.probability_of_failure
-
-
-print(x)
-print(y)
-print(len(x))
-print(len(y))
-
-
-plt.plot(x, y)
-plt.show()
-'''

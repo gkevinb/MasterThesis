@@ -5,15 +5,6 @@ var reconstructed_fault_tree;
 var timeout;
 
 
-function pageLoading() {
-    timeout = setTimeout(showPage, 3000);
-}
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("main_page").style.display = "block";
-}
-
 function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }

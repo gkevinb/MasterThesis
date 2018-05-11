@@ -195,7 +195,6 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
     linspace = calculate_linspace(distribution)
     pdf = calculate_pdf(distribution, linspace)
     cdf = calculate_cdf(distribution, linspace)
-    distribution_name = name_of_distribution(distribution)
 
     theoretical_pdf = calculate_pdf(theoretical_distribution, linspace)
     theoretical_cdf = calculate_cdf(theoretical_distribution, linspace)
@@ -213,7 +212,7 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
         if metric == 'Maintainability':
             subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
         subplots[0].legend()
-    subplots[0].set_title(distribution_name + ' PDF')
+    subplots[0].set_title('PDF')
 
     # Second plot CDF and/or Maintainability
     subplots[1].plot(linspace, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
@@ -223,7 +222,7 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
     subplots[1].legend()
 
     if metric == 'Maintainability':
-        subplots[1].set_title(distribution_name + ' CDF (Maintainability)')
+        subplots[1].set_title('CDF (Maintainability)')
         subplots[2].plot(linspace, pdf / (1 - cdf), 'b-', lw=1, alpha=0.6, label='Reconstructed')
         subplots[2].plot(linspace, theoretical_pdf / (1 - theoretical_cdf), 'r-', lw=1, alpha=0.6, label='Theoretical')
         subplots[2].set_title('Repair Rate')
@@ -235,7 +234,7 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
 
     # Third plot Reliability
     if metric == 'Reliability':
-        subplots[1].set_title(distribution_name + ' CDF')
+        subplots[1].set_title('CDF')
         reliability = calculate_reliability(distribution, linspace)
         theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
         subplots[2].plot(linspace, reliability, 'b-', lw=1, alpha=0.6, label='Reconstructed')
@@ -268,7 +267,6 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
     fig, subplots = setup_fig_subplots(metric)
 
     linspace = calculate_linspace(theoretical_distribution)
-    distribution_name = name_of_distribution(theoretical_distribution)
     theoretical_pdf = calculate_pdf(theoretical_distribution, linspace)
     theoretical_cdf = calculate_cdf(theoretical_distribution, linspace)
     theoretical_reliability = calculate_reliability(theoretical_distribution, linspace)
@@ -283,7 +281,7 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
     subplots[0].set_xlabel('time (t)')
 
     subplots[0].plot(linspace, theoretical_pdf, 'r-', lw=1, alpha=0.6, label='Theoretical')
-    subplots[0].set_title(distribution_name + ' PDF')
+    subplots[0].set_title('PDF')
     subplots[0].set_xlabel('time (t)')
     subplots[0].set_ylabel('P(t)')
     subplots[0].legend()
@@ -299,7 +297,7 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
     subplots[1].legend()
 
     if metric == 'Maintainability':
-        subplots[1].set_title(distribution_name + ' CDF (Maintainability')
+        subplots[1].set_title('CDF (Maintainability)')
         subplots[2].plot(x, pdf/(1 - cdf), 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
         subplots[2].plot(linspace, theoretical_pdf/theoretical_reliability, 'r-', lw=1, alpha=0.6, label='Theoretical')
         subplots[2].set_title('Repair Rate')
@@ -310,7 +308,7 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
 
     if metric == 'Reliability':
         reliability = 1 - cdf
-        subplots[1].set_title(distribution_name + ' CDF')
+        subplots[1].set_title('CDF')
 
         subplots[2].plot(x, reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
         subplots[2].set_ylim([0, 1.05])

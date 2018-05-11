@@ -3,6 +3,11 @@ from modules.event import Event
 from modules.faulttree import FaultTree
 import matplotlib.pyplot as plt
 import numpy as np
+import filecmp
+
+
+def compare_truth_tables(truth_table_1, truth_table_2):
+    return filecmp.cmp(truth_table_1, truth_table_2)
 
 
 def compare_reliability_of_basic_event_(basic_event_id, reconstructedFT, originalFT):
@@ -111,10 +116,10 @@ def compare_inherent_availability_of_basic_events(reconstructedFT, originalFT):
 def compare_availabilities_of_top_event(reconstructedFT, originalFT):
     print('Reconstructed Fault Tree\t\t\t\t\t\tOriginal Fault Tree')
     print('Top Event')
-    print('Inherent Availability: ' + str(reconstructedFT.top_event.availability_inherent) +
-          '\t\t\t' + str(originalFT.top_event.availability_inherent))
     print('Operational Availability: ' + str(reconstructedFT.top_event.availability_operational) +
           '\t\t\t' + str(originalFT.top_event.availability_operational))
+    print('These are exaclty the same, since calculating operational availability uses simulation, so using' +
+          ' the time series')
 
 
 def run_reconstruction_analysis(faultTree):
@@ -139,10 +144,7 @@ def run_reconstruction_analysis(faultTree):
     faultTree.calculate_MTTF_of_basic_events_from_time_series()
     faultTree.calculate_MTTR_of_basic_events_from_time_series()
 
-    #faultTree.calculate_inherent_availability_of_basic_events()
-    #faultTree.calculate_inherent_availability_of_top_event()
-
-    faultTree.calculate_operational_availability_of_top_event(30000)
+    faultTree.calculate_operational_availability_of_top_event(10000)
 
 
 def run_theoretical_analysis(faultTree, linspace):
@@ -154,10 +156,7 @@ def run_theoretical_analysis(faultTree, linspace):
     faultTree.calculate_MTTF_of_basic_events_from_distributions()
     faultTree.calculate_MTTR_of_basic_events_from_distributions()
 
-    faultTree.calculate_inherent_availability_of_basic_events()
-    faultTree.calculate_inherent_availability_of_top_event()
-
-    faultTree.calculate_operational_availability_of_top_event(30000)
+    faultTree.calculate_operational_availability_of_top_event(10000)
 
 
 # --------------------PROGRAM STARTS HERE-------------------------
@@ -212,6 +211,7 @@ fault_tree.generate_basic_event_time_series(4000)
 fault_tree.calculate_time_series()
 fault_tree.print_tree()
 fault_tree.export_time_series('time_series.txt')
+fault_tree.export_truth_table('truth_table_original.txt')
 
 
 # --------------------------START RECONSTRUCTION -------------------------------
@@ -238,6 +238,12 @@ for i in range(1, FT.number_of_basic_events + 1):
 
 FT.print_tree()
 
+FT.export_truth_table('truth_table_reconstructed.txt')
+
+print('Do truth table match?: ' + str(compare_truth_tables('truth_table_original.txt',
+                                                           'truth_table_reconstructed.txt')))
+
+
 # int(number_of_times_of_failure_top_event)
 # doesn't have to be the same as times of failures for top event
 
@@ -252,14 +258,9 @@ print('------------------------------------------------------------')
 compare_MTTF_MTTR_of_top_event(FT, fault_tree)
 compare_MTTF_MTTR_of_basic_events(FT, fault_tree)
 compare_distributions_of_basic_events(FT, fault_tree)
-compare_inherent_availability_of_basic_events(FT, fault_tree)
 compare_availabilities_of_top_event(FT, fault_tree)
 
 FT.export_to_png('Reconstruced_FT.png')
 fault_tree.export_to_png('Original_FT.png')
 
-'''
-fig, subplot = plt.subplots(1, 1)
-subplot.plot(linspace, fault_tree.top_event.reliability_function)
-'''
 plt.show()

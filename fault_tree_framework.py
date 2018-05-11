@@ -1,7 +1,6 @@
-from modules.gate import Gate
-from modules.event import Event
 from modules.faulttree import FaultTree
 from modules.faultTreeReconstruction import get_object_name
+import fault_trees
 import json
 
 
@@ -20,27 +19,7 @@ def compare_maintainability_of_basic_event_(basic_event_id, reconstructedFT, ori
 
 
 def create_fault_tree():
-
-    rel_exp_dist = ['EXP', 1 / 3]
-    main_exp_dist = ['EXP', 1 / 2]
-    lognorm_dist = ['LOGNORM', 2, 1]
-    norm_dist = ['NORMAL', 5, 1]
-
-    top_event = Event("Top Event")
-    and1 = Gate("AND", parent=top_event)
-    intermediate_event_1 = Event("Intermediate Event 1", parent=and1)
-    intermediate_event_2 = Event("Intermediate Event 2", parent=and1)
-    voting2 = Gate("VOTING", parent=intermediate_event_1, k=2)
-    basic_event_3 = Event("Basic Event 3", norm_dist, main_exp_dist, parent=voting2)
-    basic_event_4 = Event("Basic Event 4", rel_exp_dist, main_exp_dist, parent=voting2)
-    basic_event_5 = Event("Basic Event 5", norm_dist, main_exp_dist, parent=voting2)
-    or3 = Gate("OR", parent=intermediate_event_2)
-    basic_event_1 = Event("Basic Event 1", rel_exp_dist, main_exp_dist, parent=or3)
-    basic_event_2 = Event("Basic Event 2", rel_exp_dist, main_exp_dist, parent=or3)
-
-    fault_tree = FaultTree(top_event)
-
-    return fault_tree
+    return fault_trees.C()
 
 
 def generate_export_time_series(fault_tree, size, file_name):
