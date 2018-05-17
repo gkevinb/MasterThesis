@@ -68,8 +68,6 @@ def run_theoretical_analysis(fault_tree, linspace):
     fault_tree.calculate_MTTF_of_basic_events_from_distributions()
     fault_tree.calculate_MTTR_of_basic_events_from_distributions()
 
-    fault_tree.calculate_inherent_availability_of_basic_events()
-
 
 def create_plots(reconstructed_fault_tree, original_fault_tree):
     for i in range(1, reconstructed_fault_tree.number_of_basic_events + 1):

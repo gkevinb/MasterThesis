@@ -208,14 +208,14 @@ def expand_event_dictionary(event_dictionary):
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
-        event_dictionary = compress_mutually_exclusive_sets(event_dictionary)
-        print('-----------------OR---------------------')
-        print_event_dictionary(event_dictionary)
-        entire_event_dictionary.update(event_dictionary)
-
         # K/N VOTING SHOULD PROBABLY GO RIGHT HERE!!!!!!!!!
         event_dictionary = compress_interconnected_sets(event_dictionary)
         print('-----------------k/N---------------------')
+        print_event_dictionary(event_dictionary)
+        entire_event_dictionary.update(event_dictionary)
+
+        event_dictionary = compress_mutually_exclusive_sets(event_dictionary)
+        print('-----------------OR---------------------')
         print_event_dictionary(event_dictionary)
         entire_event_dictionary.update(event_dictionary)
 
