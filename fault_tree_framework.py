@@ -19,7 +19,7 @@ def compare_maintainability_of_basic_event_(basic_event_id, reconstructedFT, ori
 
 
 def create_fault_tree():
-    return fault_trees.C()
+    return fault_trees.D()
 
 
 def generate_export_time_series(fault_tree, size, file_name):
