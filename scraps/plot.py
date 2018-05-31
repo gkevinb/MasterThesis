@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import math
 from scipy.stats import expon, norm, weibull_min, lognorm
 import numpy as np
-
+from modules import distributionfitting
 
 def calculate_pdf(distribution, linspace):
     if distribution[0] == 'EXP':
@@ -52,17 +52,34 @@ def calculate_cdf(distribution, linspace):
 
 fig, subplots = plt.subplots(1, 1, figsize=(6, 5))
 
-lin_space = np.linspace(0, 10, 100)
-a = np.empty(100)
-a.fill(0.5)
-theoretical_pdf = calculate_pdf(['EXP', 0.5], lin_space)
-theoretical_cdf = calculate_cdf(['EXP', 0.5], lin_space)
-subplots.plot(lin_space, a, 'r-', lw=1.5, alpha=0.6, label='Theoretical')
-subplots.set_xlabel('x')
-#subplots.set_ylabel('P(x)')
-#subplots.set_ylabel('P(X\u2264x)')
-subplots.set_ylim([0, 1])
-subplots.set_ylabel('\u03BB(x)')
+exp = ['EXP', 0.5]
+normal = ['NORMAL', 5, 1]
+ln = ['LOGNORM', 0, 1]
+wb = ['WEIBULL', 1, 1.5]
+
+print(distributionfitting.calculate_mttf_or_mttr_from_distribution(ln))
+
+lin_space = np.linspace(0, 20, 1000)
+# a = np.empty(100)
+# a.fill(0.5)
+theoretical_pdf_05 = calculate_pdf(['LOGNORM', 0, 1], lin_space)
+theoretical_pdf_1 = calculate_pdf(['LOGNORM', 1, 1], lin_space)
+theoretical_pdf_15 = calculate_pdf(['WEIBULL', 10, 8], lin_space)
+theoretical_pdf_5 = calculate_pdf(['WEIBULL', 1, 5], lin_space)
+theoretical_cdf_05 = calculate_cdf(['WEIBULL', 1, 0.5], lin_space)
+theoretical_cdf_1 = calculate_cdf(['WEIBULL', 1, 1], lin_space)
+theoretical_cdf_15 = calculate_cdf(['WEIBULL', 1, 1.5], lin_space)
+theoretical_cdf_5 = calculate_cdf(['WEIBULL', 1, 5], lin_space)
+subplots.plot(lin_space, theoretical_pdf_15, 'r-', lw=1.5, alpha=0.6, label="\u03B2 = 0.5")
+#subplots.plot(lin_space, theoretical_pdf_05, 'g-', lw=1.5, alpha=0.6, label="\u03B2 = 1.0")
+#subplots.plot(lin_space, theoretical_cdf_15, 'b-', lw=1.5, alpha=0.6, label="\u03B2 = 1.5")
+#subplots.plot(lin_space, theoretical_cdf_5, 'c-', lw=1.5, alpha=0.6, label="\u03B2 = 1.5")
+subplots.set_xlabel('t')
+#subplots.set_ylabel('P(t)')
+subplots.set_ylabel('P(T\u2264t)')
+#subplots.set_ylim([0, 1.1])
+subplots.legend()
+#subplots.set_ylabel('\u03BB(t)')
 
 plt.show()
 

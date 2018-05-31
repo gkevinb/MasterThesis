@@ -95,10 +95,20 @@ class FaultTree:
 
     def plot_probability_of_failure_of_basic_event_(self, basic_event_id):
         basic_event = self.get_basic_event_(basic_event_id)
+        print(basic_event)
         DP.plot_probability_of_failure(basic_event.proxel_time_series, basic_event.proxel_probability_of_failure)
 
     def plot_probability_of_failure_of_top_event(self):
         DP.plot_probability_of_failure(self.top_event.proxel_time_series, self.top_event.proxel_probability_of_failure)
+
+    def plot_probability_of_ok_of_basic_event_(self, basic_event_id):
+        basic_event = self.get_basic_event_(basic_event_id)
+        print(basic_event)
+        DP.plot_probability_of_ok(basic_event.proxel_time_series, basic_event.proxel_probability_of_ok)
+
+    def plot_probability_of_ok_of_top_event(self):
+        self.top_event.proxel_probability_of_ok = 1 - self.top_event.proxel_probability_of_failure
+        DP.plot_probability_of_ok(self.top_event.proxel_time_series, self.top_event.proxel_probability_of_ok)
 
     def get_top_event_state(self):
         return self.top_event.state

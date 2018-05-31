@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #10^-12
-TOLERANCE = 0.000000000001
-#TOLERANCE = 0.0000001
+#TOLERANCE = 0.000000000001
+TOLERANCE = 0.00000001
 
 
 def get_opposite_state(state):
@@ -106,7 +106,7 @@ class ProxelNetwork:
             self.current_proxels = next_proxels
             self.delete_proxels_with_low_probability()
             print('Number of nodes in layer: ' + str(len(self.current_proxels)))
-            print(self.current_proxels)
+            #print(self.current_proxels)
             self.add_delta_time_to_time_series()
             self.calculate_probabity_state_is_true()
             self.calculate_probabity_state_is_false()

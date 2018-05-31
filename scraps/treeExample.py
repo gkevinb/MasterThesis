@@ -55,4 +55,4 @@ print(RenderTree(n1))
 for line in DotExporter(n1):
     print(line)
 
-DotExporter(n1).to_picture('treee.png')
+DotExporter(n1).to_picture('tree.png')

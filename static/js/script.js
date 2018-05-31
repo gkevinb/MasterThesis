@@ -91,7 +91,7 @@ function fillEventInformation(event) {
         document.getElementById("rft_mtbf").innerHTML = round(reconstructed_fault_tree[0].mtbf, 5);
         document.getElementById("oft_mtbr").innerHTML = "";
         document.getElementById("rft_mtbr").innerHTML = round(reconstructed_fault_tree[0].mtbr, 5);
-        oper_avail_string = round(reconstructed_fault_tree[0].oper_avail, 5).toString();
+        oper_avail_string = round(reconstructed_fault_tree[0].oper_avail*100, 5).toString();
         document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
     }else{
         basicEventID = getBasicEventNumber(event);
@@ -103,7 +103,7 @@ function fillEventInformation(event) {
         document.getElementById("rft_mtbf").innerHTML = round(reconstructed_fault_tree[basicEventID].mtbf, 5);
         document.getElementById("oft_mtbr").innerHTML = round(original_fault_tree[basicEventID].mtbr, 5);
         document.getElementById("rft_mtbr").innerHTML = round(reconstructed_fault_tree[basicEventID].mtbr, 5);
-        oper_avail_string = round(reconstructed_fault_tree[basicEventID].oper_avail, 5).toString();
+        oper_avail_string = round(reconstructed_fault_tree[basicEventID].oper_avail*100, 5).toString();
         document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
     }
 }

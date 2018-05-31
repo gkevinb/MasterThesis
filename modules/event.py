@@ -6,7 +6,7 @@ import proxel
 import numpy as np
 
 
-DISPLAY_UP_TO = 6
+DISPLAY_UP_TO = 4
 # 'distributions', 'states', 'time_series'
 EVENT_PRINT = 'time_series'
 
@@ -27,6 +27,7 @@ class Event(NodeMixin):
         self.state = None
         self.proxel_time_series = []
         self.proxel_probability_of_failure = []
+        self.proxel_probability_of_ok = []
 
     def generate(self, size):
         """
@@ -111,6 +112,9 @@ class Event(NodeMixin):
         pn.expand_network()
         self.proxel_time_series = np.asarray(pn.time_series)
         self.proxel_probability_of_failure = np.asarray(pn.probability_of_failure)
+        self.proxel_probability_of_ok = np.asarray(pn.probability_of_OK)
+        print('Proxel time series: ' + str(self.proxel_time_series))
+        print('Proxel prob of failure: ' + str(self.proxel_probability_of_failure))
 
     def __repr__(self):
         if EVENT_PRINT == 'time_series':

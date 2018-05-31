@@ -22,5 +22,5 @@ def k_N_voting(k, N, input_reliabilities):
     return result
 
 
-prob = [0.3, 0.4, 0.5]
+prob = [0.5, 0.6, 0.8]
 print(k_N_voting(2, 3, prob))

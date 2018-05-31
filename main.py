@@ -11,7 +11,7 @@ app = Flask(__name__)
 def index():
     print('STARTING')
     cwd = os.getcwd()
-    SIZE = 3000
+    SIZE = 200
     # CHECK WHEN SIZE IS REALLY LOW AND MAKE SURE TO EXPORT DISTRIBUTION WHICH ARE UNIDENTIFIED
     # THINK OF MAKING PLOT SHOWING AVAILABILITY OF EVENTS, UP AND DOWN
     linspace = np.linspace(0, 100, 1000)
@@ -23,7 +23,7 @@ def index():
     FTF.run_reconstruction_analysis(reconstructed_fault_tree)
     FTF.run_theoretical_analysis(original_fault_tree, linspace)
     reconstructed_fault_tree.export_to_png(cwd + '/static/images/Reconstructed_FT.png')
-    FTF.create_plots(reconstructed_fault_tree, original_fault_tree)
+    FTF.create_plots(reconstructed_fault_tree, original_fault_tree, linspace)
     print('END')
 
     original_events = [original_fault_tree.top_event]

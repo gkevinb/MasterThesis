@@ -19,7 +19,7 @@ def compare_maintainability_of_basic_event_(basic_event_id, reconstructedFT, ori
 
 
 def create_fault_tree():
-    return fault_trees.D()
+    return fault_trees.H()
 
 
 def generate_export_time_series(fault_tree, size, file_name):
@@ -55,7 +55,7 @@ def run_reconstruction_analysis(fault_tree):
     fault_tree.calculate_MTTF_of_basic_events_from_time_series()
     fault_tree.calculate_MTTR_of_basic_events_from_time_series()
 
-    operating_cycle = fault_tree.top_event.time_series[-1] * 0.6
+    operating_cycle = fault_tree.top_event.time_series[-1]
     fault_tree.calculate_operational_availability_of_top_event(operating_cycle)
 
     for basic_event in fault_tree.get_basic_events():
@@ -69,12 +69,12 @@ def run_theoretical_analysis(fault_tree, linspace):
     fault_tree.calculate_MTTR_of_basic_events_from_distributions()
 
 
-def create_plots(reconstructed_fault_tree, original_fault_tree):
+def create_plots(reconstructed_fault_tree, original_fault_tree, linspace):
     for i in range(1, reconstructed_fault_tree.number_of_basic_events + 1):
         compare_reliability_of_basic_event_(i, reconstructed_fault_tree, original_fault_tree)
         compare_maintainability_of_basic_event_(i, reconstructed_fault_tree, original_fault_tree)
-    reconstructed_fault_tree.plot_reliability_distribution_of_top_event()
-    reconstructed_fault_tree.plot_maintainability_distribution_of_top_event()
+    reconstructed_fault_tree.plot_reliability_distribution_of_top_event(linspace, original_fault_tree.top_event.reliability_function)
+    reconstructed_fault_tree.plot_maintainability_distribution_of_top_event(linspace, original_fault_tree.top_event.maintainability_function)
 
 
 def get_info_on_events(fault_tree):

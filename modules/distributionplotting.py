@@ -287,7 +287,7 @@ def plot_unidentified_distribution_comparison(name, metric, times, theoretical_d
     subplots[0].legend()
 
     # CDF
-    sns.kdeplot(times, cumulative=True, ax=subplots[1], label='Reconstructed')
+    sns.kdeplot(times, cumulative=True, ax=subplots[1])
     _, cdf = subplots[1].lines[0].get_data()
     # Second plot CDF and/or Maintainability
     subplots[1].plot(x, cdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
@@ -513,7 +513,7 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     # Reliability for now
     # Maybe fix inconsistencies with the numbers on the axis
     fig, subplots = setup_fig_subplots(metric)
-    fig.suptitle(name)
+    #fig.suptitle(name)
 
     # PDF
     subplots[0].set_title('PDF')
@@ -531,6 +531,8 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     x, pdf = subplots[0].lines[0].get_data()
     subplots[0].plot(x, pdf, 'b-', lw=1, alpha=0.6, label='Reconstructed')
     subplots[0].plot(linspace[:index], theoretical_pdf[:index], 'r-', lw=1.5, alpha=0.6, label='Theoretical')
+    subplots[0].set_xlabel('time (t)')
+    subplots[0].set_ylabel('P(t)')
     subplots[0].legend()
     #subplots[0].set_xlim([0, 30])
 
@@ -538,17 +540,23 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
     sns.kdeplot(times, cumulative=True, ax=subplots[1], label='Reconstructed')
     subplots[1].plot(linspace[:index], theoretical_cdf[:index], 'r-', lw=1.5, alpha=0.6, label='Theoretical')
     subplots[1].legend()
+    subplots[1].set_xlabel('time (t)')
+    subplots[1].set_ylabel('P(T\u2264t)')
     #subplots[1].set_xlim([0, 30])
     _, cdf = subplots[1].lines[0].get_data()
 
     if metric == 'Maintainability':
         subplots[1].set_title('CDF (Maintainability)')
 
+
         subplots[2].plot(x, pdf/(1 - cdf), 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
 
         subplots[2].plot(linspace[:index], theoretical_pdf[:index]/(1 - theoretical_cdf[:index]),
                          'r-', lw=1.5, alpha=0.6, label='Theoretical')
         subplots[2].set_title('Repair Rate')
+        subplots[2].set_title('Repair Rate')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('\u03BC(t)')
         #subplots[2].set_xlim([0, 50])
         subplots[2].set_ylim([0, 5])
         subplots[2].legend()
@@ -572,8 +580,9 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
                          'r-', lw=1.5, alpha=0.6, label='Theoretical')
         subplots[2].set_ylim([0, 1.05])
         # For comparing graphs
-        # subplots[2].set_xlim([0, 100])
         subplots[2].set_title('Reliability')
+        subplots[2].set_xlabel('time (t)')
+        subplots[2].set_ylabel('R(t)')
         subplots[2].legend()
         subplots[3].plot(x, pdf/reliability, 'b-', lw=1.5, alpha=0.6, label='Reconstructed')
         #subplots[2].set_ylim([0, 0.01])
@@ -581,14 +590,16 @@ def plot_arbitrary_distribution_compare(name, metric, times, linspace, theoretic
         subplots[3].plot(linspace[:index], theoretical_pdf[:index]/theoretical_reliability[:index],
                          'r-', lw=1.5, alpha=0.6, label='Theoretical')
         subplots[3].set_title('Failure Rate')
+        subplots[3].set_xlabel('time (t)')
+        subplots[3].set_ylabel('\u03BB(t)')
         #subplots[3].set_ylim([0, 0.1])
         subplots[3].legend()
         #subplots[3].set_xlim([300, 325])
 
-    #if theoretical_reliability is not None:
-    #subplots[3].plot(linspace, theoretical_pdf/theoretical_reliability)
-
-    # plt.show()
+    plt.tight_layout()
+    #if EXPORT_PNG is True:
+    fig.savefig(os.getcwd() + '/static/images/' + get_object_name(name) + '_' + metric + '.png')
+    #else:
     plt.show(block=False)
 
 
@@ -614,6 +625,23 @@ def plot_():
 
 
 def plot_probability_of_failure(time_series, probability_of_failure):
-    plt.plot(time_series, probability_of_failure)
+    fig, subplot = plt.subplots(1, 1)
+    subplot.plot(time_series, probability_of_failure)
+    #subplot.set_title('Probability of component in FAIL state')
+    subplot.set_xlabel('time (t)')
+    subplot.set_ylabel('Probability')
+    #subplot.set_ylim([0, 1])
+
+    plt.show(block=False)
+
+
+def plot_probability_of_ok(time_series, probability_of_ok):
+    fig, subplot = plt.subplots(1, 1)
+    subplot.plot(time_series, probability_of_ok)
+
+    #subplot.set_title('Probability of component in OK state (Availability)')
+    subplot.set_xlabel('time (t)')
+    subplot.set_ylabel('Probability')
+    #subplot.set_ylim([0, 1])
 
     plt.show(block=False)
