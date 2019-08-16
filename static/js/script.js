@@ -59,6 +59,7 @@ function EventRadioButtonListener(){
 function MetricRadioButtonListener(){
     $(document).ready(function(){
         $("input:radio[name=metric]").click(function() {
+            console.log("metric radio button listener")
             var metric = $(this).val();
             last_chosen_metric = metric;
             var event = last_chosen_event;
@@ -66,6 +67,7 @@ function MetricRadioButtonListener(){
             var directory = '/static/images/';
             var png = '.png';
             var source = directory.concat(image_name.concat('_'.concat(metric.concat(png))));
+            console.log(source)
             $('#plot').attr('src', source);
         });
     });
