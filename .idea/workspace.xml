@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_2_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_2_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_2_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_2_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_3_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_3_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_3_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_3_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_4_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_4_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_4_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_4_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_5_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_5_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_5_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_5_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_6_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_6_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/basic_event_6_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_6_Reliability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/top_event_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Reliability.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ts.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -257,6 +275,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

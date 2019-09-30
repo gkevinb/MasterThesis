@@ -77,7 +77,7 @@ function init(){
     EventRadioButtonListener();
     MetricRadioButtonListener();
 }
-$.getJSON('/MasterThesis/static/data.json', function(data){
+$.getJSON('/static/data.json', function(data){
     original_fault_tree = data.OriginalFaultTree;
     reconstructed_fault_tree = data.ReconstructedFaultTree;
     init();
