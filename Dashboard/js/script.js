@@ -7,12 +7,10 @@ var timeout;
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!',
-        data: {
-            OriginalFaultTree: null,
-            ReconstructedFaultTree: null,
-            MinimalCutSets: null
-        },
+        renderKey: 1,
+        OriginalFaultTree: null,
+        ReconstructedFaultTree: null,
+        MinimalCutSets: null
     },
     created() {
         const HTTP = axios.create({
@@ -20,9 +18,19 @@ var app = new Vue({
         })
         HTTP.get('MasterThesis/static/data.json')
             .then(response => {
-                this.data = response.data;
+                this.OriginalFaultTree = response.data.OriginalFaultTree;
+                this.ReconstructedFaultTree = response.data.ReconstructedFaultTree;
+                this.MinimalCutSets = response.data.MinimalCutSets;
             });
-    }
+    },
+    watch: {
+        OriginalFaultTree: function () {
+            this.renderKey += 1
+        },
+        MinimalCutSets: function () {
+            this.renderKey += 1
+        },
+    },
 })
 
 
