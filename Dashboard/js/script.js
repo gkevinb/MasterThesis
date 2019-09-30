@@ -48,7 +48,7 @@ function EventRadioButtonListener(){
             document.getElementById("event_title").innerHTML = event;
             var metric = last_chosen_metric;
             var image_name = event.toLowerCase().replace(/ /g,"_");
-            var directory = '/static/images/';
+            var directory = '/MasterThesis/static/images/';
             var png = '.png';
             var source = directory.concat(image_name.concat('_'.concat(metric.concat(png))));
             $('#plot').attr('src', source);
@@ -64,7 +64,7 @@ function MetricRadioButtonListener(){
             last_chosen_metric = metric;
             var event = last_chosen_event;
             var image_name = event.toLowerCase().replace(/ /g,"_");
-            var directory = '/static/images/';
+            var directory = '/MasterThesis/static/images/';
             var png = '.png';
             var source = directory.concat(image_name.concat('_'.concat(metric.concat(png))));
             console.log(source)
@@ -77,7 +77,7 @@ function init(){
     EventRadioButtonListener();
     MetricRadioButtonListener();
 }
-$.getJSON('/static/data.json', function(data){
+$.getJSON('MasterThesis/static/data.json', function(data){
     original_fault_tree = data.OriginalFaultTree;
     reconstructed_fault_tree = data.ReconstructedFaultTree;
     init();
