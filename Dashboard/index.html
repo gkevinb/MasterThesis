@@ -3,7 +3,6 @@
 
 <head>
     <title>Fault Tree Analysis</title>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script src="/MasterThesis/Dashboard/js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -13,7 +12,6 @@
 <body>
     <div id="app">
         <h1>Fault Tree Analysis</h1>
-        <h2>{{ message }}</h2>
 
         <div id="original_fault_tree">
             <h2>Original Fault Tree</h2>
@@ -37,8 +35,8 @@
             <p>Event</p>
             <div id="events_bar">
                 <form action="" v-for="event in OriginalFaultTree">
-                    <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events" value="{{ event.event_name }}" checked="checked">{{ event.event_name }}<br>
-                    <input v-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events" value="{{ event.event_name }}">{{ event.event_name }}<br>
+                    <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events" :value="{{ event.event_name }}" checked="checked">{{ event.event_name }}<br>
+                    <input v-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events" :value="{{ event.event_name }}">{{ event.event_name }}<br>
                 </form>
             </div>
             <p>Metric</p>

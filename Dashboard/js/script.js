@@ -8,7 +8,11 @@ var app = new Vue({
     el: '#app',
     data: {
         message: 'Hello Vue!',
-        data: null,
+        data: {
+            OriginalFaultTree: null,
+            ReconstructedFaultTree: null,
+            MinimalCutSets: null
+        },
     },
     created() {
         const HTTP = axios.create({
@@ -94,11 +98,6 @@ function init() {
     EventRadioButtonListener();
     MetricRadioButtonListener();
 }
-$.getJSON('MasterThesis/static/data.json', function (data) {
-    original_fault_tree = data.OriginalFaultTree;
-    reconstructed_fault_tree = data.ReconstructedFaultTree;
-    init();
-});
 
 function fillEventInformation(event) {
     if (event == 'Top Event') {
@@ -126,3 +125,5 @@ function fillEventInformation(event) {
         document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
     }
 }
+
+init();
