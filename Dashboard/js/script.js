@@ -1,8 +1,10 @@
 let app = new Vue({
     el: '#app',
     data: {
-        lastChosenEvent: 'Basic Event 1',
-        lastChosenMetric: 'Reliability',
+        chosenEvent: 'basic_event_1',
+        chosenMetric: 'Reliability',
+        directory: '/MasterThesis/static/images/',
+        png: 'png',
         OriginalFaultTree: null,
         ReconstructedFaultTree: null,
         MinimalCutSets: null
@@ -29,27 +31,18 @@ let app = new Vue({
             return basicEventName.slice(12, basicEventName.length);
         },
         metricRadioButton: function (metric) {
-            console.log("NEW metric radio button listener")
-            this.lastChosenMetric = metric;
-            let event = this.lastChosenEvent;
-            let image_name = event.toLowerCase().replace(/ /g, "_");
-            let directory = '/MasterThesis/static/images/';
-            let png = '.png';
-            let source = directory.concat(image_name.concat('_'.concat(metric.concat(png))));
-            console.log(source)
+            this.chosenMetric = metric;
+            let event = this.chosenEvent;
+            // let image_name = event.toLowerCase().replace(/ /g, "_");
+            let source = this.directory.concat(image_name.concat('_'.concat(metric.concat(this.png))));
             $('#plot').attr('src', source);
         },
         eventRadioButton: function (event) {
-            console.log('new evetn list')
-            console.log(event)
-            this.lastChosenEvent = event
+            this.chosenEvent = event
             this.fillEventInformation(event)
-            document.getElementById("event_title").innerHTML = event;
-            let metric = this.lastChosenMetric;
-            let image_name = event.toLowerCase().replace(/ /g, "_");
-            let directory = '/MasterThesis/static/images/';
-            let png = '.png';
-            let source = directory.concat(image_name.concat('_'.concat(metric.concat(png))));
+            let metric = this.chosenMetric;
+            // let image_name = event.toLowerCase().replace(/ /g, "_");
+            let source = this.directory.concat(image_name.concat('_'.concat(metric.concat(this.png))));
             $('#plot').attr('src', source);
         },
         formatDistribution: function(distribution) {
@@ -90,7 +83,6 @@ let app = new Vue({
                 document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
             } else {
                 basicEventID = parseInt(this.getBasicEventNumber(event), 10);
-                console.log(basicEventID)
                 document.getElementById("oft_rel_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].reliability);
                 document.getElementById("rft_rel_dis").innerHTML = this.formatDistribution(this.ReconstructedFaultTree[basicEventID].reliability);
                 document.getElementById("oft_main_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].maintainability);

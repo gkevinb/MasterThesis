@@ -46,15 +46,19 @@ li{
     padding-right: 10px;
 }
 
-.events{
-    text-transform: capitalize;  
+#events_bar{
+    text-transform: capitalize;
+}
+
+#event_title{
+    text-transform: capitalize;
 }
 
 #event_metrics{
     float: left;
     margin-left: 40px;
-
 }
+
 #event_board{
     float: left;
     max-width: 160px;
