@@ -7,7 +7,17 @@ var timeout;
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        data: null,
+    },
+    created() {
+        const HTTP = axios.create({
+            baseURL: 'https://gkevinb.github.io/',
+        })
+        HTTP.get('MasterThesis/static/data.json')
+            .then(response => {
+                this.data = response.data;
+            });
     }
 })
 

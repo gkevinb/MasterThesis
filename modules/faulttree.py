@@ -25,7 +25,8 @@ class FaultTree:
 
     @staticmethod
     def _get_id_of_basic_event(basic_event):
-        # basic_event.name[12:] is to only show numbers, ex: (Basic Event 12) => 12
+        # basic_event.name[12:] is to only show numbers, ex: (Basic Event 1) => 1
+        # 12 is the first is the number of characters (Basic Event ) takes up
         return int(basic_event.name[12:])
 
     def _get_gates_reversed(self):

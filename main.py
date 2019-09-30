@@ -31,20 +31,28 @@ def index():
     reconstructed_events = [reconstructed_fault_tree.top_event]
     reconstructed_events.extend(reconstructed_fault_tree.get_basic_events())
 
+    print(original_fault_tree)
+    print(reconstructed_fault_tree)
+
     original_fault_tree_info = FTF.get_info_on_events(original_fault_tree)
     reconstructed_fault_tree_info = FTF.get_info_on_events(reconstructed_fault_tree)
+
+    print(original_events)
+    print(reconstructed_events)
+    print(reconstructed_fault_tree.minimal_cut_sets)
 
     # CREATE JSON FILE TO INPUT INFOs ON FAULT TREES, THEN DISPLAY IT ON THE DASHBOARD
     json_content = dict()
     json_content['OriginalFaultTree'] = original_fault_tree_info
     json_content['ReconstructedFaultTree'] = reconstructed_fault_tree_info
+    json_content['MinimalCutSets'] = reconstructed_fault_tree.minimal_cut_sets
 
     print(os.getcwd())
+
     FTF.export_info_to_json('/Users/gkevinb/PycharmProjects/Thesis/static/data.json', json_content)
 
-    return render_template("index.html", orignal_events=original_events, reconstructed_events=reconstructed_events,
-                           mcs=reconstructed_fault_tree.minimal_cut_sets, oft_info=original_fault_tree_info,
-                           rft_info=reconstructed_fault_tree_info)
+    return render_template("index.html", orignal_events=original_events, mcs=reconstructed_fault_tree.minimal_cut_sets,
+                           oft_info=original_fault_tree_info, rft_info=reconstructed_fault_tree_info)
 
 
 if __name__ == "__main__":
