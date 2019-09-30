@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21f76c37-8292-4caa-8ec3-58588512f6c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Maintainability.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_1_Reliability.png" afterDir="false" />
@@ -19,7 +18,6 @@
       <change beforePath="$PROJECT_DIR$/static/images/basic_event_6_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/basic_event_6_Reliability.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Maintainability.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/top_event_Reliability.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/top_event_Reliability.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ts.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,40 +36,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>EVENT_PRINT</find>
-      <find>is_EVEN</find>
-      <find>is_ODD</find>
-      <find>buil</find>
-      <find>opera</find>
-      <find>number_of_basic_events</find>
-      <find>proxel</find>
-      <find>input_reliabilities</find>
-      <find>proxel_time_series</find>
-      <find>savefig</find>
-      <find>getcwd</find>
-      <find>EXPORT_PNG</find>
-      <find>object`</find>
-      <find>get_object_name</find>
-      <find>operati</find>
-      <find>availability_operational</find>
-      <find>operating_cycle</find>
-      <find>fillEventInformation</find>
-      <find>li</find>
-      <find>distributi</find>
-      <find>distribution_name</find>
-      <find>loc</find>
-      <find>availability_inherent</find>
-      <find>reliability_function</find>
-      <find>avail</find>
-      <find>norm</find>
-      <find>expand_network</find>
-      <find>theoretical_cdf</find>
-      <find>oper_avail_string</find>
-      <find>reliability</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -83,19 +47,20 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Dashboard" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Dashboard" />
+      <recent name="$PROJECT_DIR$/static/images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/../scraps" />
       <recent name="$PROJECT_DIR$/scraps" />
       <recent name="$PROJECT_DIR$/modules" />
       <recent name="$PROJECT_DIR$/tests" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/images" />
     </key>
   </component>
   <component name="RunDashboard">
