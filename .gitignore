@@ -1,1 +1,5 @@
 venv_ubuntu/
+
+.vscode/
+
+.idea/
