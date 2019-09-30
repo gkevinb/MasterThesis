@@ -29,6 +29,7 @@ h1{
 
 #minimal_cut_sets h3{
     float: left;
+    margin-right: 10px;
 }
 
 #minimal_cut_sets ul{
@@ -37,6 +38,7 @@ h1{
 
 ul{
     margin-top: 20px;
+    padding-left: 10px;
 }
 
 li{

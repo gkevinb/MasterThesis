@@ -1,6 +1,6 @@
 venv_ubuntu/
 .vscode/
 .idea/
-.__pycache__/
 .node_modules/
 node_modules/
+__pycache__/
