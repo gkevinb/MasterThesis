@@ -4,7 +4,7 @@ let app = new Vue({
         chosenEvent: 'basic_event_1',
         chosenMetric: 'Reliability',
         directory: '/MasterThesis/static/images/',
-        png: 'png',
+        png: '.png',
         OriginalFaultTree: null,
         ReconstructedFaultTree: null,
         MinimalCutSets: null
