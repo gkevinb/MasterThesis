@@ -1,0 +1,26 @@
+{
+  "name": "thesis",
+  "version": "1.0.0",
+  "description": "Master Thesis",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gkevinb/MasterThesis.git"
+  },
+  "author": "Gabor Kevin Barta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gkevinb/MasterThesis/issues"
+  },
+  "homepage": "https://github.com/gkevinb/MasterThesis#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
+}

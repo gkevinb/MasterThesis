@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="app" :key="renderKey">
+    <div id="app">
         <h1>Fault Tree Analysis</h1>
 
         <div id="original_fault_tree">
@@ -36,18 +36,20 @@
             <div id="events_bar">
                 <form action="">
                     <template v-for="event in OriginalFaultTree">
-                        <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events"
-                            :value="event.event_name" checked="checked" v-text="event.event_name">
-                        <input v-else-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events"
-                            :value="event.event_name" v-text="event.event_name">
+                        <template v-if="event.event_name == 'basic_event_1'">
+                            <input type="radio" name="events" :value="event.event_name" @click="eventRadioButton(event.event_name)" checked="checked">{{ event.event_name }}<br>
+                        </template>
+                        <template v-else>
+                                <input type="radio" name="events" :value="event.event_name" @click="eventRadioButton(event.event_name)">{{ event.event_name }}<br>
+                        </template>
                     </template>
                 </form>
             </div>
             <p>Metric</p>
             <div id="metric_bar">
                 <form action="">
-                    <input type="radio" name="metric" value="Reliability" checked="checked">Reliability<br>
-                    <input type="radio" name="metric" value="Maintainability">Maintainability<br>
+                    <input type="radio" name="metric" value="Reliability" @click="metricRadioButton('Reliability')" checked="checked">Reliability<br>
+                    <input type="radio" name="metric" value="Maintainability" @click="metricRadioButton('Maintainability')">Maintainability<br>
                 </form>
             </div>
         </div>
