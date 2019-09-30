@@ -33,16 +33,14 @@ let app = new Vue({
         metricRadioButton: function (metric) {
             this.chosenMetric = metric;
             let event = this.chosenEvent;
-            // let image_name = event.toLowerCase().replace(/ /g, "_");
-            let source = this.directory.concat(image_name.concat('_'.concat(metric.concat(this.png))));
+            let source = this.directory.concat(event.concat('_'.concat(metric.concat(this.png))));
             $('#plot').attr('src', source);
         },
         eventRadioButton: function (event) {
             this.chosenEvent = event
             this.fillEventInformation(event)
             let metric = this.chosenMetric;
-            // let image_name = event.toLowerCase().replace(/ /g, "_");
-            let source = this.directory.concat(image_name.concat('_'.concat(metric.concat(this.png))));
+            let source = this.directory.concat(event.concat('_'.concat(metric.concat(this.png))));
             $('#plot').attr('src', source);
         },
         formatDistribution: function(distribution) {
