@@ -26,27 +26,20 @@
 
         </div>
 
-        <!-- <div id="minimal_cut_sets">
+        <div id="minimal_cut_sets">
             <h3>Minimal Cut Sets</h3>
-            <ul>
-                {% for set in mcs %}
-                <li>{{ set }} </li>
-                {% endfor %}
+            <ul v-for="set in MinimalCutSets">
+                <li>{{ set }}</li>
             </ul>
-        </div> -->
+        </div>
 
         <div id="event_board">
             <p>Event</p>
             <div id="events_bar">
-                <!-- <form action="">
-                    {% for event in orignal_events %}
-                    {% if event.name == 'Basic Event 1' %}
-                    <input type="radio" name="events" value="{{ event.name }}" checked="checked">{{ event.name }}<br>
-                    {% else %}
-                    <input type="radio" name="events" value="{{ event.name }}">{{ event.name }}<br>
-                    {% endif %}
-                    {% endfor %}
-                </form> -->
+                <form action="" v-for="event in OriginalFaultTree">
+                    <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events" value="{{ event.event_name }}" checked="checked">{{ event.event_name }}<br>
+                    <input v-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events" value="{{ event.event_name }}">{{ event.event_name }}<br>
+                </form>
             </div>
             <p>Metric</p>
             <div id="metric_bar">
