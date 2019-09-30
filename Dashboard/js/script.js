@@ -22,6 +22,9 @@ let app = new Vue({
         round: function(value, decimals) {
             return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
         },
+        formatEventName: function(eventName){
+            return eventName.split('_').join(' ');
+        },
         getBasicEventNumber: function (basicEventName) {
             return basicEventName.slice(12, basicEventName.length);
         },

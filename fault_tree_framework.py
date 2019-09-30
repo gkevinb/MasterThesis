@@ -81,7 +81,7 @@ def get_info_on_events(fault_tree):
     events = []
 
     event_dictionary = {
-        'event_name': get_object_name(fault_tree.top_event.name),
+        'name': get_object_name(fault_tree.top_event.name),
         'mtbf': fault_tree.top_event.MTTF,
         'mtbr': fault_tree.top_event.MTTR,
         'reliability': fault_tree.top_event.reliability_distribution,
@@ -93,7 +93,7 @@ def get_info_on_events(fault_tree):
 
     for basic_event in fault_tree.get_basic_events():
         event_dictionary = {
-            'event_name': get_object_name(basic_event.name),
+            'name': get_object_name(basic_event.name),
             'mtbf': basic_event.MTTF,
             'mtbr': basic_event.MTTR,
             'reliability': basic_event.reliability_distribution,

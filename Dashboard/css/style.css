@@ -46,6 +46,10 @@ li{
     padding-right: 10px;
 }
 
+.events{
+    text-transform: capitalize;  
+}
+
 #event_metrics{
     float: left;
     margin-left: 40px;
