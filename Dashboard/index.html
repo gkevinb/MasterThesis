@@ -34,9 +34,13 @@
         <div id="event_board">
             <p>Event</p>
             <div id="events_bar">
-                <form action="" v-for="event in OriginalFaultTree">
-                    <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events" :value="event.event_name" checked="checked">{{ event.event_name }}<br>
-                    <input v-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events" :value="event.event_name">{{ event.event_name }}<br>
+                <form action="">
+                    <template v-for="event in OriginalFaultTree">
+                        <input v-if="event.event_name == 'basic_event_1'" type="radio" name="events"
+                            :value="event.event_name" checked="checked">{{ event.event_name }}<br>
+                        <input v-else-if="event.event_name.substring(0, 5) == 'basic'" type="radio" name="events"
+                            :value="event.event_name">{{ event.event_name }}<br>
+                    </template>
                 </form>
             </div>
             <p>Metric</p>
