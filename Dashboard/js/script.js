@@ -11,7 +11,7 @@ let app = new Vue({
     },
     created() {
         const HTTP = axios.create({
-            baseURL: 'https://gkevinb.github.io/',
+            baseURL: 'https://gaborkevinbarta.com/',
         })
         HTTP.get('MasterThesis/static/data.json')
             .then(response => {
