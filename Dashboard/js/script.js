@@ -30,6 +30,9 @@ let app = new Vue({
         getBasicEventNumber: function (basicEventName) {
             return basicEventName.slice(12, basicEventName.length);
         },
+        isCheck: function (eventName) {
+            return eventName == 'basic_event_1' ? true : false
+        },
         metricRadioButton: function (metric) {
             this.chosenMetric = metric;
             let event = this.chosenEvent;
