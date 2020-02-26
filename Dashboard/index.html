@@ -56,7 +56,7 @@
             <div id="events_bar">
                 <form action="">
                     <template v-for="event in OriginalFaultTree">
-                        <input type="radio" name="events" class="events" :value="event.name" @click="eventRadioButton(event.name)" :checked="isCheck(event.name">{{ formatEventName(event.name) }}<br>
+                        <input type="radio" name="events" class="events" :value="event.name" @click="eventRadioButton(event.name)" :checked="isCheck(event.name)">{{ formatEventName(event.name) }}<br>
                     </template>
                 </form>
             </div>
