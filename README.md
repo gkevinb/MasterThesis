@@ -8,4 +8,4 @@ Objectives: Design a reliability model to produce streams of data. Analyze data 
 artificial intelligence and/or machine learning. Derive and reproduce the reliability model from the data.
 Compare the original reliability model and reproduced reliability model and evaluate the method of automated derivation.
 
-[Download Thesis Report](https://www.dropbox.com/s/gdhstffrp8z29pv/GaborKevinBarta_MSc_Thesis.pdf?dl=1)
+[Download Thesis Report](https://gaborkevinbarta.com/files/GaborKevinBarta_MSc_Thesis.pdf)

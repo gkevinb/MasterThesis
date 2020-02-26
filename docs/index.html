@@ -3,10 +3,20 @@
 
 <head>
     <title>Fault Tree Analysis</title>
-    <script src="/MasterThesis/Dashboard/js/jquery-3.3.1.js"></script>
+    <script src="/MasterThesis/js/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/MasterThesis/Dashboard/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/MasterThesis/css/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141910422-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141910422-1');
+    </script>
+
 </head>
 
 <body>
@@ -18,6 +28,7 @@
 
             <p>The following demo showcases the method I developed to reconstruct a fault tree using time series data.</p>
             <p>For a more in-depth explanation of the method please refer to my thesis which can be downloaded <a href="https://gaborkevinbarta.com/files/GaborKevinBarta_MSc_Thesis.pdf">here</a></p>
+            <p>To look at the source code for the algorithms click <a href="https://github.com/gkevinb/MasterThesis">here</a></p>
         </div>
 
         <h1>Fault Tree Analysis</h1>
@@ -96,7 +107,7 @@
         <img src="/MasterThesis/static/images/basic_event_1_Reliability.png" id="plot" alt="plot">
 
     </div>
-    <script type="text/javascript" src="/MasterThesis/Dashboard/js/script.js">
+    <script type="text/javascript" src="/MasterThesis/js/script.js">
     </script>
 </body>
 
