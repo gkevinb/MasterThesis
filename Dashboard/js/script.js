@@ -2,6 +2,7 @@ let app = new Vue({
     el: '#app',
     data: {
         chosenEvent: 'basic_event_1',
+        eventId: 1,
         chosenMetric: 'Reliability',
         directory: '/MasterThesis/static/images/',
         png: '.png',
@@ -41,7 +42,8 @@ let app = new Vue({
         },
         eventRadioButton: function (event) {
             this.chosenEvent = event
-            this.fillEventInformation(event)
+            this.eventId = (event == 'top_event') ? 0 : parseInt(this.getBasicEventNumber(event), 10);
+//            this.fillEventInformation(event)
             let metric = this.chosenMetric;
             let source = this.directory.concat(event.concat('_'.concat(metric.concat(this.png))));
             $('#plot').attr('src', source);
@@ -70,31 +72,31 @@ let app = new Vue({
                 return 'N/A';
             }
         },
-        fillEventInformation: function (event) {
-            if (event == 'top_event') {
-                document.getElementById("oft_rel_dis").innerHTML = "";
-                document.getElementById("rft_rel_dis").innerHTML = "";
-                document.getElementById("oft_main_dis").innerHTML = "";
-                document.getElementById("rft_main_dis").innerHTML = "";
-                document.getElementById("oft_mtbf").innerHTML = "";
-                document.getElementById("rft_mtbf").innerHTML = this.round(this.ReconstructedFaultTree[0].mtbf, 5);
-                document.getElementById("oft_mtbr").innerHTML = "";
-                document.getElementById("rft_mtbr").innerHTML = this.round(this.ReconstructedFaultTree[0].mtbr, 5);
-                oper_avail_string = this.round(this.ReconstructedFaultTree[0].oper_avail * 100, 5).toString();
-                document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
-            } else {
-                basicEventID = parseInt(this.getBasicEventNumber(event), 10);
-                document.getElementById("oft_rel_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].reliability);
-                document.getElementById("rft_rel_dis").innerHTML = this.formatDistribution(this.ReconstructedFaultTree[basicEventID].reliability);
-                document.getElementById("oft_main_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].maintainability);
-                document.getElementById("rft_main_dis").innerHTML = this.formatDistribution(this.ReconstructedFaultTree[basicEventID].maintainability);
-                document.getElementById("oft_mtbf").innerHTML = this.round(this.OriginalFaultTree[basicEventID].mtbf, 5);
-                document.getElementById("rft_mtbf").innerHTML = this.round(this.ReconstructedFaultTree[basicEventID].mtbf, 5);
-                document.getElementById("oft_mtbr").innerHTML = this.round(this.OriginalFaultTree[basicEventID].mtbr, 5);
-                document.getElementById("rft_mtbr").innerHTML = this.round(this.ReconstructedFaultTree[basicEventID].mtbr, 5);
-                oper_avail_string = this.round(this.ReconstructedFaultTree[basicEventID].oper_avail * 100, 5).toString();
-                document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
-            }
+//        fillEventInformation: function (event) {
+//            if (event == 'top_event') {
+//                document.getElementById("oft_rel_dis").innerHTML = "";
+//                document.getElementById("rft_rel_dis").innerHTML = "";
+//                document.getElementById("oft_main_dis").innerHTML = "";
+//                document.getElementById("rft_main_dis").innerHTML = "";
+//                document.getElementById("oft_mtbf").innerHTML = "";
+//                document.getElementById("rft_mtbf").innerHTML = this.round(this.ReconstructedFaultTree[0].mtbf, 5);
+//                document.getElementById("oft_mtbr").innerHTML = "";
+//                document.getElementById("rft_mtbr").innerHTML = this.round(this.ReconstructedFaultTree[0].mtbr, 5);
+//                oper_avail_string = this.round(this.ReconstructedFaultTree[0].oper_avail * 100, 5).toString();
+//                document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
+//            } else {
+//                basicEventID =
+//                document.getElementById("oft_rel_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].reliability);
+//                document.getElementById("rft_rel_dis").innerHTML = this.formatDistribution(this.ReconstructedFaultTree[basicEventID].reliability);
+//                document.getElementById("oft_main_dis").innerHTML = this.formatDistribution(this.OriginalFaultTree[basicEventID].maintainability);
+//                document.getElementById("rft_main_dis").innerHTML = this.formatDistribution(this.ReconstructedFaultTree[basicEventID].maintainability);
+//                document.getElementById("oft_mtbf").innerHTML = this.round(this.OriginalFaultTree[basicEventID].mtbf, 5);
+//                document.getElementById("rft_mtbf").innerHTML = this.round(this.ReconstructedFaultTree[basicEventID].mtbf, 5);
+//                document.getElementById("oft_mtbr").innerHTML = this.round(this.OriginalFaultTree[basicEventID].mtbr, 5);
+//                document.getElementById("rft_mtbr").innerHTML = this.round(this.ReconstructedFaultTree[basicEventID].mtbr, 5);
+//                oper_avail_string = this.round(this.ReconstructedFaultTree[basicEventID].oper_avail * 100, 5).toString();
+//                document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
+//            }
         },
     }
 })
