@@ -97,7 +97,7 @@ let app = new Vue({
 //                oper_avail_string = this.round(this.ReconstructedFaultTree[basicEventID].oper_avail * 100, 5).toString();
 //                document.getElementById("oper_avail").innerHTML = oper_avail_string.concat(' %');
 //            }
-        },
+//        },
     }
 })
 
