@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Copy requirements.txt into the container
-COPY requirements.txt .
+COPY requirements-py36.txt .
 
 # Install system dependencies for tkinter and others
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Python dependencies
 RUN pip install --upgrade pip==19.2.3 \
-    && pip install -r requirements.txt
+    && pip install -r requirements-py36.txt
 
 # Copy the rest of your application code to /app
 COPY . .

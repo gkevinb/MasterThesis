@@ -11,13 +11,44 @@ Compare the original reliability model and reproduced reliability model and eval
 [Download Thesis Report](https://gaborkevinbarta.com/files/GaborKevinBarta_MSc_Thesis.pdf)
 
 
+## Installation
+
+Use python 3.12 to run the application.
+
+```bash
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+## Run analysis
+
+```bash
+python analysisFT.py
+```
+
+## Run analysis
+
+```bash
+python analysisFT.py
+```
+
+
+## Run proxel simulation
+
+```bash
+python proxel_example.py
+```
+
+
 
 ## Dockerized app
 
 Build container
 
 ```bash
-docker build -t fault-tree-analysis .\
+docker build -t fault-tree-analysis .
 ```
 
 Run container

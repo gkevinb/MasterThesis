@@ -23,9 +23,9 @@ def get_index_of_first_zero_in_array(array):
 
 def differentiate(x, y):
     if type(y) is list:
-        dy = np.zeros(len(y), np.float)
+        dy = np.zeros(len(y), float)
     else:
-        dy = np.zeros(y.shape, np.float)
+        dy = np.zeros(y.shape, float)
     dy[0:-1] = np.diff(y) / np.diff(x)
     dy[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
     return dy
@@ -208,9 +208,9 @@ def plot_identified_distribution_comparison(name, metric, distribution, times, t
 
     if times != EMPTY_LIST:
         if metric == 'Reliability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
+            subplots[0].hist(times, bins=20, density=True, histtype='stepfilled', alpha=0.2, label='Time to failures')
         if metric == 'Maintainability':
-            subplots[0].hist(times, bins=20, normed=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
+            subplots[0].hist(times, bins=20, density=True, histtype='stepfilled', alpha=0.2, label='Time to repairs')
         subplots[0].legend()
     subplots[0].set_title('PDF')
 
