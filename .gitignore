@@ -4,3 +4,5 @@ venv_ubuntu/
 .node_modules/
 node_modules/
 __pycache__/
+
+venv/

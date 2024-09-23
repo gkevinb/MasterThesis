@@ -9,3 +9,21 @@ artificial intelligence and/or machine learning. Derive and reproduce the reliab
 Compare the original reliability model and reproduced reliability model and evaluate the method of automated derivation.
 
 [Download Thesis Report](https://gaborkevinbarta.com/files/GaborKevinBarta_MSc_Thesis.pdf)
+
+
+
+## Dockerized app
+
+Build container
+
+```bash
+docker build -t fault-tree-analysis .\
+```
+
+Run container
+
+```bash
+docker run -it --rm fault-tree-analysis
+```
+
+Using docker desktop you can inspect generated files such as the time series data, truth table, and the graphs in png format in the container.

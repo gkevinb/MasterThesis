@@ -244,23 +244,34 @@ print('Do truth table match?: ' + str(compare_truth_tables('truth_table_original
                                                            'truth_table_reconstructed.txt')))
 
 
+
+
+# TODO: commented out graphs for now, when running inside docker container
+
 # int(number_of_times_of_failure_top_event)
 # doesn't have to be the same as times of failures for top event
 
-compare_reliability_of_basic_event_(1, FT, fault_tree)
-#compare_reliability_of_top_event(linspace, FT, fault_tree)
-#compare_maintainability_of_top_event(linspace, FT, fault_tree)
-FT.plot_maintainability_distribution_of_top_event()
-FT.plot_reliability_distribution_of_top_event()
+# compare_reliability_of_basic_event_(1, FT, fault_tree)
+# #compare_reliability_of_top_event(linspace, FT, fault_tree)
+# #compare_maintainability_of_top_event(linspace, FT, fault_tree)
+# FT.plot_maintainability_distribution_of_top_event()
+# FT.plot_reliability_distribution_of_top_event()
 
-print('------------------------------------------------------------')
+# print('------------------------------------------------------------')
 
-compare_MTTF_MTTR_of_top_event(FT, fault_tree)
-compare_MTTF_MTTR_of_basic_events(FT, fault_tree)
-compare_distributions_of_basic_events(FT, fault_tree)
-compare_availabilities_of_top_event(FT, fault_tree)
+# compare_MTTF_MTTR_of_top_event(FT, fault_tree)
+# compare_MTTF_MTTR_of_basic_events(FT, fault_tree)
+# compare_distributions_of_basic_events(FT, fault_tree)
+# compare_availabilities_of_top_event(FT, fault_tree)
 
 FT.export_to_png('Reconstruced_FT.png')
 fault_tree.export_to_png('Original_FT.png')
 
-plt.show()
+# plt.show()
+
+
+# added sleep to make sure docker container doesn't exit
+# TODO: find better way later
+from time import sleep
+
+sleep(8 * 60 * 60)
